@@ -208,4 +208,46 @@ class TaxRef
      * @var string
      */
     private $url;
+
+    /**
+     * @return int
+     */
+    public function getCdNom(): int
+    {
+        return $this->cdNom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomValide(): ?string
+    {
+        return $this->nomValide;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomVern(): ?string
+    {
+        return $this->nomVern;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFr(): ?string
+    {
+        return $this->fr;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+
 }
