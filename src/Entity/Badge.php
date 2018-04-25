@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\LevelRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\BadgeRepository")
  */
-class Level
+class Badge
 {
     /**
      * @var UuidInterface
@@ -16,9 +16,19 @@ class Level
     private $id;
 
     /**
+     * @var User
+     */
+    private $user;
+
+    /**
      * @var string
      */
     private $name;
+
+    /**
+     * @var int
+     */
+    private $category;
 
     /**
      * @var string
@@ -29,11 +39,6 @@ class Level
      * @var string
      */
     private $img;
-
-    /**
-     * @var User
-     */
-    private $user;
 
     /**
      * @return UuidInterface
