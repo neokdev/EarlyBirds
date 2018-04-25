@@ -51,6 +51,11 @@ class User
     private $userNonLocked;
 
     /**
+     * @var level
+     */
+    private $level;
+
+    /**
      * @return UuidInterface
      */
     public function getId(): UuidInterface

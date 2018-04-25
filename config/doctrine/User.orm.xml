@@ -12,5 +12,6 @@
         <field name="enabled" type="boolean"/>
         <field name="userNonExpired" type="boolean"/>
         <field name="userNonLocked" type="boolean"/>
+        <many-to-one field="level" target-entity="App\Entity\Level"/>
     </entity>
 </doctrine-mapping>
