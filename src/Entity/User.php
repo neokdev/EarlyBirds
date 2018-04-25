@@ -23,6 +23,11 @@ class User
     /**
      * @var string
      */
+    private $email;
+
+    /**
+     * @var string
+     */
     private $password;
 
     /**
@@ -49,6 +54,21 @@ class User
      * @var bool
      */
     private $userNonLocked;
+
+    /**
+     * @var int
+     */
+    private $score;
+
+    /**
+     * @var level
+     */
+    private $level;
+
+    /**
+     * @var Badge
+     */
+    private $badge;
 
     /**
      * @return UuidInterface

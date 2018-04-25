@@ -7,10 +7,14 @@
     <entity name="App\Entity\User" table="user" repository-class="App\Repository\UserRepository">
         <id name="id" type="uuid"/>
         <field name="username"/>
+        <field name="email"/>
         <field name="password"/>
         <field name="roles" type="array" nullable="true"/>
         <field name="enabled" type="boolean"/>
         <field name="userNonExpired" type="boolean"/>
         <field name="userNonLocked" type="boolean"/>
+        <field name="score" type="integer"/>
+        <many-to-one field="level" target-entity="App\Entity\Level"/>
+        <many-to-many field="badge" target-entity="App\Entity\Badge"/>
     </entity>
 </doctrine-mapping>
