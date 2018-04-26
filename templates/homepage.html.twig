@@ -1,14 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-{% endblock %}
+{% block title %}EarlyBirds{% endblock %}
 
 {% block body %}
-<h1>
-    Homepage
-</h1>
+    <h1>Homepage</h1>
+
+    <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="{{ asset('devimg/1.jpg') }}"></a>
+        <a class="carousel-item" href="#two!"><img src="{{ asset('devimg/2.jpg') }}"></a>
+        <a class="carousel-item" href="#three!"><img src="{{ asset('devimg/3.png') }}"></a>
+        <a class="carousel-item" href="#four!"><img src="{{ asset('devimg/4.jpg') }}"></a>
+        <a class="carousel-item" href="#five!"><img src="{{ asset('devimg/5.jpg') }}"></a>
+    </div>
 {% endblock %}
 
-
-
-
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        let elem = document.querySelector('.carousel');
+        let instance = M.Carousel.init(elem, {
+            fullWidth: true,
+            indicators: true,
+        });
+    </script>
+{% endblock %}
