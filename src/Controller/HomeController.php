@@ -8,21 +8,32 @@
 
 namespace App\Controller;
 
+use App\Controller\Interfaces\HomeControllerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
 
-class HomeController extends AbstractController
+class HomeController implements HomeControllerInterface
 {
     /**
      * @Route(
      *     "/",
-     *     name="app_homepage"
+     *     name="app_homepage",
+     *     methods={"GET"}
      * )
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Environment $environment
+     *
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     *
+     * @return Response
      */
-    public function homepage()
+    public function __invoke(Environment $environment)
     {
-        return $this->render('homepage.html.twig');
+        return new Response(
+            $environment->render('homepage.html.twig')
+        );
     }
 }
