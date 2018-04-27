@@ -2,26 +2,25 @@
 /**
  * Created by PhpStorm.
  * User: Neok
- * Date: 25/04/2018
- * Time: 14:23
+ * Date: 27/04/2018
+ * Time: 07:54
  */
 
 namespace App\Controller;
 
-use App\Controller\Interfaces\HomeControllerInterface;
+use App\Controller\Interfaces\ObservationControllerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class HomeController implements HomeControllerInterface
+class ObservationController implements ObservationControllerInterface
 {
     /**
      * @Route(
-     *     "/",
-     *     name="app_homepage",
+     *     "/observe",
+     *     name="app_observe",
      *     methods={"GET"},
      * )
-     *
      * @param Environment $environment
      *
      * @throws \Twig_Error_Loader
@@ -33,7 +32,7 @@ class HomeController implements HomeControllerInterface
     public function __invoke(Environment $environment)
     {
         return new Response(
-            $environment->render('homepage.html.twig')
+            $environment->render('obsvervation.html.twig')
         );
     }
 }
