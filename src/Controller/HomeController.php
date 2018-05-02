@@ -19,7 +19,7 @@ class HomeController implements HomeControllerInterface
      * @Route(
      *     "/",
      *     name="app_homepage",
-     *     methods={"GET"}
+     *     methods={"GET"},
      * )
      *
      * @param Environment $environment

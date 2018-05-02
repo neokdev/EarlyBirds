@@ -23,6 +23,18 @@ class TaxRefRepository extends ServiceEntityRepository
         parent::__construct($registry, TaxRef::class);
     }
 
+    /**
+     * @return array
+     */
+    public function findAllByNomVern()
+    {
+        return $this->createQueryBuilder('tr')
+            ->select('tr.nomVern')
+            ->orderBy('tr.cdNom', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return TaxRef[] Returns an array of TaxRef objects
 //     */
