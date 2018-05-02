@@ -8,14 +8,19 @@
 
 namespace App\Controller\Interfaces;
 
+use App\Managers\TaxRefManager;
 use Twig\Environment;
 
 interface ObservationControllerInterface
 {
     /**
-     * @param Environment $environment
+     * @param Environment   $environment
+     * @param TaxRefManager $manager
      *
      * @return mixed
      */
-    public function __invoke(Environment $environment);
+    public function __invoke(
+        Environment $environment,
+        TaxRefManager $manager
+    );
 }

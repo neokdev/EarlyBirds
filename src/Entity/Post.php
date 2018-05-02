@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity(repositoryClass="ObserveRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  */
-class Observe
+class Post
 {
     /**
      * @var UuidInterface
@@ -21,44 +21,19 @@ class Observe
     private $author;
 
     /**
-     * @var TaxRef
-     */
-    private $ref;
-
-    /**
      * @var string
      */
-    private $desc;
+    private $category;
 
     /**
-     * @var string
+     * @var \DateTime
      */
-    private $latitude;
-
-    /**
-     * @var string
-     */
-    private $longitude;
+    private $date;
 
     /**
      * @var string
      */
     private $img;
-
-    /**
-     * @var User
-     */
-    private $validator;
-
-    /**
-     * @var string
-     */
-    private $status;
-
-    /**
-     * @var int
-     */
-    private $upvote;
 
     /**
      * @return UuidInterface
