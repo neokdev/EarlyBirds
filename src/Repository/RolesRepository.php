@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Role;
+use App\Entity\Roles;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Role|null find($id, $lockMode = null, $lockVersion = null)
- * @method Role|null findOneBy(array $criteria, array $orderBy = null)
- * @method Role[]    findAll()
- * @method Role[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Roles|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Roles|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Roles[]    findAll()
+ * @method Roles[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RoleRepository extends ServiceEntityRepository
+class RolesRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Role::class);
+        parent::__construct($registry, Roles::class);
     }
 
 //    /**

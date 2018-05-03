@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var UuidInterface
@@ -36,9 +37,9 @@ class User
     private $salt;
 
     /**
-     * @var Role
+     * @var Roles
      */
-    private $role;
+    private $roles;
 
     /**
      * @var bool
@@ -153,19 +154,19 @@ class User
     }
 
     /**
-     * @return Role
+     * @return Roles
      */
-    public function getRole(): Role
+    public function getRoles(): Roles
     {
-        return $this->role;
+        return $this->roles;
     }
 
     /**
-     * @param Role $role
+     * @param Roles $roles
      */
-    public function setRole(Role $role): void
+    public function setRoles(Roles $roles): void
     {
-        $this->role = $role;
+        $this->roles = $roles;
     }
 
     /**
@@ -296,4 +297,10 @@ class User
         $this->badge = $badge;
     }
 
+    /**
+     *
+     */
+    public function eraseCredentials()
+    {
+    }
 }

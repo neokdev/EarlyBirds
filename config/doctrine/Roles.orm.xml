@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Entity\Role" table="role" repository-class="App\Repository\RoleRepository">
+    <entity name="App\Entity\Roles" table="roles" repository-class="App\Repository\RolesRepository">
         <id name="id" type="uuid"/>
         <field name="name"/>
         <field name="desc" type="text" nullable="true"/>

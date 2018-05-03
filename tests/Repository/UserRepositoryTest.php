@@ -8,7 +8,7 @@
 
 namespace App\Tests\Repository;
 
-use App\Entity\Role;
+use App\Entity\Roles;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\Uuid;

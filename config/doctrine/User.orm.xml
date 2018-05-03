@@ -10,7 +10,7 @@
         <field name="email"/>
         <field name="password"/>
         <field name="salt" nullable="true"/>
-        <many-to-one field="role" target-entity="App\Entity\Role"/>
+        <many-to-one field="roles" target-entity="App\Entity\Roles"/>
         <field name="isEnabled" type="boolean"/>
         <field name="isAccountNonExpired" type="boolean"/>
         <field name="isAccountNonLocked" type="boolean"/>
