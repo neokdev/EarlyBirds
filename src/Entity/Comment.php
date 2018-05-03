@@ -15,7 +15,20 @@ class Comment
      */
     private $id;
 
+    /**
+     * @var User
+     */
+    private $author;
 
+    /**
+     * @var string
+     */
+    private $date;
+
+    /**
+     * @var string
+     */
+    private $content;
 
     /**
      * @return UuidInterface
