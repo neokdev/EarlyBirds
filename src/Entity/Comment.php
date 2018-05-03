@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -10,13 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Comment
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var UuidInterface
      */
     private $id;
 
-    public function getId()
+
+
+    /**
+     * @return UuidInterface
+     */
+    public function getId(): UuidInterface
     {
         return $this->id;
     }

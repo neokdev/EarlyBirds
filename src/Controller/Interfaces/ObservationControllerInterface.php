@@ -14,13 +14,9 @@ use Twig\Environment;
 interface ObservationControllerInterface
 {
     /**
-     * @param Environment   $environment
-     * @param TaxRefManager $manager
+     * @param Environment $environment
      *
      * @return mixed
      */
-    public function __invoke(
-        Environment $environment,
-        TaxRefManager $manager
-    );
+    public function __invoke(Environment $environment);
 }
