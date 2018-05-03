@@ -9,7 +9,6 @@
 namespace App\Controller;
 
 use App\Controller\Interfaces\ObservationControllerInterface;
-use App\Managers\TaxRefManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -24,28 +23,17 @@ class ObservationController implements ObservationControllerInterface
      * )
      * @param Environment $environment
      *
-     * @param TaxRefManager $manager
-     * @return Response
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     *
+     * @return Response
      */
     public function __invoke(
-        Environment $environment,
-        TaxRefManager $manager
+        Environment $environment
     ) {
-        $names = $manager->getVernName();
-
-        dump(json_encode($names, JSON_HEX_QUOT));
-
-        return new Response
-        (
-            $environment->render
-            ('obsvervation.html.twig',
-                [
-                    'names' => json_encode($names, JSON_HEX_QUOT),
-                ]
-            )
+        return new Response(
+            $environment->render('obsvervation.html.twig')
         );
     }
 }

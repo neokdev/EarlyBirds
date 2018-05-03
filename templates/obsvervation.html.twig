@@ -41,7 +41,15 @@
             accessToken: 'pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q'
         }).addTo(mymap);
 
-    // autocomplete
+        // autocomplete
+
+
+        httpRequest = new XMLHttpRequest();
+        httpRequest.open(
+            'POST',
+
+        )
+        httpRequest.send();
 
         let elem = document.querySelector('.autocomplete');
         let instance = M.Autocomplete.init(elem, {

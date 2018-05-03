@@ -7,7 +7,7 @@
     <entity name="App\Entity\Observe" table="observe" repository-class="App\Repository\ObserveRepository">
         <id name="id" type="uuid"/>
         <field name="author"/>
-        <one-to-one field="ref" target-entity="App\Entity\TaxRef"/>
+        <one-to-one field="ref" target-entity="App\Entity\TaxRef" mapped-by="CD_NOM"/>
         <field name="desc" type="text"/>
         <field name="latitude"/>
         <field name="longitude"/>
