@@ -6,7 +6,8 @@
 
     <entity name="App\Entity\User" table="user" repository-class="App\Repository\UserRepository">
         <id name="id" type="uuid"/>
-        <field name="username"/>
+        <field name="username" nullable="true"/>
+        <field name="name" nullable="true"/>
         <field name="email"/>
         <field name="password"/>
         <field name="salt" nullable="true"/>

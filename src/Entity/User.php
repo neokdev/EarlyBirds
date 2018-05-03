@@ -24,6 +24,11 @@ class User implements UserInterface
     /**
      * @var string
      */
+    private $name;
+
+    /**
+     * @var string
+     */
     private $email;
 
     /**
@@ -103,6 +108,22 @@ class User implements UserInterface
     public function setUsername(string $username): void
     {
         $this->username = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 
     /**

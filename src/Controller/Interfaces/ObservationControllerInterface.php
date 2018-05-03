@@ -8,7 +8,6 @@
 
 namespace App\Controller\Interfaces;
 
-use App\Managers\TaxRefManager;
 use Twig\Environment;
 
 interface ObservationControllerInterface
