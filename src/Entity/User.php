@@ -4,12 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface
+class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var UuidInterface
@@ -24,12 +24,32 @@ class User implements UserInterface
     /**
      * @var string
      */
-    private $name;
+    private $firstname;
+
+    /**
+     * @var string
+     */
+    private $lastname;
 
     /**
      * @var string
      */
     private $email;
+
+    /**
+     * @var string
+     */
+    private $googleId;
+
+    /**
+     * @var string
+     */
+    private $facebookId;
+
+    /**
+     * @var string
+     */
+    private $plainPassword;
 
     /**
      * @var string
@@ -49,7 +69,7 @@ class User implements UserInterface
     /**
      * @var bool
      */
-    private $isEnabled;
+    private $isActive;
 
     /**
      * @var bool
@@ -113,23 +133,39 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getName(): string
+    public function getFirstname(): string
     {
-        return $this->name;
+        return $this->firstname;
     }
 
     /**
-     * @param string $name
+     * @param string $firstname
      */
-    public function setName(string $name): void
+    public function setFirstname(string $firstname): void
     {
-        $this->name = $name;
+        $this->firstname = $firstname;
     }
 
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getLastname(): string
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param string $lastname
+     */
+    public function setLastname(string $lastname): void
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -140,6 +176,54 @@ class User implements UserInterface
     public function setEmail(string $email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleId(): string
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param string $googleId
+     */
+    public function setGoogleId(string $googleId): void
+    {
+        $this->googleId = $googleId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId(): string
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param string $facebookId
+     */
+    public function setFacebookId(string $facebookId): void
+    {
+        $this->facebookId = $facebookId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string $plainPassword
+     */
+    public function setPlainPassword(string $plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 
     /**
@@ -163,7 +247,7 @@ class User implements UserInterface
      */
     public function getSalt(): ?string
     {
-        return $this->salt;
+        return null;
     }
 
     /**
@@ -195,7 +279,7 @@ class User implements UserInterface
      */
     public function isEnabled(): bool
     {
-        return $this->isEnabled;
+        return $this->isActive;
     }
 
     /**
@@ -203,7 +287,27 @@ class User implements UserInterface
      */
     public function setIsEnabled(bool $isEnabled): void
     {
-        $this->isEnabled = $isEnabled;
+        $this->isActive = $isEnabled;
+    }
+
+    /**
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->isActive,
+        ]);
+    }
+
+    /**
+     * @param string $serialized
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->isActive,
+            ) = unserialize($serialized);
     }
 
     /**
@@ -211,7 +315,7 @@ class User implements UserInterface
      */
     public function isAccountNonExpired(): bool
     {
-        return $this->isAccountNonExpired;
+        return true;
     }
 
     /**
@@ -227,7 +331,7 @@ class User implements UserInterface
      */
     public function isAccountNonLocked(): bool
     {
-        return $this->isAccountNonLocked;
+        return true;
     }
 
     /**
@@ -243,7 +347,7 @@ class User implements UserInterface
      */
     public function isCredentialsNonExpired(): bool
     {
-        return $this->isCredentialsNonExpired;
+        return true;
     }
 
     /**

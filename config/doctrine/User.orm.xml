@@ -4,15 +4,19 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Entity\User" table="user" repository-class="App\Repository\UserRepository">
+    <entity name="App\Entity\User" table="app_users" repository-class="App\Repository\UserRepository">
         <id name="id" type="uuid"/>
-        <field name="username" nullable="true"/>
-        <field name="name" nullable="true"/>
-        <field name="email"/>
+        <field name="username" nullable="true" unique="true"/>
+        <field name="firstname" nullable="true"/>
+        <field name="lastname" nullable="true"/>
+        <field name="email" unique="true"/>
+        <field name="googleId" unique="true"/>
+        <field name="facebookId" unique="true"/>
+        <field name="plainPassword"/>
         <field name="password"/>
         <field name="salt" nullable="true"/>
         <many-to-one field="roles" target-entity="App\Entity\Roles"/>
-        <field name="isEnabled" type="boolean"/>
+        <field name="isActive" type="boolean"/>
         <field name="isAccountNonExpired" type="boolean"/>
         <field name="isAccountNonLocked" type="boolean"/>
         <field name="isCredentialsNonExpired" type="boolean"/>

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block title %}Connexion{% endblock %}
+{% block body %}
+{% if error %}
+    <div class="row" id="alert">
+        <div class="offset-s2 col s8">
+            <div class="card red darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Erreur</span>
+                    <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                </div>
+                <div class="card-action">
+                    <a href="#" onclick="dismiss()">Fermer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+<div class="row" id="loginPanel">
+    <div class="card-panel cyan lighten-5 hoverable col s8 offset-s2">
+        <div class="row" style="padding-top: 6%; padding-bottom: 3%">
+            <form class="col s10 offset-s1 center" action="{{ path('app_login') }}" method="post">
+                <div class="row">
+                    <div>
+                        <a href="{{ hwi_oauth_login_url('google') }}">
+                            <img id="googleAuth" src="{{ asset('/img/login/googleIcons/btn_google_signin_dark_normal_web.png') }}" onmouseover="toggleGoogleImgOn()" onmouseleave="toggleGoogleImgOff()" onclick="toggleGoogleImgClick()">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="email" type="email" class="validate" name="_email" value="{{ last_email }}">
+                        <label for="email" class="active">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="password" type="password" name="_password" class="validate">
+                        <label for="password" class="active">Password</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">login
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+            <div class="row">
+                <div class="col s10 offset-s1 center" id="registerPanel">
+                    {{ form_start(form) }}
+                    {{ form_row(form) }}
+                    <button class="btn waves-effect waves-light" type="submit" name="action">register
+                        <i class="material-icons right">send</i>
+                    </button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        M.updateTextFields();
+        function toggleGoogleImgOn() {
+            let img = document.getElementById("googleAuth");
+            img.setAttribute("src", "{{ asset('/img/login/googleIcons/btn_google_signin_dark_focus_web.png') }}");
+        }
+        function toggleGoogleImgOff() {
+            let img = document.getElementById("googleAuth");
+            img.setAttribute("src", "{{ asset('/img/login/googleIcons/btn_google_signin_dark_normal_web.png') }}");
+        }
+        function toggleGoogleImgClick() {
+            let img = document.getElementById("googleAuth");
+            img.setAttribute("src", "{{ asset('/img/login/googleIcons/btn_google_signin_dark_pressed_web.png') }}");
+        }
+        function dismiss() {
+            let alert = document.getElementById("alert");
+            alert.remove();
+        }
+
+    </script>
+{% endblock %}

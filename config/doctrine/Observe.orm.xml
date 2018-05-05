@@ -12,7 +12,7 @@
         <field name="latitude"/>
         <field name="longitude"/>
         <field name="img"/>
-        <many-to-one field="validator" target-entity="App\Entity\User"/>
+        <many-to-one field="validator" target-entity="App\Entity\User" inversed-by="validatedObserve"/>
         <one-to-many field="upvote" target-entity="App\Entity\User" mapped-by="id"/>
     </entity>
 </doctrine-mapping>
