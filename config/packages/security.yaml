@@ -33,7 +33,7 @@ security:
             provider: in_memory
 
             # Turn on anonymous for testings need.
-            anonymous: false
+            anonymous: ~
             form_login:
                 # submit the login form here
                 check_path: /login
