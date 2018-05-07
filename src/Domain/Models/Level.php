@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Entity;
+namespace App\Domain\Models;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity(repositoryClass="ObserveRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\LevelRepository")
  */
-class Observe
+class Level
 {
     /**
      * @var UuidInterface
@@ -18,12 +18,7 @@ class Observe
     /**
      * @var string
      */
-    private $author;
-
-    /**
-     * @var TaxRef
-     */
-    private $ref;
+    private $name;
 
     /**
      * @var string
@@ -33,32 +28,12 @@ class Observe
     /**
      * @var string
      */
-    private $latitude;
-
-    /**
-     * @var string
-     */
-    private $longitude;
-
-    /**
-     * @var string
-     */
     private $img;
 
     /**
      * @var User
      */
-    private $validator;
-
-    /**
-     * @var string
-     */
-    private $status;
-
-    /**
-     * @var int
-     */
-    private $upvote;
+    private $user;
 
     /**
      * @return UuidInterface

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Entity;
+namespace App\Domain\Models;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
+ * @ORM\Entity(repositoryClass="RolesRepository")
  */
-class Comment
+class Roles
 {
     /**
      * @var UuidInterface
@@ -16,19 +16,14 @@ class Comment
     private $id;
 
     /**
-     * @var User
+     * @var string
      */
-    private $author;
+    private $name;
 
     /**
      * @var string
      */
-    private $date;
-
-    /**
-     * @var string
-     */
-    private $content;
+    private $desc;
 
     /**
      * @return UuidInterface

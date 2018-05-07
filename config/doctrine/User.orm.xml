@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Entity\User" table="app_users" repository-class="App\Repository\UserRepository">
+    <entity name="App\Domain\Models\User" table="app_users" repository-class="App\Repository\UserRepository">
         <id name="id" type="uuid"/>
         <field name="username" nullable="true" unique="true"/>
         <field name="firstname" nullable="true"/>
@@ -15,14 +15,14 @@
         <field name="plainPassword"/>
         <field name="password"/>
         <field name="salt" nullable="true"/>
-        <many-to-one field="roles" target-entity="App\Entity\Roles"/>
+        <many-to-one field="roles" target-entity="App\Domain\Models\Roles"/>
         <field name="isActive" type="boolean"/>
         <field name="isAccountNonExpired" type="boolean"/>
         <field name="isAccountNonLocked" type="boolean"/>
         <field name="isCredentialsNonExpired" type="boolean"/>
-        <one-to-many field="validatedObserve" target-entity="App\Entity\Observe" mapped-by="validator"/>
+        <one-to-many field="validatedObserve" target-entity="App\Domain\Models\Observe" mapped-by="validator"/>
         <field name="score" type="integer"/>
-        <many-to-one field="level" target-entity="App\Entity\Level"/>
-        <many-to-many field="badge" target-entity="App\Entity\Badge"/>
+        <many-to-one field="level" target-entity="App\Domain\Models\Level"/>
+        <many-to-many field="badge" target-entity="App\Domain\Models\Badge"/>
     </entity>
 </doctrine-mapping>

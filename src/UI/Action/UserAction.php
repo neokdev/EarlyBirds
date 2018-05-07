@@ -8,8 +8,9 @@
 
 namespace App\UI\Action;
 
-use App\Form\UserRegisterType;
 use App\UI\Action\Interfaces\UserActionInterface;
+use App\UI\Form\Handler\Interfaces\UserRegisterTypeHandlerInterface;
+use App\UI\Form\UserRegisterType;
 use App\UI\Responder\Interfaces\UserResponderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -34,18 +35,25 @@ class UserAction implements UserActionInterface
      * @var AuthenticationUtils
      */
     private $authenticationUtils;
+    /**
+     * @var UserRegisterTypeHandlerInterface
+     */
+    private $handler;
 
     /**
      * UserAction constructor.
-     * @param FormFactoryInterface $factory
-     * @param AuthenticationUtils  $authenticationUtils
+     * @param FormFactoryInterface             $factory
+     * @param AuthenticationUtils              $authenticationUtils
+     * @param UserRegisterTypeHandlerInterface $handler
      */
     public function __construct(
         FormFactoryInterface $factory,
-        AuthenticationUtils $authenticationUtils
+        AuthenticationUtils $authenticationUtils,
+        UserRegisterTypeHandlerInterface $handler
     ) {
         $this->factory             = $factory;
         $this->authenticationUtils = $authenticationUtils;
+        $this->handler             = $handler;
     }
 
     /**
@@ -66,6 +74,10 @@ class UserAction implements UserActionInterface
 
         $registerType = $this->factory->create(UserRegisterType::class)
             ->handleRequest($request);
+
+        if ($this->handler->handle($registerType)) {
+            // ...
+        }
 
         return $responder($registerType, $error, $lastEmail);
     }

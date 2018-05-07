@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Domain\Models;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
@@ -165,7 +165,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @return string
      */
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -213,7 +213,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @return string
      */
-    public function getPlainPassword(): ?string
+    public function getPlainPassword(): string
     {
         return $this->plainPassword;
     }

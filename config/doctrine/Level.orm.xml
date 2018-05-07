@@ -4,11 +4,11 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Entity\Level" table="level" repository-class="App\Repository\LevelRepository">
+    <entity name="App\Domain\Models\Level" table="level" repository-class="App\Repository\LevelRepository">
         <id name="id" type="uuid"/>
         <field name="name" length="150"/>
         <field name="desc" type="text" nullable="true"/>
         <field name="img" length="150" nullable="true"/>
-        <one-to-many field="user" target-entity="App\Entity\User" mapped-by="level"/>
+        <one-to-many field="user" target-entity="App\Domain\Models\User" mapped-by="level"/>
     </entity>
 </doctrine-mapping>
