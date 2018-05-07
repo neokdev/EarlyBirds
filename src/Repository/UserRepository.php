@@ -24,6 +24,17 @@ class UserRepository extends ServiceEntityRepository
     }
 
 //    /**
+//     * @param User $user
+//     *
+//     * @throws \Doctrine\ORM\ORMException
+//     * @throws \Doctrine\ORM\OptimisticLockException
+//     */
+//    public function save(User $user): void
+//    {
+//        $this->getEntityManager()->persist($user);
+//        $this->getEntityManager()->flush();
+//    }
+//    /**
 //     * @return User[] Returns an array of User objects
 //     */
     /*

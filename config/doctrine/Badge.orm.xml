@@ -4,9 +4,9 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Entity\Badge" table="badge" repository-class="App\Repository\BadgeRepository">
+    <entity name="App\Domain\Models\Badge" table="badge" repository-class="App\Repository\BadgeRepository">
         <id name="id" type="uuid"/>
-        <many-to-many field="user" target-entity="App\Entity\User"/>
+        <many-to-many field="user" target-entity="App\Domain\Models\User"/>
         <field name="name"/>
         <field name="category" type="integer"/>
         <field name="desc" type="text"/>
