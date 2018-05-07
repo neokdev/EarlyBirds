@@ -7,7 +7,7 @@ jobs:
     build:
         docker:
             # specify the version you desire here
-            - image: circleci/php:7-apache-stretch-node
+            - image: circleci/php:7.2.3-apache-node-browsers
 
             # Specify service dependencies here if necessary
             # CircleCI maintains a library of pre-built images
@@ -19,12 +19,17 @@ jobs:
         steps:
             - checkout
 
+            - run: sudo docker-php-ext-install zip
+
             # Download and cache dependencies
             - restore_cache:
                 keys:
                 - v1-dependencies-{{ checksum "composer.json" }}
                 # fallback to using the latest cache if no exact match is found
                 - v1-dependencies-
+
+            - run: composer install -n --optimize-autoloader --classmap-authoritative
+            - run: composer dump-autoload --optimize --classmap-authoritative
 
             - run: composer install -n --prefer-dist
 
@@ -33,5 +38,9 @@ jobs:
                   - ./vendor
                 key: v1-dependencies-{{ checksum "composer.json" }}
 
+            - run: ./bin/console d:d:c --env=test
+            - run: ./bin/console d:s:c --env=test
+            - run: ./bin/console d:f:l --env=test -n
+
             # run tests!
-            - run: ./vendor/bin/simple-phpunit --configuration ./phpunit.xml.dist --teamcity
+            - run: ./bin/phpunit -v --configuration ./phpunit.xml.dist
