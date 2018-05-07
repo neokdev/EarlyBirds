@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="581f9270-8ef5-4daf-b56c-f42d52b6430f" name="Default" comment="Adding name field in User Entity">
+    <list default="true" id="581f9270-8ef5-4daf-b56c-f42d52b6430f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.circleci/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.circleci/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EarlyBirds.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EarlyBirds.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a435cdb9-883e-4518-8ab2-e1be10466434.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a435cdb9-883e-4518-8ab2-e1be10466434.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a9bd8598-120b-4074-bd28-150f314d5110.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a9bd8598-120b-4074-bd28-150f314d5110.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/src/Migrations/" />
@@ -154,8 +150,8 @@
           <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="160">
-                  <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+                <state relative-caret-position="180">
+                  <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
                 </state>
               </provider>
             </entry>
@@ -730,7 +726,7 @@
       <workItem from="1525268823534" duration="26735000" />
       <workItem from="1525353781279" duration="64045000" />
       <workItem from="1525512876253" duration="20475000" />
-      <workItem from="1525586945360" duration="8185000" />
+      <workItem from="1525586945360" duration="8810000" />
     </task>
     <task id="LOCAL-00001" summary="Post and Comment entity mapping">
       <created>1525343208919</created>
@@ -767,19 +763,19 @@
       <option name="project" value="LOCAL" />
       <updated>1525688460867</updated>
     </task>
-    <task id="LOCAL-00006" summary="Homepage route added">
-      <created>1524687292004</created>
+    <task id="LOCAL-00006" summary="circleci config">
+      <created>1525690769527</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1524687292004</updated>
+      <updated>1525690769527</updated>
     </task>
-    <task id="LOCAL-00007" summary="Refactoring">
-      <created>1524732493271</created>
+    <task id="LOCAL-00007" summary="circleci image version changed">
+      <created>1525691240400</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1524732493271</updated>
+      <updated>1525691240400</updated>
     </task>
     <task id="LOCAL-00008" summary="Entities refactoring">
       <created>1524852809136</created>
@@ -809,11 +805,11 @@
       <option name="project" value="LOCAL" />
       <updated>1525341237158</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96163000" />
+    <option name="totallyTimeSpent" value="96788000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3829" y="750" width="1942" height="1062" extended-state="6" />
@@ -866,7 +862,9 @@
     <MESSAGE value="ADR factoring" />
     <MESSAGE value="Full ADR project refactoring" />
     <MESSAGE value="circleci integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="circleci integration" />
+    <MESSAGE value="circleci config" />
+    <MESSAGE value="circleci image version changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="circleci image version changed" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.env">
@@ -1217,8 +1215,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="180">
+          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
         </state>
       </provider>
     </entry>
