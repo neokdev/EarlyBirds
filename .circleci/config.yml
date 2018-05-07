@@ -39,9 +39,9 @@ jobs:
                   - ./vendor
                 key: v1-dependencies-{{ checksum "composer.json" }}
 
-            - run: ./bin/console d:d:c --env=test
-            - run: ./bin/console d:s:c --env=test
-            - run: ./bin/console d:f:l --env=test -n
+            - run: php bin/console d:d:c --env=test
+            - run: php bin/console d:s:c --env=test
+            - run: php bin/console d:f:l --env=test -n
 
             # run tests!
-            - run: ./bin/phpunit -v --configuration ./phpunit.xml.dist
+            - run: php bin/phpunit -v
