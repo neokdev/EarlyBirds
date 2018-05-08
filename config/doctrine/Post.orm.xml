@@ -6,9 +6,10 @@
 
     <entity name="App\Domain\Models\Post" table="post" repository-class="App\Repository\PostRepository">
         <id name="id" type="uuid"/>
-        <field name="author"/>
+        <field name="content" type="text"/>
+        <many-to-one field="author" target-entity="App\Domain\Models\User"/>
         <field name="category" nullable="true"/>
         <field name="date" type="date"/>
-        <field name="img"/>
+        <field name="img" nullable="true"/>
     </entity>
 </doctrine-mapping>

@@ -6,8 +6,8 @@
 
     <entity name="App\Domain\Models\Comment" table="comment" repository-class="App\Repository\CommentRepository">
         <id name="id" type="uuid"/>
+        <field name="content" type="text"/>
         <many-to-one field="author" target-entity="App\Domain\Models\User"/>
         <field name="date" type="date"/>
-        <field name="content"/>
     </entity>
 </doctrine-mapping>

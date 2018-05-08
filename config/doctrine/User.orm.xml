@@ -10,18 +10,13 @@
         <field name="firstname" nullable="true"/>
         <field name="lastname" nullable="true"/>
         <field name="email" unique="true"/>
-        <field name="googleId" unique="true"/>
-        <field name="facebookId" unique="true"/>
-        <field name="plainPassword"/>
+        <field name="googleId" nullable="true" unique="true"/>
+        <field name="facebookId" nullable="true" unique="true"/>
         <field name="password"/>
         <field name="salt" nullable="true"/>
-        <many-to-one field="roles" target-entity="App\Domain\Models\Roles"/>
-        <field name="isActive" type="boolean"/>
-        <field name="isAccountNonExpired" type="boolean"/>
-        <field name="isAccountNonLocked" type="boolean"/>
-        <field name="isCredentialsNonExpired" type="boolean"/>
+        <field name="roles" type="array"/>
         <one-to-many field="validatedObserve" target-entity="App\Domain\Models\Observe" mapped-by="validator"/>
-        <field name="score" type="integer"/>
+        <field name="score" nullable="true" type="integer"/>
         <many-to-one field="level" target-entity="App\Domain\Models\Level"/>
         <many-to-many field="badge" target-entity="App\Domain\Models\Badge"/>
     </entity>

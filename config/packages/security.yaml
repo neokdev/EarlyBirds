@@ -1,24 +1,12 @@
 security:
     encoders:
-        App\Entity\User:
+        App\Domain\User:
             algorithm: bcrypt
-        Symfony\Component\Security\Core\User\User: plaintext
     providers:
-        chain_provider:
-            chain:
-                providers: [doctrine, in_memory, user_db]
-        doctrine:
+        db_provider:
             entity:
-                class: App\Entity\User
+                class: App\Domain\Models\User
                 property: email
-        in_memory:
-            memory:
-                users:
-                    admin@admin.com:
-                        password: admin
-                        roles: ROLE_ADMIN
-        user_db:
-            entity: { class: App\Entity\User, property: email }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -30,7 +18,7 @@ security:
 #                check_path: login
         secured_area:
 
-            provider: in_memory
+            provider: db_provider
 
             # Turn on anonymous for testings need.
             anonymous: ~

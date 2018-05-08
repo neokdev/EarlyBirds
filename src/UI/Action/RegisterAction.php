@@ -8,13 +8,15 @@
 
 namespace App\UI\Action;
 
-use App\UI\Action\Interfaces\UserActionInterface;
+use App\Domain\Builder\Interfaces\UserBuilderInterface;
+use App\UI\Action\Interfaces\RegisterActionInterface;
 use App\UI\Form\Handler\Interfaces\UserRegisterTypeHandlerInterface;
 use App\UI\Form\UserRegisterType;
 use App\UI\Responder\Interfaces\UserResponderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
@@ -25,7 +27,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
  *     methods={"GET", "POST"}
  * )
  */
-class UserAction implements UserActionInterface
+class RegisterAction implements RegisterActionInterface
 {
     /**
      * @var FormFactoryInterface
@@ -39,21 +41,36 @@ class UserAction implements UserActionInterface
      * @var UserRegisterTypeHandlerInterface
      */
     private $handler;
+    /**
+     * @var EncoderFactoryInterface
+     */
+    private $encoder;
+    /**
+     * @var UserBuilderInterface
+     */
+    private $userBuilder;
+    /**
+     * @var FormFactoryInterface
+     */
+    private $form;
 
     /**
-     * UserAction constructor.
-     * @param FormFactoryInterface             $factory
-     * @param AuthenticationUtils              $authenticationUtils
+     * RegisterAction constructor.
+     * @param EncoderFactoryInterface          $encoder
+     * @param UserBuilderInterface             $userBuilder
+     * @param FormFactoryInterface             $form
      * @param UserRegisterTypeHandlerInterface $handler
      */
     public function __construct(
-        FormFactoryInterface $factory,
-        AuthenticationUtils $authenticationUtils,
+        EncoderFactoryInterface $encoder,
+        UserBuilderInterface $userBuilder,
+        FormFactoryInterface $form,
         UserRegisterTypeHandlerInterface $handler
     ) {
-        $this->factory             = $factory;
-        $this->authenticationUtils = $authenticationUtils;
-        $this->handler             = $handler;
+        $this->handler     = $handler;
+        $this->encoder     = $encoder;
+        $this->userBuilder = $userBuilder;
+        $this->form        = $form;
     }
 
     /**
@@ -66,19 +83,13 @@ class UserAction implements UserActionInterface
         Request $request,
         UserResponderInterface $responder
     ) {
-        // get the login error if there is one
-        $error = $this->authenticationUtils->getLastAuthenticationError();
-
-        // last username entered by the user
-        $lastEmail = $this->authenticationUtils->getLastUsername();
-
         $registerType = $this->factory->create(UserRegisterType::class)
             ->handleRequest($request);
 
         if ($this->handler->handle($registerType)) {
-            // ...
+            $user = $this->userBuilder->createFromRegistration($registerType);
         }
 
-        return $responder($registerType, $error, $lastEmail);
+        return $responder($registerType);
     }
 }

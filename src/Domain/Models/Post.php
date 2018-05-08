@@ -18,6 +18,11 @@ class Post
     /**
      * @var string
      */
+    private $content;
+
+    /**
+     * @var string
+     */
     private $author;
 
     /**

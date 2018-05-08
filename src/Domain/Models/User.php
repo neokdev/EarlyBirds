@@ -4,12 +4,12 @@ namespace App\Domain\Models;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements AdvancedUserInterface, \Serializable
+class User implements UserInterface
 {
     /**
      * @var UuidInterface
@@ -49,11 +49,6 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      */
-    private $plainPassword;
-
-    /**
-     * @var string
-     */
     private $password;
 
     /**
@@ -62,29 +57,9 @@ class User implements AdvancedUserInterface, \Serializable
     private $salt;
 
     /**
-     * @var Roles
+     * @var array
      */
     private $roles;
-
-    /**
-     * @var bool
-     */
-    private $isActive;
-
-    /**
-     * @var bool
-     */
-    private $isAccountNonExpired;
-
-    /**
-     * @var bool
-     */
-    private $isAccountNonLocked;
-
-    /**
-     * @var bool
-     */
-    private $isCredentialsNonExpired;
 
     /**
      * @var array
@@ -105,6 +80,20 @@ class User implements AdvancedUserInterface, \Serializable
      * @var Badge
      */
     private $badge;
+
+    /**
+     * User constructor.
+     * @param string $email
+     * @param string $password
+     */
+    public function __construct(
+        string $email,
+        string $password
+    ) {
+        $this->email    = $email;
+        $this->password = $password;
+        $this->roles    = 'ROLE_USER';
+    }
 
     /**
      * @return UuidInterface
@@ -213,22 +202,6 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @return string
      */
-    public function getPlainPassword(): string
-    {
-        return $this->plainPassword;
-    }
-
-    /**
-     * @param string $plainPassword
-     */
-    public function setPlainPassword(string $plainPassword): void
-    {
-        $this->plainPassword = $plainPassword;
-    }
-
-    /**
-     * @return string
-     */
     public function getPassword(): string
     {
         return $this->password;
@@ -259,103 +232,19 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @return Roles
+     * @return array
      */
-    public function getRoles(): Roles
+    public function getRoles(): array
     {
         return $this->roles;
     }
 
     /**
-     * @param Roles $roles
+     * @param array $roles
      */
-    public function setRoles(Roles $roles): void
+    public function setRoles(array $roles): void
     {
-        $this->roles = $roles;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isEnabled(): bool
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param bool $isEnabled
-     */
-    public function setIsEnabled(bool $isEnabled): void
-    {
-        $this->isActive = $isEnabled;
-    }
-
-    /**
-     * @return string
-     */
-    public function serialize()
-    {
-        return serialize([
-            $this->isActive,
-        ]);
-    }
-
-    /**
-     * @param string $serialized
-     */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->isActive,
-            ) = unserialize($serialized);
-    }
-
-    /**
-     * @return bool
-     */
-    public function isAccountNonExpired(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @param bool $isAccountNonExpired
-     */
-    public function setIsAccountNonExpired(bool $isAccountNonExpired): void
-    {
-        $this->isAccountNonExpired = $isAccountNonExpired;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isAccountNonLocked(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @param bool $isAccountNonLocked
-     */
-    public function setIsAccountNonLocked(bool $isAccountNonLocked): void
-    {
-        $this->isAccountNonLocked = $isAccountNonLocked;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCredentialsNonExpired(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @param bool $isCredentialsNonExpired
-     */
-    public function setIsCredentialsNonExpired(bool $isCredentialsNonExpired): void
-    {
-        $this->isCredentialsNonExpired = $isCredentialsNonExpired;
+        $this->roles[] = $roles;
     }
 
     /**

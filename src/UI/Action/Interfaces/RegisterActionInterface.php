@@ -11,7 +11,7 @@ namespace App\UI\Action\Interfaces;
 use App\UI\Responder\Interfaces\UserResponderInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-interface UserActionInterface
+interface RegisterActionInterface
 {
     /**
      * @param Request                $request
