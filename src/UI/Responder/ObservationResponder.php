@@ -38,7 +38,7 @@ class ObservationResponder implements ObservationResponderInterface
     public function __invoke()
     {
         return new Response(
-            $this->environment->render('obsvervation.html.twig')
+            $this->environment->render('observation.html.twig')
         );
     }
 }
