@@ -10,7 +10,9 @@ namespace App\UI\Responder;
 
 use App\UI\Responder\Interfaces\UserResponderInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Twig\Environment;
 
 class UserResponder implements UserResponderInterface
@@ -19,41 +21,57 @@ class UserResponder implements UserResponderInterface
      * @var Environment
      */
     private $environment;
+    /**
+     * @var AuthenticationUtils
+     */
+    private $authenticationUtils;
 
     /**
      * HomeResponder constructor.
-     * @param Environment $environment
+     * @param Environment         $environment
+     * @param AuthenticationUtils $authenticationUtils
      */
-    public function __construct(Environment $environment)
-    {
-        $this->environment = $environment;
+    public function __construct(
+        Environment $environment,
+        AuthenticationUtils $authenticationUtils
+    ) {
+        $this->environment         = $environment;
+        $this->authenticationUtils = $authenticationUtils;
     }
 
     /**
-     * @param FormInterface $registerType
-     * @param               $error
-     * @param               $lastEmail
+     * @param bool               $redirect
+     * @param FormInterface|null $login
+     * @param FormInterface|null $registerType
+     *
+     * @return mixed|Response
      *
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
-     *
-     * @return mixed|Response
      */
     public function __invoke(
-        FormInterface $registerType,
-        $error,
-        $lastEmail
+        bool $redirect = false,
+        FormInterface $login = null,
+        FormInterface $registerType = null
     ) {
-        return new Response(
-            $this->environment->render(
-                'login.html.twig',
-                [
-                    'form'       => $registerType->createView(),
-                    'last_email' => $lastEmail,
-                    'error'      => $error,
-                ]
-            )
-        );
+        $error = $this->authenticationUtils->getLastAuthenticationError();
+
+        if ($redirect) {
+            $response = new RedirectResponse('/login');
+        } else {
+            $response = new Response(
+                $this->environment->render(
+                    'login.html.twig',
+                    [
+                        'login'    => $login->createView(),
+                        'register' => $registerType->createView(),
+                        'error'    => $error,
+                    ]
+                )
+            );
+        }
+
+        return $response;
     }
 }

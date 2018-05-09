@@ -11,12 +11,11 @@ namespace App\UI\Action\Interfaces;
 use App\UI\Responder\Interfaces\UserResponderInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-interface RegisterActionInterface
+interface UserActionInterface
 {
     /**
      * @param Request                $request
      * @param UserResponderInterface $responder
-     *
      * @return mixed
      */
     public function __invoke(

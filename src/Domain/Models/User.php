@@ -3,6 +3,7 @@
 namespace App\Domain\Models;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -82,16 +83,24 @@ class User implements UserInterface
     private $badge;
 
     /**
+     * @var string
+     */
+    private $img;
+
+    /**
      * User constructor.
-     * @param string $email
-     * @param string $password
+     * @param string   $email
+     * @param string   $password
+     * @param callable $passwordEncoder
      */
     public function __construct(
         string $email,
-        string $password
+        string $password,
+        callable $passwordEncoder
     ) {
+        $this->id       = Uuid::uuid4();
         $this->email    = $email;
-        $this->password = $password;
+        $this->password = $passwordEncoder($password, null);
         $this->roles    = 'ROLE_USER';
     }
 
@@ -309,6 +318,22 @@ class User implements UserInterface
     public function setBadge(Badge $badge): void
     {
         $this->badge = $badge;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImg(): string
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param string $img
+     */
+    public function setImg(string $img): void
+    {
+        $this->img = $img;
     }
 
     /**

@@ -1,6 +1,6 @@
 security:
     encoders:
-        App\Domain\User:
+        App\Domain\Models\User:
             algorithm: bcrypt
     providers:
         db_provider:
@@ -22,12 +22,12 @@ security:
 
             # Turn on anonymous for testings need.
             anonymous: ~
-            form_login:
-                # submit the login form here
-                check_path: /login
+#            form_login:
+#                # submit the login form here
+#                check_path: /login
 #                provider: in_memory
 #                # the user is redirected here when they need to log in
-                login_path: /login
+#                login_path: /login
 #
 #                # if true, forward the user to the login form instead of redirecting
 #                use_forward: false
@@ -36,7 +36,7 @@ security:
 #                always_use_default_target_path: true
 #                default_target_path: /profile
 #
-                username_parameter: _email
+#                username_parameter: _email
             oauth:
 #                provider: user_db
                 resource_owners:

@@ -13,11 +13,15 @@ use Symfony\Component\Form\FormInterface;
 interface UserResponderInterface
 {
     /**
+     * @param bool          $redirect
+     * @param FormInterface $login
      * @param FormInterface $registerType
-     * @param               $error
-     * @param               $lastEmail
      *
      * @return mixed
      */
-    public function __invoke(FormInterface $registerType, $error, $lastEmail);
+    public function __invoke(
+        bool $redirect,
+        FormInterface $login,
+        FormInterface $registerType
+    );
 }

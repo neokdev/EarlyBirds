@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if error %}
+        <div class="row" id="alert">
+            <div class="offset-s2 col s8">
+                <div class="card red darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Erreur</span>
+                        <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" onclick="dismiss()">Fermer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {{ form_start(login) }}
+    {{ form_row(login) }}
+    <button class="btn waves-effect waves-light" type="submit" name="action">login
+        <i class="material-icons right">send</i>
+    </button>
+    {{ form_end(login) }}
+
+    {{ form_start(register) }}
+    {{ form_row(register) }}
+    <button class="btn waves-effect waves-light" type="submit" name="action">register
+        <i class="material-icons right">send</i>
+    </button>
+    {{ form_end(register) }}
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        M.updateTextFields();
+        function dismiss() {
+            let alert = document.getElementById("alert");
+            alert.remove();
+        }
+
+    </script>
+{% endblock %}

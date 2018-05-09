@@ -2,17 +2,17 @@
 
 namespace App\UI\Form;
 
-use App\Domain\DTO\Interfaces\UserRegisterDTOInterface;
-use App\Domain\DTO\UserRegisterDTO;
+use App\Domain\DTO\Interfaces\LoginDTOInterface;
+use App\Domain\Models\User;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserRegisterType extends AbstractType
+class LoginType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -21,8 +21,13 @@ class UserRegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('plainPassword', RepeatedType::class, [
+            ->add('email', EmailType::class, [
+                'constraints' => new UniqueEntity([
+                    'fields'      => 'email',
+                    'entityClass' => User::class,
+                ]),
+            ])
+            ->add('password', RepeatedType::class, [
                 'type'           => PasswordType::class,
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
@@ -36,13 +41,7 @@ class UserRegisterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => UserRegisterDTOInterface::class,
-            'empty_data' => function (FormInterface $form) {
-                return new UserRegisterDTO(
-                    $form->get('email')->getData(),
-                    $form->get('plainPassword')->getData()
-                );
-            },
+            'data_class' => LoginDTOInterface::class,
         ]);
     }
 }

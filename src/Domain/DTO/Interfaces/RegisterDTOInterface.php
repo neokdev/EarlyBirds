@@ -8,7 +8,7 @@
 
 namespace App\Domain\DTO\Interfaces;
 
-interface UserRegisterDTOInterface
+interface RegisterDTOInterface
 {
 
 }

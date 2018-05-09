@@ -19,5 +19,6 @@
         <field name="score" nullable="true" type="integer"/>
         <many-to-one field="level" target-entity="App\Domain\Models\Level"/>
         <many-to-many field="badge" target-entity="App\Domain\Models\Badge"/>
+        <field name="img" nullable="true"/>
     </entity>
 </doctrine-mapping>

@@ -10,7 +10,7 @@ namespace App\UI\Form\Handler\Interfaces;
 
 use Symfony\Component\Form\FormInterface;
 
-interface UserRegisterTypeHandlerInterface
+interface RegisterTypeHandlerInterface
 {
     /**
      * @param FormInterface $form

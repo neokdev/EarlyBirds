@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\User;
+use App\Domain\Models\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -23,20 +23,21 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-//    /**
-//     * @param User $user
-//     *
-//     * @throws \Doctrine\ORM\ORMException
-//     * @throws \Doctrine\ORM\OptimisticLockException
-//     */
-//    public function save(User $user): void
-//    {
-//        $this->getEntityManager()->persist($user);
-//        $this->getEntityManager()->flush();
-//    }
-//    /**
-//     * @return User[] Returns an array of User objects
-//     */
+    /**
+     * @param User $user
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function register(User $user): void
+    {
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @return User[] Returns an array of User objects
+     */
     /*
     public function findByExampleField($value)
     {
