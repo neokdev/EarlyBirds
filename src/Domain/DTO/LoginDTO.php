@@ -15,11 +15,11 @@ class LoginDTO implements LoginDTOInterface
     /**
      * @var string
      */
-    private $email;
+    public $email;
     /**
      * @var string
      */
-    private $password;
+    public $password;
 
     /**
      * LoginDTO constructor.
@@ -30,8 +30,23 @@ class LoginDTO implements LoginDTOInterface
         string $email,
         string $password
     ) {
-
         $this->email    = $email;
         $this->password = $password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 }

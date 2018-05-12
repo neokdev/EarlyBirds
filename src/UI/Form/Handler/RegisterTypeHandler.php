@@ -11,9 +11,11 @@ namespace App\UI\Form\Handler;
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
 use App\Domain\Models\User;
 use App\Repository\UserRepository;
+use App\Security\Guard\EmailAuthenticator;
 use App\UI\Form\Handler\Interfaces\RegisterTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class RegisterTypeHandler implements RegisterTypeHandlerInterface
 {
@@ -29,6 +31,10 @@ class RegisterTypeHandler implements RegisterTypeHandlerInterface
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var GuardAuthenticatorHandler
+     */
+    private $handler;
 
     /**
      * RegisterTypeHandler constructor.
@@ -59,7 +65,7 @@ class RegisterTypeHandler implements RegisterTypeHandlerInterface
         if ($registerType->isSubmitted() && $registerType->isValid()) {
             $encoder = $this->encoder->getEncoder(User::class);
 
-            $this->userBuilder->createFromRegistration(
+            $this->userBuilder->create(
                 $registerType->getData()->email,
                 $registerType->getData()->password,
                 \Closure::fromCallable([$encoder, 'encodePassword'])

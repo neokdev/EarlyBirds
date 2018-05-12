@@ -29,6 +29,8 @@ class ObservationAction implements ObservationActionInterface
      */
     public function __invoke(ObservationResponderInterface $responder)
     {
+
+
         return $responder();
     }
 }

@@ -1,0 +1,5 @@
+App\Domain\DTO\RegisterDTO:
+    properties:
+        email:
+            - App\Validator\NonExistingEmail:
+                groups: ['email']

@@ -2,17 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: Neok
- * Date: 05/05/2018
- * Time: 18:01
+ * Date: 10/05/2018
+ * Time: 07:40
  */
 
 namespace App\UI\Responder;
 
-use App\UI\Responder\Interfaces\HomeResponderInterface;
+use App\UI\Responder\Interfaces\ProfileResponderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class HomeResponder implements HomeResponderInterface
+class ProfileResponder implements ProfileResponderInterface
 {
     /**
      * @var Environment
@@ -20,7 +20,7 @@ class HomeResponder implements HomeResponderInterface
     private $environment;
 
     /**
-     * HomeResponder constructor.
+     * ProfileResponder constructor.
      * @param Environment $environment
      */
     public function __construct(Environment $environment)
@@ -29,7 +29,7 @@ class HomeResponder implements HomeResponderInterface
     }
 
     /**
-     * @return mixed|Response
+     * @return Response
      *
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -38,7 +38,7 @@ class HomeResponder implements HomeResponderInterface
     public function __invoke()
     {
         return new Response(
-            $this->environment->render('homepage.html.twig')
+            $this->environment->render('profile.html.twig')
         );
     }
 }

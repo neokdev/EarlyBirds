@@ -25,7 +25,7 @@ class UserBuilder implements UserBuilderInterface
      *
      * @return UserBuilder
      */
-    public function createFromRegistration(
+    public function create(
         string $email,
         string $password,
         callable $passwordEncoder

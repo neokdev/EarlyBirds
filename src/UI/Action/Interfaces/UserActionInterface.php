@@ -16,6 +16,7 @@ interface UserActionInterface
     /**
      * @param Request                $request
      * @param UserResponderInterface $responder
+     *
      * @return mixed
      */
     public function __invoke(

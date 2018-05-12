@@ -24,7 +24,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
  * Class UserAction
  * @Route(
  *     "/login",
- *     name="app_login",
+ *     name="security_login",
  *     methods={"GET", "POST"}
  * )
  */

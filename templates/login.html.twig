@@ -16,19 +16,19 @@
             </div>
         </div>
     {% endif %}
-    {{ form_start(login) }}
-    {{ form_row(login) }}
+    {{ form_start(login_form, {'action': path('security_login')}) }}
+    {{ form_row(login_form) }}
     <button class="btn waves-effect waves-light" type="submit" name="action">login
         <i class="material-icons right">send</i>
     </button>
-    {{ form_end(login) }}
+    {{ form_end(login_form) }}
 
-    {{ form_start(register) }}
-    {{ form_row(register) }}
+    {{ form_start(register_form) }}
+    {{ form_row(register_form) }}
     <button class="btn waves-effect waves-light" type="submit" name="action">register
         <i class="material-icons right">send</i>
     </button>
-    {{ form_end(register) }}
+    {{ form_end(register_form) }}
 
 {% endblock %}
 

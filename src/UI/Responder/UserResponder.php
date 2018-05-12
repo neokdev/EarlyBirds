@@ -55,18 +55,16 @@ class UserResponder implements UserResponderInterface
         FormInterface $login = null,
         FormInterface $registerType = null
     ) {
-        $error = $this->authenticationUtils->getLastAuthenticationError();
-
         if ($redirect) {
-            $response = new RedirectResponse('/login');
+            $response = new RedirectResponse('/profile');
         } else {
             $response = new Response(
                 $this->environment->render(
                     'login.html.twig',
                     [
-                        'login'    => $login->createView(),
-                        'register' => $registerType->createView(),
-                        'error'    => $error,
+                        'login_form'    => $login->createView(),
+                        'register_form' => $registerType->createView(),
+                        'error'         => $this->authenticationUtils->getLastAuthenticationError(),
                     ]
                 )
             );

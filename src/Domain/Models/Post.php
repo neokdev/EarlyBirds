@@ -3,6 +3,7 @@
 namespace App\Domain\Models;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 /**
@@ -39,6 +40,14 @@ class Post
      * @var string
      */
     private $img;
+
+    /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->id = Uuid::uuid4();
+    }
 
     /**
      * @return UuidInterface

@@ -19,3 +19,6 @@ facebook_login:
 
 google_login:
     path: /login/check-google
+
+logout:
+    path: /logout

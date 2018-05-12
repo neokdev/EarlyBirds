@@ -20,7 +20,7 @@ class User implements UserInterface
     /**
      * @var string
      */
-    private $username;
+    private $nickname;
 
     /**
      * @var string
@@ -101,7 +101,7 @@ class User implements UserInterface
         $this->id       = Uuid::uuid4();
         $this->email    = $email;
         $this->password = $passwordEncoder($password, null);
-        $this->roles    = 'ROLE_USER';
+        $this->roles    = ['ROLE_USER'];
     }
 
     /**
@@ -117,7 +117,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
@@ -125,7 +125,23 @@ class User implements UserInterface
      */
     public function setUsername(string $username): void
     {
-        $this->username = $username;
+        $this->email = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNickname(): string
+    {
+        return $this->nickname;
+    }
+
+    /**
+     * @param string $nickname
+     */
+    public function setNickname(string $nickname): void
+    {
+        $this->nickname = $nickname;
     }
 
     /**

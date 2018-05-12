@@ -21,7 +21,7 @@ interface UserResponderInterface
      */
     public function __invoke(
         bool $redirect,
-        FormInterface $login,
-        FormInterface $registerType
+        FormInterface $login = null,
+        FormInterface $registerType = null
     );
 }

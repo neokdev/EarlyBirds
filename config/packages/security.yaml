@@ -22,23 +22,11 @@ security:
 
             # Turn on anonymous for testings need.
             anonymous: ~
-#            form_login:
-#                # submit the login form here
-#                check_path: /login
-#                provider: in_memory
-#                # the user is redirected here when they need to log in
-#                login_path: /login
-#
-#                # if true, forward the user to the login form instead of redirecting
-#                use_forward: false
-#
-#                # login success redirecting options
-#                always_use_default_target_path: true
-#                default_target_path: /profile
-#
-#                username_parameter: _email
+
+            guard:
+                authenticators:
+                    - App\Security\Guard\EmailAuthenticator
             oauth:
-#                provider: user_db
                 resource_owners:
                     google: /login/check-google
                     facebook: /login/check-facebook
@@ -55,7 +43,6 @@ security:
             logout:
                 path:   /logout
                 target: /
-                invalidate_session: false
 #                delete_cookies:
 #                    a: { path: null, domain: null }
 #                    b: { path: null, domain: null }
@@ -64,4 +51,9 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
+
+    role_hierarchy:
+        ROLE_NATURALIST: ROLE_USER
+        ROLE_ADMIN:      ROLE_NATURALIST

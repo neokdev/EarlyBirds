@@ -31,6 +31,14 @@ class Comment
     private $content;
 
     /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->id = Uuid::uuid4();
+    }
+
+    /**
      * @return UuidInterface
      */
     public function getId(): UuidInterface

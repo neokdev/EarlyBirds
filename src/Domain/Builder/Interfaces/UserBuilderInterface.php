@@ -19,7 +19,7 @@ interface UserBuilderInterface
      *
      * @return mixed
      */
-    public function createFromRegistration(
+    public function create(
         string $email,
         string $password,
         callable $passwordEncoder
