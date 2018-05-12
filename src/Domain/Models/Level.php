@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\LevelRepository")
+ * @ORM\Entity(repositoryClass="App\Domain\Repository\LevelRepository")
  */
 class Level
 {

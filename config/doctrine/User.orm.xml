@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Domain\Models\User" table="app_users" repository-class="App\Repository\UserRepository">
+    <entity name="App\Domain\Models\User" table="app_users" repository-class="App\Domain\Repository\UserRepository">
         <id name="id" type="uuid"/>
         <field name="nickname" nullable="true" unique="true"/>
         <field name="firstname" nullable="true"/>

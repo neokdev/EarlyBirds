@@ -105,7 +105,6 @@ class RegisterFormAuthenticator extends AbstractGuardAuthenticator
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        dump($userProvider);die();
         return $userProvider->loadUserByUsername(
             $credentials['email']
         );

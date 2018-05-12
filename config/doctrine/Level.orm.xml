@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Domain\Models\Level" table="level" repository-class="App\Repository\LevelRepository">
+    <entity name="App\Domain\Models\Level" table="level" repository-class="App\Domain\Repository\LevelRepository">
         <id name="id" type="uuid"/>
         <field name="name" length="150"/>
         <field name="desc" type="text" nullable="true"/>

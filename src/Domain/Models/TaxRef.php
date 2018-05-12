@@ -5,7 +5,7 @@ namespace App\Domain\Models;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TaxRefRepository")
+ * @ORM\Entity(repositoryClass="App\Domain\Repository\TaxRefRepository")
  */
 class TaxRef
 {

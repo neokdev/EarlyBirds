@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity(repositoryClass="ObserveRepository")
+ * @ORM\Entity(repositoryClass="App\Domain\Repository\ObserveRepository")
  */
 class Observe
 {
