@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Domain\Repository;
 
 use App\Entity\Observe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

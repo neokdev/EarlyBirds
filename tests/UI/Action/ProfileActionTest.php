@@ -23,7 +23,7 @@ class ProfileActionTest extends WebTestCase
         $client->request('GET', '/profile');
 
         static::assertSame(
-            Response::HTTP_OK,
+            Response::HTTP_FOUND,
             $client->getResponse()->getStatusCode()
         );
     }

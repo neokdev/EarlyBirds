@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Domain\Repository;
 
 use App\Entity\Badge;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

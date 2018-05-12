@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 
-class EmailAuthenticator extends AbstractGuardAuthenticator
+class LoginFormAuthenticator extends AbstractGuardAuthenticator
 {
     /**
      * @var EncoderFactoryInterface
@@ -27,7 +27,7 @@ class EmailAuthenticator extends AbstractGuardAuthenticator
     private $encoder;
 
     /**
-     * EmailAuthenticator constructor.
+     * LoginFormAuthenticator constructor.
      * @param UserPasswordEncoderInterface $encoder
      */
     public function __construct(
@@ -47,7 +47,7 @@ class EmailAuthenticator extends AbstractGuardAuthenticator
      *  A) For a form login, you might redirect to the login page
      *      return new RedirectResponse('/login');
      *  B) For an API token authentication system, you return a 401 response
-     *      return new Response('EmailAuthenticator header required', 401);
+     *      return new Response('LoginFormAuthenticator header required', 401);
      *
      * @param Request                 $request       The request that resulted in an AuthenticationException
      * @param AuthenticationException $authException The exception that started the authentication process
