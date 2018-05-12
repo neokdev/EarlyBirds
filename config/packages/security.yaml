@@ -26,8 +26,6 @@ security:
             guard:
                 authenticators:
                     - App\Security\Guard\LoginFormAuthenticator
-                    - App\Security\Guard\RegisterFormAuthenticator
-                entry_point: App\Security\Guard\LoginFormAuthenticator
             oauth:
                 resource_owners:
                     google: /login/check-google

@@ -29,3 +29,8 @@ services:
 
     App\Security\UserProvider:
         arguments: ['@doctrine', 'App\Entity\User', {google: googleId}]
+
+    app.user_listener:
+        class: App\Listener\UserRegisteredListener
+        tags:
+            - { name: kernel.event_listener, event: 'user.registered' }

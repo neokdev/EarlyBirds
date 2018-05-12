@@ -9,6 +9,7 @@
 namespace App\UI\Action;
 
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
+use App\Security\Guard\LoginFormAuthenticator;
 use App\UI\Action\Interfaces\UserActionInterface;
 use App\UI\Form\Handler\Interfaces\LoginTypeHandlerInterface;
 use App\UI\Form\Handler\Interfaces\RegisterTypeHandlerInterface;
@@ -18,7 +19,8 @@ use App\UI\Responder\Interfaces\UserResponderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Security\Guard\AuthenticatorInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 /**
  * Class UserAction
@@ -30,10 +32,6 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
  */
 class UserAction implements UserActionInterface
 {
-    /**
-     * @var EncoderFactoryInterface
-     */
-    private $encoder;
     /**
      * @var UserBuilderInterface
      */
@@ -50,27 +48,38 @@ class UserAction implements UserActionInterface
      * @var RegisterTypeHandlerInterface
      */
     private $registerTypeHandler;
+    /**
+     * @var GuardAuthenticatorHandler
+     */
+    private $handler;
+    /**
+     * @var AuthenticatorInterface
+     */
+    private $authenticator;
 
     /**
      * UserAction constructor.
-     * @param EncoderFactoryInterface      $encoder
      * @param UserBuilderInterface         $userBuilder
      * @param FormFactoryInterface         $form
      * @param LoginTypeHandlerInterface    $loginTypeHandler
      * @param RegisterTypeHandlerInterface $registerTypeHandler
+     * @param GuardAuthenticatorHandler    $handler
+     * @param LoginFormAuthenticator       $authenticator
      */
     public function __construct(
-        EncoderFactoryInterface $encoder,
         UserBuilderInterface $userBuilder,
         FormFactoryInterface $form,
         LoginTypeHandlerInterface $loginTypeHandler,
-        RegisterTypeHandlerInterface $registerTypeHandler
+        RegisterTypeHandlerInterface $registerTypeHandler,
+        GuardAuthenticatorHandler $handler,
+        LoginFormAuthenticator $authenticator
     ) {
-        $this->encoder             = $encoder;
         $this->userBuilder         = $userBuilder;
         $this->form                = $form;
         $this->loginTypeHandler    = $loginTypeHandler;
         $this->registerTypeHandler = $registerTypeHandler;
+        $this->handler             = $handler;
+        $this->authenticator       = $authenticator;
     }
 
     /**
@@ -89,7 +98,17 @@ class UserAction implements UserActionInterface
         $registerType = $this->form->create(RegisterType::class)
             ->handleRequest($request);
 
-        if ($this->loginTypeHandler->handle($loginType) || $this->registerTypeHandler->handle($registerType)) {
+        // Automatically Login after Registration
+        if ($this->registerTypeHandler->handle($registerType)) {
+            return $this->handler->authenticateUserAndHandleSuccess(
+                $this->userBuilder->getUser(),
+                $request,
+                $this->authenticator,
+                'db_provider'
+            );
+        }
+
+        if ($this->loginTypeHandler->handle($loginType)) {
             return $responder(true);
         }
 

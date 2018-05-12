@@ -15,7 +15,7 @@ class NonExistingEmail extends Constraint
     /**
      * @var string
      */
-    public $message = 'The user "{{ user }}" is already registered';
+    public $message = 'This email "{{ user }}" is already registered';
 
     /**
      * @return string
