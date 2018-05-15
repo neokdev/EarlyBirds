@@ -19,10 +19,19 @@ interface UserBuilderInterface
      *
      * @return mixed
      */
-    public function create(
+    public function createFromRegistration(
         string $email,
         string $password,
         callable $passwordEncoder
+    );
+
+    public function createFromGoogle(
+        string $email,
+        string $googleId,
+        string $nickname,
+        string $firstname,
+        string $lastname,
+        string $img
     );
 
     /**

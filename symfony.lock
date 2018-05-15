@@ -1,7 +1,4 @@
 {
-    "clue/stream-filter": {
-        "version": "v1.4.0"
-    },
     "composer/ca-bundle": {
         "version": "1.1.1"
     },
@@ -74,6 +71,9 @@
     "egulias/email-validator": {
         "version": "2.1.4"
     },
+    "facebook/graph-sdk": {
+        "version": "5.6.2"
+    },
     "fig/link-util": {
         "version": "1.0.0"
     },
@@ -86,11 +86,26 @@
     "guzzlehttp/psr7": {
         "version": "1.4.2"
     },
-    "hwi/oauth-bundle": {
-        "version": "0.6.2"
+    "jakeasmith/http_build_url": {
+        "version": "1.0.1"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "v1.19.0"
+    },
+    "league/oauth2-client": {
+        "version": "2.3.0"
+    },
+    "league/oauth2-facebook": {
+        "version": "2.0.1"
+    },
+    "league/oauth2-google": {
+        "version": "2.2.0"
+    },
+    "league/oauth2-instagram": {
+        "version": "2.0.0"
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -103,45 +118,6 @@
     },
     "paragonie/random_compat": {
         "version": "v2.0.12"
-    },
-    "php-http/cache-plugin": {
-        "version": "v1.5.0"
-    },
-    "php-http/client-common": {
-        "version": "1.7.0"
-    },
-    "php-http/discovery": {
-        "version": "1.4.0"
-    },
-    "php-http/guzzle6-adapter": {
-        "version": "v1.1.1"
-    },
-    "php-http/httplug": {
-        "version": "v1.1.0"
-    },
-    "php-http/httplug-bundle": {
-        "version": "1.6",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.6",
-            "ref": "4655962c64e2de96c418caf576c57215711c7877"
-        }
-    },
-    "php-http/logger-plugin": {
-        "version": "v1.0.0"
-    },
-    "php-http/message": {
-        "version": "1.6.0"
-    },
-    "php-http/message-factory": {
-        "version": "v1.0.2"
-    },
-    "php-http/promise": {
-        "version": "v1.0.0"
-    },
-    "php-http/stopwatch-plugin": {
-        "version": "1.1.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -397,9 +373,6 @@
             "version": "2.5",
             "ref": "3db029c03e452b4a23f7fc45cec7c922c2247eb8"
         }
-    },
-    "symfony/templating": {
-        "version": "v4.0.9"
     },
     "symfony/translation": {
         "version": "3.3",

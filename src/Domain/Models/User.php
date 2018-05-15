@@ -88,20 +88,39 @@ class User implements UserInterface
     private $img;
 
     /**
+     * @var string
+     */
+    private $upvotes;
+
+    /**
      * User constructor.
      * @param string   $email
      * @param string   $password
      * @param callable $passwordEncoder
+     * @param string   $googleId
+     * @param string   $nickname
+     * @param string   $firstname
+     * @param string   $lastname
+     * @param string   $img
      */
     public function __construct(
         string $email,
-        string $password,
-        callable $passwordEncoder
+        ?string $password,
+        callable $passwordEncoder,
+        ?string $googleId,
+        ?string $nickname,
+        ?string $firstname,
+        ?string $lastname,
+        ?string $img
     ) {
-        $this->id       = Uuid::uuid4();
-        $this->email    = $email;
-        $this->password = $passwordEncoder($password, null);
-        $this->roles    = ['ROLE_USER'];
+        $this->id        = Uuid::uuid4();
+        $this->email     = $email;
+        $this->password  = $passwordEncoder($password, null);
+        $this->roles     = ['ROLE_USER'];
+        $this->googleId  = $googleId;
+        $this->nickname  = $nickname;
+        $this->firstname = $firstname;
+        $this->img       = $img;
     }
 
     /**
@@ -350,6 +369,22 @@ class User implements UserInterface
     public function setImg(string $img): void
     {
         $this->img = $img;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpvotes(): string
+    {
+        return $this->upvotes;
+    }
+
+    /**
+     * @param string $upvotes
+     */
+    public function setUpvotes(string $upvotes): void
+    {
+        $this->upvotes = $upvotes;
     }
 
     /**

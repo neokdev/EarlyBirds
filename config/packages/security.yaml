@@ -3,7 +3,7 @@ security:
         App\Domain\Models\User:
             algorithm: bcrypt
     providers:
-        db_provider:
+        doctrine:
             entity:
                 class: App\Domain\Models\User
                 property: email
@@ -15,31 +15,18 @@ security:
 #            anonymous: ~
 #            form_login:
 #                login_path: login
-#                check_path: login
+#                check_path: login_check
         secured_area:
 
-            provider: db_provider
+            provider: doctrine
 
             # Turn on anonymous for testings need.
             anonymous: ~
 
             guard:
-                authenticators:
-                    - App\Security\Guard\LoginFormAuthenticator
-            oauth:
-                resource_owners:
-                    google: /login/check-google
-                    facebook: /login/check-facebook
-                login_path: /login
-#                check_path: /login_check
+                entry_point: App\Security\Guard\LoginFormAuthenticator
+                authenticators: [App\Security\Guard\LoginFormAuthenticator,App\Security\Guard\GoogleAuthenticator,App\Security\Guard\FacebookAuthenticator]
 #
-#                # if true, forward the user to the login form instead of redirecting
-#                use_forward: false
-#                failure_path: /fail
-#
-                oauth_user_provider:
-                    service: hwi_oauth.user.provider.entity
-
             logout:
                 path:   /logout
                 target: /

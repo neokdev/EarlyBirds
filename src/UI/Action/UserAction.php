@@ -104,7 +104,7 @@ class UserAction implements UserActionInterface
                 $this->userBuilder->getUser(),
                 $request,
                 $this->authenticator,
-                'db_provider'
+                'doctrine'
             );
         }
 

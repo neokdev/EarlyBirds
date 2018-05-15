@@ -12,7 +12,7 @@
         <field name="email" unique="true"/>
         <field name="googleId" nullable="true" unique="true"/>
         <field name="facebookId" nullable="true" unique="true"/>
-        <field name="password"/>
+        <field name="password" nullable="true"/>
         <field name="salt" nullable="true"/>
         <field name="roles" type="array"/>
         <one-to-many field="validatedObserve" target-entity="App\Domain\Models\Observe" mapped-by="validator"/>
@@ -20,5 +20,6 @@
         <many-to-one field="level" target-entity="App\Domain\Models\Level" inversed-by="user"/>
         <many-to-many field="badge" target-entity="App\Domain\Models\Badge"/>
         <field name="img" nullable="true"/>
+        <many-to-one field="upvotes" target-entity="App\Domain\Models\Observe" inversed-by="upvote"/>
     </entity>
 </doctrine-mapping>

@@ -59,7 +59,7 @@ class RegisterTypeHandler implements RegisterTypeHandlerInterface
         if ($registerType->isSubmitted() && $registerType->isValid()) {
             $encoder = $this->encoder->getEncoder(User::class);
 
-            $this->userBuilder->create(
+            $this->userBuilder->createFromRegistration(
                 $registerType->getData()->email,
                 $registerType->getData()->password,
                 \Closure::fromCallable([$encoder, 'encodePassword'])
