@@ -57,7 +57,7 @@ class UserBuilder implements UserBuilderInterface
      *
      * @return UserBuilder
      */
-    public function createFromGoogle(
+    public function createFromSocial(
         string $email,
         string $googleId,
         ?string $password,

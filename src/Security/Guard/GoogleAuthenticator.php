@@ -206,7 +206,7 @@ class GoogleAuthenticator extends SocialAuthenticator
 
         // 3) Maybe you just want to "register" them by creating a User object
         if (null === $user) {
-            $this->userBuilder->createFromGoogle(
+            $this->userBuilder->createFromSocial(
                 $googleUser->getEmail(),
                 $googleUser->getId(),
                 null,

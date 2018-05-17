@@ -8,6 +8,7 @@
 
 namespace App\Security\Guard;
 
+use App\Domain\Builder\Interfaces\UserBuilderInterface;
 use App\Domain\Models\User;
 use App\Domain\Repository\UserRepository;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
@@ -16,6 +17,8 @@ use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use League\OAuth2\Client\Provider\FacebookUser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -36,21 +39,42 @@ class FacebookAuthenticator extends SocialAuthenticator
      * @var EncoderFactoryInterface
      */
     private $encoder;
+    /**
+     * @var UserBuilderInterface
+     */
+    private $userBuilder;
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
     /**
      * GoogleAuthenticator constructor.
      * @param EncoderFactoryInterface $encoder
      * @param ClientRegistry          $clientRegistry
+     * @param UserBuilderInterface    $userBuilder
      * @param UserRepository          $userRepository
+     * @param UrlGeneratorInterface   $urlGenerator
+     * @param FlashBagInterface       $flashBag
      */
     public function __construct(
         EncoderFactoryInterface $encoder,
         ClientRegistry $clientRegistry,
-        UserRepository $userRepository
+        UserBuilderInterface $userBuilder,
+        UserRepository $userRepository,
+        UrlGeneratorInterface $urlGenerator,
+        FlashBagInterface $flashBag
     ) {
         $this->clientRegistry = $clientRegistry;
         $this->userRepository = $userRepository;
         $this->encoder        = $encoder;
+        $this->userBuilder    = $userBuilder;
+        $this->urlGenerator   = $urlGenerator;
+        $this->flashBag       = $flashBag;
     }
 
     /**
@@ -76,7 +100,7 @@ class FacebookAuthenticator extends SocialAuthenticator
      *  B) For an API token authentication system, you return a 401 response
      *      return new Response('Auth header required', 401);
      *
-     * @param Request $request The request that resulted in an AuthenticationException
+     * @param Request                 $request       The request that resulted in an AuthenticationException
      * @param AuthenticationException $authException The exception that started the authentication process
      *
      * @return Response
@@ -165,21 +189,35 @@ class FacebookAuthenticator extends SocialAuthenticator
         $user = $this->userRepository
             ->findOneBy(['email' => $email]);
 
+        // 2b) complete the user infos with facebook account infos
+        if ($user && !$existingUser) {
+            $user->setFacebookId($facebookUser->getId());
+
+            null !== $user->getNickname() ? : "" === $facebookUser->getName() ? : $user->setNickname($facebookUser->getName());
+            null !== $user->getFirstname() ? : "" === $facebookUser->getFirstName() ? : $user->setFirstname($facebookUser->getFirstName());
+            null !== $user->getLastname() ? : "" === $facebookUser->getLastName() ? : $user->setLastname($facebookUser->getLastName());
+            null !== $user->getImg() ? : $user->setImg($facebookUser->getPictureUrl());
+
+            $this->userRepository->register($user);
+        }
+
         // 3) Maybe you just want to "register" them by creating a User object
         if (null === $user) {
-            $user = new User(
+            $this->userBuilder->createFromSocial(
                 $facebookUser->getEmail(),
+                $facebookUser->getId(),
                 null,
                 \Closure::fromCallable([$encoder, 'encodePassword']),
-                $facebookUser->getId(),
                 $facebookUser->getName(),
                 $facebookUser->getFirstName(),
                 $facebookUser->getLastName(),
                 $facebookUser->getPictureUrl()
             );
-        }
 
-        $this->userRepository->register($user); // TODO : use a DTO
+            $user = $this->userBuilder->getUser();
+
+            $this->userRepository->register($user);
+        }
 
         return $user;
     }
@@ -193,14 +231,16 @@ class FacebookAuthenticator extends SocialAuthenticator
      * If you return null, the request will continue, but the user will
      * not be authenticated. This is probably not what you want to do.
      *
-     * @param Request $request
+     * @param Request                 $request
      * @param AuthenticationException $exception
      *
      * @return Response|null
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        // TODO: Implement onAuthenticationFailure() method.
+        $this->flashBag->add('AuthenticationException', $exception->getMessage());
+
+        return new RedirectResponse($this->urlGenerator->generate('security_login'));
     }
 
     /**
@@ -212,14 +252,14 @@ class FacebookAuthenticator extends SocialAuthenticator
      * If you return null, the current request will continue, and the user
      * will be authenticated. This makes sense, for example, with an API.
      *
-     * @param Request $request
+     * @param Request        $request
      * @param TokenInterface $token
-     * @param string $providerKey The provider (i.e. firewall) key
+     * @param string         $providerKey The provider (i.e. firewall) key
      *
      * @return Response|null
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        // TODO: Implement onAuthenticationSuccess() method.
+        return new RedirectResponse($this->urlGenerator->generate('security_login'));
     }
 }
