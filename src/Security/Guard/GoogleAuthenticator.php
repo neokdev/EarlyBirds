@@ -18,6 +18,7 @@ use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
@@ -47,6 +48,10 @@ class GoogleAuthenticator extends SocialAuthenticator
      * @var UrlGeneratorInterface
      */
     private $urlGenerator;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
     /**
      * GoogleAuthenticator constructor.
@@ -55,19 +60,22 @@ class GoogleAuthenticator extends SocialAuthenticator
      * @param UserBuilderInterface    $userBuilder
      * @param UserRepository          $userRepository
      * @param UrlGeneratorInterface   $urlGenerator
+     * @param FlashBagInterface       $flashBag
      */
     public function __construct(
         EncoderFactoryInterface $encoder,
         ClientRegistry $clientRegistry,
         UserBuilderInterface $userBuilder,
         UserRepository $userRepository,
-        UrlGeneratorInterface $urlGenerator
+        UrlGeneratorInterface $urlGenerator,
+        FlashBagInterface $flashBag
     ) {
         $this->clientRegistry = $clientRegistry;
         $this->userRepository = $userRepository;
         $this->encoder        = $encoder;
         $this->userBuilder    = $userBuilder;
         $this->urlGenerator   = $urlGenerator;
+        $this->flashBag       = $flashBag;
     }
 
     /**
@@ -209,7 +217,9 @@ class GoogleAuthenticator extends SocialAuthenticator
                 $googleUser->getAvatar()
             );
 
-            $this->userRepository->register($this->userBuilder->getUser());
+            $user = $this->userBuilder->getUser();
+
+            $this->userRepository->register($user);
         }
 
         return $user;
@@ -231,7 +241,9 @@ class GoogleAuthenticator extends SocialAuthenticator
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        // TODO: Implement onAuthenticationFailure() method.
+        $this->flashBag->add('AuthenticationException', $exception->getMessage());
+
+        return new RedirectResponse($this->urlGenerator->generate('security_login'));
     }
 
     /**

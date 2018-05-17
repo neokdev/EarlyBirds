@@ -19,7 +19,6 @@ use App\UI\Responder\Interfaces\UserResponderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Guard\AuthenticatorInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 /**
@@ -98,8 +97,9 @@ final class UserAction implements UserActionInterface
         $registerType = $this->form->create(RegisterType::class)
             ->handleRequest($request);
 
-        // Automatically Login after Registration
+        // If new User is registered
         if ($this->registerTypeHandler->handle($registerType)) {
+            // Automatically Login after Registration
             return $this->handler->authenticateUserAndHandleSuccess(
                 $this->userBuilder->getUser(),
                 $request,

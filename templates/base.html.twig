@@ -9,15 +9,54 @@
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% endblock %}
     </head>
+
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+                <li><a href="{{ path('app_home') }}"><h5>Early Birds</h5></a></li>
+                <li><a href="{{ path('app_observe') }}">Observer</a></li>
+                <li><a href="#">Découvrir</a></li>
+                <li><a href="#">Actualités</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{{ path('security_login') }}">Login</a></li>
+            </ul>
+            {% if app.token.user.img is defined %}
+            <div class="row nav-wrapper right">
+                <a href="{{ path('app_profile') }}">
+                    <img id="profile" src="{{ app.token.user.img }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </a>
+            </div>
+            {% endif %}
+
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="{{ path('app_home') }}">Early Birds</a></li>
+        <li><a href="{{ path('app_observe') }}">Observer</a></li>
+        <li><a href="#">Découvrir</a></li>
+        <li><a href="#">Actualités</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="{{ path('security_login') }}">Login</a></li>
+    </ul>
+
     <body>
 
         {% block body %}{% endblock %}
 
         {% block javascripts %}
+            <script
+                    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+                    crossorigin="anonymous">
+            </script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
             <script>
                 M.AutoInit();
+                $(function() {
+                    $('.sidenav').sidenav();
+                });
             </script>
         {% endblock %}
     </body>
