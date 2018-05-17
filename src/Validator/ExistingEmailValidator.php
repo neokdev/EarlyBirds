@@ -12,7 +12,7 @@ use App\Domain\Repository\UserRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class NonExistingEmailValidator extends ConstraintValidator
+class ExistingEmailValidator extends ConstraintValidator
 {
 
     /**

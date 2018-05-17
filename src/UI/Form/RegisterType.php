@@ -58,7 +58,7 @@ class RegisterType extends AbstractType
                     $form->get('password')->getData()
                 );
             },
-            'validation_groups' => ['email'],
+            'validation_groups' => ['Register'],
             'label'             => false,
         ]);
     }

@@ -11,10 +11,13 @@ namespace App\Security\Guard;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
@@ -25,15 +28,29 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator
      * @var EncoderFactoryInterface
      */
     private $encoder;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
 
     /**
      * LoginFormAuthenticator constructor.
      * @param UserPasswordEncoderInterface $encoder
+     * @param FlashBagInterface            $flashBag
+     * @param UrlGeneratorInterface        $urlGenerator
      */
     public function __construct(
-        UserPasswordEncoderInterface $encoder
+        UserPasswordEncoderInterface $encoder,
+        FlashBagInterface $flashBag,
+        UrlGeneratorInterface $urlGenerator
     ) {
-        $this->encoder = $encoder;
+        $this->encoder      = $encoder;
+        $this->flashBag     = $flashBag;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -56,7 +73,7 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator
      */
     public function start(Request $request, AuthenticationException $authException = null): Response
     {
-        return new RedirectResponse('/login');
+        return new RedirectResponse($this->urlGenerator->generate('security_login'));
     }
 
     /**
@@ -123,13 +140,17 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator
      */
     public function getUser($credentials, UserProviderInterface $userProvider):? UserInterface
     {
+//        try {
+//            return $userProvider->loadUserByUsername(
+//                $credentials['email']
+//            );
+//        } catch (UsernameNotFoundException $e) {
+//            $this->flashBag->add('userNotFound', $e->getMessage());
+//        }
+
         return $userProvider->loadUserByUsername(
             $credentials['email']
         );
-
-//        return $this->userRepository->findOneBy([
-//            'email' => $credentials['username'],
-//        ]);
     }
 
     /**
@@ -173,7 +194,9 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception):? Response
     {
-        return new Response($exception->getMessage(), Response::HTTP_FORBIDDEN);
+        $this->flashBag->add('AuthenticationException', $exception->getMessage());
+
+        return new RedirectResponse($this->urlGenerator->generate('security_login'));
     }
 
     /**
@@ -193,7 +216,7 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey):? Response
     {
-        return new RedirectResponse('/profile');
+        return new RedirectResponse($this->urlGenerator->generate('app_profile'));
     }
 
     /**

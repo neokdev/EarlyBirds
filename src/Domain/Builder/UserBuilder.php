@@ -83,43 +83,6 @@ class UserBuilder implements UserBuilderInterface
     }
 
     /**
-     * @param string   $email
-     * @param string   $googleId
-     * @param string   $password
-     * @param callable $passwordEncoder
-     * @param string   $nickname
-     * @param string   $firstname
-     * @param string   $lastname
-     * @param string   $img
-     *
-     * @return UserBuilder
-     */
-    public function updateFromGoogle(
-        ?string $email,
-        string $googleId,
-        ?string $password,
-        callable $passwordEncoder,
-        ?string $nickname,
-        ?string $firstname,
-        ?string $lastname,
-        ?string $img
-    ): self {
-        $this->user    = new User(
-            $email,
-            null,
-            $passwordEncoder,
-            ['ROLE_USER'],
-            $googleId,
-            $nickname  = null,
-            $firstname = null,
-            $lastname  = null,
-            $img       = null
-        );
-
-        return $this;
-    }
-
-    /**
      * @return User
      */
     public function getUser(): User

@@ -10,7 +10,7 @@ namespace App\Validator;
 
 use Symfony\Component\Validator\Constraint;
 
-class NonExistingEmail extends Constraint
+class ExistingEmail extends Constraint
 {
     /**
      * @var string

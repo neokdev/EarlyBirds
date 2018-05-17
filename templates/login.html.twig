@@ -6,6 +6,17 @@
 {% endblock %}
 
 {% block body %}
+
+    {% for flash in app.flashes('AuthenticationException') %}
+        <header class="page-header">
+            <div class="container">
+                <div class="row">
+                    {{ flash }}
+                </div>
+            </div>
+        </header>
+    {% endfor %}
+
     {% if error %}
         <div class="row" id="alert">
             <div class="offset-s2 col s8">

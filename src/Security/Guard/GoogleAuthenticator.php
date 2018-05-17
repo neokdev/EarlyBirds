@@ -18,6 +18,7 @@ use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -42,6 +43,10 @@ class GoogleAuthenticator extends SocialAuthenticator
      * @var UserBuilderInterface
      */
     private $userBuilder;
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
 
     /**
      * GoogleAuthenticator constructor.
@@ -49,17 +54,20 @@ class GoogleAuthenticator extends SocialAuthenticator
      * @param ClientRegistry          $clientRegistry
      * @param UserBuilderInterface    $userBuilder
      * @param UserRepository          $userRepository
+     * @param UrlGeneratorInterface   $urlGenerator
      */
     public function __construct(
         EncoderFactoryInterface $encoder,
         ClientRegistry $clientRegistry,
         UserBuilderInterface $userBuilder,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        UrlGeneratorInterface $urlGenerator
     ) {
         $this->clientRegistry = $clientRegistry;
         $this->userRepository = $userRepository;
         $this->encoder        = $encoder;
         $this->userBuilder    = $userBuilder;
+        $this->urlGenerator   = $urlGenerator;
     }
 
     /**
@@ -243,6 +251,6 @@ class GoogleAuthenticator extends SocialAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        return new RedirectResponse('/profile');
+        return new RedirectResponse($this->urlGenerator->generate('security_login'));
     }
 }
