@@ -21,7 +21,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  *     methods={"GET"}
  * )
  */
-class HomeAction implements HomeActionInterface
+final class HomeAction implements HomeActionInterface
 {
     /**
      * @param HomeResponderInterface $homeResponder

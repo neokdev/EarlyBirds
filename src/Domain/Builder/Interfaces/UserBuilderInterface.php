@@ -25,9 +25,46 @@ interface UserBuilderInterface
         callable $passwordEncoder
     );
 
+    /**
+     * @param string   $email
+     * @param string   $googleId
+     * @param string   $password
+     * @param callable $passwordEncoder
+     * @param string   $nickname
+     * @param string   $firstname
+     * @param string   $lastname
+     * @param string   $img
+     *
+     * @return mixed
+     */
     public function createFromGoogle(
         string $email,
         string $googleId,
+        string $password,
+        callable $passwordEncoder,
+        string $nickname,
+        string $firstname,
+        string $lastname,
+        string $img
+    );
+
+    /**
+     * @param string   $email
+     * @param string   $googleId
+     * @param string   $password
+     * @param callable $passwordEncoder
+     * @param string   $nickname
+     * @param string   $firstname
+     * @param string   $lastname
+     * @param string   $img
+     *
+     * @return mixed
+     */
+    public function updateFromGoogle(
+        string $email,
+        string $googleId,
+        string $password,
+        callable $passwordEncoder,
         string $nickname,
         string $firstname,
         string $lastname,

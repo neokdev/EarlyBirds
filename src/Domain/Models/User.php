@@ -94,19 +94,21 @@ class User implements UserInterface
 
     /**
      * User constructor.
-     * @param string   $email
-     * @param string   $password
-     * @param callable $passwordEncoder
-     * @param string   $googleId
-     * @param string   $nickname
-     * @param string   $firstname
-     * @param string   $lastname
-     * @param string   $img
+     * @param string     $email
+     * @param string     $password
+     * @param callable   $passwordEncoder
+     * @param array|null $roles
+     * @param string     $googleId
+     * @param string     $nickname
+     * @param string     $firstname
+     * @param string     $lastname
+     * @param string     $img
      */
     public function __construct(
         string $email,
         ?string $password,
         callable $passwordEncoder,
+        ?array $roles,
         ?string $googleId,
         ?string $nickname,
         ?string $firstname,
@@ -116,7 +118,7 @@ class User implements UserInterface
         $this->id        = Uuid::uuid4();
         $this->email     = $email;
         $this->password  = $passwordEncoder($password, null);
-        $this->roles     = ['ROLE_USER'];
+        $this->roles     = $roles;
         $this->googleId  = $googleId;
         $this->nickname  = $nickname;
         $this->firstname = $firstname;
@@ -150,7 +152,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getNickname(): string
+    public function getNickname(): ?string
     {
         return $this->nickname;
     }
@@ -166,7 +168,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getFirstname(): string
+    public function getFirstname(): ?string
     {
         return $this->firstname;
     }
@@ -182,7 +184,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getLastname(): string
+    public function getLastname(): ?string
     {
         return $this->lastname;
     }
@@ -358,7 +360,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getImg(): string
+    public function getImg(): ?string
     {
         return $this->img;
     }

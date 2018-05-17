@@ -50,7 +50,7 @@ class UserResponder implements UserResponderInterface
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke(
+    final public function __invoke(
         bool $redirect = false,
         FormInterface $login = null,
         FormInterface $registerType = null

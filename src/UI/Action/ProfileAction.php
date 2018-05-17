@@ -20,7 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  *     methods={"GET"}
  * )
  */
-class ProfileAction implements ProfileActionInterface
+final class ProfileAction implements ProfileActionInterface
 {
     /**
      * @param ProfileResponderInterface $profileResponder

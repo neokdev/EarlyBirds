@@ -35,7 +35,7 @@ class HomeResponder implements HomeResponderInterface
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke()
+    final public function __invoke()
     {
         return new Response(
             $this->environment->render('homepage.html.twig')

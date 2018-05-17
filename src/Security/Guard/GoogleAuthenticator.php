@@ -8,6 +8,7 @@
 
 namespace App\Security\Guard;
 
+use App\Domain\Builder\Interfaces\UserBuilderInterface;
 use App\Domain\Models\User;
 use App\Domain\Repository\UserRepository;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
@@ -37,21 +38,28 @@ class GoogleAuthenticator extends SocialAuthenticator
      * @var EncoderFactoryInterface
      */
     private $encoder;
+    /**
+     * @var UserBuilderInterface
+     */
+    private $userBuilder;
 
     /**
      * GoogleAuthenticator constructor.
      * @param EncoderFactoryInterface $encoder
      * @param ClientRegistry          $clientRegistry
+     * @param UserBuilderInterface    $userBuilder
      * @param UserRepository          $userRepository
      */
     public function __construct(
         EncoderFactoryInterface $encoder,
         ClientRegistry $clientRegistry,
+        UserBuilderInterface $userBuilder,
         UserRepository $userRepository
     ) {
         $this->clientRegistry = $clientRegistry;
         $this->userRepository = $userRepository;
         $this->encoder        = $encoder;
+        $this->userBuilder    = $userBuilder;
     }
 
     /**
@@ -168,21 +176,33 @@ class GoogleAuthenticator extends SocialAuthenticator
         $user = $this->userRepository
             ->findOneBy(['email' => $email]);
 
+        // 2b) complete the user infos with google account infos
+        if ($user && !$existingUser) {
+            $user->setGoogleId($googleUser->getId());
+
+            null !== $user->getNickname() ? : "" === $googleUser->getName() ? : $user->setNickname($googleUser->getName());
+            null !== $user->getFirstname() ? : "" === $googleUser->getFirstName() ? : $user->setFirstname($googleUser->getFirstName());
+            null !== $user->getLastname() ? : "" === $googleUser->getLastName() ? : $user->setLastname($googleUser->getLastName());
+            null !== $user->getImg() ? : $user->setImg($googleUser->getAvatar());
+
+            $this->userRepository->register($user);
+        }
+
         // 3) Maybe you just want to "register" them by creating a User object
         if (null === $user) {
-            $user = new User(
+            $this->userBuilder->createFromGoogle(
                 $googleUser->getEmail(),
+                $googleUser->getId(),
                 null,
                 \Closure::fromCallable([$encoder, 'encodePassword']),
-                $googleUser->getId(),
                 $googleUser->getName(),
                 $googleUser->getFirstName(),
                 $googleUser->getLastName(),
                 $googleUser->getAvatar()
             );
-        }
 
-        $this->userRepository->register($user); // TODO : use a DTO
+            $this->userRepository->register($this->userBuilder->getUser());
+        }
 
         return $user;
     }

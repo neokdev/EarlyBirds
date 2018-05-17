@@ -30,7 +30,7 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
  *     methods={"GET", "POST"}
  * )
  */
-class UserAction implements UserActionInterface
+final class UserAction implements UserActionInterface
 {
     /**
      * @var UserBuilderInterface

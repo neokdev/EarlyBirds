@@ -125,7 +125,6 @@ class FacebookAuthenticator extends SocialAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        dump($this->getFacebookClient());die();
         return $this->fetchAccessToken($this->getFacebookClient());
     }
 
@@ -147,7 +146,6 @@ class FacebookAuthenticator extends SocialAuthenticator
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        dump($userProvider);die();
         $encoder = $this->encoder->getEncoder(User::class);
 
         /** @var FacebookUser $facebookUser */
@@ -158,7 +156,7 @@ class FacebookAuthenticator extends SocialAuthenticator
 
         // check if registered before
         $existingUser = $this->userRepository
-            ->findOneBy(['email' => $facebookUser->getId()]);
+            ->findOneBy(['facebookId' => $facebookUser->getId()]);
         if ($existingUser) {
             return $existingUser;
         }

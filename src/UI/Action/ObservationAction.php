@@ -20,7 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  *     methods={"GET"}
  * )
  */
-class ObservationAction implements ObservationActionInterface
+final class ObservationAction implements ObservationActionInterface
 {
     /**
      * @param ObservationResponderInterface $responder
