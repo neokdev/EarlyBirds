@@ -11,10 +11,12 @@ namespace App\Security\Guard;
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
 use App\Domain\Models\User;
 use App\Domain\Repository\UserRepository;
+use App\Services\Mailer;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Client\Provider\FacebookClient;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use League\OAuth2\Client\Provider\FacebookUser;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
@@ -51,6 +53,10 @@ class FacebookAuthenticator extends SocialAuthenticator
      * @var FlashBagInterface
      */
     private $flashBag;
+    /**
+     * @var Mailer
+     */
+    private $mailer;
 
     /**
      * GoogleAuthenticator constructor.
@@ -60,6 +66,7 @@ class FacebookAuthenticator extends SocialAuthenticator
      * @param UserRepository          $userRepository
      * @param UrlGeneratorInterface   $urlGenerator
      * @param FlashBagInterface       $flashBag
+     * @param Mailer                  $mailer
      */
     public function __construct(
         EncoderFactoryInterface $encoder,
@@ -67,7 +74,8 @@ class FacebookAuthenticator extends SocialAuthenticator
         UserBuilderInterface $userBuilder,
         UserRepository $userRepository,
         UrlGeneratorInterface $urlGenerator,
-        FlashBagInterface $flashBag
+        FlashBagInterface $flashBag,
+        Mailer $mailer
     ) {
         $this->clientRegistry = $clientRegistry;
         $this->userRepository = $userRepository;
@@ -75,6 +83,7 @@ class FacebookAuthenticator extends SocialAuthenticator
         $this->userBuilder    = $userBuilder;
         $this->urlGenerator   = $urlGenerator;
         $this->flashBag       = $flashBag;
+        $this->mailer         = $mailer;
     }
 
     /**
@@ -167,6 +176,9 @@ class FacebookAuthenticator extends SocialAuthenticator
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
@@ -217,6 +229,13 @@ class FacebookAuthenticator extends SocialAuthenticator
             $user = $this->userBuilder->getUser();
 
             $this->userRepository->register($user);
+
+            // Send confirmation mail
+            $this->mailer->sendMailToUser(
+                $user,
+                'Bienvenue',
+                $user->getEmail()
+            );
         }
 
         return $user;

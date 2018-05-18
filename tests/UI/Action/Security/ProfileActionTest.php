@@ -2,28 +2,28 @@
 /**
  * Created by PhpStorm.
  * User: Neok
- * Date: 07/05/2018
- * Time: 17:34
+ * Date: 10/05/2018
+ * Time: 08:06
  */
 
-namespace App\Tests\UI\Action;
+namespace App\Tests\UI\Action\Security;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserActionTest extends WebTestCase
+class ProfileActionTest extends WebTestCase
 {
     /**
      * @test
      */
-    public function testHomeAction()
+    public function testProfileAction()
     {
         $client = static::createClient();
 
-        $client->request('GET', '/login');
+        $client->request('GET', '/profile');
 
         static::assertSame(
-            Response::HTTP_OK,
+            Response::HTTP_FOUND,
             $client->getResponse()->getStatusCode()
         );
     }

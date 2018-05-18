@@ -5,3 +5,7 @@ controllers:
 social:
     resource: ../../src/UI/Action/Social
     type: annotation
+
+security:
+    resource: ../../src/UI/Action/Security
+    type: annotation

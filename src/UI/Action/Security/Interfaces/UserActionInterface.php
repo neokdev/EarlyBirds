@@ -6,9 +6,9 @@
  * Time: 23:26
  */
 
-namespace App\UI\Action\Interfaces;
+namespace App\UI\Action\Security\Interfaces;
 
-use App\UI\Responder\Interfaces\UserResponderInterface;
+use App\UI\Responder\Security\Interfaces\UserResponderInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 interface UserActionInterface

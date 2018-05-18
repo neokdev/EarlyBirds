@@ -10,12 +10,12 @@ namespace App\Validator;
 
 use Symfony\Component\Validator\Constraint;
 
-class ExistingEmail extends Constraint
+class NonExistingEmail extends Constraint
 {
     /**
      * @var string
      */
-    public $message = 'Cette adresse mail "{{ user }}" est déjà enregistrée';
+    public $message = 'Cette adresse email "{{ user }}" n\'est pas enregistrée';
 
     /**
      * @return string

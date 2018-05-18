@@ -2,28 +2,28 @@
 /**
  * Created by PhpStorm.
  * User: Neok
- * Date: 10/05/2018
- * Time: 08:06
+ * Date: 18/05/2018
+ * Time: 15:06
  */
 
-namespace App\Tests\UI\Action;
+namespace App\Tests\UI\Action\Security;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class ProfileActionTest extends WebTestCase
+class ForgottenPasswordActionTest extends WebTestCase
 {
     /**
      * @test
      */
-    public function testProfileAction()
+    public function testForgottenPasswordAction()
     {
         $client = static::createClient();
 
-        $client->request('GET', '/profile');
+        $client->request('GET', '/forgottenpassword');
 
         static::assertSame(
-            Response::HTTP_FOUND,
+            Response::HTTP_OK,
             $client->getResponse()->getStatusCode()
         );
     }

@@ -6,16 +6,16 @@
  * Time: 23:25
  */
 
-namespace App\UI\Action;
+namespace App\UI\Action\Security;
 
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
 use App\Security\Guard\LoginFormAuthenticator;
-use App\UI\Action\Interfaces\UserActionInterface;
+use App\UI\Action\Security\Interfaces\UserActionInterface;
 use App\UI\Form\Handler\Interfaces\LoginTypeHandlerInterface;
 use App\UI\Form\Handler\Interfaces\RegisterTypeHandlerInterface;
 use App\UI\Form\LoginType;
 use App\UI\Form\RegisterType;
-use App\UI\Responder\Interfaces\UserResponderInterface;
+use App\UI\Responder\Security\Interfaces\UserResponderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,7 +52,7 @@ final class UserAction implements UserActionInterface
      */
     private $handler;
     /**
-     * @var AuthenticatorInterface
+     * @var LoginFormAuthenticator
      */
     private $authenticator;
 

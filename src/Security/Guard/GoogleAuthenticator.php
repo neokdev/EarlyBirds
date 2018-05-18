@@ -11,6 +11,7 @@ namespace App\Security\Guard;
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
 use App\Domain\Models\User;
 use App\Domain\Repository\UserRepository;
+use App\Services\Mailer;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Client\Provider\GoogleClient;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
@@ -52,6 +53,10 @@ class GoogleAuthenticator extends SocialAuthenticator
      * @var FlashBagInterface
      */
     private $flashBag;
+    /**
+     * @var Mailer
+     */
+    private $mailer;
 
     /**
      * GoogleAuthenticator constructor.
@@ -61,6 +66,7 @@ class GoogleAuthenticator extends SocialAuthenticator
      * @param UserRepository          $userRepository
      * @param UrlGeneratorInterface   $urlGenerator
      * @param FlashBagInterface       $flashBag
+     * @param Mailer                  $mailer
      */
     public function __construct(
         EncoderFactoryInterface $encoder,
@@ -68,7 +74,8 @@ class GoogleAuthenticator extends SocialAuthenticator
         UserBuilderInterface $userBuilder,
         UserRepository $userRepository,
         UrlGeneratorInterface $urlGenerator,
-        FlashBagInterface $flashBag
+        FlashBagInterface $flashBag,
+        Mailer $mailer
     ) {
         $this->clientRegistry = $clientRegistry;
         $this->userRepository = $userRepository;
@@ -76,6 +83,7 @@ class GoogleAuthenticator extends SocialAuthenticator
         $this->userBuilder    = $userBuilder;
         $this->urlGenerator   = $urlGenerator;
         $this->flashBag       = $flashBag;
+        $this->mailer         = $mailer;
     }
 
     /**
@@ -170,6 +178,9 @@ class GoogleAuthenticator extends SocialAuthenticator
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
@@ -220,6 +231,13 @@ class GoogleAuthenticator extends SocialAuthenticator
             $user = $this->userBuilder->getUser();
 
             $this->userRepository->register($user);
+
+            // Send confirmation mail
+            $this->mailer->sendMailToUser(
+                $user,
+                'Bienvenue',
+                $user->getEmail()
+            );
         }
 
         return $user;

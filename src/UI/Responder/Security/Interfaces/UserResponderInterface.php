@@ -6,7 +6,7 @@
  * Time: 23:35
  */
 
-namespace App\UI\Responder\Interfaces;
+namespace App\UI\Responder\Security\Interfaces;
 
 use Symfony\Component\Form\FormInterface;
 
