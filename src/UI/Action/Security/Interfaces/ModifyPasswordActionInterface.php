@@ -14,10 +14,14 @@ use Symfony\Component\HttpFoundation\Request;
 interface ModifyPasswordActionInterface
 {
     /**
+     * @param string                           $token
      * @param Request                          $request
      * @param ModifyPasswordResponderInterface $responder
+     *
+     * @return mixed
      */
     public function __invoke(
+        $token,
         Request $request,
         ModifyPasswordResponderInterface $responder
     );

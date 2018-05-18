@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ModifyPasswordAction
  * @Route(
- *     "/test",
+ *     "/modifypassword/{token}",
  *     methods={"GET", "POST"}
  * )
  */
@@ -42,18 +42,20 @@ final class ModifyPasswordAction implements ModifyPasswordActionInterface
     public function __construct(
         FormFactoryInterface $form,
         ModifyPasswordTypeHandlerInterface $typeHandler
-    ){
+    ) {
         $this->form        = $form;
         $this->typeHandler = $typeHandler;
     }
 
     /**
+     * @param string                           $token
      * @param Request                          $request
      * @param ModifyPasswordResponderInterface $responder
      *
      * @return mixed
      */
     public function __invoke(
+        $token,
         Request $request,
         ModifyPasswordResponderInterface $responder
     ) {
