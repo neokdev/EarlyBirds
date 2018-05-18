@@ -40,7 +40,7 @@ interface UserBuilderInterface
     public function createFromSocial(
         string $email,
         string $googleId,
-        string $password,
+        ?string $password,
         callable $passwordEncoder,
         string $nickname,
         string $firstname,

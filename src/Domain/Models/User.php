@@ -122,6 +122,7 @@ class User implements UserInterface
         $this->googleId  = $googleId;
         $this->nickname  = $nickname;
         $this->firstname = $firstname;
+        $this->lastname  = $lastname;
         $this->img       = $img;
     }
 

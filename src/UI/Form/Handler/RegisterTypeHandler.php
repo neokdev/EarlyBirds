@@ -80,10 +80,11 @@ class RegisterTypeHandler implements RegisterTypeHandlerInterface
             $this->userRepository->register($this->userBuilder->getUser());
 
             // Send confirmation mail
-//            $this->mailer->sendMail(
-//                "Bienvenue",
-//                $this->userBuilder->getUser()
-//            );
+            $this->mailer->sendMailToUser(
+                $this->userBuilder->getUser(),
+                'Bienvenue',
+                $this->userBuilder->getUser()->getEmail()
+            );
 
             return true;
         }

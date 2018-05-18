@@ -45,21 +45,21 @@ class Mailer
     }
 
     /**
-     * @param string $subject
      * @param User   $user
-     * @param string $addresses
+     * @param string $subject
+     * @param string $receiver
      *
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function sendMail(string $subject, User $user, string $addresses = self::ADMIN_EMAIL)
+    public function sendMailToUser(User $user, string $subject, string $receiver = self::ADMIN_EMAIL)
     {
         $message = new Swift_Message($subject);
 
         $message
-            ->setFrom($addresses)
-            ->setTo($user->getEmail())
+            ->setFrom(self::ADMIN_EMAIL)
+            ->setTo($receiver)
             ->setBody(
                 $this->environment->render(
                     "Emails/registerConfirm.html.twig",

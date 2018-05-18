@@ -21,10 +21,10 @@
                 <li><a href="#">Contact</a></li>
                 <li><a href="{{ path('security_login') }}">Login</a></li>
             </ul>
-            {% if app.token.user.img is defined %}
+            {% if is_granted('ROLE_USER') %}
             <div class="row nav-wrapper right">
                 <a href="{{ path('app_profile') }}">
-                    <img id="profile" src="{{ app.token.user.img }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                    <img id="profile" src="{{ app.user.img }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
                 </a>
             </div>
             {% endif %}
