@@ -45,21 +45,19 @@ class Mailer
     }
 
     /**
-     * @param User   $user
-     * @param string $subject
-     * @param string $receiver
+     * @param User $user
      *
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function sendMailToUser(User $user, string $subject, string $receiver = self::ADMIN_EMAIL)
+    public function sendRegisterConfirm(User $user)
     {
-        $message = new Swift_Message($subject);
+        $message = new Swift_Message("Bienvenue");
 
         $message
             ->setFrom(self::ADMIN_EMAIL)
-            ->setTo($receiver)
+            ->setTo($user->getEmail())
             ->setBody(
                 $this->environment->render(
                     "Emails/registerConfirm.html.twig",
@@ -70,5 +68,31 @@ class Mailer
                 'text/html'
             );
         $this->mailer->send($message);
+    }
+
+    /**
+     * @param User $user
+     *
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendResetPasswordTokenLink(User $user)
+    {
+        $message = new Swift_Message("Votre lien de changement de mot de passe");
+
+        $message
+            ->setFrom(self::ADMIN_EMAIL)
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->environment->render(
+                    "Emails/resetPasswordToken.html.twig",
+                    [
+                        'data' => $user,
+                    ]
+                ),
+                'text/html'
+            );
+
     }
 }
