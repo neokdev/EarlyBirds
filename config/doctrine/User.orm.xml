@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Domain\Models\User" table="app_users" repository-class="App\Domain\Repository\UserRepository">
+        <id name="id" type="uuid"/>
+        <field name="nickname" nullable="true" unique="true"/>
+        <field name="firstname" nullable="true"/>
+        <field name="lastname" nullable="true"/>
+        <field name="email" unique="true"/>
+        <field name="googleId" nullable="true" unique="true"/>
+        <field name="facebookId" nullable="true" unique="true"/>
+        <field name="password" nullable="true"/>
+        <field name="salt" nullable="true"/>
+        <field name="roles" type="array"/>
+        <one-to-many field="validatedObserve" target-entity="App\Domain\Models\Observe" mapped-by="validator"/>
+        <field name="score" nullable="true" type="integer"/>
+        <many-to-one field="level" target-entity="App\Domain\Models\Level" inversed-by="user"/>
+        <many-to-many field="badge" target-entity="App\Domain\Models\Badge"/>
+        <field name="img" nullable="true"/>
+        <many-to-one field="upvotes" target-entity="App\Domain\Models\Observe" inversed-by="upvote"/>
+    </entity>
+</doctrine-mapping>

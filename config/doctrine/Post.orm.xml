@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Domain\Models\Post" table="post" repository-class="App\Domain\Repository\PostRepository">
+        <id name="id" type="uuid"/>
+        <field name="content" type="text"/>
+        <many-to-one field="author" target-entity="App\Domain\Models\User"/>
+        <field name="category" nullable="true"/>
+        <field name="date" type="date"/>
+        <field name="img" nullable="true"/>
+    </entity>
+</doctrine-mapping>

@@ -2,15 +2,62 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}NAO{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% endblock %}
     </head>
+
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+                <li><a href="{{ path('app_home') }}"><h5>NAO</h5></a></li>
+                <li><a href="{{ path('app_observe') }}">Observer</a></li>
+                <li><a href="#">Découvrir</a></li>
+                <li><a href="#">Actualités</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{{ path('security_login') }}">Login</a></li>
+            </ul>
+            {% if is_granted('ROLE_USER') %}
+            <div class="row nav-wrapper right">
+                <a href="{{ path('app_profile') }}">
+                    <img id="profile" src="{{ app.user.img }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </a>
+            </div>
+            {% endif %}
+
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="{{ path('app_home') }}">NAO</a></li>
+        <li><a href="{{ path('app_observe') }}">Observer</a></li>
+        <li><a href="#">Découvrir</a></li>
+        <li><a href="#">Actualités</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="{{ path('security_login') }}">Login</a></li>
+    </ul>
+
     <body>
+
         {% block body %}{% endblock %}
+
         {% block javascripts %}
+            <script
+                    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+                    crossorigin="anonymous">
+            </script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+            <script>
+                M.AutoInit();
+                $(function() {
+                    $('.sidenav').sidenav();
+                });
+            </script>
         {% endblock %}
     </body>
 </html>

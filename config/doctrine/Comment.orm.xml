@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Domain\Models\Comment" table="comment" repository-class="App\Domain\Repository\CommentRepository">
+        <id name="id" type="uuid"/>
+        <field name="content" type="text"/>
+        <many-to-one field="author" target-entity="App\Domain\Models\User"/>
+        <field name="date" type="date"/>
+    </entity>
+</doctrine-mapping>

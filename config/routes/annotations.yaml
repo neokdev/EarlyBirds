@@ -1,3 +1,11 @@
 controllers:
-    resource: ../../src/Controller/
+    resource: ../../src/UI/Action/
+    type: annotation
+
+social:
+    resource: ../../src/UI/Action/Social
+    type: annotation
+
+security:
+    resource: ../../src/UI/Action/Security
     type: annotation
