@@ -58,6 +58,11 @@ class User implements UserInterface
     private $salt;
 
     /**
+     * @var string|null
+     */
+    private $resetPasswordToken;
+
+    /**
      * @var array
      */
     private $roles;
@@ -276,6 +281,22 @@ class User implements UserInterface
     public function setSalt(?string $salt): void
     {
         $this->salt = $salt;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getResetPasswordToken(): ?string
+    {
+        return $this->resetPasswordToken;
+    }
+
+    /**
+     * @param null|string $resetPasswordToken
+     */
+    public function setResetPasswordToken(?string $resetPasswordToken): void
+    {
+        $this->resetPasswordToken = $resetPasswordToken;
     }
 
     /**

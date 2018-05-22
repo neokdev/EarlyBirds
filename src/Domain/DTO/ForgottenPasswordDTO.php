@@ -13,7 +13,7 @@ class ForgottenPasswordDTO
     /**
      * @var string
      */
-    private $email;
+    public $email;
 
     /**
      * ForgottenPasswordDTO constructor.

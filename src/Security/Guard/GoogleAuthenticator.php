@@ -233,7 +233,7 @@ class GoogleAuthenticator extends SocialAuthenticator
             $this->userRepository->register($user);
 
             // Send confirmation mail
-            $this->mailer->sendMailToUser(
+            $this->mailer->sendRegisterConfirm(
                 $user,
                 'Bienvenue',
                 $user->getEmail()

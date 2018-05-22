@@ -28,10 +28,6 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 final class ForgottenPasswordAction implements ForgottenPasswordActionInterface
 {
     /**
-     * @var TokenGeneratorInterface
-     */
-    private $tokenGenerator;
-    /**
      * @var FormFactoryInterface
      */
     private $form;
@@ -43,17 +39,14 @@ final class ForgottenPasswordAction implements ForgottenPasswordActionInterface
     /**
      * ForgottenPasswordAction constructor.
      * @param FormFactoryInterface                  $form
-     * @param TokenGeneratorInterface               $tokenGenerator
      * @param ForgottenPasswordTypeHandlerInterface $typeHandler
      */
     public function __construct(
         FormFactoryInterface $form,
-        TokenGeneratorInterface $tokenGenerator,
         ForgottenPasswordTypeHandlerInterface $typeHandler
     ) {
-        $this->tokenGenerator = $tokenGenerator;
-        $this->form           = $form;
-        $this->typeHandler    = $typeHandler;
+        $this->form        = $form;
+        $this->typeHandler = $typeHandler;
     }
 
     /**
@@ -72,8 +65,6 @@ final class ForgottenPasswordAction implements ForgottenPasswordActionInterface
         if ($this->typeHandler->handle($forgottenPasswordForm)) {
             return $forgottenPassword(true);
         }
-
-        $token = $this->tokenGenerator->generateToken();
 
         return $forgottenPassword(false, $forgottenPasswordForm);
     }

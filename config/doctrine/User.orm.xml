@@ -14,6 +14,7 @@
         <field name="facebookId" nullable="true" unique="true"/>
         <field name="password" nullable="true"/>
         <field name="salt" nullable="true"/>
+        <field name="resetPasswordToken" nullable="true" unique="true"/>
         <field name="roles" type="array"/>
         <one-to-many field="validatedObserve" target-entity="App\Domain\Models\Observe" mapped-by="validator"/>
         <field name="score" nullable="true" type="integer"/>
