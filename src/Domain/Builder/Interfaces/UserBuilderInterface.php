@@ -49,6 +49,17 @@ interface UserBuilderInterface
     );
 
     /**
+     * @param string   $password
+     * @param callable $passwordEncoder
+     *
+     * @return mixed
+     */
+    public function modifyPassword(
+        string $password,
+        callable $passwordEncoder
+    );
+
+    /**
      * @return User
      */
     public function getUser();

@@ -2,7 +2,7 @@
 
 namespace App\Domain\Repository;
 
-use App\Entity\Badge;
+use App\Domain\Models\Badge;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

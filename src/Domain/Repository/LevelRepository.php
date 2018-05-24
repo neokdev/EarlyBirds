@@ -2,7 +2,7 @@
 
 namespace App\Domain\Repository;
 
-use App\Entity\Level;
+use App\Domain\Models\Level;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

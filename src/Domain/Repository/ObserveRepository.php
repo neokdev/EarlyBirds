@@ -2,7 +2,7 @@
 
 namespace App\Domain\Repository;
 
-use App\Entity\Observe;
+use App\Domain\Models\Observe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

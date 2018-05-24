@@ -50,6 +50,8 @@ class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterf
      *
      * @return bool
      *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -60,7 +62,8 @@ class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterf
             $user = $this->userRepository
                 ->findOneBy(['email' => $form->getData()->email]);
 
-            $user->setResetPasswordToken(htmlspecialchars_decode($this->tokenGenerator->generateToken()));
+            $user->setResetPasswordToken(rawurlencode($this->tokenGenerator->generateToken()));
+            $this->userRepository->register($user);
 
             $this->mailer->sendResetPasswordTokenLink($user);
 

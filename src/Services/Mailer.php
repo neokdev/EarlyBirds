@@ -81,8 +81,6 @@ class Mailer
     {
         $message = new Swift_Message("Votre lien de changement de mot de passe");
 
-        dump('test');
-
         $message
             ->setFrom(self::ADMIN_EMAIL)
             ->setTo($user->getEmail())
@@ -95,6 +93,6 @@ class Mailer
                 ),
                 'text/html'
             );
-
+        $this->mailer->send($message);
     }
 }

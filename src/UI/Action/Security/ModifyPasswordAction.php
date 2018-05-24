@@ -20,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class ModifyPasswordAction
  * @Route(
  *     "/modifypassword/{token}",
+ *     name="security_modifyPassword",
  *     methods={"GET", "POST"}
  * )
  */
@@ -62,7 +63,7 @@ final class ModifyPasswordAction implements ModifyPasswordActionInterface
         $modifyPasswordForm = $this->form->create(ModifyPasswordType::class)
             ->handleRequest($request);
 
-        if ($this->typeHandler->handle($modifyPasswordForm)) {
+        if ($this->typeHandler->handle($modifyPasswordForm, $token)) {
             return $responder(true);
         }
 
