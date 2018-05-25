@@ -39,6 +39,7 @@ class UserBuilder implements UserBuilderInterface
             null,
             null,
             null,
+            null,
             null
         );
 
@@ -76,7 +77,34 @@ class UserBuilder implements UserBuilderInterface
             $nickname,
             $firstname,
             $lastname,
-            $img
+            $img,
+            null
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string   $password
+     * @param callable $passwordEncoder
+     *
+     * @return UserBuilder
+     */
+    public function modifyPassword(
+        string $password,
+        callable $passwordEncoder
+    ):self {
+        $this->user = new User(
+            null,
+            $password,
+            $passwordEncoder,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
         );
 
         return $this;

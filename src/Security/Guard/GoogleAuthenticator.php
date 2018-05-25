@@ -232,11 +232,9 @@ class GoogleAuthenticator extends SocialAuthenticator
 
             $this->userRepository->register($user);
 
-            // Send confirmation mail
-            $this->mailer->sendRegisterConfirm(
-                $user,
-                'Bienvenue',
-                $user->getEmail()
+            // Send welcome mail
+            $this->mailer->sendWelcome(
+                $user
             );
         }
 
@@ -259,7 +257,7 @@ class GoogleAuthenticator extends SocialAuthenticator
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $this->flashBag->add('AuthenticationException', $exception->getMessage());
+        $this->flashBag->add('login', $exception->getMessage());
 
         return new RedirectResponse($this->urlGenerator->generate('security_login'));
     }
