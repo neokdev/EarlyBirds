@@ -231,10 +231,8 @@ class FacebookAuthenticator extends SocialAuthenticator
             $this->userRepository->register($user);
 
             // Send confirmation mail
-            $this->mailer->sendRegisterConfirm(
-                $user,
-                'Bienvenue',
-                $user->getEmail()
+            $this->mailer->sendWelcome(
+                $user
             );
         }
 
@@ -257,7 +255,7 @@ class FacebookAuthenticator extends SocialAuthenticator
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $this->flashBag->add('AuthenticationException', $exception->getMessage());
+        $this->flashBag->add('login', $exception->getMessage());
 
         return new RedirectResponse($this->urlGenerator->generate('security_login'));
     }

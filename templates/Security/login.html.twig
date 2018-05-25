@@ -9,28 +9,14 @@
 
 {% block body %}
 
-    {% for flash in app.flashes('AuthenticationException') %}
-        <div class="row">
-            <div class="card red darken-1">
-                <div class="card-content white-text">
-                    <span class="card-title">Erreur</span>
-                    <p>{{ flash }}</p>
-                </div>
-                <div class="card-action">
-                    <a href="#" onclick="dismiss()">Fermer</a>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-
 <div class="row" id="loginPanel">
-    <div class="card-panel cyan lighten-5 hoverable col s8 offset-s2">
+    <div class="card-panel grey lighten-4 hoverable col s8 offset-s2">
         <div class="row" style="padding-top: 6%; padding-bottom: 3%">
 
             <div class="row">
                 <div class="col s10 offset-s1 center">
-                    <a class="waves-effect waves-light btn" href="{{ path('social_google') }}"><i class="fab fa-google-plus-g"> </i> Google</a>
-                    <a class="waves-effect waves-light btn" href="{{ path('social_facebook') }}"><i class="fab fa-facebook-f"> </i> Facebook</a>
+                    <a class="waves-effect waves-light btn cyan lighten-2 black-text" href="{{ path('social_google') }}"><i class="fab fa-google-plus-g"> </i> Google</a>
+                    <a class="waves-effect waves-light btn cyan lighten-2 black-text" href="{{ path('social_facebook') }}"><i class="fab fa-facebook-f"> </i> Facebook</a>
                 </div>
             </div>
 
@@ -38,8 +24,26 @@
                 <div class="col s10 offset-s1 center">
 
                     {{ form_start(login_form, {'action': path('security_login')}) }}
-                    {{ form_row(login_form) }}
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Se connecter
+
+                        <div class="input-field">
+                            {{ form_widget(login_form.email, {
+                                'attr':{
+                                    'class':'validate'
+                                }
+                            }) }}
+                            {{ form_label(login_form.email) }}
+                        </div>
+
+                        <div class="input-field">
+                            {{ form_widget(login_form.password, {
+                                'attr':{
+                                    'class':'validate'
+                                }
+                            }) }}
+                            {{ form_label(login_form.password) }}
+                        </div>
+
+                        <button class="btn waves-effect waves-light cyan lighten-2 black-text" type="submit" name="action">Se connecter
                             <i class="material-icons right">send</i>
                         </button>
                     {{ form_end(login_form) }}
@@ -53,8 +57,33 @@
                 <div class="col s10 offset-s1 center">
 
     {{ form_start(register_form) }}
-    {{ form_row(register_form) }}
-    <button class="btn waves-effect waves-light" type="submit" name="action">S'enregistrer
+                    <div class="input-field">
+                        {{ form_widget(register_form.email, {
+                            'attr':{
+                                'class':'validate'
+                            }
+                        }) }}
+                        {{ form_label(register_form.email) }}
+                    </div>
+
+                    <div class="input-field">
+                        {{ form_widget(register_form.password.first, {
+                            'attr':{
+                                'class':'validate'
+                            }
+                        }) }}
+                        {{ form_label(register_form.password.first) }}
+                    </div>
+
+                    <div class="input-field">
+                        {{ form_widget(register_form.password.second, {
+                            'attr':{
+                                'class':'validate'
+                            }
+                        }) }}
+                        {{ form_label(register_form.password.second) }}
+                    </div>
+    <button class="btn waves-effect waves-light cyan lighten-2 black-text" type="submit" name="action">S'enregistrer
         <i class="material-icons right">send</i>
     </button>
     {{ form_end(register_form) }}
@@ -64,7 +93,7 @@
 
             <div class="row">
                 <div class="col s10 offset-s1 center">
-                    <a class="waves-effect red lighten-2 waves-light btn" href="/logout"><i class="material-icons right"> close</i> Se déconnecter
+                    <a class="waves-effect cyan darken-3 waves-light btn" href="/logout"><i class="material-icons right"> close</i> Se déconnecter
                     </a>
                 </div>
             </div>
@@ -79,10 +108,12 @@
     {{ parent() }}
     <script type="text/javascript">
         M.updateTextFields();
-        function dismiss() {
-            let alert = document.getElementById("alert");
-            alert.remove();
-        }
+
+        {% for flash in app.flashes('login') %}
+            $(function() {
+                M.toast({html: '<span>{{ flash }}</span>'});
+            });
+        {% endfor %}
 
     </script>
 {% endblock %}

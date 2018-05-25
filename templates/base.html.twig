@@ -11,22 +11,47 @@
     </head>
 
     <nav>
-        <div class="nav-wrapper teal lighten-2">
+        <ul id="dropdown_profile" class="dropdown-content">
+            <li><a href="{{ path('app_profile') }}">Profil</a></li>
+            <li><a href="/logout">Se déconnecter</a></li>
+        </ul>
+        <ul id="dropdown_observe" class="dropdown-content">
+            <li><a href="#">Dernières observations</a></li>
+            <li><a href="{{ path('app_observe') }}">Saisie d'une observation</a></li>
+            <li><a href="#">Carte</a></li>
+        </ul>
+        <ul id="dropdown_discover" class="dropdown-content">
+            <li><a href="#">NAO</a></li>
+            <li><a href="#">Les oiseaux</a></li>
+        </ul>
+        <div class="nav-wrapper cyan lighten-2">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="left hide-on-med-and-down">
-                <li><a href="{{ path('app_home') }}"><h5>NAO</h5></a></li>
-                <li><a href="{{ path('app_observe') }}">Observer</a></li>
-                <li><a href="#">Découvrir</a></li>
-                <li><a href="#">Actualités</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="{{ path('security_login') }}">Login</a></li>
+            <ul class="right hide-on-med-and-down">
+
+                <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown_observe">Observer
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown_discover">Découvrir
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <li><a href="#" class="black-text">Actualités</a></li>
+                <li><a href="#" class="black-text">Contact</a></li>
+                <li><a href="{{ path('security_login') }}" class="black-text">Login</a></li>
             </ul>
+            <a class="brand-logo center">
+                <h5 class="black-text">LOGO NAO</h5>
+            </a>
             {% if is_granted('ROLE_USER') %}
-            <div class="row nav-wrapper right">
-                <a href="{{ path('app_profile') }}">
-                    <img id="profile" src="{{ app.user.img }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                </a>
-            </div>
+                <ul class="left hide-on-med-and-down">
+                    <li>
+                        <a class="dropdown-trigger" href="{{ path('app_profile') }}" data-target="dropdown_profile">
+                            <img id="profile" src="{{ app.user.img }}" alt="" class="circle responsive-img">
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
+                </ul>
             {% endif %}
 
         </div>
@@ -46,8 +71,7 @@
         {% block body %}{% endblock %}
 
         {% block javascripts %}
-            <script
-                    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                     integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
                     crossorigin="anonymous">
             </script>
@@ -56,6 +80,7 @@
                 M.AutoInit();
                 $(function() {
                     $('.sidenav').sidenav();
+                    $(".dropdown-trigger").dropdown();
                 });
             </script>
         {% endblock %}

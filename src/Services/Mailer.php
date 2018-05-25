@@ -51,7 +51,7 @@ class Mailer
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function sendRegisterConfirm(User $user)
+    public function sendWelcome(User $user)
     {
         $message = new Swift_Message("Bienvenue");
 

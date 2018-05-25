@@ -3,6 +3,74 @@
 {% block title %}NAO - Profil{% endblock %}
 
 {% block body %}
-Page de profil :)
+    <div class="row">
+        <div class="tabs-vertical">
+            <div class="col s4 m3">
+                <ul class="tabs">
+                    <li class="tab">
+                        <a class="waves-effect waves-light cyan lighten-2 black-text active" href="#Profil"><i class="material-icons"> person</i>Profil</a>
+                    </li>
+                    <li class="tab">
+                        <a class="waves-effect waves-light cyan lighten-2 black-text" href="#Observations">Observations</a>
+                    </li>
+                    <li class="tab">
+                        <a class="waves-effect waves-light cyan lighten-2 black-text" href="#Admin">Admin</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s8 m9">
+                <div id="Profil" class="tab-content">
+
+                    <FORM action="http://unsite.com/prog/ajoutermembre" method="post">
+                        <P>
+                            <LABEL for="prenom">Prénom : </LABEL>
+                            <INPUT type="text" id="prenom"><BR>
+                            <LABEL for="nom">Nom : </LABEL>
+                            <INPUT type="text" id="nom"><BR>
+                            <LABEL for="email">e-mail : </LABEL>
+                            <INPUT type="text" id="email"><BR>
+                            <INPUT type="radio" name="genre" value="homme"> Homme<BR>
+                            <INPUT type="radio" name="genre" value="femme"> Femme<BR>
+                            <INPUT type="submit" value="Envoyer"> <INPUT type="reset">
+                        </P>
+                    </FORM>
+
+                </div>
+                <div id="Observations" class="tab-content">
+
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div id="Admin" class="tab-content">
+
+                    ADMIN CONTENT
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function(){
+            $('.tabs').tabs();
+        });
+
+    </script>
 {% endblock %}
 
