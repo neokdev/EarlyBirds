@@ -15,23 +15,31 @@ class ModifyPasswordDTO implements ModifyPasswordDTOInterface
     /**
      * @var string
      */
-    private $password;
+    public $password;
 
     /**
      * ModifyPasswordDTO constructor.
      * @param string $password
      */
-    public function __construct(string $password)
+    public function __construct(?string $password)
     {
         $this->password = $password;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
     }
 
 }

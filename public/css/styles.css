@@ -7,3 +7,26 @@
 {
     margin-top: 40px;
 }
+body
+{
+    background-color: #005662;
+}
+.tabs-vertical
+{
+    margin-top: 20px;
+}
+.tabs-vertical .tabs {
+    height: auto;
+    flex-direction: column;
+    display: flex;
+    background-color: #005662;
+}
+.tabs-vertical .tab
+{
+    width: 100%;
+    margin-bottom: 40px;
+}
+.tabs-vertical .indicator
+{
+    display: none;
+}
