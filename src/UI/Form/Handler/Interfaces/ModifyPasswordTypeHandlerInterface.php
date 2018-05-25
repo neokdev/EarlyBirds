@@ -14,8 +14,12 @@ interface ModifyPasswordTypeHandlerInterface
 {
     /**
      * @param FormInterface $form
+     * @param string        $token
      *
      * @return mixed
      */
-    public function handle(FormInterface $form);
+    public function handle(
+        FormInterface $form,
+        string $token
+    );
 }

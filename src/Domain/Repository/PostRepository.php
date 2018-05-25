@@ -2,7 +2,7 @@
 
 namespace App\Domain\Repository;
 
-use App\Entity\Post;
+use App\Domain\Models\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

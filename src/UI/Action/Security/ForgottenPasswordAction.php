@@ -15,7 +15,6 @@ use App\UI\Responder\Security\Interfaces\ForgottenPasswordResponderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 /**
  * Class ForgottenPasswordAction

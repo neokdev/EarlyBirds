@@ -8,7 +8,9 @@
 
 namespace App\Domain\DTO;
 
-class ForgottenPasswordDTO
+use App\Domain\DTO\Interfaces\ForgottenPasswordDTOInterface;
+
+class ForgottenPasswordDTO implements ForgottenPasswordDTOInterface
 {
     /**
      * @var string

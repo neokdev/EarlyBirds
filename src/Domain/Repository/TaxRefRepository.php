@@ -2,7 +2,7 @@
 
 namespace App\Domain\Repository;
 
-use App\Entity\TaxRef;
+use App\Domain\Models\TaxRef;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
