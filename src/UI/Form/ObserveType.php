@@ -4,7 +4,6 @@ namespace App\UI\Form;
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
 use App\Domain\DTO\ObserveDTO;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -58,7 +57,7 @@ class ObserveType extends AbstractType
             'data_class' => ObserveDTOInterface::class,
             'empty_data' => function (FormInterface $form) {
                 return new ObserveDTO(
-                    $form->get('author')->getData()
+
                 );
             },
             'label'      => false,
