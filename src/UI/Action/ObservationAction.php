@@ -17,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  * @Route(
  *     "/observe",
  *     name="app_observe",
- *     methods={"GET"}
+ *     methods={"GET","POST"}
  * )
  */
 final class ObservationAction implements ObservationActionInterface
@@ -29,7 +29,6 @@ final class ObservationAction implements ObservationActionInterface
      */
     public function __invoke(ObservationResponderInterface $responder)
     {
-
 
         return $responder();
     }
