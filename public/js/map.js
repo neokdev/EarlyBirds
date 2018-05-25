@@ -10,15 +10,21 @@ $(function() {
     }).addTo(mymap);
 
 
-
-
-
-    $('#autocomplete-input').keypress(function (e) {
-        let letter = String.fromCharCode(e.which);
-        let word = '';
-        word += letter;
-        console.log(word);
+    $('#autocomplete-input').blur(function(e) {
+        console.log(e.target.value);
+        if (e.target.value.length >= 5) {
+            //appel ajax
+            console.log('ok');
+            //tableau et affichage de la liste
+            $.getJSON('http://api.wunderground.com/api/50a65432f17cf542/conditions/q/France/Lyon.json',function(data){
+                console.log();
+                $('<div id="message">'+data.current_observation.temp_c+'</div>').insertAfter($('#autocomplete-input').fadeIn(1000));
+            });
+        } else {
+            //message si recherche imprécise
+            $('<p id="message">veuillez affiner votre recherche</p>').insertAfter($('#autocomplete-input'));
+            $('#message').fadeOut(4000);
+        }
     });
-
 
 });
