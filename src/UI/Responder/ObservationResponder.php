@@ -9,6 +9,8 @@
 namespace App\UI\Responder;
 
 use App\UI\Responder\Interfaces\ObservationResponderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
@@ -29,16 +31,23 @@ class ObservationResponder implements ObservationResponderInterface
     }
 
     /**
+     * @param bool $redirect
+     * @param FormInterface|null $addObservationType
+     * @return mixed|RedirectResponse|Response
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
-     *
-     * @return mixed|Response
      */
-    final public function __invoke()
+    public function __invoke($redirect = false, FormInterface $addObservationType = null)
     {
-        return new Response(
-            $this->environment->render('observation.html.twig')
+        $redirect
+            ? $response =  new RedirectResponse('/observe')
+            : $response = new Response(
+                $this->environment->render('observation.html.twig', [
+                    'form' => $addObservationType->createView(),
+                ])
         );
+
+        return $response;
     }
 }

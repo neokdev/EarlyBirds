@@ -9,8 +9,12 @@
 namespace App\UI\Action;
 
 use App\UI\Action\Interfaces\ObservationActionInterface;
+use App\UI\Form\Handler\Interfaces\ObserveTypeHandlerInterface;
+use App\UI\Form\ObserveType;
 use App\UI\Responder\Interfaces\ObservationResponderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ObservationAction
@@ -23,13 +27,40 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 final class ObservationAction implements ObservationActionInterface
 {
     /**
+     * @var $observationTypeHandler
+     */
+    private $observationTypeHandler;
+
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    public function __construct(
+        ObserveTypeHandlerInterface $obsertionTypeHandler,
+        FormFactoryInterface $formFactory
+    ) {
+        $this->observationTypeHandler = $obsertionTypeHandler;
+        $this->formFactory = $formFactory;
+    }
+
+    /**
+     * @param Request $request
      * @param ObservationResponderInterface $responder
-     *
      * @return mixed
      */
-    public function __invoke(ObservationResponderInterface $responder)
+    public function __invoke(Request $request, ObservationResponderInterface $responder)
     {
+        $addObservationType = $this->formFactory
+            ->create(ObserveType::class)
+            ->handleRequest($request);
 
-        return $responder();
+        if ($this->observationTypeHandler->Handle($addObservationType)) {
+
+            return $responder(true, null);
+
+        }
+
+        return $responder(false, $addObservationType);
     }
 }

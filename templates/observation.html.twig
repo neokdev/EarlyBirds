@@ -15,6 +15,16 @@
             <label for="autocomplete-input">Choisissez votre oiseau</label>
         </div>
         <div id="mapid" class="col s12 m8"></div>
+
+        {{ form_start(form) }}
+            {{ form_row(form.author) }}
+            {{ form_row((form.TaxRef)) }}
+            {{ form_row(form.desc) }}
+            {{ form_row(form.latitude) }}
+            {{ form_row(form.longitude) }}
+            {{ form_row(form.img) }}
+            <button type="submit">Soumettre</button>
+        {{ form_end(form) }}
     </div>
 {% endblock %}
 
