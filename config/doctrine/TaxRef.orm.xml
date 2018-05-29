@@ -5,6 +5,7 @@
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="App\Domain\Models\TaxRef" table="taxref" repository-class="App\Domain\Repository\TaxRefRepository">
+        <id name="id" type="uuid" />
         <field name="gne" column="GNE" length="8" nullable="true" />
         <field name="phylum" column="PHYLUM" length="8" nullable="true" />
         <field name="classe" column="CLASSE" length="4" nullable="true" />
@@ -14,8 +15,7 @@
         <field name="tribu" column="TRIBU" length="10" nullable="true" />
         <field name="group1Inpn" column="GROUP1_INPN" length="7" nullable="true" />
         <field name="group2Inpn" column="GROUP2_INPN" length="7" nullable="true" />
-        <id name="cdNom" type="integer" length="6" column="CD_NOM">
-        </id>
+        <field name="cdNom" type="integer" length="6" column="CD_NOM" nullable="true"/>
         <field name="cdTaxsup" column="CD_TAXSUP" length="6" nullable="true" />
         <field name="cdSup" column="CD_SUP" length="6" nullable="true" />
         <field name="cdRef" column="CD_REF" type="integer" length="6" nullable="true" />

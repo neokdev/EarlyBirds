@@ -8,12 +8,13 @@
 
 namespace App\UI\Form\Handler;
 
+use App\Domain\Models\User;
 use App\Domain\Repository\UserRepository;
+use App\Security\UserHelper;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\Security\Core\Security;
 
 class ProfileTypeHandler implements ProfileTypeHandlerInterface
 {
@@ -26,48 +27,44 @@ class ProfileTypeHandler implements ProfileTypeHandlerInterface
      */
     private $flashBag;
     /**
-     * @var Security
-     */
-    private $security;
-    /**
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var UserHelper
+     */
+    private $userHelper;
 
     /**
      * ProfileTypeHandler constructor.
      * @param string            $imageFolder
      * @param FlashBagInterface $flashBag
-     * @param Security          $security
-     * @param UserRepository    $userRepository
+     * @param UserHelper        $userHelper
      */
     public function __construct(
         string $imageFolder,
         FlashBagInterface $flashBag,
-        Security $security,
-        UserRepository $userRepository
+        UserHelper $userHelper
     ) {
-        $this->imageFolder    = $imageFolder;
-        $this->flashBag       = $flashBag;
-        $this->security       = $security;
-        $this->userRepository = $userRepository;
+        $this->imageFolder = $imageFolder;
+        $this->flashBag    = $flashBag;
+        $this->userHelper  = $userHelper;
     }
 
     /**
      * @param FormInterface $form
+     * @param User          $user
      *
      * @return bool
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function handle(FormInterface $form): bool
+    public function handle(FormInterface $form, User $user): bool
     {
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */
             $file = $form->getData()->img;
-
-            $user = $this->userRepository->findOneBy(['email' => $this->security->getUser()->getEmail()]);
 
             if ($file) {
                 $fileOutput = $file->move($this->imageFolder, $this->generateUniqueFileName().".".$file->guessExtension());

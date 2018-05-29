@@ -6,8 +6,8 @@
 
     <entity name="App\Domain\Models\Observe" table="observe" repository-class="App\Domain\Repository\ObserveRepository">
         <id name="id" type="uuid"/>
-        <field name="author"/>
-        <many-to-one field="ref" target-entity="App\Domain\Models\User"/>
+        <many-to-one field="author" target-entity="App\Domain\Models\User"/>
+        <many-to-one field="ref" target-entity="App\Domain\Models\TaxRef"/>
         <field name="desc" type="text"/>
         <field name="latitude"/>
         <field name="longitude"/>

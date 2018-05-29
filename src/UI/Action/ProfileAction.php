@@ -8,6 +8,7 @@
 
 namespace App\UI\Action;
 
+use App\Security\UserHelper;
 use App\UI\Action\Interfaces\ProfileActionInterface;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
 use App\UI\Form\ProfileType;
@@ -34,18 +35,25 @@ final class ProfileAction implements ProfileActionInterface
      * @var ProfileTypeHandlerInterface
      */
     private $typeHandler;
+    /**
+     * @var UserHelper
+     */
+    private $userHelper;
 
     /**
      * ProfileAction constructor.
      * @param FormFactoryInterface        $form
      * @param ProfileTypeHandlerInterface $typeHandler
+     * @param UserHelper                  $userHelper
      */
     public function __construct(
         FormFactoryInterface $form,
-        ProfileTypeHandlerInterface $typeHandler
+        ProfileTypeHandlerInterface $typeHandler,
+        UserHelper $userHelper
     ) {
         $this->form        = $form;
         $this->typeHandler = $typeHandler;
+        $this->userHelper  = $userHelper;
     }
     /**
      * @param Request                   $request
@@ -57,10 +65,12 @@ final class ProfileAction implements ProfileActionInterface
         Request $request,
         ProfileResponderInterface $profileResponder
     ) {
+        $user = $this->userHelper->getUser();
+
         $profileType = $this->form->create(ProfileType::class)
             ->handleRequest($request);
 
-        if ($this->typeHandler->handle($profileType)) {
+        if ($this->typeHandler->handle($profileType, $user)) {
             return $profileResponder(true);
         }
 

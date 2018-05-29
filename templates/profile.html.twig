@@ -11,7 +11,7 @@
                         <a class="waves-effect waves-light cyan lighten-2 black-text active" href="#Profil"><i class="material-icons"> person</i>Profil</a>
                     </li>
                     <li class="tab">
-                        <a class="waves-effect waves-light cyan lighten-2 black-text" href="#Observations">Observations</a>
+                        <a class="waves-effect waves-light cyan lighten-2 black-text" href="#Observations">Mes observations</a>
                     </li>
                     <li class="tab">
                         <a class="waves-effect waves-light cyan lighten-2 black-text" href="#Admin">Admin</a>
@@ -27,7 +27,7 @@
 
                     <div class="row">
                         <div class="col s12 center">
-                            <img src="{% if app.user.img matches '/^https?:/' %}{{ app.user.img | replace({'sz=50':'sz=256'}) }}{% else %}{{ app.user.img | imagine_filter('profile_thumbnail') }}{% endif %}" alt="" class="responsive-img">
+                            <img src="{% if app.user.img %}{% if app.user.img matches '/^https?:/' %}{{ app.user.img | replace({'sz=50':'sz=256'}) }}{% else %}{{ app.user.img | imagine_filter('profile_thumbnail') }}{% endif %}{% else %}{{ '#' }}{% endif %}" alt="" class="responsive-img">
                         </div>
                     </div>
 
@@ -133,13 +133,15 @@
     <script>
         $(document).ready(function(){
             $('.tabs').tabs();
+
+            {% for flash in app.flashes('profile') %}
+            $(function() {
+                M.toast({html: '<span>{{ flash }}</span>'});
+            });
+            {% endfor %}
         });
 
-        {% for flash in app.flashes('profile') %}
-        $(function() {
-            M.toast({html: '<span>{{ flash }}</span>'});
-        });
-        {% endfor %}
+
 
     </script>
 {% endblock %}

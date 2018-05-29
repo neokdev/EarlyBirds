@@ -47,7 +47,7 @@
                 <ul class="left hide-on-med-and-down">
                     <li>
                         <a class="dropdown-trigger" href="{{ path('app_profile') }}" data-target="dropdown_profile">
-                            <img id="profile" src="{% if app.user.img matches '/^https?:/' %}{{ app.user.img }}{% else %}{{ app.user.img | imagine_filter('squared_thumbnail') }}{% endif %}" alt="" class="responsive-img">
+                            <img id="profile" src="{% if app.user.img %}{% if app.user.img matches '/^https?:/' %}{{ app.user.img }}{% else %}{{ app.user.img | imagine_filter('squared_thumbnail') }}{% endif %}{% else %}{{ '#' }}{% endif %}" alt="" class="responsive-img">
                             <i class="material-icons right">arrow_drop_down</i>
                         </a>
                     </li>
