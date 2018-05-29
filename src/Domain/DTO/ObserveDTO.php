@@ -9,6 +9,7 @@
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
+use App\Domain\Models\User;
 
 class ObserveDTO implements ObserveDTOInterface
 {
@@ -53,7 +54,7 @@ class ObserveDTO implements ObserveDTOInterface
     public $status;
 
     /**
-     * @var int
+     * @var User
      */
     public $upvote;
 
@@ -67,7 +68,7 @@ class ObserveDTO implements ObserveDTOInterface
      * @param string $img
      * @param $validator
      * @param string $status
-     * @param int $upvote
+     * @param User $upvote
      */
     public function __construct(
         string $author,
@@ -78,17 +79,17 @@ class ObserveDTO implements ObserveDTOInterface
         string $img,
         $validator,
         string $status,
-        int $upvote
+        User $upvote
     ) {
-        $this->author = $author;
-        $this->ref = $ref;
-        $this->desc = $desc;
-        $this->latitude = $latitude;
+        $this->author    = $author;
+        $this->ref       = $ref;
+        $this->desc      = $desc;
+        $this->latitude  = $latitude;
         $this->longitude = $longitude;
-        $this->img = $img;
+        $this->img       = $img;
         $this->validator = $validator;
-        $this->status = $status;
-        $this->upvote = $upvote;
+        $this->status    = $status;
+        $this->upvote    = $upvote;
     }
 
     /**

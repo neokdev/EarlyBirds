@@ -12,6 +12,7 @@ use App\Domain\Repository\UserRepository;
 use App\Services\Mailer;
 use App\UI\Form\Handler\Interfaces\ForgottenPasswordTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterface
@@ -28,21 +29,28 @@ class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterf
      * @var Mailer
      */
     private $mailer;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
     /**
      * ForgottenPasswordTypeHandler constructor.
      * @param UserRepository          $userRepository
      * @param TokenGeneratorInterface $tokenGenerator
      * @param Mailer                  $mailer
+     * @param FlashBagInterface       $flashBag
      */
     public function __construct(
         UserRepository $userRepository,
         TokenGeneratorInterface $tokenGenerator,
-        Mailer $mailer
+        Mailer $mailer,
+        FlashBagInterface $flashBag
     ) {
         $this->userRepository = $userRepository;
         $this->tokenGenerator = $tokenGenerator;
         $this->mailer         = $mailer;
+        $this->flashBag       = $flashBag;
     }
 
     /**
@@ -66,6 +74,8 @@ class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterf
             $this->userRepository->register($user);
 
             $this->mailer->sendResetPasswordTokenLink($user);
+
+            $this->flashBag->add('login', 'Une email de changement de mot de passe vous a été envoyé par email');
 
             return true;
         }

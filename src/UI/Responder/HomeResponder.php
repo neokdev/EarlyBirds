@@ -12,7 +12,7 @@ use App\UI\Responder\Interfaces\HomeResponderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class HomeResponder implements HomeResponderInterface
+final class HomeResponder implements HomeResponderInterface
 {
     /**
      * @var Environment
@@ -35,7 +35,7 @@ class HomeResponder implements HomeResponderInterface
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    final public function __invoke()
+    public function __invoke()
     {
         return new Response(
             $this->environment->render('homepage.html.twig')

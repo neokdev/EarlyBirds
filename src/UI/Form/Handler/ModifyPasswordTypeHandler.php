@@ -13,6 +13,7 @@ use App\Domain\Models\User;
 use App\Domain\Repository\UserRepository;
 use App\UI\Form\Handler\Interfaces\ModifyPasswordTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class ModifyPasswordTypeHandler implements ModifyPasswordTypeHandlerInterface
@@ -29,21 +30,28 @@ class ModifyPasswordTypeHandler implements ModifyPasswordTypeHandlerInterface
      * @var EncoderFactoryInterface
      */
     private $encoder;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
     /**
      * ModifyPasswordTypeHandler constructor.
      * @param UserRepository          $userRepository
      * @param UserBuilderInterface    $builder
      * @param EncoderFactoryInterface $encoder
+     * @param FlashBagInterface       $flashBag
      */
     public function __construct(
         UserRepository $userRepository,
         UserBuilderInterface $builder,
-        EncoderFactoryInterface $encoder
+        EncoderFactoryInterface $encoder,
+        FlashBagInterface $flashBag
     ) {
         $this->userRepository = $userRepository;
         $this->builder        = $builder;
         $this->encoder        = $encoder;
+        $this->flashBag       = $flashBag;
     }
 
     /**
@@ -65,6 +73,7 @@ class ModifyPasswordTypeHandler implements ModifyPasswordTypeHandlerInterface
             $user = $this->userRepository->findOneBy(['resetPasswordToken' => $token]);
 
             $this->builder->modifyPassword(
+                $user->getEmail(),
                 $form->getData()->password,
                 \Closure::fromCallable([$encoder, 'encodePassword'])
             );
@@ -75,6 +84,7 @@ class ModifyPasswordTypeHandler implements ModifyPasswordTypeHandlerInterface
 
             $this->userRepository->register($user);
 
+            $this->flashBag->add('profile', 'Mot de passe changé avec succès');
 
             return true;
         }

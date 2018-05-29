@@ -7,6 +7,7 @@
         "knpuniversity/oauth2-client-bundle": "^1.19",
         "league/oauth2-facebook": "^2.0",
         "league/oauth2-google": "^2.2",
+        "liip/imagine-bundle": "^2.0",
         "ramsey/uuid-doctrine": "^1.4",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "^4.0",

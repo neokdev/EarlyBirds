@@ -29,7 +29,7 @@ security:
 #
             logout:
                 path:   /logout
-                target: /
+#                target: /
 #                delete_cookies:
 #                    a: { path: null, domain: null }
 #                    b: { path: null, domain: null }

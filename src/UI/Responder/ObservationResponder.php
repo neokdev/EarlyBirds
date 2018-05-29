@@ -12,7 +12,7 @@ use App\UI\Responder\Interfaces\ObservationResponderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class ObservationResponder implements ObservationResponderInterface
+final class ObservationResponder implements ObservationResponderInterface
 {
     /**
      * @var Environment
@@ -35,7 +35,7 @@ class ObservationResponder implements ObservationResponderInterface
      *
      * @return mixed|Response
      */
-    final public function __invoke()
+    public function __invoke()
     {
         return new Response(
             $this->environment->render('observation.html.twig')

@@ -85,17 +85,19 @@ class UserBuilder implements UserBuilderInterface
     }
 
     /**
+     * @param string   $email
      * @param string   $password
      * @param callable $passwordEncoder
      *
      * @return UserBuilder
      */
     public function modifyPassword(
+        string $email,
         string $password,
         callable $passwordEncoder
     ):self {
         $this->user = new User(
-            null,
+            $email,
             $password,
             $passwordEncoder,
             null,
