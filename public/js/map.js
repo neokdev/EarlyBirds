@@ -14,34 +14,34 @@ $(function() {
 
 
 
-    $('#autocomplete-input').blur(function(e) {
-        console.log(e.target.value);
+    $('#observe_TaxRef').blur(function(e) {
+
         if (e.target.value.length >= 5) {
+
+
             //appel ajax
-            console.log('ok');
-            //tableau et affichage de la liste
-            $.getJSON('http://api.wunderground.com/api/50a65432f17cf542/conditions/q/France/Lyon.json',function(data){
-                console.log();
-                $('<div id="message">'+data.current_observation.temp_c+'</div>').insertAfter($('#autocomplete-input').fadeIn(1000));
+            $.getJSON(
+                'http://api.wunderground.com/api/50a65432f17cf542/conditions/q/France/Lyon.json',
+                      function(data) {
+
+                $('<div id="message">'+data.current_observation.display_location.city+'</div>')
+                    .insertAfter(
+                        $('#observe_TaxRef').fadeIn(1000)
+                    );
             });
+
+
+
+
         } else {
             //message si recherche imprécise
-            $('<p id="message">veuillez affiner votre recherche</p>').insertAfter($('#autocomplete-input'));
+            $('<p id="message">veuillez affiner votre recherche</p>').insertAfter($('#observe_TaxRef'));
             $('#message').fadeOut(4000);
         }
     });
 
-    let popup = L.popup();
 
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent(e.latlng.toString())
-            .openOn(mymap);
-    }
-
-    mymap.on('click', onMapClick);
-
+//INIT_GEOLOCATION
     let latitude = $('input#observe_latitude');
     let longitude = $('input#observe_longitude');
 
@@ -56,10 +56,7 @@ $(function() {
 
        mymap.flyTo([cLat,cLong], 10);
 
-       let marker = L.marker([cLat,cLong]);
-       marker.addTo(mymap);
-
-    };
+    }
 
     function error(err) {
         switch (err.code) {
@@ -83,10 +80,85 @@ $(function() {
                 cLong.val('erreur inconnue');
                 break;
         }
-    };
+    }
 
     let geo = navigator.geolocation;
     geo.getCurrentPosition(success,error,{maximumAge:10000,enableHighAccuracy:true});
 
+//END_GEOLOCATION
+
+//SET_UP_POSITION_ON_MAP_AFTER_CLICK
+    let layer;
+
+    function newMarker(e) {
+
+
+        if (layer === undefined) {
+            layer = L.marker(e.latlng).addTo(mymap);
+            layer.addTo(mymap);
+
+            let cLat = e.latlng.lat;
+            latitude.val(cLat);
+
+            let cLong = e.latlng.lng;
+            longitude.val(cLong);
+        }
+
+        layer.remove();
+        layer = L.marker(e.latlng).addTo(mymap);
+        layer.addTo(mymap);
+
+        let cLat = e.latlng.lat;
+        latitude.val(cLat);
+
+        let cLong = e.latlng.lng;
+        longitude.val(cLong);
+
+        return layer;
+
+    }
+
+    mymap.on('click', newMarker);
+
+//END_SET_UP_POSITION_ON_MAP_AFTER_CLICK
+
+//
+    longitude.on('blur',function () {
+
+        let lat = latitude.val();
+        let long = longitude.val();
+
+        console.log([lat,long]);
+
+        if (layer === undefined) {
+
+            layer = L.marker([lat,long]).addTo(mymap);
+            layer.addTo(mymap);
+
+        }
+
+        layer.remove();
+        layer = L.marker([lat,long]).addTo(mymap);
+        layer.addTo(mymap);
+
+    });
+
+    latitude.on('blur', function () {
+
+        let lat = latitude.val();
+        let long = longitude.val();
+
+
+        if (layer === undefined) {
+
+            layer = L.marker([lat,long]).addTo(mymap);
+            layer.addTo(mymap);
+
+        }
+
+        layer.remove();
+        layer = L.marker([lat,long]).addTo(mymap);
+        layer.addTo(mymap);
+    });
 
 });

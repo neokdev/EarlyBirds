@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="581f9270-8ef5-4daf-b56c-f42d52b6430f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/EarlyBirds.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EarlyBirds.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/observation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/observation.html.twig" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/src/Migrations/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -148,12 +148,12 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/public/js/map.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="380">
-                  <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+                <state relative-caret-position="350">
+                  <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
                   <folding>
                     <element signature="e#9#15#0" expanded="true" />
                   </folding>
@@ -164,12 +164,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="observation.html.twig" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/observation.html.twig">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="387">
-                  <caret line="42" selection-start-line="42" selection-end-line="42" />
+                <state relative-caret-position="292">
+                  <caret line="19" selection-start-line="19" selection-end-line="19" />
                 </state>
               </provider>
             </entry>
@@ -191,6 +191,7 @@
       <find>request</find>
       <find>get</find>
       <find>function get</find>
+      <find>mymap</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -202,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/routes/annotations.yaml" />
         <option value="$PROJECT_DIR$/src/UI/Responder/Interfaces/HomeResponderInterface.php" />
         <option value="$PROJECT_DIR$/src/UI/Action/HomeAction.php" />
         <option value="$PROJECT_DIR$/src/Controller/Security/LoginController.php" />
@@ -250,8 +250,9 @@
         <option value="$PROJECT_DIR$/src/UI/Action/Interfaces/ObservationActionInterface.php" />
         <option value="$PROJECT_DIR$/src/UI/Form/ObserveType.php" />
         <option value="$PROJECT_DIR$/src/UI/Responder/ObservationResponder.php" />
-        <option value="$PROJECT_DIR$/templates/observation.html.twig" />
         <option value="$PROJECT_DIR$/src/UI/Action/ObservationAction.php" />
+        <option value="$PROJECT_DIR$/public/js/test.js" />
+        <option value="$PROJECT_DIR$/templates/observation.html.twig" />
         <option value="$PROJECT_DIR$/public/js/map.js" />
       </list>
     </option>
@@ -415,7 +416,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -427,6 +427,18 @@
               <item name="EarlyBirds" type="b2602c69:ProjectViewProjectNode" />
               <item name="EarlyBirds" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EarlyBirds" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EarlyBirds" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="doctrine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EarlyBirds" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EarlyBirds" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EarlyBirds" type="b2602c69:ProjectViewProjectNode" />
@@ -466,6 +478,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -536,7 +549,12 @@
       <workItem from="1527275362800" duration="2421000" />
       <workItem from="1527361815215" duration="5481000" />
       <workItem from="1527413085677" duration="1171000" />
-      <workItem from="1527490422212" duration="17171000" />
+      <workItem from="1527490422212" duration="17266000" />
+      <workItem from="1527535881273" duration="5824000" />
+      <workItem from="1527575195266" duration="14452000" />
+      <workItem from="1527663634841" duration="5460000" />
+      <workItem from="1527695950268" duration="104000" />
+      <workItem from="1527708421841" duration="175000" />
     </task>
     <task id="LOCAL-00001" summary="Post and Comment entity mapping">
       <created>1525343208919</created>
@@ -651,22 +669,22 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167927000" />
+    <option name="totallyTimeSpent" value="194037000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.81458336" visible="true" weight="0.12619808" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005325" side_tool="true" weight="0.26875" />
+      <window_info anchor="right" id="Database" order="3" weight="0.34771034" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32916668" />
-      <window_info active="true" anchor="bottom" x="1120" y="268" width="701" height="580" id="Terminal" order="7" sideWeight="0.49946752" visible="true" weight="0.44166666" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.81458336" visible="true" weight="0.12087327" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" weight="0.34771034" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32855567" />
       <window_info id="Structure" order="1" sideWeight="0.18541667" side_tool="true" weight="0.15495208" />
+      <window_info active="true" anchor="bottom" x="1120" y="268" width="701" height="580" id="Terminal" order="7" sideWeight="0.49946752" visible="true" weight="0.35833332" />
       <window_info id="Favorites" order="2" sideWeight="0.17948718" side_tool="true" weight="0.14696486" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39911798" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -678,30 +696,31 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Database Console" order="7" weight="0.46306506" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32855567" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32916668" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.81458336" visible="true" weight="0.15495208" />
       <window_info id="Structure" order="1" sideWeight="0.18541667" side_tool="true" visible="true" weight="0.15495208" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32916668" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32855567" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39911798" />
       <window_info anchor="right" id="Database" order="3" weight="0.34771034" />
       <window_info anchor="bottom" x="1188" y="382" width="701" height="580" id="Terminal" order="9" sideWeight="0.49946752" type="FLOATING" visible="true" weight="0.44166666" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005325" side_tool="true" weight="0.26875" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="3" sideWeight="0.17948718" side_tool="true" weight="0.14696486" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.46306506" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32855567" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3291634" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Favorites" order="3" sideWeight="0.17948718" side_tool="true" weight="0.14696486" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -732,13 +751,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="circleci image version changed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Domain/Models/Comment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Responder/Security/ForgottenPasswordResponder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="605">
@@ -856,9 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
-          <folding>
-            <element signature="e#114#163#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -943,9 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-          <folding>
-            <element signature="e#115#165#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -953,9 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="14" column="58" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="63" />
-          <folding>
-            <element signature="e#130#193#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -984,9 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="20" column="76" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="76" />
-          <folding>
-            <element signature="e#125#187#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -994,9 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="59" column="40" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="40" />
-          <folding>
-            <element signature="e#114#170#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1004,9 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-          <folding>
-            <element signature="e#6#86#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,23 +1008,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
-          <folding>
-            <element signature="e#31#81#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/observation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="292">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="20" selection-start-line="20" selection-end-line="29" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+        <state relative-caret-position="350">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
           <folding>
             <element signature="e#9#15#0" expanded="true" />
           </folding>
