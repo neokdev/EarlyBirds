@@ -93,7 +93,7 @@ class User implements UserInterface
     private $img;
 
     /**
-     * @var string
+     * @var Observe
      */
     private $upvotes;
 
@@ -399,17 +399,17 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return Observe
      */
-    public function getUpvotes(): string
+    public function getUpvotes(): Observe
     {
         return $this->upvotes;
     }
 
     /**
-     * @param string $upvotes
+     * @param Observe $upvotes
      */
-    public function setUpvotes(string $upvotes): void
+    public function setUpvotes(Observe $upvotes): void
     {
         $this->upvotes = $upvotes;
     }

@@ -215,6 +215,8 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey):? Response
     {
+        $this->flashBag->add('profile', 'Connecté');
+
         return new RedirectResponse($this->urlGenerator->generate('app_profile'));
     }
 

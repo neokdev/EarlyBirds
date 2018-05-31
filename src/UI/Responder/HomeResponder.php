@@ -8,24 +8,30 @@
 
 namespace App\UI\Responder;
 
+use App\Domain\Repository\TaxRefRepository;
 use App\UI\Responder\Interfaces\HomeResponderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class HomeResponder implements HomeResponderInterface
+final class HomeResponder implements HomeResponderInterface
 {
     /**
      * @var Environment
      */
     private $environment;
+    /**
+     * @var TaxRefRepository
+     */
+    private $taxRefRepository;
 
     /**
      * HomeResponder constructor.
      * @param Environment $environment
      */
-    public function __construct(Environment $environment)
+    public function __construct(Environment $environment, TaxRefRepository $taxRefRepository)
     {
         $this->environment = $environment;
+        $this->taxRefRepository = $taxRefRepository;
     }
 
     /**
@@ -35,8 +41,10 @@ class HomeResponder implements HomeResponderInterface
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    final public function __invoke()
+    public function __invoke()
     {
+        dump($this->taxRefRepository->findOneBy(['id' => rand(1, 3983)]));
+
         return new Response(
             $this->environment->render('homepage.html.twig')
         );

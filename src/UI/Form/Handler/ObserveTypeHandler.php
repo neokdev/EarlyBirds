@@ -8,7 +8,6 @@
 
 namespace App\UI\Form\Handler;
 
-
 use App\UI\Form\Handler\Interfaces\ObserveTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 
@@ -16,12 +15,12 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
 {
     /**
      * @param FormInterface $form
+     *
      * @return bool|mixed
      */
-    public function Handle(FormInterface $form): bool
+    public function handle(FormInterface $form): bool
     {
         if ($form->isSubmitted() && $form->isValid()) {
-
             return true;
         }
 

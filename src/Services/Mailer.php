@@ -9,6 +9,7 @@
 namespace App\Services;
 
 use App\Domain\Models\User;
+use App\Services\Interfaces\MailerInterface;
 use Swift_Mailer;
 use Swift_Message;
 use Twig\Environment;
@@ -16,7 +17,7 @@ use Twig\Environment;
 /**
  * Class Mailer
  */
-class Mailer
+class Mailer implements MailerInterface
 {
     /**
      * Mail address of the sender

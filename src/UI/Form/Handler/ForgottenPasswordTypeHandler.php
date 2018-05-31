@@ -9,9 +9,10 @@
 namespace App\UI\Form\Handler;
 
 use App\Domain\Repository\UserRepository;
-use App\Services\Mailer;
+use App\Services\Interfaces\MailerInterface;
 use App\UI\Form\Handler\Interfaces\ForgottenPasswordTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterface
@@ -25,24 +26,31 @@ class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterf
      */
     private $tokenGenerator;
     /**
-     * @var Mailer
+     * @var MailerInterface
      */
     private $mailer;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
     /**
      * ForgottenPasswordTypeHandler constructor.
      * @param UserRepository          $userRepository
      * @param TokenGeneratorInterface $tokenGenerator
-     * @param Mailer                  $mailer
+     * @param MailerInterface         $mailer
+     * @param FlashBagInterface       $flashBag
      */
     public function __construct(
         UserRepository $userRepository,
         TokenGeneratorInterface $tokenGenerator,
-        Mailer $mailer
+        MailerInterface $mailer,
+        FlashBagInterface $flashBag
     ) {
         $this->userRepository = $userRepository;
         $this->tokenGenerator = $tokenGenerator;
         $this->mailer         = $mailer;
+        $this->flashBag       = $flashBag;
     }
 
     /**
@@ -52,9 +60,6 @@ class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterf
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
      */
     public function handle(FormInterface $form): bool
     {
@@ -66,6 +71,8 @@ class ForgottenPasswordTypeHandler implements ForgottenPasswordTypeHandlerInterf
             $this->userRepository->register($user);
 
             $this->mailer->sendResetPasswordTokenLink($user);
+
+            $this->flashBag->add('login', 'Une email de changement de mot de passe vous a été envoyé par email');
 
             return true;
         }

@@ -11,6 +11,7 @@ namespace App\UI\Form\Handler;
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
 use App\Domain\Models\User;
 use App\Domain\Repository\UserRepository;
+use App\Services\Interfaces\MailerInterface;
 use App\Services\Mailer;
 use App\UI\Form\Handler\Interfaces\RegisterTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
@@ -40,13 +41,13 @@ class RegisterTypeHandler implements RegisterTypeHandlerInterface
      * @param EncoderFactoryInterface $encoder
      * @param UserBuilderInterface    $userBuilder
      * @param UserRepository          $userRepository
-     * @param Mailer                  $mailer
+     * @param MailerInterface         $mailer
      */
     public function __construct(
         EncoderFactoryInterface $encoder,
         UserBuilderInterface $userBuilder,
         UserRepository $userRepository,
-        Mailer $mailer
+        MailerInterface $mailer
     ) {
         $this->encoder        = $encoder;
         $this->userBuilder    = $userBuilder;
@@ -61,9 +62,6 @@ class RegisterTypeHandler implements RegisterTypeHandlerInterface
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
      */
     public function handle(FormInterface $registerType): bool
     {
