@@ -2,7 +2,10 @@
 
 namespace App\Domain\Models;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 /**
@@ -14,49 +17,61 @@ class Observe
      * @var UuidInterface
      */
     private $id;
+
     /**
-     * @var string
+     * @var User
      */
     private $author;
+
     /**
      * @var TaxRef
      */
     private $ref;
+
     /**
      * @var string
      */
-    private $desc;
+    private $description;
+
     /**
      * @var string
      */
     private $latitude;
+
     /**
      * @var string
      */
     private $longitude;
+
     /**
      * @var string
      */
     private $img;
+
     /**
      * @var User
      */
     private $validator;
+
     /**
      * @var string
      */
     private $status;
+
     /**
-     * @var int
+     * @var ArrayCollection
      */
-    private $upvote;
+    private $upvoterCollection;
+
     /**
-     * Post constructor.
+     * Observe constructor.
      */
     public function __construct()
     {
-        $this->id = Uuid::uuid4();
+        $this->id                = Uuid::uuid4();
+        $this->upvoterCollection = new ArrayCollection();
     }
+
     /**
      * @return UuidInterface
      */
@@ -66,17 +81,17 @@ class Observe
     }
 
     /**
-     * @return string
+     * @return User
      */
-    public function getAuthor(): string
+    public function getAuthor(): User
     {
         return $this->author;
     }
 
     /**
-     * @param string $author
+     * @param User $author
      */
-    public function setAuthor(string $author): void
+    public function setAuthor(User $author): void
     {
         $this->author = $author;
     }
@@ -100,17 +115,17 @@ class Observe
     /**
      * @return string
      */
-    public function getDesc(): string
+    public function getDescription(): string
     {
-        return $this->desc;
+        return $this->description;
     }
 
     /**
-     * @param string $desc
+     * @param string $description
      */
-    public function setDesc(string $desc): void
+    public function setDescription(string $description): void
     {
-        $this->desc = $desc;
+        $this->description = $description;
     }
 
     /**
@@ -194,19 +209,20 @@ class Observe
     }
 
     /**
-     * @return int
+     * @return Collection|null
      */
-    public function getUpvote(): int
+    public function getUpvoterCollection(): ?Collection
     {
-        return $this->upvote;
+        return $this->upvoterCollection;
     }
 
     /**
-     * @param int $upvote
+     * @param User $upvoter
      */
-    public function setUpvote(int $upvote): void
+    public function addUpvoter(User $upvoter): void
     {
-        $this->upvote = $upvote;
+        $this->upvoterCollection->add($upvoter);
+        $upvoter->setUpvotes($this);
     }
 
 }

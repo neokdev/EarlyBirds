@@ -40,15 +40,18 @@ class ProfileTypeHandler implements ProfileTypeHandlerInterface
      * @param string            $imageFolder
      * @param FlashBagInterface $flashBag
      * @param UserHelper        $userHelper
+     * @param UserRepository    $userRepository
      */
     public function __construct(
         string $imageFolder,
         FlashBagInterface $flashBag,
-        UserHelper $userHelper
+        UserHelper $userHelper,
+        UserRepository $userRepository
     ) {
-        $this->imageFolder = $imageFolder;
-        $this->flashBag    = $flashBag;
-        $this->userHelper  = $userHelper;
+        $this->imageFolder    = $imageFolder;
+        $this->flashBag       = $flashBag;
+        $this->userHelper     = $userHelper;
+        $this->userRepository = $userRepository;
     }
 
     /**

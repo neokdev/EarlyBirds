@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class UserFixtures extends Fixture
 {
-    public const USER = 'user';
+    public const USER_REFERENCE = 'user';
     /**
      * @var EncoderFactoryInterface
      */
@@ -40,7 +40,7 @@ class UserFixtures extends Fixture
 
         $factory = new Factory();
         $faker   = $factory::create("fr_FR");
-
+        /** @var User $user */
         $user = new User(
             $faker->email,
             $faker->password,
@@ -57,6 +57,6 @@ class UserFixtures extends Fixture
         $manager->persist($user);
         $manager->flush();
 
-        $this->addReference(self::USER, $user);
+        $this->addReference('user', $user);
     }
 }
