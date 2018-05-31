@@ -9,6 +9,7 @@
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ObserveDTO implements ObserveDTOInterface
 {
@@ -43,42 +44,22 @@ class ObserveDTO implements ObserveDTOInterface
     public $img;
 
     /**
-     *
-     */
-    public $validator;
-
-    /**
-     * @var string
-     */
-    public $status;
-
-    /**
-     * @var int
-     */
-    public $upvote;
-
-    /**
      * ObserveDTO constructor.
      * @param string $author
      * @param $ref
      * @param string $desc
      * @param string $latitude
      * @param string $longitude
-     * @param string $img
-     * @param $validator
-     * @param string $status
-     * @param int $upvote
+     * @param UploadedFile $img
      */
     public function __construct(
         string $author,
-        $ref,
+        string $ref,
         string $desc,
         string $latitude,
         string $longitude,
-        string $img,
-        $validator,
-        string $status,
-        int $upvote
+        UploadedFile $img
+
     ) {
         $this->author = $author;
         $this->ref = $ref;
@@ -86,9 +67,6 @@ class ObserveDTO implements ObserveDTOInterface
         $this->latitude = $latitude;
         $this->longitude = $longitude;
         $this->img = $img;
-        $this->validator = $validator;
-        $this->status = $status;
-        $this->upvote = $upvote;
     }
 
     /**
@@ -100,9 +78,9 @@ class ObserveDTO implements ObserveDTOInterface
     }
 
     /**
-     *
+     * @return string
      */
-    public function getRef()
+    public function getRef(): string
     {
         return $this->ref;
     }
@@ -132,37 +110,11 @@ class ObserveDTO implements ObserveDTOInterface
     }
 
     /**
-     * @return string
+     * @return UploadedFile
      */
-    public function getImg(): string
+    public function getImg(): UploadedFile
     {
         return $this->img;
     }
-
-    /**
-     *
-     */
-    public function getValidator()
-    {
-        return $this->validator;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUpvote(): int
-    {
-        return $this->status;
-    }
-
-
 
 }

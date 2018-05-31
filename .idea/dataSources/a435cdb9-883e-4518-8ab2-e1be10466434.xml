@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="app.db">
-  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.7">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.9">
     <root id="1"/>
     <schema id="2" parent="1" name="main">
       <Current>1</Current>
@@ -106,16 +106,13 @@
     <index id="34" parent="6" name="sqlite_autoindex_app_users_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="35" parent="6" name="IDX_C250282438C751C4">
       <ColNames>roles_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <index id="36" parent="6" name="IDX_C25028245FB14BA7">
       <ColNames>level_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <key id="37" parent="6">
       <ColNames>id</ColNames>
@@ -160,7 +157,6 @@
     <index id="45" parent="7" name="sqlite_autoindex_badge_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="46" parent="7">
@@ -182,17 +178,13 @@
       <NameSurrogate>1</NameSurrogate>
       <ColNames>badge_id
 user_id</ColNames>
-      <ColumnCollations>
-</ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="50" parent="8" name="IDX_299D3A50F7A2C2FC">
       <ColNames>badge_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <index id="51" parent="8" name="IDX_299D3A50A76ED395">
       <ColNames>user_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <key id="52" parent="8">
       <ColNames>badge_id
@@ -235,12 +227,10 @@ user_id</ColNames>
     <index id="59" parent="9" name="sqlite_autoindex_comment_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="60" parent="9" name="IDX_9474526CF675F31B">
       <ColNames>author_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <key id="61" parent="9">
       <ColNames>id</ColNames>
@@ -275,7 +265,6 @@ user_id</ColNames>
     <index id="67" parent="10" name="sqlite_autoindex_level_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="68" parent="10">
@@ -291,7 +280,6 @@ user_id</ColNames>
     <index id="70" parent="11" name="sqlite_autoindex_migration_versions_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="71" parent="11">
@@ -337,12 +325,10 @@ user_id</ColNames>
     <index id="79" parent="12" name="sqlite_autoindex_observe_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="80" parent="12" name="IDX_4EC2794B0644AEC">
       <ColNames>validator_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <key id="81" parent="12">
       <ColNames>id</ColNames>
@@ -382,7 +368,6 @@ user_id</ColNames>
     <index id="88" parent="13" name="sqlite_autoindex_post_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="89" parent="13">
@@ -408,7 +393,6 @@ user_id</ColNames>
     <index id="93" parent="14" name="sqlite_autoindex_roles_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="94" parent="14">
@@ -654,17 +638,13 @@ user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id
 badge_id</ColNames>
-      <ColumnCollations>
-</ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="144" parent="17" name="IDX_1C32B345A76ED395">
       <ColNames>user_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <index id="145" parent="17" name="IDX_1C32B345F7A2C2FC">
       <ColNames>badge_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <key id="146" parent="17">
       <ColNames>user_id

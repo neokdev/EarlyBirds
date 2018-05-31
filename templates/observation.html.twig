@@ -8,14 +8,53 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row" id="blue">
-        <div class="input-field col s12 m4">
-            <i class="material-icons prefix">textsms</i>
-            <input type="text" id="autocomplete-input" class="autocomplete">
-            <label for="autocomplete-input">Choisissez votre oiseau</label>
+    <div class="row">
+        <div id="form" class="col s12 m4">
+            <div class="row" id="blue">
+                {{ form_start(form) }}
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">textsms</i>
+                    <input type="text" id="autocomplete-input" class="autocomplete">
+                    <label for="autocomplete-input">Choisissez votre oiseau</label>
+                </div>
+
+                <div class="input-field col s12">
+                    {{ form_row(form.author) }}
+                </div>
+
+                <div class="input-field col s12">
+                    {{ form_row((form.TaxRef)) }}
+                </div>
+
+                <div class="input-field col s12">
+                    {{ form_row(form.desc) }}
+                </div>
+
+                <div class="input-field col s12">
+                    {{ form_row(form.latitude) }}
+                </div>
+
+                <div class="input-field col s12">
+                    {{ form_row(form.longitude) }}
+                </div>
+
+                <div class="input-field col s12">
+                    {{ form_row(form.img) }}
+                </div>
+
+                <div class="input-field col s12">
+                    <button type="submit">Soumettre</button>
+                </div>
+
+
+                {{ form_end(form) }}
+
+
+            </div>
         </div>
         <div id="mapid" class="col s12 m8"></div>
     </div>
+
 {% endblock %}
 
 {% block title %}
