@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
-class ModifyPasswordResponder implements ModifyPasswordResponderInterface
+final class ModifyPasswordResponder implements ModifyPasswordResponderInterface
 {
     /**
      * @var Environment

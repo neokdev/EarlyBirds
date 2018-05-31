@@ -9,7 +9,9 @@
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
+use App\Domain\Models\TaxRef;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class ObserveDTO implements ObserveDTOInterface
 {
@@ -19,14 +21,14 @@ class ObserveDTO implements ObserveDTOInterface
     public $author;
 
     /**
-     *
+     * @var TaxRef
      */
     public $ref;
 
     /**
      * @var string
      */
-    public $desc;
+    public $description;
 
     /**
      * @var string
@@ -39,35 +41,35 @@ class ObserveDTO implements ObserveDTOInterface
     public $longitude;
 
     /**
-     * @var string
+     * @var UploadedFile
      */
     public $img;
 
     /**
      * ObserveDTO constructor.
      * @param string $author
-     * @param $ref
-     * @param string $desc
+     * @param TaxRef $ref
+     * @param string $description
      * @param string $latitude
      * @param string $longitude
      * @param UploadedFile $img
      */
     public function __construct(
         string $author,
-        string $ref,
-        string $desc,
+        TaxRef $ref,
+        string $description,
         string $latitude,
         string $longitude,
         UploadedFile $img
-
     ) {
         $this->author = $author;
         $this->ref = $ref;
-        $this->desc = $desc;
+        $this->description = $description;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
         $this->img = $img;
     }
+
 
     /**
      * @return string
@@ -78,9 +80,9 @@ class ObserveDTO implements ObserveDTOInterface
     }
 
     /**
-     * @return string
+     * @return TaxRef
      */
-    public function getRef(): string
+    public function getRef(): TaxRef
     {
         return $this->ref;
     }
@@ -88,9 +90,9 @@ class ObserveDTO implements ObserveDTOInterface
     /**
      * @return string
      */
-    public function getDesc(): string
+    public function getDescription(): string
     {
-        return $this->desc;
+        return $this->description;
     }
 
     /**

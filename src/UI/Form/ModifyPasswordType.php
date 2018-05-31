@@ -31,16 +31,10 @@ class ModifyPasswordType extends AbstractType
             ->add('password', RepeatedType::class, [
                 'type'           => PasswordType::class,
                 'first_options'  => [
-                    'label' => false,
-                    'attr'  => [
-                        'placeholder' => 'Mot de passe',
-                    ],
+                    'label' => 'Mot de passe',
                 ],
                 'second_options' => [
-                    'label' => false,
-                    'attr'  => [
-                        'placeholder' => 'Répétez le mot de passe',
-                    ],
+                    'label' => 'Répétez le mot de passe',
                 ],
             ])
         ;

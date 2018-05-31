@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class ObservationResponder implements ObservationResponderInterface
+final class ObservationResponder implements ObservationResponderInterface
 {
     /**
      * @var Environment

@@ -26,6 +26,7 @@
                     {{ form_start(login_form, {'action': path('security_login')}) }}
 
                         <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
                             {{ form_widget(login_form.email, {
                                 'attr':{
                                     'class':'validate'
@@ -35,6 +36,7 @@
                         </div>
 
                         <div class="input-field">
+                            <i class="material-icons prefix">mode_edit</i>
                             {{ form_widget(login_form.password, {
                                 'attr':{
                                     'class':'validate'
@@ -56,37 +58,49 @@
             <div class="row">
                 <div class="col s10 offset-s1 center">
 
-    {{ form_start(register_form) }}
-                    <div class="input-field">
-                        {{ form_widget(register_form.email, {
-                            'attr':{
-                                'class':'validate'
-                            }
-                        }) }}
-                        {{ form_label(register_form.email) }}
+                    {{ form_start(register_form) }}
+
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            {{ form_widget(register_form.email, {
+                                'attr':{
+                                    'class':'validate'
+                                }
+                            }) }}
+                            {{ form_label(register_form.email) }}
+                        </div>
                     </div>
 
-                    <div class="input-field">
-                        {{ form_widget(register_form.password.first, {
-                            'attr':{
-                                'class':'validate'
-                            }
-                        }) }}
-                        {{ form_label(register_form.password.first) }}
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">mode_edit</i>
+                            {{ form_widget(register_form.password.first, {
+                                'attr':{
+                                    'class':'validate'
+                                }
+                            }) }}
+                            {{ form_label(register_form.password.first) }}
+                        </div>
                     </div>
 
-                    <div class="input-field">
-                        {{ form_widget(register_form.password.second, {
-                            'attr':{
-                                'class':'validate'
-                            }
-                        }) }}
-                        {{ form_label(register_form.password.second) }}
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">mode_edit</i>
+                            {{ form_widget(register_form.password.second, {
+                                'attr':{
+                                    'class':'validate'
+                                }
+                            }) }}
+                            {{ form_label(register_form.password.second) }}
+                        </div>
                     </div>
-    <button class="btn waves-effect waves-light cyan lighten-2 black-text" type="submit" name="action">S'enregistrer
-        <i class="material-icons right">send</i>
-    </button>
-    {{ form_end(register_form) }}
+
+                    <button class="btn waves-effect waves-light cyan lighten-2 black-text" type="submit" name="action">S'enregistrer
+                        <i class="material-icons right">send</i>
+                    </button>
+
+                    {{ form_end(register_form) }}
 
                 </div>
             </div>

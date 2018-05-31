@@ -32,7 +32,7 @@ class ObserveType extends AbstractType
                     'placeholder' => 'nom de l\'oiseau'
                 ]
             ])
-            ->add('desc',TextType::class, [
+            ->add('description',TextType::class, [
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'desecription'
@@ -67,7 +67,7 @@ class ObserveType extends AbstractType
                 return new ObserveDTO(
                     $form->get('author')->getData(),
                     $form->get('ref')->getData(),
-                    $form->get('desc')->getData(),
+                    $form->get('description')->getData(),
                     $form->get('latitude')->getData(),
                     $form->get('longitude')->getData(),
                     $form->get('img')->getData()

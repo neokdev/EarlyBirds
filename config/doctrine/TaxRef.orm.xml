@@ -5,25 +5,17 @@
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="App\Domain\Models\TaxRef" table="taxref" repository-class="App\Domain\Repository\TaxRefRepository">
-        <field name="gne" column="GNE" length="8" nullable="true" />
+        <id name="id" type="integer" />
+        <field name="regne" column="GNE" length="8" nullable="true" />
         <field name="phylum" column="PHYLUM" length="8" nullable="true" />
         <field name="classe" column="CLASSE" length="4" nullable="true" />
-        <field name="ordre" column="ORDRE" length="19" nullable="true" />
         <field name="famille" column="FAMILLE" length="17" nullable="true" />
-        <field name="sousFamille" column="SOUS_FAMILLE" length="15" nullable="true" />
-        <field name="tribu" column="TRIBU" length="10" nullable="true" />
-        <field name="group1Inpn" column="GROUP1_INPN" length="7" nullable="true" />
-        <field name="group2Inpn" column="GROUP2_INPN" length="7" nullable="true" />
-        <id name="cdNom" type="integer" length="6" column="CD_NOM">
-        </id>
+        <field name="cdNom" type="integer" length="6" column="CD_NOM" nullable="true" />
         <field name="cdTaxsup" column="CD_TAXSUP" length="6" nullable="true" />
-        <field name="cdSup" column="CD_SUP" length="6" nullable="true" />
         <field name="cdRef" column="CD_REF" type="integer" length="6" nullable="true" />
         <field name="rang" column="RANG" length="4" nullable="true" />
         <field name="lbNom" column="LB_NOM" length="47" nullable="true" />
-        <field name="lbAuteur" column="LB_AUTEUR" length="73" nullable="true" />
         <field name="nomComplet" column="NOM_COMPLET" length="86" nullable="true" />
-        <field name="nomCompletHtml" column="NOM_COMPLET_HTML" length="93" nullable="true" />
         <field name="nomValide" column="NOM_VALIDE" length="86" nullable="true" />
         <field name="nomVern" column="NOM_VERN" length="101" nullable="true" />
         <field name="nomVernEng" column="NOM_VERN_ENG" length="122" nullable="true" />
@@ -33,18 +25,16 @@
         <field name="mar" column="MAR" length="1" nullable="true" />
         <field name="gua" column="GUA" length="1" nullable="true" />
         <field name="sm" column="SM" length="1" nullable="true" />
-        <field name="sb" column="SB" length="1" nullable="true" />
         <field name="spm" column="SPM" length="1" nullable="true" />
         <field name="may" column="MAY" length="1" nullable="true" />
         <field name="epa" column="EPA" length="1" nullable="true" />
         <field name="reu" column="REU" length="1" nullable="true" />
         <field name="sa" column="SA" length="1" nullable="true" />
         <field name="ta" column="TA" length="1" nullable="true" />
-        <field name="taaf" column="TAAF" length="1" nullable="true" />
-        <field name="pf" column="PF" length="1" nullable="true" />
         <field name="nc" column="NC" length="1" nullable="true" />
         <field name="wf" column="WF" length="1" nullable="true" />
+        <field name="pf" column="PF" length="1" nullable="true" />
         <field name="cli" column="CLI" length="1" nullable="true" />
-        <field name="url" column="URL" length="41" nullable="true" />
+        <field name="sb" column="SB" length="1" nullable="true" />
     </entity>
 </doctrine-mapping>

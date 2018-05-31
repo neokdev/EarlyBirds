@@ -16,7 +16,7 @@ class ObservationActionTest extends WebTestCase
     /**
      * @test
      */
-    public function testHomeAction()
+    public function testObservationAction()
     {
         $client = static::createClient();
 
