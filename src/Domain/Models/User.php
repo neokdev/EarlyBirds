@@ -93,21 +93,22 @@ class User implements UserInterface
     private $img;
 
     /**
-     * @var string
+     * @var Observe
      */
     private $upvotes;
 
     /**
      * User constructor.
-     * @param string     $email
-     * @param string     $password
-     * @param callable   $passwordEncoder
-     * @param array|null $roles
-     * @param string     $googleId
-     * @param string     $nickname
-     * @param string     $firstname
-     * @param string     $lastname
-     * @param string     $img
+     * @param string      $email
+     * @param string      $password
+     * @param callable    $passwordEncoder
+     * @param array|null  $roles
+     * @param string      $googleId
+     * @param string      $nickname
+     * @param string      $firstname
+     * @param string      $lastname
+     * @param string      $img
+     * @param null|string $resetPasswordToken
      */
     public function __construct(
         string $email,
@@ -118,17 +119,19 @@ class User implements UserInterface
         ?string $nickname,
         ?string $firstname,
         ?string $lastname,
-        ?string $img
+        ?string $img,
+        ?string $resetPasswordToken
     ) {
-        $this->id        = Uuid::uuid4();
-        $this->email     = $email;
-        $this->password  = $passwordEncoder($password, null);
-        $this->roles     = $roles;
-        $this->googleId  = $googleId;
-        $this->nickname  = $nickname;
-        $this->firstname = $firstname;
-        $this->lastname  = $lastname;
-        $this->img       = $img;
+        $this->id                 = Uuid::uuid4();
+        $this->email              = $email;
+        $this->password           = $passwordEncoder($password, null);
+        $this->roles              = $roles;
+        $this->googleId           = $googleId;
+        $this->nickname           = $nickname;
+        $this->firstname          = $firstname;
+        $this->lastname           = $lastname;
+        $this->img                = $img;
+        $this->resetPasswordToken = $resetPasswordToken;
     }
 
     /**
@@ -396,17 +399,17 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return Observe
      */
-    public function getUpvotes(): string
+    public function getUpvotes(): Observe
     {
         return $this->upvotes;
     }
 
     /**
-     * @param string $upvotes
+     * @param Observe $upvotes
      */
-    public function setUpvotes(string $upvotes): void
+    public function setUpvotes(Observe $upvotes): void
     {
         $this->upvotes = $upvotes;
     }

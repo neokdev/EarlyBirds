@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
-class ModifyPasswordResponder implements ModifyPasswordResponderInterface
+final class ModifyPasswordResponder implements ModifyPasswordResponderInterface
 {
     /**
      * @var Environment
@@ -41,7 +41,7 @@ class ModifyPasswordResponder implements ModifyPasswordResponderInterface
 
     /**
      * @param bool               $redirect
-     * @param FormInterface|null $form
+     * @param FormInterface|null $modifyPasswordForm
      *
      * @return mixed|RedirectResponse|Response
      *
@@ -51,14 +51,14 @@ class ModifyPasswordResponder implements ModifyPasswordResponderInterface
      */
     public function __invoke(
         bool $redirect,
-        FormInterface $form = null
+        FormInterface $modifyPasswordForm = null
     ) {
         if ($redirect) {
             $response = new RedirectResponse($this->urlGenerator->generate('app_profile'));
         } else {
             $response = new Response(
                 $this->environment->render('Security/modifyPassword.html.twig', [
-                    'form' => $form->createView(),
+                    'form' => $modifyPasswordForm->createView(),
                 ])
             );
         }
