@@ -21,6 +21,6 @@
         <many-to-one field="level" target-entity="App\Domain\Models\Level" inversed-by="user"/>
         <many-to-many field="badge" target-entity="App\Domain\Models\Badge"/>
         <field name="img" nullable="true"/>
-        <many-to-one field="upvotes" target-entity="App\Domain\Models\Observe" inversed-by="upvote"/>
+        <many-to-one field="upvotes" target-entity="App\Domain\Models\Observe" inversed-by="upvoterCollection"/>
     </entity>
 </doctrine-mapping>

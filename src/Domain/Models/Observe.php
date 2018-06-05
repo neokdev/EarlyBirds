@@ -4,13 +4,10 @@ namespace App\Domain\Models;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use GuzzleHttp\Psr7\UploadedFile;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
-/**
- * @ORM\Entity(repositoryClass="App\Domain\Repository\ObserveRepository")
- */
 class Observe
 {
     /**
@@ -44,7 +41,7 @@ class Observe
     private $longitude;
 
     /**
-     * @var string
+     * @var UploadedFile
      */
     private $img;
 
@@ -161,9 +158,9 @@ class Observe
     }
 
     /**
-     * @return string
+     * @return UploadedFile
      */
-    public function getImg(): string
+    public function getImg(): UploadedFile
     {
         return $this->img;
     }
@@ -224,5 +221,4 @@ class Observe
         $this->upvoterCollection->add($upvoter);
         $upvoter->setUpvotes($this);
     }
-
 }
