@@ -3,125 +3,126 @@
 {% block title %}NAO - Profil{% endblock %}
 
 {% block body %}
+    {{ dump() }}
     <div class="row">
         <div class="tabs-vertical">
-            <div class="col s4 m3">
+            <div class="col s3">
                 <ul class="tabs">
                     <li class="tab">
-                        <a class="waves-effect waves-light cyan lighten-2 black-text active" href="#Profil"><i class="material-icons"> person</i>Profil</a>
+                        <a class="waves-effect waves-light btn-large" href="#Dashboard"><i class="material-icons" style="font-size: 4em">dashboard</i></a>
                     </li>
                     <li class="tab">
-                        <a class="waves-effect waves-light cyan lighten-2 black-text" href="#Observations">Mes observations</a>
+                        <a class="waves-effect waves-light btn-large" href="#Profil"><i class="material-icons" style="font-size: 4em">contact_mail</i></a>
                     </li>
                     <li class="tab">
-                        <a class="waves-effect waves-light cyan lighten-2 black-text" href="#Admin">Admin</a>
+                        <a class="waves-effect waves-light btn-large" href="#Observations"><img src="{{ asset('/img/icons/Very-Basic-Binoculars-icon.png' | imagine_filter('icon_tab')) }}"></a>
+                    </li>
+                    <li class="tab">
+                        <a class="waves-effect waves-light btn-large" href="#Posts"><i class="material-icons" style="font-size: 4em">assignment</i></a>
                     </li>
                 </ul>
             </div>
-            <div class="col s8 m9">
+            <div class="col s9">
+                <div id="Dashboard" class="tab-content">
+
+                    <b>Dashboard</b>
+
+                </div>
                 <div id="Profil" class="tab-content">
 
                     <div class="row" id="loginPanel">
                         <div class="card-panel grey lighten-4 hoverable col s10 offset-s1">
                             <div class="row" style="padding-top: 6%; padding-bottom: 3%">
 
-                    <div class="row">
-                        <div class="col s12 center">
-                            <img src="{% if app.user.img %}{% if app.user.img matches '/^https?:/' %}{{ app.user.img | replace({'sz=50':'sz=256'}) }}{% else %}{{ app.user.img | imagine_filter('profile_thumbnail') }}{% endif %}{% else %}{{ '#' }}{% endif %}" alt="" class="responsive-img">
-                        </div>
-                    </div>
+                                <div class="row">
+                                    <div class="col s12 center">
+                                        <img src="{% if app.user.img %}{% if app.user.img matches '/^https?:/' %}{{ app.user.img | replace({'sz=50':'sz=256'}) }}{% else %}{{ app.user.img | imagine_filter('profile_thumbnail') }}{% endif %}{% else %}{{ '#' }}{% endif %}" alt="" class="responsive-img">
+                                    </div>
+                                </div>
 
 
-                    {{ form_start(form) }}
+                                {{ form_start(form) }}
 
-                    <div class="row">
-                        <div class="file-field input-field col s10 offset-s1">
-                            <div class="btn">
-                                <span>Envoyer un fichier</span>
-                                {{ form_widget(form.img) }}
+                                <div class="row">
+                                    <div class="file-field input-field col s10 offset-s1">
+                                        <div class="btn">
+                                            <span>Envoyer un fichier</span>
+                                            {{ form_widget(form.img) }}
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s10 offset-s1">
+                                        <input disabled value="{{ app.user.email }}" id="disabled" type="text" class="validate">
+                                        <label for="disabled">Email</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s10 offset-s1">
+                                        {{ form_widget(form.nickname, {
+                                            'attr':{
+                                                'class':'validate',
+                                                'value':app.user.nickname
+                                            }
+                                        }) }}
+                                        {{ form_label(form.nickname) }}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field offset-s1 col s5">
+                                        {{ form_widget(form.firstname, {
+                                            'attr':{
+                                                'class':'validate',
+                                                'value':app.user.firstname
+                                            }
+                                        }) }}
+                                        {{ form_label(form.firstname) }}
+                                    </div>
+                                    <div class="input-field col s5">
+                                        {{ form_widget(form.lastname, {
+                                            'attr':{
+                                                'class':'validate',
+                                                'value':app.user.lastname
+                                            }
+                                        }) }}
+                                        {{ form_label(form.lastname) }}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s4 offset-s4 center">
+                                        <button class="btn waves-effect waves-light cyan lighten-2 black-text" type="submit" name="action">Modifier
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {{ form_end(form) }}
+
                             </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s10 offset-s1">
-                            <input disabled value="{{ app.user.email }}" id="disabled" type="text" class="validate">
-                            <label for="disabled">Email</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s10 offset-s1">
-                            {{ form_widget(form.nickname, {
-                                'attr':{
-                                    'class':'validate',
-                                    'value':app.user.nickname
-                                }
-                            }) }}
-                            {{ form_label(form.nickname) }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field offset-s1 col s5">
-                            {{ form_widget(form.firstname, {
-                                'attr':{
-                                    'class':'validate',
-                                    'value':app.user.firstname
-                                }
-                            }) }}
-                            {{ form_label(form.firstname) }}
-                        </div>
-                        <div class="input-field col s5">
-                            {{ form_widget(form.lastname, {
-                                'attr':{
-                                    'class':'validate',
-                                    'value':app.user.lastname
-                                }
-                            }) }}
-                            {{ form_label(form.lastname) }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s4 offset-s4 center">
-                            <button class="btn waves-effect waves-light cyan lighten-2 black-text" type="submit" name="action">Modifier
-                                <i class="material-icons right">send</i>
-                            </button>
-                        </div>
-                    </div>
-
-                    {{ form_end(form) }}
-
-                </div>
                         </div>
                     </div>
                 </div>
                 <div id="Observations" class="tab-content" style="background-color: #f5f5f5">
 
                     <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                        </li>
+                        {% for observe in observes %}
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">place</i>{{ observe.ref.id }}</div>
+                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                            </li>
+                        {% endfor %}
                     </ul>
 
                 </div>
-                <div id="Admin" class="tab-content">
-
-                    ADMIN CONTENT
-
+                <div id="Posts" class="tab-content">
+                    <b>POSTS</b>
                 </div>
             </div>
         </div>

@@ -51,7 +51,8 @@ final class ProfileResponder implements ProfileResponderInterface
      */
     public function __invoke(
         bool $redirect = false,
-        FormInterface $form = null
+        FormInterface $form = null,
+        array $observe = null
     ) {
         if ($redirect) {
             $response = new RedirectResponse($this->urlGenerator->generate('app_profile'));
@@ -60,7 +61,8 @@ final class ProfileResponder implements ProfileResponderInterface
                 $this->environment->render(
                     'profile.html.twig',
                     [
-                        'form' => $form->createView(),
+                        'form'     => $form->createView(),
+                        'observes' => $observe,
                     ]
                 )
             );

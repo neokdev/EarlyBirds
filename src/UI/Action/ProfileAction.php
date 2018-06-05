@@ -8,14 +8,15 @@
 
 namespace App\UI\Action;
 
+use App\Domain\Models\Observe;
 use App\Security\UserHelper;
 use App\UI\Action\Interfaces\ProfileActionInterface;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
 use App\UI\Form\ProfileType;
 use App\UI\Responder\Interfaces\ProfileResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ProfileAction
@@ -65,15 +66,21 @@ final class ProfileAction implements ProfileActionInterface
         Request $request,
         ProfileResponderInterface $profileResponder
     ) {
-        $user = $this->userHelper->getUser();
+        $observes = $this->userHelper->getUser()->getObserves()->getValues();
+        /** @var Observe $observes */
+
+        foreach ($observes as $observe) {
+            /** @var Observe $observe */
+            dump($observe->getRef());
+        }
 
         $profileType = $this->form->create(ProfileType::class)
             ->handleRequest($request);
 
-        if ($this->typeHandler->handle($profileType, $user)) {
+        if ($this->typeHandler->handle($profileType)) {
             return $profileResponder(true);
         }
 
-        return $profileResponder(false, $profileType);
+        return $profileResponder(false, $profileType, $observes);
     }
 }

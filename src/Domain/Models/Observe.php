@@ -5,6 +5,7 @@ namespace App\Domain\Models;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
@@ -13,6 +14,7 @@ use Ramsey\Uuid\UuidInterface;
  */
 class Observe
 {
+    use TimestampableEntity;
     /**
      * @var UuidInterface
      */
@@ -61,15 +63,15 @@ class Observe
     /**
      * @var ArrayCollection
      */
-    private $upvoterCollection;
+    private $upvoter;
 
     /**
      * Observe constructor.
      */
     public function __construct()
     {
-        $this->id                = Uuid::uuid4();
-        $this->upvoterCollection = new ArrayCollection();
+        $this->id      = Uuid::uuid4();
+        $this->upvoter = new ArrayCollection();
     }
 
     /**
@@ -81,35 +83,43 @@ class Observe
     }
 
     /**
-     * @return User
+     * @return User|null
      */
-    public function getAuthor(): User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
 
     /**
-     * @param User $author
+     * @param User|null $author
+     *
+     * @return Observe
      */
-    public function setAuthor(User $author): void
+    public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
     }
 
     /**
-     * @return TaxRef
+     * @return TaxRef|null
      */
-    public function getRef(): TaxRef
+    public function getRef(): ?TaxRef
     {
         return $this->ref;
     }
 
     /**
-     * @param TaxRef $ref
+     * @param TaxRef|null $ref
+     *
+     * @return Observe
      */
-    public function setRef(TaxRef $ref): void
+    public function setRef(?TaxRef $ref): self
     {
         $this->ref = $ref;
+
+        return $this;
     }
 
     /**
@@ -177,22 +187,6 @@ class Observe
     }
 
     /**
-     * @return User
-     */
-    public function getValidator(): User
-    {
-        return $this->validator;
-    }
-
-    /**
-     * @param User $validator
-     */
-    public function setValidator(User $validator): void
-    {
-        $this->validator = $validator;
-    }
-
-    /**
      * @return string
      */
     public function getStatus(): string
@@ -209,20 +203,58 @@ class Observe
     }
 
     /**
-     * @return Collection|null
+     * @return User|null
      */
-    public function getUpvoterCollection(): ?Collection
+    public function getValidator(): ?User
     {
-        return $this->upvoterCollection;
+        return $this->validator;
+    }
+
+    /**
+     * @param User|null $validator
+     *
+     * @return Observe
+     */
+    public function setValidator(?User $validator): self
+    {
+        $this->validator = $validator;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUpvoter(): Collection
+    {
+        return $this->upvoter;
     }
 
     /**
      * @param User $upvoter
+     *
+     * @return Observe
      */
-    public function addUpvoter(User $upvoter): void
+    public function addUpvoter(User $upvoter): self
     {
-        $this->upvoterCollection->add($upvoter);
-        $upvoter->setUpvotes($this);
+        if (!$this->upvoter->contains($upvoter)) {
+            $this->upvoter[] = $upvoter;
+        }
+
+        return $this;
     }
 
+    /**
+     * @param User $upvoter
+     *
+     * @return Observe
+     */
+    public function removeUpvoter(User $upvoter): self
+    {
+        if ($this->upvoter->contains($upvoter)) {
+            $this->upvoter->removeElement($upvoter);
+        }
+
+        return $this;
+    }
 }

@@ -3,9 +3,10 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-
     <entity name="App\Domain\Models\TaxRef" table="taxref" repository-class="App\Domain\Repository\TaxRefRepository">
-        <id name="id" type="integer" />
+        <id name="id" type="integer" >
+            <generator strategy="AUTO"/>
+        </id>
         <field name="regne" column="GNE" length="8" nullable="true" />
         <field name="phylum" column="PHYLUM" length="8" nullable="true" />
         <field name="classe" column="CLASSE" length="4" nullable="true" />

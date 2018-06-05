@@ -8,7 +8,6 @@
 
 namespace App\UI\Form\Handler;
 
-use App\Domain\Models\User;
 use App\Domain\Repository\UserRepository;
 use App\Security\UserHelper;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
@@ -56,15 +55,16 @@ class ProfileTypeHandler implements ProfileTypeHandlerInterface
 
     /**
      * @param FormInterface $form
-     * @param User          $user
      *
      * @return bool
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function handle(FormInterface $form, User $user): bool
+    public function handle(FormInterface $form): bool
     {
+        $user = $this->userHelper->getUser();
+
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */
             $file = $form->getData()->img;

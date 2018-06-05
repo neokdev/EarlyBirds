@@ -7,7 +7,7 @@
     <entity name="App\Domain\Models\Comment" table="comment" repository-class="App\Domain\Repository\CommentRepository">
         <id name="id" type="uuid"/>
         <field name="content" type="text"/>
-        <many-to-one field="author" target-entity="App\Domain\Models\User"/>
+        <many-to-one field="author" target-entity="App\Domain\Models\User" inversed-by="comments"/>
         <field name="date" type="date"/>
     </entity>
 </doctrine-mapping>
