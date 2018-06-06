@@ -10,13 +10,17 @@ namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
 use App\Domain\Models\TaxRef;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Domain\Models\User;
+use GuzzleHttp\Psr7\UploadedFile;
 
-
+/**
+ * Class ObserveDTO
+ * @package App\Domain\DTO
+ */
 class ObserveDTO implements ObserveDTOInterface
 {
     /**
-     * @var string
+     * @var User
      */
     public $author;
 
@@ -46,30 +50,30 @@ class ObserveDTO implements ObserveDTOInterface
     public $img;
 
     /**
-     * ObserveDTO constructor.
-     * @param string $author
-     * @param TaxRef $ref
-     * @param string $description
-     * @param string $latitude
-     * @param string $longitude
-     * @param UploadedFile $img
+     * ObserveDTO                   constructor.
+     *
+     * @param User                  $author
+     * @param TaxRef                $ref
+     * @param string                $description
+     * @param string                $latitude
+     * @param string                $longitude
+     * @param UploadedFile          $img
      */
     public function __construct(
-        string $author,
-        TaxRef $ref,
-        string $description,
-        string $latitude,
-        string $longitude,
-        UploadedFile $img
+        User                        $author,
+        TaxRef                      $ref,
+        string                      $description,
+        string                      $latitude,
+        string                      $longitude,
+        UploadedFile                $img
     ) {
-        $this->author = $author;
-        $this->ref = $ref;
-        $this->description = $description;
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
-        $this->img = $img;
+        $this->author       =       $author;
+        $this->ref          =       $ref;
+        $this->description  =       $description;
+        $this->latitude     =       $latitude;
+        $this->longitude    =       $longitude;
+        $this->img          =       $img;
     }
-
 
     /**
      * @return string

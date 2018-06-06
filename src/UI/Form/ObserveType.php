@@ -14,11 +14,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class ObserveType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param FormBuilderInterface  $builder
+     * @param array                 $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options
+    ) {
         $builder
             ->add('author',TextType::class, [
                 'label'=> false,
@@ -26,7 +28,7 @@ class ObserveType extends AbstractType
                     'placeholder' => 'votre nom d\'utilissateur'
                 ]
             ])
-            ->add('TaxRef', TextType::class, [
+            ->add('ref', TextType::class, [
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'nom de l\'oiseau'
@@ -59,8 +61,9 @@ class ObserveType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(
+        OptionsResolver $resolver
+    ) {
         $resolver->setDefaults([
             'data_class' => ObserveDTOInterface::class,
             'empty_data' => function (FormInterface $form) {
@@ -73,7 +76,8 @@ class ObserveType extends AbstractType
                     $form->get('img')->getData()
                 );
             },
-            'label'      => false,
+            'label'      => false
+            //'validation_groups' => ['Observe']
         ]);
     }
 }
