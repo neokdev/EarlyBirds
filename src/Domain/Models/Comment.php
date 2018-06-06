@@ -3,6 +3,7 @@
 namespace App\Domain\Models;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
@@ -11,6 +12,7 @@ use Ramsey\Uuid\UuidInterface;
  */
 class Comment
 {
+    use TimestampableEntity;
     /**
      * @var UuidInterface
      */
@@ -20,11 +22,6 @@ class Comment
      * @var User
      */
     private $author;
-
-    /**
-     * @var string
-     */
-    private $date;
 
     /**
      * @var string
@@ -45,5 +42,25 @@ class Comment
     public function getId(): UuidInterface
     {
         return $this->id;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param User|null $author
+     *
+     * @return Comment
+     */
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
     }
 }

@@ -8,16 +8,14 @@
 
 namespace App\UI\Form\Handler\Interfaces;
 
-use App\Domain\Models\User;
 use Symfony\Component\Form\FormInterface;
 
 interface ProfileTypeHandlerInterface
 {
     /**
      * @param FormInterface $form
-     * @param User          $user
      *
      * @return bool
      */
-    public function handle(FormInterface $form, User $user): bool;
+    public function handle(FormInterface $form): bool;
 }

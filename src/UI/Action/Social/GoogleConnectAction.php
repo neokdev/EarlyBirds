@@ -9,7 +9,7 @@
 namespace App\UI\Action\Social;
 
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class GoogleConnectAction

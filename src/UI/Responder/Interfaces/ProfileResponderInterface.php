@@ -20,6 +20,7 @@ interface ProfileResponderInterface
      */
     public function __invoke(
         bool $redirect = false,
-        FormInterface $form = null
+        FormInterface $form = null,
+        array $observe = null
     );
 }
