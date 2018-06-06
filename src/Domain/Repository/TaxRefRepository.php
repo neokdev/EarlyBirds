@@ -24,15 +24,17 @@ class TaxRefRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param int $id
+     *
      * @return array
      */
-    public function findAllByNomVern()
+    public function findByIdToArray(int $id)
     {
-        return $this->createQueryBuilder('tr')
-            ->select('tr.nomVern')
-            ->orderBy('tr.cdNom', 'ASC')
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
-            ->getResult();
+            ->getArrayResult();
     }
 
 //    /**

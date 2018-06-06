@@ -8,6 +8,5 @@
         <id name="id" type="uuid"/>
         <field name="content" type="text"/>
         <many-to-one field="author" target-entity="App\Domain\Models\User" inversed-by="comments"/>
-        <field name="date" type="date"/>
     </entity>
 </doctrine-mapping>

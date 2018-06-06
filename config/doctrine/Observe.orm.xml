@@ -9,7 +9,9 @@
         <many-to-one field="author" target-entity="App\Domain\Models\User" inversed-by="observes">
             <join-column nullable="false"/>
         </many-to-one>
-        <many-to-one field="ref" target-entity="App\Domain\Models\TaxRef"/>
+        <many-to-one field="ref" target-entity="App\Domain\Models\TaxRef">
+            <join-column nullable="false"/>
+        </many-to-one>
         <field name="description" type="text"/>
         <field name="latitude"/>
         <field name="longitude"/>

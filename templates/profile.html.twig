@@ -3,7 +3,6 @@
 {% block title %}NAO - Profil{% endblock %}
 
 {% block body %}
-    {{ dump() }}
     <div class="row">
         <div class="tabs-vertical">
             <div class="col s3">
@@ -114,7 +113,7 @@
                     <ul class="collapsible">
                         {% for observe in observes %}
                             <li>
-                                <div class="collapsible-header"><i class="material-icons">place</i>{{ observe.ref.id }}</div>
+                                <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}"><i class="material-icons">place</i></div>
                                 <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
                             </li>
                         {% endfor %}
@@ -132,15 +131,56 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-        $(document).ready(function(){
+        let spinner = '<div class="preloader-wrapper small active">' +
+            '<div class="spinner-layer spinner-green-only">' +
+            '<div class="circle-clipper left">' +
+            '<div class="circle"></div>' +
+            '</div><div class="gap-patch">' +
+            '<div class="circle"></div>' +
+            '</div><div class="circle-clipper right">' +
+            '<div class="circle"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        $(document).ready(function() {
             $('.tabs').tabs();
 
             {% for flash in app.flashes('profile') %}
-            $(function() {
+            $(function () {
                 M.toast({html: '<span>{{ flash }}</span>'});
             });
             {% endfor %}
-        });
+
+            $('.js-taxref').each(function () {
+                let $taxref = $(this);
+                $(this).append(spinner);
+                let taxrefData = $(this).data('taxref');
+
+                $.getJSON(taxrefData, function (data) {
+                    $.each(data, function (key, val) {
+                        $taxref.children('.preloader-wrapper').remove();
+                        if ('nomVern' === key && null !== val) {
+                            $taxref.append('<span>' + val + '</span>')
+                        }
+                    })
+                })
+
+
+            // $('.js-taxref').each(function () {
+            //     console.log(this);
+            //     $.getJSON(
+            //         "/gettaxref/" + this.id, function (data) {
+            //             $.each(data, function (key, val) {
+            //                 if ('nomVern' === key) {
+            //                     console.log(val)
+            //                 }
+            //             })
+            //         });
+            });
+
+
+        })
 
 
 

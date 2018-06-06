@@ -8,29 +8,49 @@
 
 namespace App\UI\Action;
 
-use Symfony\Component\HttpFoundation\File\File;
+use App\Domain\Repository\TaxRefRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class TaxrefAction
  * @Route(
- *     "/gettaxref/",
+ *     "/taxref/{id}",
+ *     name="taxref",
  *     methods={"GET", "POST"}
  *     )
  */
 class TaxrefAction
 {
     /**
-     * @return JsonResponse
+     * @var TaxRefRepository
      */
-    public function __invoke()
+    private $taxRefRepository;
+    /**
+     * @var SerializerInterface
+     */
+    private $serializer;
+
+    /**
+     * TaxrefAction constructor.
+     * @param TaxRefRepository    $taxRefRepository
+     * @param SerializerInterface $serializer
+     */
+    public function __construct(
+        TaxRefRepository $taxRefRepository,
+        SerializerInterface $serializer
+    ) {
+        $this->taxRefRepository = $taxRefRepository;
+        $this->serializer       = $serializer;
+    }
+
+    public function __invoke(Request $request, $id)
     {
 
-        $file = new File('../src\Domain\Models\TAXREF.json');
+        $taxref = $this->taxRefRepository->findByIdToArray($id);
 
-        $taxref = file_get_contents($file);
-
-        return new JsonResponse($taxref);
+        return JsonResponse::create($taxref[0]);
     }
 }

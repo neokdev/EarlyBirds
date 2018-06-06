@@ -26,11 +26,6 @@ class Comment
     /**
      * @var string
      */
-    private $date;
-
-    /**
-     * @var string
-     */
     private $content;
 
     /**
