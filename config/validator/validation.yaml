@@ -14,19 +14,19 @@ App\Domain\DTO\ObserveDTO:
     properties:
         description:
             - NotBlank: ~
-                groups: [Observe]
+                #groups: [Observe]
             - Length:
                 min: 5
                 max: 5000
                 minMessage: 'votre description doit contenir {{ limit }} 50 caractères minimum.'
                 maxMessage: 'votre description doit contenir {{ limit }} 5000 caractères maximum.'
-                groups: [Observe]
+                #groups: [Observe]
         latitude:
             - NotBlank: ~
-                groups: [Observe]
+                #groups: [Observe]
         longigtude:
             - NotBlank: ~
-                groups: [Observe]
+                #groups: [Observe]
         img:
             - Image:
                 maxSize: 3M
@@ -34,4 +34,4 @@ App\Domain\DTO\ObserveDTO:
                  aximum authorizée est {{ limit }} {{ suffix }}.'
                 mimeTypes: [image/jpeg, image/png]
                 mimeTypesMessage: 'Veuillez choisir un image au format jpeg ou png.'
-                groups: [Observe]
+                #groups: [Observe]

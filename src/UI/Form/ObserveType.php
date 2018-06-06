@@ -76,8 +76,8 @@ class ObserveType extends AbstractType
                     $form->get('img')->getData()
                 );
             },
-            'label'      => false,
-            'validation_groups' => ['Observe']
+            'label'      => false
+            //'validation_groups' => ['Observe']
         ]);
     }
 }
