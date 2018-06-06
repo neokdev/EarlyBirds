@@ -8,10 +8,8 @@
 
 namespace App\UI\Action\Social;
 
-use Facebook\Facebook;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class FacebookConnectAction
@@ -41,7 +39,7 @@ class FacebookConnectAction
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function __invoke()
     {

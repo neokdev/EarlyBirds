@@ -173,243 +173,241 @@ class TaxRef
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getRegne(): string
+    public function getRegne(): ?string
     {
         return $this->regne;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getPhylum(): string
+    public function getPhylum(): ?string
     {
         return $this->phylum;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getClasse(): string
+    public function getClasse(): ?string
     {
         return $this->classe;
     }
-
     /**
-     * @return string
+     * @return null|string
      */
-    public function getFamille(): string
+    public function getFamille(): ?string
     {
         return $this->famille;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCdNom(): int
+    public function getCdNom(): ?int
     {
         return $this->cdNom;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getCdTaxsup(): string
+    public function getCdTaxsup(): ?string
     {
         return $this->cdTaxsup;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCdRef(): int
+    public function getCdRef(): ?int
     {
         return $this->cdRef;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getRang(): string
+    public function getRang(): ?string
     {
         return $this->rang;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getLbNom(): string
+    public function getLbNom(): ?string
     {
         return $this->lbNom;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getNomComplet(): string
+    public function getNomComplet(): ?string
     {
         return $this->nomComplet;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getNomValide(): string
+    public function getNomValide(): ?string
     {
         return $this->nomValide;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getNomVern(): string
+    public function getNomVern(): ?string
     {
         return $this->nomVern;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getNomVernEng(): string
+    public function getNomVernEng(): ?string
     {
         return $this->nomVernEng;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getHabitat(): string
+    public function getHabitat(): ?string
     {
         return $this->habitat;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getFr(): string
+    public function getFr(): ?string
     {
         return $this->fr;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getGf(): string
+    public function getGf(): ?string
     {
         return $this->gf;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getMar(): string
+    public function getMar(): ?string
     {
         return $this->mar;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getGua(): string
+    public function getGua(): ?string
     {
         return $this->gua;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getSm(): string
+    public function getSm(): ?string
     {
         return $this->sm;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getSpm(): string
+    public function getSpm(): ?string
     {
         return $this->spm;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getMay(): string
+    public function getMay(): ?string
     {
         return $this->may;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getEpa(): string
+    public function getEpa(): ?string
     {
         return $this->epa;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getReu(): string
+    public function getReu(): ?string
     {
         return $this->reu;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getSa(): string
+    public function getSa(): ?string
     {
         return $this->sa;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getTa(): string
+    public function getTa(): ?string
     {
         return $this->ta;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getNc(): string
+    public function getNc(): ?string
     {
         return $this->nc;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getWf(): string
+    public function getWf(): ?string
     {
         return $this->wf;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getPf(): string
+    public function getPf(): ?string
     {
         return $this->pf;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getCli(): string
+    public function getCli(): ?string
     {
         return $this->cli;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getSb(): string
+    public function getSb(): ?string
     {
         return $this->sb;
     }
-
 }

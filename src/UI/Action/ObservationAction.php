@@ -12,9 +12,9 @@ use App\UI\Action\Interfaces\ObservationActionInterface;
 use App\UI\Form\Handler\Interfaces\ObserveTypeHandlerInterface;
 use App\UI\Form\ObserveType;
 use App\UI\Responder\Interfaces\ObservationResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ObservationAction

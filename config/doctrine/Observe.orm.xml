@@ -6,13 +6,17 @@
 
     <entity name="App\Domain\Models\Observe" table="observe" repository-class="App\Domain\Repository\ObserveRepository">
         <id name="id" type="uuid"/>
-        <many-to-one field="author" target-entity="App\Domain\Models\User" />
-        <many-to-one field="ref" target-entity="App\Domain\Models\TaxRef" />
+        <many-to-one field="author" target-entity="App\Domain\Models\User" inversed-by="observes">
+            <join-column nullable="false"/>
+        </many-to-one>
+        <many-to-one field="ref" target-entity="App\Domain\Models\TaxRef">
+            <join-column nullable="false"/>
+        </many-to-one>
         <field name="description" type="text"/>
         <field name="latitude"/>
         <field name="longitude"/>
         <field name="img"/>
         <many-to-one field="validator" target-entity="App\Domain\Models\User" inversed-by="validatedObserve"/>
-        <one-to-many field="upvoterCollection" target-entity="App\Domain\Models\User" mapped-by="upvotes"/>
+        <many-to-many field="upvoter" target-entity="App\Domain\Models\User" inversed-by="upvoted"/>
     </entity>
 </doctrine-mapping>

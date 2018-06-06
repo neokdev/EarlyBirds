@@ -12,9 +12,9 @@ body
     background-color: #005662;
 }
 .tabs-vertical
-{
-    margin-top: 20px;
-}
+ {
+     margin-top: 20px;
+ }
 .tabs-vertical .tabs {
     height: auto;
     flex-direction: column;
