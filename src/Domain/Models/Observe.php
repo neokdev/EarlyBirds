@@ -4,10 +4,10 @@ namespace App\Domain\Models;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use GuzzleHttp\Psr7\UploadedFile;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Observe
 {
@@ -129,10 +129,13 @@ class Observe
 
     /**
      * @param string $description
+     * @return Observe
      */
-    public function setDescription(string $description): void
+    public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -145,10 +148,13 @@ class Observe
 
     /**
      * @param string $latitude
+     * @return Observe
      */
-    public function setLatitude(string $latitude): void
+    public function setLatitude(string $latitude): self
     {
         $this->latitude = $latitude;
+
+        return $this;
     }
 
     /**
@@ -161,26 +167,32 @@ class Observe
 
     /**
      * @param string $longitude
+     * @return Observe
      */
-    public function setLongitude(string $longitude): void
+    public function setLongitude(string $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
     }
 
     /**
-     * @return UploadedFile
+     * @return string
      */
-    public function getImg(): UploadedFile
+    public function getImg(): string
     {
         return $this->img;
     }
 
     /**
      * @param string $img
+     * @return Observe
      */
-    public function setImg(string $img): void
+    public function setImg(string $img): self
     {
         $this->img = $img;
+
+        return $this;
     }
 
     /**
@@ -193,10 +205,13 @@ class Observe
 
     /**
      * @param string $status
+     * @return Observe
      */
-    public function setStatus(string $status): void
+    public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**

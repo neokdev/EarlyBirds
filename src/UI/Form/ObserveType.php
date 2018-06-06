@@ -77,7 +77,6 @@ class ObserveType extends AbstractType
                 );
             },
             'label'      => false
-            //'validation_groups' => ['Observe']
         ]);
     }
 }

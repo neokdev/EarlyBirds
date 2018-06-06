@@ -26,7 +26,7 @@ interface ObserveBuilderInterface
      * @param               string                          $description
      * @param               string                          $latitude
      * @param               string                          $longitude
-     * @param               UploadedFile                    $img
+     * @param               string                          $img
      *
      * @return              ObserveBuilderInterface
      */
@@ -36,7 +36,7 @@ interface ObserveBuilderInterface
         string              $description,
         string              $latitude,
         string              $longitude,
-        UploadedFile        $img
+        string              $img
     ):self;
 
     /**

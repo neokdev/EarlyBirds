@@ -8,12 +8,10 @@
 
 namespace App\Domain\Builder;
 
-
 use App\Domain\Builder\Interfaces\ObserveBuilderInterface;
 use App\Domain\Models\Observe;
 use App\Domain\Models\TaxRef;
 use App\Domain\Models\User;
-use GuzzleHttp\Psr7\UploadedFile;
 
 /**
  * Class ObserveBuilder
@@ -35,16 +33,17 @@ class ObserveBuilder implements ObserveBuilderInterface
         string       $description,
         string       $latitude,
         string       $longitude,
-        UploadedFile $img
+        string       $img
     ): ObserveBuilderInterface {
        $this->observe = new Observe();
-       $this->observe->setAuthor($author);
-       $this->observe->setRef($ref);
-       $this->observe->setDescription($description);
-       $this->observe->setLatitude($latitude);
-       $this->observe->setLongitude($longitude);
-       $this->observe->setImg($img);
-
+       $this->observe
+            ->setAuthor($author)
+            ->setRef($ref)
+            ->setDescription($description)
+            ->setLatitude($latitude)
+            ->setLongitude($longitude)
+            ->setImg($img)
+       ;
        return $this;
     }
 

@@ -14,7 +14,7 @@ App\Domain\DTO\ObserveDTO:
     properties:
         description:
             - NotBlank: ~
-                #groups: [Observe]
+
             - Length:
                 min: 5
                 max: 5000
@@ -23,10 +23,10 @@ App\Domain\DTO\ObserveDTO:
                 #groups: [Observe]
         latitude:
             - NotBlank: ~
-                #groups: [Observe]
+
         longitude:
             - NotBlank: ~
-                #groups: [Observe]
+
         img:
             - Image:
                 maxSize: 3M
@@ -34,4 +34,3 @@ App\Domain\DTO\ObserveDTO:
                  aximum authorizée est {{ limit }} {{ suffix }}.'
                 mimeTypes: [image/jpeg, image/png]
                 mimeTypesMessage: 'Veuillez choisir un image au format jpeg ou png.'
-                #groups: [Observe]

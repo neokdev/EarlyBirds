@@ -11,7 +11,6 @@ namespace App\Domain\DTO;
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
 use App\Domain\Models\TaxRef;
 use App\Domain\Models\User;
-use GuzzleHttp\Psr7\UploadedFile;
 
 /**
  * Class ObserveDTO
@@ -45,7 +44,7 @@ class ObserveDTO implements ObserveDTOInterface
     public $longitude;
 
     /**
-     * @var UploadedFile
+     * @var string
      */
     public $img;
 
@@ -57,7 +56,7 @@ class ObserveDTO implements ObserveDTOInterface
      * @param string                $description
      * @param string                $latitude
      * @param string                $longitude
-     * @param UploadedFile          $img
+     * @param string                $img
      */
     public function __construct(
         User                        $author,
@@ -65,7 +64,7 @@ class ObserveDTO implements ObserveDTOInterface
         string                      $description,
         string                      $latitude,
         string                      $longitude,
-        UploadedFile                $img
+        string                      $img
     ) {
         $this->author       =       $author;
         $this->ref          =       $ref;
@@ -116,11 +115,10 @@ class ObserveDTO implements ObserveDTOInterface
     }
 
     /**
-     * @return UploadedFile
+     * @return string
      */
-    public function getImg(): UploadedFile
+    public function getImg(): string
     {
         return $this->img;
     }
-
 }
