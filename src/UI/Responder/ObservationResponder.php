@@ -12,6 +12,7 @@ use App\UI\Responder\Interfaces\ObservationResponderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 final class ObservationResponder implements ObservationResponderInterface
@@ -22,26 +23,37 @@ final class ObservationResponder implements ObservationResponderInterface
     private $environment;
 
     /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
+    /**
      * ObservationResponder constructor.
      * @param Environment $environment
+     * @param UrlGeneratorInterface $urlGenerator
      */
-    public function __construct(Environment $environment)
-    {
+    public function __construct(
+        Environment $environment,
+        UrlGeneratorInterface $urlGenerator
+    ) {
         $this->environment = $environment;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
-     * @param bool $redirect
-     * @param FormInterface|null $addObservationType
+     * @param  bool                                 $redirect
+     * @param  FormInterface|null                   $addObservationType
      * @return mixed|RedirectResponse|Response
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke($redirect = false, FormInterface $addObservationType = null)
-    {
+    public function __invoke(
+        $redirect = false,
+        FormInterface $addObservationType = null
+    ) {
         $redirect
-            ? $response =  new RedirectResponse('/observe')
+            ? $response =  new RedirectResponse($this->urlGenerator->generate('homepage'))
             : $response = new Response(
                 $this->environment->render('observation.html.twig', [
                     'form' => $addObservationType->createView(),
