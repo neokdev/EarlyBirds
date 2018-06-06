@@ -24,7 +24,7 @@ App\Domain\DTO\ObserveDTO:
         latitude:
             - NotBlank: ~
                 #groups: [Observe]
-        longigtude:
+        longitude:
             - NotBlank: ~
                 #groups: [Observe]
         img:
