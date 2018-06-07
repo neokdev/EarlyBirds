@@ -37,6 +37,28 @@ class TaxRefRepository extends ServiceEntityRepository
             ->getArrayResult();
     }
 
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function searchName(string $name)
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        return $qb
+                    ->where('t.NOM_VERN',
+                            $qb->expr()->like(
+                                't.NOM_VERN',
+                                $qb->expr()->literal(':name'))
+                    )
+                    ->setParameter('name', $name.'%')
+                    ->getQuery()
+                    ->getResult()
+                    ->getArrayResult()
+        ;
+
+    }
+
 //    /**
 //     * @return TaxRef[] Returns an array of TaxRef objects
 //     */

@@ -45,22 +45,22 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
     /**
      * ObserveTypeHandler constructor.
      *
-     * @param ObserveBuilderInterface           $observeBuilder
-     * @param ObserveRepository                 $observeRepository
-     * @param string                            $imageFolder
-     * @param FlashBagInterface                 $flashBag
+     * @param ObserveBuilderInterface  $observeBuilder
+     * @param ObserveRepository        $observeRepository
+     * @param string                   $imageFolder
+     * @param FlashBagInterface        $flashBag
      */
     public function __construct(
-        ObserveBuilderInterface                 $observeBuilder,
-        ObserveRepository                       $observeRepository,
-        string                                  $imageFolder,
-        FlashBagInterface                       $flashBag
+        ObserveBuilderInterface $observeBuilder,
+        ObserveRepository       $observeRepository,
+        string                  $imageFolder,
+        FlashBagInterface       $flashBag
     ) {
-        $this->observeBuilder           =       $observeBuilder;
-        $this->observeRepository        =       $observeRepository;
-        $this->imageFolder              =       $imageFolder;
-        $this->flash                    =       $flashBag;
-        $this->fileOutput               =       null;
+        $this->observeBuilder    = $observeBuilder;
+        $this->observeRepository = $observeRepository;
+        $this->imageFolder       = $imageFolder;
+        $this->flash             = $flashBag;
+        $this->fileOutput        = null;
     }
 
     /**

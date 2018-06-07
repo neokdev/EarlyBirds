@@ -20,10 +20,11 @@
         <one-to-many field="validatedObserve" target-entity="App\Domain\Models\Observe" mapped-by="validator"/>
         <field name="score" nullable="true" type="integer"/>
         <many-to-one field="level" target-entity="App\Domain\Models\Level" inversed-by="user"/>
-        <many-to-many field="badges" target-entity="App\Domain\Models\Badge" mapped-by="user"/>
+        <many-to-many field="badges" target-entity="App\Domain\Models\Badge" inversed-by="user"/>
         <field name="img" nullable="true"/>
         <one-to-many field="posts" target-entity="App\Domain\Models\Post" mapped-by="author"/>
         <one-to-many field="comments" target-entity="App\Domain\Models\Comment" mapped-by="author"/>
-        <many-to-many field="upvoted" target-entity="App\Domain\Models\Observe" mapped-by="upvoter"/>
+        <many-to-many field="upvoted" target-entity="App\Domain\Models\Observe"
+                      inversed-by="upvoter"/>
     </entity>
 </doctrine-mapping>
