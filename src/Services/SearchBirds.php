@@ -27,6 +27,10 @@ class SearchBirds
         $this->taxRefRepository = $taxRefRepository;
     }
 
+    /**
+     * @param  $name
+     * @return JsonResponse
+     */
     public function __invoke($name)
     {
         $birdsName = $this->taxRefRepository->searchName($name);

@@ -38,7 +38,7 @@ class TaxRefRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return mixed
      */
     public function searchName(string $name)

@@ -26,8 +26,8 @@ class TaxRefNameAction implements TaxRefNameActionInterface
 {
 
     /**
-     * @param SearchBirdsInterface $searchBirds
-     * @param string $name
+     * @param  SearchBirdsInterface $searchBirds
+     * @param  string               $name
      * @return mixed
      */
     public function __invoke(SearchBirdsInterface $searchBirds, string $name)
