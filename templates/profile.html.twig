@@ -2,26 +2,50 @@
 
 {% block title %}NAO - Profil{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+          integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+          crossorigin=""/>
+{% endblock %}
+
 {% block body %}
+
+<div id="profilePanel">
+    <div class="row" style="background-color: #0D47A1; height: 336px">
+        <div class="col s12 l3 center">
+            <img id="profilePicture" src="{% if app.user.img %}{% if app.user.img matches '/^https?:/' %}{{ app.user.img | replace({'sz=50':'sz=256'}) }}{% else %}{{ app.user.img }}{% endif %}{% else %}{{ '#' }}{% endif %}" alt="" class="circle responsive-img">
+        </div>
+        <div class="col s12 offset-l1 l4">
+            <span>124 obervations</span>
+            <div class="progress right-align">
+                <div class="determinate" style="width: 70%"></div>
+            </div>
+            <span>226 points</span><span>1237 points</span>
+        </div>
+
+    </div>
+</div>
+
     <div class="row">
         <div class="tabs-vertical">
-            <div class="col s3">
+            <div class="col s2">
                 <ul class="tabs">
                     <li class="tab">
-                        <a class="waves-effect waves-light btn-large" href="#Dashboard"><i class="material-icons" style="font-size: 4em">dashboard</i></a>
+                        <a href="#Dashboard"><i class="material-icons" style="font-size: 4em">dashboard</i></a>
                     </li>
                     <li class="tab">
-                        <a class="waves-effect waves-light btn-large" href="#Profil"><i class="material-icons" style="font-size: 4em">contact_mail</i></a>
+                        <a href="#Profil"><i class="material-icons" style="font-size: 4em">contact_mail</i></a>
                     </li>
                     <li class="tab">
-                        <a class="waves-effect waves-light btn-large" href="#Observations"><img src="{{ asset('/img/icons/Very-Basic-Binoculars-icon.png' | imagine_filter('icon_tab')) }}"></a>
+                        <a href="#Observations"><img id="icon" src="{{ asset('/img/icons/Very-Basic-Binoculars-icon.png') }}"></a>
                     </li>
                     <li class="tab">
-                        <a class="waves-effect waves-light btn-large" href="#Posts"><i class="material-icons" style="font-size: 4em">assignment</i></a>
+                        <a href="#Posts"><i class="material-icons" style="font-size: 4em">assignment</i></a>
                     </li>
                 </ul>
             </div>
-            <div class="col s9">
+            <div class="col s10 m9 l8">
                 <div id="Dashboard" class="tab-content">
 
                     <b>Dashboard</b>
@@ -33,26 +57,8 @@
                         <div class="card-panel grey lighten-4 hoverable col s10 offset-s1">
                             <div class="row" style="padding-top: 6%; padding-bottom: 3%">
 
-                                <div class="row">
-                                    <div class="col s12 center">
-                                        <img src="{% if app.user.img %}{% if app.user.img matches '/^https?:/' %}{{ app.user.img | replace({'sz=50':'sz=256'}) }}{% else %}{{ app.user.img | imagine_filter('profile_thumbnail') }}{% endif %}{% else %}{{ '#' }}{% endif %}" alt="" class="responsive-img">
-                                    </div>
-                                </div>
-
 
                                 {{ form_start(form) }}
-
-                                <div class="row">
-                                    <div class="file-field input-field col s10 offset-s1">
-                                        <div class="btn">
-                                            <span>Envoyer un fichier</span>
-                                            {{ form_widget(form.img) }}
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text">
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="row">
                                     <div class="input-field col s10 offset-s1">
@@ -95,6 +101,18 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="file-field input-field col s10 offset-s1">
+                                        <div class="btn">
+                                            <span>Envoyer un avatar</span>
+                                            {{ form_widget(form.img) }}
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="input-field col s4 offset-s4 center">
                                         <button class="btn waves-effect waves-light cyan lighten-2 black-text" type="submit" name="action">Modifier
                                             <i class="material-icons right">send</i>
@@ -109,16 +127,61 @@
                     </div>
                 </div>
                 <div id="Observations" class="tab-content" style="background-color: #f5f5f5">
-
-                    <ul class="collapsible">
+                    <ul class="collapsible popout">
                         {% for observe in observes %}
-                            <li>
-                                <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}"><i class="material-icons">place</i></div>
-                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                            <li id="observePanel" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
+                                <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
+
+                                    <div class="imgContainer">
+                                        <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block">
+                                    </div>
+                                    <div id="ObsTitle" class="col s8 xl10  center">
+                                        <p>{{ observe.createdAt|localizeddate('full', 'none') }}</p>
+                                        <hr>
+                                        <div id="obsButtons" class="row">
+                                            <div class="col s4 m3 l2 xl1">
+                                                {% if observe.validator is same as(null) %}
+                                                    <img src="{{ asset('/img/icons/baseline-hourglass_empty-24px.svg') }}">
+                                                    {% else %}
+                                                    <img src="{{ asset('/img/icons/baseline-assignment_turned_in-24px.svg') }}">
+                                                {% endif %}
+                                            </div>
+                                            <div class="col s4 m3 l2 xl1">
+                                                {% if observe.validator is same as(null) %}
+                                                    <img class="modifObs" src="{{ asset('/img/icons/baseline-edit-24px.svg') }}" href="#">
+                                                {% else %}
+                                                    <img src="{{ asset('/img/icons/baseline-edit-24px.svg') }}" style="opacity: 0.5">
+                                                {% endif %}
+                                            </div>
+                                            <div class="col s4 m3 l2 xl1">
+                                                {% if observe.validator is same as(null) %}
+                                                    <img class="delObs" src="{{ asset('/img/icons/baseline-delete-24px.svg') }}">
+                                                {% else %}
+                                                    <img src="{{ asset('/img/icons/baseline-delete-24px.svg') }}" style="opacity: 0.5">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div id="mapContainer" class="map-container-{{ observe.id }} row" data-index="{{ observe.id }}>
+                                            <div class="obsMapDiv col s6">
+                                                <ul id="info">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <p>{{ observe.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         {% endfor %}
                     </ul>
-
                 </div>
                 <div id="Posts" class="tab-content">
                     <b>POSTS</b>
@@ -130,8 +193,12 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+            integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
     <script>
-        let spinner = '<div class="preloader-wrapper small active">' +
+        let spinner = '<div id="spinner" class="col s12 center">' +
+            '<div class="preloader-wrapper small active">' +
             '<div class="spinner-layer spinner-green-only">' +
             '<div class="circle-clipper left">' +
             '<div class="circle"></div>' +
@@ -141,7 +208,22 @@
             '<div class="circle"></div>' +
             '</div>' +
             '</div>' +
+            '</div>' +
             '</div>';
+
+        let bigSpinner = '<div id="bigSpinner" class="col s12 center">' +
+            '<div class="preloader-wrapper big active">' +
+            '    <div class="spinner-layer spinner-green-only">' +
+            '      <div class="circle-clipper left">' +
+            '        <div class="circle"></div>' +
+            '      </div><div class="gap-patch">' +
+            '        <div class="circle"></div>' +
+            '      </div><div class="circle-clipper right">' +
+            '        <div class="circle"></div>' +
+            '      </div>' +
+            '    </div>' +
+            '  </div>' +
+            ' </div>';
 
         $(document).ready(function() {
             $('.tabs').tabs();
@@ -154,36 +236,242 @@
 
             $('.js-taxref').each(function () {
                 let $taxref = $(this);
-                $(this).append(spinner);
+                $(this).find('#ObsTitle').prepend(spinner);
+                $taxref.parent().find('#info').append(bigSpinner);
                 let taxrefData = $(this).data('taxref');
 
                 $.getJSON(taxrefData, function (data) {
                     $.each(data, function (key, val) {
-                        $taxref.children('.preloader-wrapper').remove();
-                        if ('nomVern' === key && null !== val) {
-                            $taxref.append('<span>' + val + '</span>')
+                        $taxref.find('#spinner').remove();
+                        $taxref.parent().find('#bigSpinner').remove();
+                        if ('nomVern' === key) {
+                            $taxref.find('#ObsTitle').prepend('<h6>' + val + '</h6>');
                         }
+                        if ('nomVern' === key) {
+                            $taxref.parent().find('#info').append('<li>Nom vernaculaire : ' + val + '</li>');
+                        }
+                        if ('regne' === key) {
+                            $taxref.parent().find('#info').append('<li>Règne : ' + val + '</li>');
+                        }
+                        if ('phylum' === key) {
+                            $taxref.parent().find('#info').append('<li>Embranchement : ' + val + '</li>');
+                        }
+                        if ('famille' === key) {
+                            $taxref.parent().find('#info').append('<li>Famille : ' + val + '</li>');
+                        }
+                        if ('habitat' === key) {
+                            let hab;
+                            switch (val) {
+                                case "1":
+                                    hab = 'Marin';
+                                break;
+                                case "2":
+                                    hab = 'Eau douce';
+                                break;
+                                case "3":
+                                    hab = 'Terrestre';
+                                break;
+                                case "4":
+                                    hab = 'Marin & Eau douce';
+                                break;
+                                case "5":
+                                    hab = 'Marin & Terrestre';
+                                break;
+                                case "6":
+                                    hab = 'Eau saumâtre';
+                                break;
+                                case "7":
+                                    hab = 'Continental (terrestre et/ou eau douce)';
+                                break;
+                                case "8":
+                                    hab = 'Continental (terrestre et eau douce)';
+                                break;
+
+                            }
+                            $taxref.parent().find('#info').append('<li>Habitat : ' + hab + '</li>');
+                        }
+                        if (null != rang(val) && null != status(key)) {
+                            $taxref.parent().find('#info').append('<li>' + rang(val) + ' ' + status(key) + '</li>');
+                        }
+
                     })
                 })
-
-
-            // $('.js-taxref').each(function () {
-            //     console.log(this);
-            //     $.getJSON(
-            //         "/gettaxref/" + this.id, function (data) {
-            //             $.each(data, function (key, val) {
-            //                 if ('nomVern' === key) {
-            //                     console.log(val)
-            //                 }
-            //             })
-            //         });
             });
 
+            $('.materialboxed').click(function (e) {
+                e.stopPropagation();
+            })
 
-        })
+            $('.modifObs').click(function (e) {
+                return false;
+            })
+        });
 
+        document.addEventListener('DOMContentLoaded', function() {
+            let elems = document.querySelectorAll('.collapsible');
+            let instances = M.Collapsible.init(elems, {
+                onOpenStart: function (e) {
+                    console.log('onOpenStart ' + $(e).data('index'));
+                    id = $(e).data('index');
 
+                    // let mymap = L.map('obsMap').setView([51.505, -0.09], 13);
+                    //
+                    // L.tileLayer('https://api.mapbox.com/styles/v1/neokiller113/cjgpehvma00992sqmhyxveaa6/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}', {
+                    //     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                    //     maxZoom: 18,
+                    //     id: 'mapbox.streets',
+                    //     accessToken: 'pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q'
+                    // }).addTo(mymap);
+                },
+                onCloseStart: function (e) {
+                    console.log('onCloseStart ' + $(e).data('index'));
+                    deleteMap(e);
+                },
+                onOpenEnd: function (e) {
+                    console.log('onOpenEnd ' + $(e).data('index'));
+                    createMap(e);
+                },
+                onCloseEnd: function (e) {
+                    console.log('onCloseEnd ' + $(e).data('index'));
+                }
+            });
+        });
 
+        function createMap(e) {
+            let index = $(e).data('index');
+            let lat = $(e).data('lat');
+            let long = $(e).data('long');
+
+            console.log('lat: ' + lat);
+            console.log('long: ' + long);
+
+            let $mapContainer = $('.' + 'map-container-' + index);
+
+            $($mapContainer).append('<div id="obsMap" class="map-' + index + ' col s12 l6" style="height: 400px; padding: 0px"></div>');
+
+            let mymap = L.map('obsMap').setView([lat, long], 11);
+
+            let marker = L.marker([lat, long]).addTo(mymap);
+
+            L.tileLayer(
+                'https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q', {
+                maxZoom: 18,
+                id: 'mapbox.streets',
+            }).addTo(mymap);
+        }
+
+        function deleteMap(e) {
+            let index = $(e).data('index');
+            let $map = $('.' + 'map-' + index);
+            $($map).remove();
+        }
+
+        function rang(rang) {
+            switch (rang) {
+                case "A":
+                    return "Absente";
+                    break;
+                case "B":
+                    return "Accidentelle / Visiteuse";
+                    break;
+                case "C":
+                    return "Cryptogène";
+                    break;
+                case "D":
+                    return "Douteuse";
+                    break;
+                case "E":
+                    return "Endémique";
+                    break;
+                case "F":
+                    return "Trouvée en fouille";
+                    break;
+                case "I":
+                    return "Introduite";
+                    break;
+                case "J":
+                    return "Introduite envahissante";
+                    break;
+                case "M":
+                    return "Domestique / Introduite non établie";
+                    break;
+                case "P":
+                    return "Présente";
+                    break;
+                case "Q":
+                    return "Mentionnée par erreur";
+                    break;
+                case "S":
+                    return "Subendémique";
+                    break;
+                case "W":
+                    return "Disparue";
+                    break;
+                case "X":
+                    return "Éteinte";
+                    break;
+                case "Y":
+                    return "Introduite éteinte";
+                    break;
+                case "Z":
+                    return "Endémique éteinte";
+                    break;
+            }
+        }
+
+        function status(status) {
+            switch (status) {
+                case "fr":
+                    return "en France métropolitaine";
+                    break;
+                case "gf":
+                    return "en Guyane française";
+                    break;
+                case "mar":
+                    return "à la Martinique";
+                    break;
+                case "gua":
+                    return "à la Guadeloupe";
+                    break;
+                case "sm":
+                    return "à Saint-Martin";
+                    break;
+                case "spm":
+                    return "à Saint-Pierre et Miquelon";
+                    break;
+                case "may":
+                    return "à Mayotte";
+                    break;
+                case "epa":
+                    return "aux Îles Éparses";
+                    break;
+                case "reu":
+                    return "à la Réunion";
+                    break;
+                case "sa":
+                    return "aux îles subantarctiques";
+                    break;
+                case "ta":
+                    return "en Terre Adélie";
+                    break;
+                case "nc":
+                    return "en Nouvelle-Calédonie";
+                    break;
+                case "wf":
+                    return "à Wallis et Futuna";
+                    break;
+                case "pf":
+                    return "en Polynésie française";
+                    break;
+                case "cli":
+                    return "à Clipperton";
+                    break;
+                case "sb":
+                    return "à Saint-Barthélemy";
+                    break;
+            }
+
+        }
     </script>
 {% endblock %}
 
