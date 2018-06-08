@@ -9,9 +9,10 @@
 namespace App\Services;
 
 use App\Domain\Repository\TaxRefRepository;
+use App\Services\Interfaces\SearchBirdsInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class SearchBirds
+class SearchBirds implements SearchBirdsInterface
 {
     /**
      * @var TaxRefRepository
@@ -28,10 +29,10 @@ class SearchBirds
     }
 
     /**
-     * @param  $name
+     * @param  string       $name
      * @return JsonResponse
      */
-    public function __invoke($name)
+    public function __invoke(string $name)
     {
         $birdsName = $this->taxRefRepository->searchName($name);
 

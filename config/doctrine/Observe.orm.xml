@@ -17,6 +17,6 @@
         <field name="longitude"/>
         <field name="img"/>
         <many-to-one field="validator" target-entity="App\Domain\Models\User" inversed-by="validatedObserve"/>
-        <many-to-many field="upvoter" target-entity="App\Domain\Models\User" mapped-by="upvoted"/>
+        <many-to-many field="upvoter" target-entity="App\Domain\Models\User" inversed-by="upvoted"/>
     </entity>
 </doctrine-mapping>

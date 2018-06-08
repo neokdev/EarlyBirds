@@ -19,7 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  *     "/recherche-{name}",
  *     name="search",
  *     methods={"GET"},
- *     requirements={"name": "\D"}
+ *     requirements={"name": "\D+"}
  * )
  */
 class TaxRefNameAction implements TaxRefNameActionInterface
