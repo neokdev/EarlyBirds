@@ -8,7 +8,6 @@
 
 namespace App\UI\Action;
 
-use App\Domain\Models\Observe;
 use App\Security\UserHelper;
 use App\UI\Action\Interfaces\ProfileActionInterface;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
@@ -67,15 +66,6 @@ final class ProfileAction implements ProfileActionInterface
         ProfileResponderInterface $profileResponder
     ) {
         $observes = $this->userHelper->getUser()->getObserves()->getValues();
-        /** @var Observe $observes */
-
-//        foreach ($observes as $observe) {
-//            /** @var Observe $observe */
-//            dump($observe->getRef());
-//        }
-//        dump($this->taxRefRepository->findOneBy(['id' => 45]));
-//        dump($this->observeRepository->findOneBy(['id' => '88446646156']));
-//        die();
 
         $profileType = $this->form->create(ProfileType::class)
             ->handleRequest($request);

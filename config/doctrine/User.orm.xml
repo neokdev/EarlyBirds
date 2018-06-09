@@ -26,6 +26,7 @@
         <one-to-many field="posts" target-entity="App\Domain\Models\Post" mapped-by="author"/>
         <one-to-many field="comments" target-entity="App\Domain\Models\Comment" mapped-by="author"/>
         <many-to-many field="upvoted" target-entity="App\Domain\Models\Observe" mapped-by="upvoter" inversed-by="upvoter"/>
+        <many-to-many field="favoured" target-entity="App\Domain\Models\Post" inversed-by="favouredBy"/>
         <field name="createdAt" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>

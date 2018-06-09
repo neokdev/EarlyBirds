@@ -2,6 +2,8 @@
 
 namespace App\Domain\Models;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Uuid;
@@ -44,11 +46,17 @@ class Post
     private $img;
 
     /**
+     * @var User
+     */
+    private $favouredBy;
+
+    /**
      * Post constructor.
      */
     public function __construct()
     {
-        $this->id = Uuid::uuid4();
+        $this->id         = Uuid::uuid4();
+        $this->favouredBy = new ArrayCollection();
     }
 
     /**
@@ -75,6 +83,44 @@ class Post
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getFavouredBy(): Collection
+    {
+        return $this->favouredBy;
+    }
+
+    /**
+     * @param User $favouredBy
+     *
+     * @return Post
+     */
+    public function addFavouredBy(User $favouredBy): self
+    {
+        if (!$this->favouredBy->contains($favouredBy)) {
+            $this->favouredBy[] = $favouredBy;
+            $favouredBy->addFavoured($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param User $favouredBy
+     *
+     * @return Post
+     */
+    public function removeFavouredBy(User $favouredBy): self
+    {
+        if ($this->favouredBy->contains($favouredBy)) {
+            $this->favouredBy->removeElement($favouredBy);
+            $favouredBy->removeFavoured($this);
+        }
 
         return $this;
     }

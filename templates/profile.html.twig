@@ -48,7 +48,44 @@
             <div class="col s10 m9 l8">
                 <div id="Dashboard" class="tab-content">
 
-                    <b>Dashboard</b>
+                    <div class="row">
+                        <div class="col s12 offset-m2 m4">
+
+                    {% for observe in observes %}
+
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="{{ observe.img }}">
+                                    <span class="card-title">Titre d'observation</span>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                        </div>
+                        <div class="col s12 offset-m2 m4">
+
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="#">
+                                    <span class="card-title">Posts</span>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
 
                 </div>
                 <div id="Profil" class="tab-content">
@@ -197,6 +234,7 @@
             integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
             crossorigin=""></script>
     <script>
+        // little spinner code
         let spinner = '<div id="spinner" class="col s12 center">' +
             '<div class="preloader-wrapper small active">' +
             '<div class="spinner-layer spinner-green-only">' +
@@ -211,6 +249,7 @@
             '</div>' +
             '</div>';
 
+        // Big spinner code
         let bigSpinner = '<div id="bigSpinner" class="col s12 center">' +
             '<div class="preloader-wrapper big active">' +
             '    <div class="spinner-layer spinner-green-only">' +
@@ -226,13 +265,13 @@
             ' </div>';
 
         $(document).ready(function() {
-            $('.tabs').tabs();
-
+            // Flash message display loop
             {% for flash in app.flashes('profile') %}
-            $(function () {
-                M.toast({html: '<span>{{ flash }}</span>'});
-            });
+                $(function () {
+                    M.toast({html: '<span>{{ flash }}</span>'});
+                });
             {% endfor %}
+
 
             $('.js-taxref').each(function () {
                 let $taxref = $(this);
@@ -260,40 +299,14 @@
                             $taxref.parent().find('#info').append('<li>Famille : ' + val + '</li>');
                         }
                         if ('habitat' === key) {
-                            let hab;
-                            switch (val) {
-                                case "1":
-                                    hab = 'Marin';
-                                break;
-                                case "2":
-                                    hab = 'Eau douce';
-                                break;
-                                case "3":
-                                    hab = 'Terrestre';
-                                break;
-                                case "4":
-                                    hab = 'Marin & Eau douce';
-                                break;
-                                case "5":
-                                    hab = 'Marin & Terrestre';
-                                break;
-                                case "6":
-                                    hab = 'Eau saumâtre';
-                                break;
-                                case "7":
-                                    hab = 'Continental (terrestre et/ou eau douce)';
-                                break;
-                                case "8":
-                                    hab = 'Continental (terrestre et eau douce)';
-                                break;
-
-                            }
-                            $taxref.parent().find('#info').append('<li>Habitat : ' + hab + '</li>');
+                            $taxref.parent().find('#info').append('<li>Habitat : ' + habitat(val) + '</li>');
                         }
                         if (null != rang(val) && null != status(key)) {
-                            $taxref.parent().find('#info').append('<li>' + rang(val) + ' ' + status(key) + '</li>');
+                            $taxref.parent().find('#info').append('<li>' + lb(val) + ' ' + status(key) + '</li>');
                         }
-
+                        if ('rang' === key) {
+                            $taxref.parent().find('#info').append('<li>Rang : ' + rang(val) + '</li>');
+                        }
                     })
                 })
             });
@@ -313,15 +326,6 @@
                 onOpenStart: function (e) {
                     console.log('onOpenStart ' + $(e).data('index'));
                     id = $(e).data('index');
-
-                    // let mymap = L.map('obsMap').setView([51.505, -0.09], 13);
-                    //
-                    // L.tileLayer('https://api.mapbox.com/styles/v1/neokiller113/cjgpehvma00992sqmhyxveaa6/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}', {
-                    //     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                    //     maxZoom: 18,
-                    //     id: 'mapbox.streets',
-                    //     accessToken: 'pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q'
-                    // }).addTo(mymap);
                 },
                 onCloseStart: function (e) {
                     console.log('onCloseStart ' + $(e).data('index'));
@@ -347,11 +351,11 @@
 
             let $mapContainer = $('.' + 'map-container-' + index);
 
-            $($mapContainer).append('<div id="obsMap" class="map-' + index + ' col s12 l6" style="height: 400px; padding: 0px"></div>');
+            $($mapContainer).append('<div id="obsMap" class="map-' + index + ' col s12 l6" style="height: 400px; padding: 0"></div>');
 
             let mymap = L.map('obsMap').setView([lat, long], 11);
 
-            let marker = L.marker([lat, long]).addTo(mymap);
+            L.marker([lat, long]).addTo(mymap);
 
             L.tileLayer(
                 'https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q', {
@@ -366,7 +370,7 @@
             $($map).remove();
         }
 
-        function rang(rang) {
+        function lb(rang) {
             switch (rang) {
                 case "A":
                     return "Absente";
@@ -471,6 +475,85 @@
                     break;
             }
 
+        }
+
+        function rang(rang) {
+            switch (rang) {
+                case "KD":
+                    return "Règne";
+                    break;
+                case "PH":
+                    return "Embranchement";
+                    break;
+                case "CL":
+                    return "Classe";
+                    break;
+                case "OR":
+                    return "Ordre";
+                    break;
+                case "FM":
+                    return "Famille";
+                    break;
+                case "GN":
+                    return "Genre";
+                    break;
+                case "AGES":
+                    return "Agrégat";
+                    break;
+                case "ES":
+                    return "Espèce";
+                    break;
+                case "SSES":
+                    return "Sous-espèce";
+                    break;
+                case "CVAR":
+                    return "Convariété";
+                    break;
+                case "VAR":
+                    return "Variété";
+                    break;
+                case "FO":
+                    return "Forme";
+                    break;
+                case "SSFO":
+                    return "Sous-forme";
+                    break;
+                case "RACE":
+                    return "Race";
+                    break;
+                case "HYB":
+                    return "Hybride";
+                    break;
+            }
+        }
+
+        function habitat(habitat) {
+            switch (habitat) {
+                case "1":
+                    return "Marin";
+                    break;
+                case "2":
+                    return "Eau douce";
+                    break;
+                case "3":
+                    return "Terrestre";
+                    break;
+                case "4":
+                    return "Marin & Eau douce";
+                    break;
+                case "5":
+                    return "Marin & Terrestre";
+                    break;
+                case "6":
+                    return "Eau saumâtre";
+                    break;
+                case "7":
+                    return "Continental (terrestre et/ou eau douce)";
+                    break;
+                case "8":
+                    return 'Continental (terrestre et eau douce)';
+                    break;
+            }
         }
     </script>
 {% endblock %}
