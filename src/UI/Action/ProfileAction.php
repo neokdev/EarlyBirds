@@ -8,7 +8,7 @@
 
 namespace App\UI\Action;
 
-use App\Security\UserHelper;
+use App\Domain\Repository\ObserveRepository;
 use App\UI\Action\Interfaces\ProfileActionInterface;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
 use App\UI\Form\ProfileType;
@@ -16,6 +16,7 @@ use App\UI\Responder\Interfaces\ProfileResponderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
  * Class ProfileAction
@@ -36,24 +37,31 @@ final class ProfileAction implements ProfileActionInterface
      */
     private $typeHandler;
     /**
-     * @var UserHelper
+     * @var ObserveRepository
      */
-    private $userHelper;
+    private $observeRepository;
+    /**
+     * @var TokenStorageInterface
+     */
+    private $tokenStorage;
 
     /**
      * ProfileAction constructor.
      * @param FormFactoryInterface        $form
      * @param ProfileTypeHandlerInterface $typeHandler
-     * @param UserHelper                  $userHelper
+     * @param ObserveRepository           $observeRepository
+     * @param TokenStorageInterface       $tokenStorage
      */
     public function __construct(
         FormFactoryInterface $form,
         ProfileTypeHandlerInterface $typeHandler,
-        UserHelper $userHelper
+        ObserveRepository $observeRepository,
+        TokenStorageInterface $tokenStorage
     ) {
-        $this->form        = $form;
-        $this->typeHandler = $typeHandler;
-        $this->userHelper  = $userHelper;
+        $this->form              = $form;
+        $this->typeHandler       = $typeHandler;
+        $this->observeRepository = $observeRepository;
+        $this->tokenStorage      = $tokenStorage;
     }
     /**
      * @param Request                   $request
@@ -65,7 +73,11 @@ final class ProfileAction implements ProfileActionInterface
         Request $request,
         ProfileResponderInterface $profileResponder
     ) {
-        $observes = $this->userHelper->getUser()->getObserves()->getValues();
+        $user = $this->tokenStorage->getToken()->getUser();
+
+        $userId = $user->getId();
+
+        $myObserves = $this->observeRepository->findMyObservationsByOrderDesc($userId);
 
         $profileType = $this->form->create(ProfileType::class)
             ->handleRequest($request);
@@ -74,6 +86,6 @@ final class ProfileAction implements ProfileActionInterface
             return $profileResponder(true);
         }
 
-        return $profileResponder(false, $profileType, $observes);
+        return $profileResponder(false, $profileType, $myObserves);
     }
 }

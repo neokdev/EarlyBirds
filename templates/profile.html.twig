@@ -43,15 +43,30 @@
                     <li class="tab">
                         <a href="#Posts"><i class="material-icons" style="font-size: 4em">assignment</i></a>
                     </li>
+                    {% if is_granted('ROLE_ADMIN')%}
+                    <li class="tab">
+                        <a href="#Admin"><i class="material-icons" style="font-size: 4em">assignment</i></a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="col s10 m9 l8">
                 <div id="Dashboard" class="tab-content">
 
                     <div class="row">
-                        <div class="col s12 offset-m2 m4">
+                        <div class="col s12 offset-m1 m5">
 
-                    {% for observe in observes %}
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="card-panel blue-grey darken-1">
+                                        <h5 class="white-text center">Mes dernières observations</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            {% set index = 0 %}
+                    {% for observe in observes if index < 5 %}
+
+                        {% set index = index+1 %}
 
                         <div class="col s12">
                             <div class="card">
@@ -69,20 +84,29 @@
                     {% endfor %}
 
                         </div>
-                        <div class="col s12 offset-m2 m4">
 
-                        <div class="col s12">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="#">
-                                    <span class="card-title">Posts</span>
-                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                </div>
-                                <div class="card-content">
-                                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                        <div class="col s12 offset-m1 m5">
+
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="card-panel blue-grey darken-1">
+                                        <h5 class="white-text center">Mes articles favoris</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img src="#">
+                                        <span class="card-title">Posts</span>
+                                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                    </div>
+                                    <div class="card-content">
+                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -223,6 +247,11 @@
                 <div id="Posts" class="tab-content">
                     <b>POSTS</b>
                 </div>
+                {% if is_granted('ROLE_ADMIN')%}
+                <div id="Admin" class="tab-content">
+                    <b>Admin</b>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>

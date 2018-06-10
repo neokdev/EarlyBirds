@@ -9,11 +9,11 @@
 namespace App\UI\Form\Handler;
 
 use App\Domain\Repository\UserRepository;
-use App\Security\UserHelper;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ProfileTypeHandler implements ProfileTypeHandlerInterface
 {
@@ -30,27 +30,27 @@ class ProfileTypeHandler implements ProfileTypeHandlerInterface
      */
     private $userRepository;
     /**
-     * @var UserHelper
+     * @var TokenStorageInterface
      */
-    private $userHelper;
+    private $tokenStorage;
 
     /**
      * ProfileTypeHandler constructor.
-     * @param string            $imageFolder
-     * @param FlashBagInterface $flashBag
-     * @param UserHelper        $userHelper
-     * @param UserRepository    $userRepository
+     * @param string                $imageFolder
+     * @param FlashBagInterface     $flashBag
+     * @param UserRepository        $userRepository
+     * @param TokenStorageInterface $tokenStorage
      */
     public function __construct(
         string $imageFolder,
         FlashBagInterface $flashBag,
-        UserHelper $userHelper,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        TokenStorageInterface $tokenStorage
     ) {
         $this->imageFolder    = $imageFolder;
         $this->flashBag       = $flashBag;
-        $this->userHelper     = $userHelper;
         $this->userRepository = $userRepository;
+        $this->tokenStorage   = $tokenStorage;
     }
 
     /**
@@ -63,7 +63,7 @@ class ProfileTypeHandler implements ProfileTypeHandlerInterface
      */
     public function handle(FormInterface $form): bool
     {
-        $user = $this->userHelper->getUser();
+        $user = $this->tokenStorage->getToken()->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */

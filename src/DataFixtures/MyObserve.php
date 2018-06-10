@@ -8,7 +8,7 @@ use App\Domain\Models\User;
 use App\Domain\Repository\TaxRefRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class Observe extends AbstractBaseFixture
+class MyObserve extends AbstractBaseFixture
 {
     private const TEST_USER = 'neokdev@gmail.com';
     private $user;
@@ -18,7 +18,7 @@ class Observe extends AbstractBaseFixture
     private $taxRefRepository;
 
     /**
-     * Observe constructor.
+     * MyObserve constructor.
      * @param TaxRefRepository $taxRefRepository
      */
     public function __construct(TaxRefRepository $taxRefRepository)
@@ -48,7 +48,9 @@ class Observe extends AbstractBaseFixture
             $observe->setDescription($this->faker->text);
             $observe->setLongitude($this->faker->longitude(-5, 8));
             $observe->setImg($this->faker->imageUrl(1920, 1080, 'animals', true, 'observe', false));
-            $observe->setCreatedAt($this->faker->dateTimeBetween('-1 year', 'now'));
+            $date = $this->faker->dateTimeBetween('-1 year', 'now');
+            $observe->setCreatedAt($date);
+            $observe->setUpdatedAt($date);
         });
 
         $manager->flush();
