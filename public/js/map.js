@@ -9,11 +9,11 @@ $(function() {
             accessToken: 'pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q'
         }).addTo(mymap);
 
-    $('#observe_ref').blur(function(e) {
-        if (e.target.value.length >= 3) {
+    $('#observe_ref').keyup(function() {
+        if ($('#observe_ref').val().length > 3) {
             //ajax call
             $.getJSON(
-                'http://127.0.0.1:8000/recherche-'+e.target.value,
+                'http://127.0.0.1:8000/recherche-'+$('#observe_ref').val(),
                 function(data) {
                     //reading of the json object as a table
                     //and implementation under the field

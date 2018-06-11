@@ -22,12 +22,6 @@ class ObserveType extends AbstractType
         array $options
     ) {
         $builder
-            ->add('author',TextType::class, [
-                'label'=> false,
-                'attr' => [
-                    'placeholder' => 'votre nom d\'utilissateur'
-                ]
-            ])
             ->add('ref', TextType::class, [
                 'label' => false,
                 'attr' => [
@@ -68,7 +62,6 @@ class ObserveType extends AbstractType
             'data_class' => ObserveDTOInterface::class,
             'empty_data' => function (FormInterface $form) {
                 return new ObserveDTO(
-                    $form->get('author')->getData(),
                     $form->get('ref')->getData(),
                     $form->get('description')->getData(),
                     $form->get('latitude')->getData(),

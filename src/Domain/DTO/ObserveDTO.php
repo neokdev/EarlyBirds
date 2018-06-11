@@ -10,7 +10,6 @@ namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
 use App\Domain\Models\TaxRef;
-use App\Domain\Models\User;
 
 /**
  * Class ObserveDTO
@@ -18,11 +17,6 @@ use App\Domain\Models\User;
  */
 class ObserveDTO implements ObserveDTOInterface
 {
-    /**
-     * @var User
-     */
-    public $author;
-
     /**
      * @var TaxRef
      */
@@ -51,7 +45,6 @@ class ObserveDTO implements ObserveDTOInterface
     /**
      * ObserveDTO                   constructor.
      *
-     * @param User                  $author
      * @param TaxRef                $ref
      * @param string                $description
      * @param string                $latitude
@@ -59,27 +52,17 @@ class ObserveDTO implements ObserveDTOInterface
      * @param string                $img
      */
     public function __construct(
-        User                        $author,
         TaxRef                      $ref,
         string                      $description,
         string                      $latitude,
         string                      $longitude,
         string                      $img
     ) {
-        $this->author       =       $author;
         $this->ref          =       $ref;
         $this->description  =       $description;
         $this->latitude     =       $latitude;
         $this->longitude    =       $longitude;
         $this->img          =       $img;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAuthor(): string
-    {
-        return $this->author;
     }
 
     /**

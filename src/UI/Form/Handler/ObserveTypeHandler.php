@@ -14,6 +14,7 @@ use App\UI\Form\Handler\Interfaces\ObserveTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ObserveTypeHandler implements ObserveTypeHandlerInterface
 {
@@ -43,19 +44,27 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
     private $fileOutput;
 
     /**
+     * @var TokenStorageInterface
+     */
+    private $token;
+
+    /**
      * ObserveTypeHandler constructor.
      *
      * @param ObserveBuilderInterface  $observeBuilder
      * @param ObserveRepository        $observeRepository
      * @param string                   $imageFolder
      * @param FlashBagInterface        $flashBag
+     * @param TokenStorageInterface    $token
      */
     public function __construct(
+        TokenStorageInterface   $token,
         ObserveBuilderInterface $observeBuilder,
         ObserveRepository       $observeRepository,
         string                  $imageFolder,
         FlashBagInterface       $flashBag
     ) {
+        $this->token             = $token;
         $this->observeBuilder    = $observeBuilder;
         $this->observeRepository = $observeRepository;
         $this->imageFolder       = $imageFolder;
@@ -87,7 +96,7 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
             }
 
             $this->observeBuilder->create(
-                $form->getData()->author,
+                $this->token->getToken()->getUser(),
                 $form->getData()->ref,
                 $form->getData()->description,
                 $form->getData()->latitude,
