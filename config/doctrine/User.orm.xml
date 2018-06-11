@@ -16,11 +16,14 @@
         <field name="salt" nullable="true"/>
         <field name="resetPasswordToken" nullable="true" unique="true"/>
         <field name="roles" type="array"/>
+        <one-to-many field="observes" target-entity="App\Domain\Models\Observe" mapped-by="author"/>
         <one-to-many field="validatedObserve" target-entity="App\Domain\Models\Observe" mapped-by="validator"/>
         <field name="score" nullable="true" type="integer"/>
         <many-to-one field="level" target-entity="App\Domain\Models\Level" inversed-by="user"/>
-        <many-to-many field="badge" target-entity="App\Domain\Models\Badge"/>
+        <many-to-many field="badges" target-entity="App\Domain\Models\Badge" inversed-by="user"/>
         <field name="img" nullable="true"/>
-        <many-to-one field="upvotes" target-entity="App\Domain\Models\Observe" inversed-by="upvote"/>
+        <one-to-many field="posts" target-entity="App\Domain\Models\Post" mapped-by="author"/>
+        <one-to-many field="comments" target-entity="App\Domain\Models\Comment" mapped-by="author"/>
+        <many-to-many field="upvoted" target-entity="App\Domain\Models\Observe" mapped-by="upvoter"/>
     </entity>
 </doctrine-mapping>

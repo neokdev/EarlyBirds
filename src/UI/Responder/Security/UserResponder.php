@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Twig\Environment;
 
-class UserResponder implements UserResponderInterface
+final class UserResponder implements UserResponderInterface
 {
     /**
      * @var Environment
@@ -58,7 +58,7 @@ class UserResponder implements UserResponderInterface
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    final public function __invoke(
+    public function __invoke(
         bool $redirect = false,
         FormInterface $login = null,
         FormInterface $registerType = null

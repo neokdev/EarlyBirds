@@ -8,10 +8,19 @@
 
 namespace App\UI\Responder\Interfaces;
 
+use Symfony\Component\Form\FormInterface;
+
 interface ProfileResponderInterface
 {
     /**
+     * @param bool          $redirect
+     * @param FormInterface $form
+     *
      * @return mixed
      */
-    public function __invoke();
+    public function __invoke(
+        bool $redirect = false,
+        FormInterface $form = null,
+        array $observe = null
+    );
 }

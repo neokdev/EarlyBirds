@@ -2,7 +2,7 @@
 
 namespace App\Domain\Repository;
 
-use App\Entity\Observe;
+use App\Domain\Models\Observe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,32 +19,9 @@ class ObserveRepository extends ServiceEntityRepository
         parent::__construct($registry, Observe::class);
     }
 
-//    /**
-//     * @return Watching[] Returns an array of Watching objects
-//     */
-    /*
-    public function findByExampleField($value)
+    public function save(Observe $observe)
     {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $this->_em->persist($observe);
+        $this->_em->flush();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Watching
-    {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

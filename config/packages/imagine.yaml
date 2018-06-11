@@ -1,0 +1,103 @@
+liip_imagine:
+#    # valid drivers options include "gd" or "gmagick" or "imagick"
+#    driver: "gd"
+
+#    configure resolvers
+    resolvers:
+
+#       setup the default resolver
+        default:
+
+#            use the default web path
+            web_path: ~
+#
+#    # define your filter sets under this option
+    filter_sets:
+#
+#        use the default cache configuration
+        cache: ~
+
+#        # an example thumbnail transformation definition
+#        # https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html#create-thumbnails
+        squared_thumbnail:
+#
+#            # set your image quality defaults
+            quality: 75
+#            jpeg_quality:          85
+#            png_compression_level: 8
+#
+#            # setup the filter steps to apply for this transformation
+            filters:
+#
+#                # auto rotate the image using EXIF metadata
+#                auto_rotate: ~
+#
+#                # strip the image of all metadata
+#                strip: ~
+#
+#                # scale and square the image to the given dimensions
+                thumbnail:
+                    size:          [50, 50]
+                    mode:          outbound
+                    allow_upscale: true
+#
+#                # create border by placing image on larger black background
+#                background:
+#                    size:     [50, 50]
+#                    position: center
+#                    color:    '#000000'
+
+        profile_thumbnail:
+        #
+        #            # set your image quality defaults
+#                    quality: 75
+        #            jpeg_quality:          85
+        #            png_compression_level: 8
+        #
+        #            # setup the filter steps to apply for this transformation
+                    filters:
+        #
+        #                # auto rotate the image using EXIF metadata
+        #                auto_rotate: ~
+        #
+        #                # strip the image of all metadata
+        #                strip: ~
+        #
+        #                # scale and square the image to the given dimensions
+                        thumbnail:
+                            size:          [256, 256]
+                            mode:          outbound
+                            allow_upscale: true
+        #
+        #                # create border by placing image on larger black background
+#                        background:
+#                            size:     [256, 256]
+#                            position: center
+#                            color:    '#000000'
+        icon_tab:
+                #
+                #            # set your image quality defaults
+        #                    quality: 75
+                #            jpeg_quality:          85
+                #            png_compression_level: 8
+                #
+                #            # setup the filter steps to apply for this transformation
+                            filters:
+                #
+                #                # auto rotate the image using EXIF metadata
+                #                auto_rotate: ~
+                #
+                #                # strip the image of all metadata
+                #                strip: ~
+                #
+                #                # scale and square the image to the given dimensions
+                                thumbnail:
+                                    size:          [56, 54]
+                                    mode:          outbound
+                                    allow_upscale: true
+                #
+                #                # create border by placing image on larger black background
+        #                        background:
+        #                            size:     [256, 256]
+        #                            position: center
+        #                            color:    '#000000'

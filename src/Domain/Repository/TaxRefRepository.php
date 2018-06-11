@@ -2,7 +2,7 @@
 
 namespace App\Domain\Repository;
 
-use App\Entity\TaxRef;
+use App\Domain\Models\TaxRef;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -24,15 +24,34 @@ class TaxRefRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param int $id
+     *
      * @return array
      */
-    public function findAllByNomVern()
+    public function findByIdToArray(int $id)
     {
-        return $this->createQueryBuilder('tr')
-            ->select('tr.nomVern')
-            ->orderBy('tr.cdNom', 'ASC')
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
-            ->getResult();
+            ->getArrayResult();
+    }
+
+    /**
+     * @param  string $name
+     * @return mixed
+     */
+    public function searchName(string $name)
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        return $qb
+                    ->Where($qb->expr()->like('t.nomVern',':name'))
+                    ->setParameter('name', $name.'%')
+                    ->getQuery()
+                    ->getArrayResult()
+        ;
+
     }
 
 //    /**
