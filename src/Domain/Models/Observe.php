@@ -4,7 +4,6 @@ namespace App\Domain\Models;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use GuzzleHttp\Psr7\UploadedFile;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -43,7 +42,7 @@ class Observe
     private $longitude;
 
     /**
-     * @var UploadedFile
+     * @var string
      */
     private $img;
 
@@ -51,11 +50,6 @@ class Observe
      * @var User
      */
     private $validator;
-
-    /**
-     * @var string
-     */
-    private $status;
 
     /**
      * @var ArrayCollection
@@ -168,9 +162,9 @@ class Observe
     }
 
     /**
-     * @return UploadedFile
+     * @return string
      */
-    public function getImg(): UploadedFile
+    public function getImg(): string
     {
         return $this->img;
     }
@@ -181,22 +175,6 @@ class Observe
     public function setImg(string $img): void
     {
         $this->img = $img;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param string $status
-     */
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
     }
 
     /**

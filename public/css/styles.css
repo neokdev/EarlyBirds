@@ -11,6 +11,7 @@ body
 {
     background-color: #005662;
 }
+
 .tabs-vertical
  {
      margin-top: 20px;
@@ -29,4 +30,87 @@ body
 .tabs-vertical .indicator
 {
     display: none;
+}
+
+#observePanel
+{
+    margin-bottom: 1%;
+}
+
+.collapsible
+{
+    background-color: #005662;
+}
+
+#Observations
+{
+    background-color: #005662;
+}
+
+.collapsible-body
+{
+    background-color: white;
+}
+
+#profilePicture
+{
+    height: auto;
+    width: auto;
+    max-width: 226px;
+    max-height: 226px;
+}
+
+#profile
+{
+    height: auto;
+    width: auto;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+#thumbnails {
+    height: auto;
+    width: auto;
+    max-width: 256px;
+    max-height: 256px;
+}
+
+#logo
+{
+    height: auto;
+    width: auto;
+    max-width: 64px;
+    max-height: 64px;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+#icon
+{
+    height: auto;
+    width: auto;
+    max-width: 56px;
+    max-height: 56px;
+}
+
+#obsButtons
+{
+    margin-bottom: auto;
+}
+
+.collapsible-header
+{
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.imgContainer
+{
+    padding-left: 0 !important;
+}
+
+.tabs .tab a
+{
+    height: 60px;
 }

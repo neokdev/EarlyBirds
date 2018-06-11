@@ -25,34 +25,34 @@
             <li><a href="#">Les oiseaux</a></li>
         </ul>
         <div class="nav-wrapper cyan lighten-2">
+
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
 
                 <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown_observe">Observer
-                        <i class="material-icons right">arrow_drop_down</i>
                     </a>
                 </li>
                 <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown_discover">Découvrir
-                        <i class="material-icons right">arrow_drop_down</i>
                     </a>
                 </li>
                 <li><a href="#" class="black-text">Actualités</a></li>
                 <li><a href="#" class="black-text">Contact</a></li>
+
+                {% if is_granted('ROLE_USER') == false %}
                 <li><a href="{{ path('security_login') }}" class="black-text">Login</a></li>
+                {% endif %}
+
+                {% if is_granted('ROLE_USER') %}
+                <li>
+                    <a href="{{ path('app_profile') }}" class="dropdown-trigger black-text"  data-target="dropdown_profile"><i class="material-icons">person</i>Compte</a>
+                </li>
+                {% endif %}
+
             </ul>
-            <a class="brand-logo center">
-                <h5 class="black-text">LOGO NAO</h5>
+            <a class="brand-logo left" href="{{ path('app_home') }}">
+                <img id="logo" src="{{ asset('/img/logo/logo .png') }}">
             </a>
-            {% if is_granted('ROLE_USER') %}
-                <ul class="left hide-on-med-and-down">
-                    <li>
-                        <a class="dropdown-trigger" href="{{ path('app_profile') }}" data-target="dropdown_profile">
-                            <img id="profile" src="{% if app.user.img %}{% if app.user.img matches '/^https?:/' %}{{ app.user.img }}{% else %}{{ app.user.img | imagine_filter('squared_thumbnail') }}{% endif %}{% else %}{{ '#' }}{% endif %}" alt="" class="responsive-img">
-                            <i class="material-icons right">arrow_drop_down</i>
-                        </a>
-                    </li>
-                </ul>
-            {% endif %}
+
 
         </div>
     </nav>
@@ -80,7 +80,9 @@
                 M.AutoInit();
                 $(function() {
                     $('.sidenav').sidenav();
-                    $(".dropdown-trigger").dropdown();
+                    $(".dropdown-trigger").dropdown(
+                        { hover: true }
+                    );
                 });
             </script>
         {% endblock %}
