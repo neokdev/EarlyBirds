@@ -1,7 +1,5 @@
 $(function() {
 
-
-
     let mymap = L.map('mapid').setView([51.505, -0.09], 5);
 
         L.tileLayer('https://api.mapbox.com/styles/v1/neokiller113/cjgpehvma00992sqmhyxveaa6/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}', {
@@ -11,51 +9,54 @@ $(function() {
             accessToken: 'pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q'
         }).addTo(mymap);
 
-
-
-
-    $('#observe_TaxRef').blur(function(e) {
-
-        if (e.target.value.length >= 5) {
-
-
-            //appel ajax
+    $('#observe_ref').blur(function(e) {
+        if (e.target.value.length >= 3) {
+            //ajax call
             $.getJSON(
-                'http://api.wunderground.com/api/50a65432f17cf542/conditions/q/France/Lyon.json',
-                      function(data) {
-
-                $('<div id="message">'+data.current_observation.display_location.city+'</div>')
-                    .insertAfter(
-                        $('#observe_TaxRef').fadeIn(1000)
-                    );
-            });
-
-
-
-
+                'http://127.0.0.1:8000/recherche-'+e.target.value,
+                function(data) {
+                    //reading of the json object as a table
+                    //and implementation under the field
+                    $('<ul id="birdsList"></ul>').insertAfter($('#observe_ref').fadeIn(1000));
+                    let birdsID = 0;
+                    data.forEach(function(datas) {
+                        birdsID++;
+                        $('<li id="birds'+ birdsID +'">'+ datas.nomVern +'</li>').insertAfter(
+                            $('#birdsList').fadeIn(1000)
+                        );
+                    });
+                    //select value from the li, put it in input field and destroy ul list
+                    let liId = $('#birdsList ~ li');
+                    for (let i = 0 ; i < liId.length; i++) {
+                        let idAttr = $(liId[i]);
+                        $(idAttr).click(function () {
+                            let value = $(idAttr).text();
+                            let input = $('#observe_ref');
+                            input.val(value);
+                            $('#birdsList ~ li').remove();
+                        });
+                    }
+                }
+            );
         } else {
             //message si recherche imprécise
-            $('<p id="message">veuillez affiner votre recherche</p>').insertAfter($('#observe_TaxRef'));
-            $('#message').fadeOut(4000);
+            $('<ul id="birdsList"><li id="message">veuillez affiner votre recherche</li></ul>').insertAfter($('#observe_ref'));
+            $('#birdsList').fadeOut(4000);
         }
     });
-
 
 //INIT_GEOLOCATION
     let latitude = $('input#observe_latitude');
     let longitude = $('input#observe_longitude');
 
     function success(pos) {
-
        let cLat = pos.coords.latitude;
        latitude.val(cLat);
 
        let cLong = pos.coords.longitude;
        longitude.val(cLong);
 
-
        mymap.flyTo([cLat,cLong], 10);
-
     }
 
     function error(err) {
@@ -115,16 +116,14 @@ $(function() {
         longitude.val(cLong);
 
         return layer;
-
     }
 
     mymap.on('click', newMarker);
 
 //END_SET_UP_POSITION_ON_MAP_AFTER_CLICK
 
-//
+//SET_UP_COORDS_FROM_FORM
     longitude.on('blur',function () {
-
         let lat = latitude.val();
         let long = longitude.val();
 
@@ -136,18 +135,14 @@ $(function() {
             layer.addTo(mymap);
 
         }
-
         layer.remove();
         layer = L.marker([lat,long]).addTo(mymap);
         layer.addTo(mymap);
-
     });
 
     latitude.on('blur', function () {
-
         let lat = latitude.val();
         let long = longitude.val();
-
 
         if (layer === undefined) {
 

@@ -21,22 +21,22 @@ use GuzzleHttp\Psr7\UploadedFile;
 interface ObserveBuilderInterface
 {
     /**
-     * @param               User                            $author
-     * @param               TaxRef                          $ref
-     * @param               string                          $description
-     * @param               string                          $latitude
-     * @param               string                          $longitude
-     * @param               UploadedFile                    $img
+     * @param User   $author
+     * @param TaxRef $ref
+     * @param string $description
+     * @param string $latitude
+     * @param string $longitude
+     * @param string $img
      *
-     * @return              ObserveBuilderInterface
+     * @return ObserveBuilderInterface
      */
     public function create(
-        User                $author,
-        TaxRef              $ref,
-        string              $description,
-        string              $latitude,
-        string              $longitude,
-        UploadedFile        $img
+        User   $author,
+        TaxRef $ref,
+        string $description,
+        string $latitude,
+        string $longitude,
+        string $img
     ):self;
 
     /**

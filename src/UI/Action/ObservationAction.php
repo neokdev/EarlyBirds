@@ -27,7 +27,7 @@ use Symfony\Component\Routing\Annotation\Route;
 final class ObservationAction implements ObservationActionInterface
 {
     /**
-     * @var $observationTypeHandler
+     * @var ObserveTypeHandlerInterface
      */
     private $observationTypeHandler;
 
@@ -38,14 +38,14 @@ final class ObservationAction implements ObservationActionInterface
 
     public function __construct(
         ObserveTypeHandlerInterface $obsertionTypeHandler,
-        FormFactoryInterface $formFactory
+        FormFactoryInterface        $formFactory
     ) {
         $this->observationTypeHandler = $obsertionTypeHandler;
-        $this->formFactory = $formFactory;
+        $this->formFactory            = $formFactory;
     }
 
     /**
-     * @param Request $request
+     * @param Request                       $request
      * @param ObservationResponderInterface $responder
      * @return mixed
      */
