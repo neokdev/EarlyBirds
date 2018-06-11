@@ -117,6 +117,11 @@ class User implements UserInterface
     private $upvoted;
 
     /**
+     * @var Post
+     */
+    private $favoured;
+
+    /**
      * User constructor.
      * @param string      $email
      * @param string      $password
@@ -156,6 +161,7 @@ class User implements UserInterface
         $this->comments           = new ArrayCollection();
         $this->posts              = new ArrayCollection();
         $this->upvoted            = new ArrayCollection();
+        $this->favoured           = new ArrayCollection();
     }
 
     /**
@@ -609,7 +615,43 @@ class User implements UserInterface
         return $this;
     }
 
-    public function eraseCredentials()
+    /**
+     * @return Collection|Post[]
+     */
+    public function getFavoured(): Collection
+    {
+        return $this->favoured;
+    }
+
+    /**
+     * @param Post $favoured
+     *
+     * @return User
+     */
+    public function addFavoured(Post $favoured): self
+    {
+        if (!$this->favoured->contains($favoured)) {
+            $this->favoured[] = $favoured;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Post $favoured
+     *
+     * @return User
+     */
+    public function removeFavoured(Post $favoured): self
+    {
+        if ($this->favoured->contains($favoured)) {
+            $this->favoured->removeElement($favoured);
+        }
+
+        return $this;
+    }
+
+    public function eraseCredentials(): void
     {
     }
 }

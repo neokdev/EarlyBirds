@@ -14,14 +14,36 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class ObserveRepository extends ServiceEntityRepository
 {
+    /**
+     * ObserveRepository constructor.
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Observe::class);
     }
 
+    /**
+     * @param Observe $observe
+     */
     public function save(Observe $observe)
     {
         $this->_em->persist($observe);
         $this->_em->flush();
+    }
+
+    /**
+     * @param string $userId
+     *
+     * @return mixed
+     */
+    public function findMyObservationsByOrderDesc(string $userId)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.author = :author')
+            ->setParameter('author', $userId)
+            ->orderBy('p.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 }

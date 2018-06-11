@@ -7,7 +7,7 @@
         <id name="id" type="integer" >
             <generator strategy="AUTO"/>
         </id>
-        <field name="regne" column="GNE" length="8" nullable="true" />
+        <field name="regne" column="REGNE" length="8" nullable="true" />
         <field name="phylum" column="PHYLUM" length="8" nullable="true" />
         <field name="classe" column="CLASSE" length="4" nullable="true" />
         <field name="famille" column="FAMILLE" length="17" nullable="true" />

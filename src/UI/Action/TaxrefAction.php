@@ -12,7 +12,6 @@ use App\Domain\Repository\TaxRefRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class TaxrefAction
@@ -28,24 +27,23 @@ class TaxrefAction
      * @var TaxRefRepository
      */
     private $taxRefRepository;
-    /**
-     * @var SerializerInterface
-     */
-    private $serializer;
 
     /**
      * TaxrefAction constructor.
-     * @param TaxRefRepository    $taxRefRepository
-     * @param SerializerInterface $serializer
+     * @param TaxRefRepository $taxRefRepository
      */
     public function __construct(
-        TaxRefRepository $taxRefRepository,
-        SerializerInterface $serializer
+        TaxRefRepository $taxRefRepository
     ) {
         $this->taxRefRepository = $taxRefRepository;
-        $this->serializer       = $serializer;
     }
 
+    /**
+     * @param Request $request
+     * @param         $id
+     *
+     * @return static
+     */
     public function __invoke(Request $request, $id)
     {
 

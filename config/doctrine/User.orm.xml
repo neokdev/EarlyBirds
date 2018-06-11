@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
@@ -20,10 +21,17 @@
         <one-to-many field="validatedObserve" target-entity="App\Domain\Models\Observe" mapped-by="validator"/>
         <field name="score" nullable="true" type="integer"/>
         <many-to-one field="level" target-entity="App\Domain\Models\Level" inversed-by="user"/>
-        <many-to-many field="badges" target-entity="App\Domain\Models\Badge" inversed-by="user"/>
+        <many-to-many field="badges" target-entity="App\Domain\Models\Badge" mapped-by="user" inversed-by="user"/>
         <field name="img" nullable="true"/>
         <one-to-many field="posts" target-entity="App\Domain\Models\Post" mapped-by="author"/>
         <one-to-many field="comments" target-entity="App\Domain\Models\Comment" mapped-by="author"/>
-        <many-to-many field="upvoted" target-entity="App\Domain\Models\Observe" mapped-by="upvoter"/>
+        <many-to-many field="upvoted" target-entity="App\Domain\Models\Observe" mapped-by="upvoter" inversed-by="upvoter"/>
+        <many-to-many field="favoured" target-entity="App\Domain\Models\Post" inversed-by="favouredBy"/>
+        <field name="createdAt" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updatedAt" type="datetime">
+            <gedmo:timestampable on="update"/>
+        </field>
     </entity>
 </doctrine-mapping>

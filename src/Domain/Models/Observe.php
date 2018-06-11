@@ -43,7 +43,7 @@ class Observe
     private $longitude;
 
     /**
-     * @var UploadedFile
+     * @var string
      */
     private $img;
 
@@ -51,11 +51,6 @@ class Observe
      * @var User
      */
     private $validator;
-
-    /**
-     * @var string
-     */
-    private $status;
 
     /**
      * @var ArrayCollection
@@ -196,25 +191,7 @@ class Observe
     }
 
     /**
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
 
-    /**
-     * @param string $status
-     * @return Observe
-     */
-    public function setStatus(string $status): self
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
      * @return User|null
      */
     public function getValidator(): ?User

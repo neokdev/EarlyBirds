@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
@@ -18,5 +19,11 @@
         <field name="img"/>
         <many-to-one field="validator" target-entity="App\Domain\Models\User" inversed-by="validatedObserve"/>
         <many-to-many field="upvoter" target-entity="App\Domain\Models\User" inversed-by="upvoted"/>
+        <field name="createdAt" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updatedAt" type="datetime">
+            <gedmo:timestampable on="update"/>
+        </field>
     </entity>
 </doctrine-mapping>
