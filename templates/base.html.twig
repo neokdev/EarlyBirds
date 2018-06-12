@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li><a href="#" class="black-text">Actualités</a></li>
-                <li><a href="#" class="black-text">Contact</a></li>
+                <li><a href="{{ path('app_contact') }}" class="black-text">Contact</a></li>
 
                 {% if is_granted('ROLE_USER') == false %}
                 <li><a href="{{ path('security_login') }}" class="black-text">Login</a></li>

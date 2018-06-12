@@ -6,6 +6,7 @@ use App\Domain\DTO\Interfaces\ObserveDTOInterface;
 use App\Domain\DTO\ObserveDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -28,10 +29,10 @@ class ObserveType extends AbstractType
                     'placeholder' => 'nom de l\'oiseau'
                 ]
             ])
-            ->add('description',TextType::class, [
+            ->add('description',TextareaType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'desecription'
+                    'placeholder' => 'description'
                 ]
             ])
             ->add('latitude',TextType::class,[

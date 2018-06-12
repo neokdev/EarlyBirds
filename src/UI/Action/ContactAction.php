@@ -8,12 +8,61 @@
 
 namespace App\UI\Action;
 
+use App\UI\Action\Interfaces\ContactActionInterface;
+use App\UI\Form\ContactType;
+use App\UI\Form\Handler\Interfaces\ContactTypeHandlerInterface;
+use App\UI\Responder\Interfaces\ContactResponderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\Request;
 
-class ContactAction
+/**
+ * Class ContactAction
+ * @package App\UI\Action
+ * @Route(
+ *     "/contact",
+ *     name="app_contact",
+ *     methods={"GET","POST"}
+ * )
+ */
+class ContactAction implements ContactActionInterface
 {
-    public function __invoke()
-    {
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
 
+    /**
+     * @var ContactTypeHandlerInterface
+     */
+    private $contactTypeHandler;
+
+
+    /**
+     * ContactAction constructor.
+     *
+     * @param FormFactoryInterface        $formFactory
+     * @param ContactTypeHandlerInterface $contactTypeHandler
+     */
+    public function __construct(
+        FormFactoryInterface        $formFactory,
+        ContactTypeHandlerInterface $contactTypeHandler
+    ) {
+        $this->formFactory        = $formFactory;
+        $this->contactTypeHandler = $contactTypeHandler;
     }
 
+
+    public function __invoke(ContactResponderInterface $contactResponder, Request $request)
+    {
+        $addContactType = $this->formFactory
+                               ->create(ContactType::class)
+                               ->handleRequest($request);
+
+        if ($this->contactTypeHandler->handle($addContactType)) {
+
+            return $contactResponder(true, null);
+        }
+        return $contactResponder(false, $addContactType);
+    }
 }

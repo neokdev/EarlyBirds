@@ -37,10 +37,10 @@ final class ObservationAction implements ObservationActionInterface
     private $formFactory;
 
     public function __construct(
-        ObserveTypeHandlerInterface $obsertionTypeHandler,
+        ObserveTypeHandlerInterface $observationTypeHandler,
         FormFactoryInterface        $formFactory
     ) {
-        $this->observationTypeHandler = $obsertionTypeHandler;
+        $this->observationTypeHandler = $observationTypeHandler;
         $this->formFactory            = $formFactory;
     }
 
