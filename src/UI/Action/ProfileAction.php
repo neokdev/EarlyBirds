@@ -9,6 +9,7 @@
 namespace App\UI\Action;
 
 use App\Domain\Repository\ObserveRepository;
+use App\Domain\Repository\UserRepository;
 use App\UI\Action\Interfaces\ProfileActionInterface;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
 use App\UI\Form\ProfileType;
@@ -44,6 +45,10 @@ final class ProfileAction implements ProfileActionInterface
      * @var TokenStorageInterface
      */
     private $tokenStorage;
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
 
     /**
      * ProfileAction constructor.
@@ -51,17 +56,20 @@ final class ProfileAction implements ProfileActionInterface
      * @param ProfileTypeHandlerInterface $typeHandler
      * @param ObserveRepository           $observeRepository
      * @param TokenStorageInterface       $tokenStorage
+     * @param UserRepository              $userRepository
      */
     public function __construct(
         FormFactoryInterface $form,
         ProfileTypeHandlerInterface $typeHandler,
         ObserveRepository $observeRepository,
-        TokenStorageInterface $tokenStorage
+        TokenStorageInterface $tokenStorage,
+        UserRepository $userRepository
     ) {
         $this->form              = $form;
         $this->typeHandler       = $typeHandler;
         $this->observeRepository = $observeRepository;
         $this->tokenStorage      = $tokenStorage;
+        $this->userRepository    = $userRepository;
     }
     /**
      * @param Request                   $request
@@ -73,11 +81,12 @@ final class ProfileAction implements ProfileActionInterface
         Request $request,
         ProfileResponderInterface $profileResponder
     ) {
-        $user = $this->tokenStorage->getToken()->getUser();
-
+        $user   = $this->tokenStorage->getToken()->getUser();
         $userId = $user->getId();
 
         $myObserves = $this->observeRepository->findMyObservationsByOrderDesc($userId);
+
+        $users = $this->userRepository->findAll();
 
         $profileType = $this->form->create(ProfileType::class)
             ->handleRequest($request);
@@ -86,6 +95,6 @@ final class ProfileAction implements ProfileActionInterface
             return $profileResponder(true);
         }
 
-        return $profileResponder(false, $profileType, $myObserves);
+        return $profileResponder(false, $profileType, $myObserves, $users);
     }
 }

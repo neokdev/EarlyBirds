@@ -32,17 +32,7 @@ body
     display: none;
 }
 
-#observePanel
-{
-    margin-bottom: 1%;
-}
-
 .collapsible
-{
-    background-color: #005662;
-}
-
-#Observations
 {
     background-color: #005662;
 }
@@ -91,6 +81,13 @@ body
     width: auto;
     max-width: 56px;
     max-height: 56px;
+}
+
+.avatarTable {
+    object-fit: cover;
+    width:56px;
+    height:56px;
+    max-width: 100%;
 }
 
 #obsButtons

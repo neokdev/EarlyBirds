@@ -32,26 +32,26 @@
             <div class="col s2">
                 <ul class="tabs">
                     <li class="tab">
-                        <a href="#Dashboard"><i class="material-icons" style="font-size: 4em">dashboard</i></a>
+                        <a href="#dashboard"><i class="material-icons" style="font-size: 4em">dashboard</i></a>
                     </li>
                     <li class="tab">
-                        <a href="#Profil"><i class="material-icons" style="font-size: 4em">contact_mail</i></a>
+                        <a href="#profil"><i class="material-icons" style="font-size: 4em">contact_mail</i></a>
                     </li>
                     <li class="tab">
-                        <a href="#Observations"><img id="icon" src="{{ asset('/img/icons/Very-Basic-Binoculars-icon.png') }}"></a>
+                        <a href="#observations"><img id="icon" src="{{ asset('/img/icons/Very-Basic-Binoculars-icon.png') }}"></a>
                     </li>
                     <li class="tab">
-                        <a href="#Posts"><i class="material-icons" style="font-size: 4em">assignment</i></a>
+                        <a href="#posts"><i class="material-icons" style="font-size: 4em">assignment</i></a>
                     </li>
-                    {% if is_granted('ROLE_ADMIN')%}
+                    {% if is_granted('ROLE_USER')%}
                     <li class="tab">
-                        <a href="#Admin"><i class="material-icons" style="font-size: 4em">assignment</i></a>
+                        <a href="#admin"><i class="material-icons" style="font-size: 4em">assignment</i></a>
                     </li>
                     {% endif %}
                 </ul>
             </div>
             <div class="col s10 m9 l8">
-                <div id="Dashboard" class="tab-content">
+                <div id="dashboard" class="tab-content">
 
                     <div class="row">
                         <div class="col s12 offset-m1 m5">
@@ -112,7 +112,7 @@
                     </div>
 
                 </div>
-                <div id="Profil" class="tab-content">
+                <div id="profil" class="tab-content">
 
                     <div class="row" id="loginPanel">
                         <div class="card-panel grey lighten-4 hoverable col s10 offset-s1">
@@ -187,10 +187,24 @@
                         </div>
                     </div>
                 </div>
-                <div id="Observations" class="tab-content" style="background-color: #f5f5f5">
+                <div id="observations" class="tab-content">
+
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="card-panel blue-grey darken-1">
+                                <h5 class="white-text center">Mes observations</h5>
+                            </div>
+                        </div>
+                        <div class="col s6 center" style="height: inherit">
+                            <a href="{{ path('app_observe') }}" class="waves-effect waves-light btn">Saisir une observation</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
                     <ul class="collapsible popout">
                         {% for observe in observes %}
-                            <li id="observePanel" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
+                            <li class="observePanel" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
                                 <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
 
                                     <div class="imgContainer">
@@ -243,13 +257,81 @@
                             </li>
                         {% endfor %}
                     </ul>
+
                 </div>
-                <div id="Posts" class="tab-content">
+
+                </div>
+                <div id="posts" class="tab-content">
                     <b>POSTS</b>
                 </div>
-                {% if is_granted('ROLE_ADMIN')%}
-                <div id="Admin" class="tab-content">
-                    <b>Admin</b>
+                {% if is_granted('ROLE_USER')%}
+                <div id="admin" class="tab-content">
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card-panel white">
+
+                                <table class="responsive-table highlight">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Observations</th>
+                                        <th>Compte créé le</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        {% for user in users %}
+                                    <tr>
+                                        <td>
+                                            <img class="avatarTable" src="{{ user.img }}">
+                                        </td>
+                                        <td>{{ user.email }}</td>
+                                        <td>
+                                            {% if user.roles.0 == "ROLE_USER" %}
+                                                Utilisateur
+                                            {% elseif user.roles.0 == "ROLE_NATURALIST"%}
+                                                Naturaliste
+                                            {% elseif user.roles.0 == "ROLE_ADMIN" %}
+                                                ADMIN
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ user.observes.count }}</td>
+                                        <td>{{ user.createdAt|date('d/m/Y') }}</td>
+                                        <td>
+                                            <a class="waves-effect waves-light btn"><i class="material-icons">create</i></a>
+                                            <a href="#modalDelUser" class="waves-effect waves-light btn red darken-2 modal-trigger"><i class="material-icons">delete</i></a>
+                                            {% if is_granted('ROLE_ADMIN') == false %}
+                                                <a class="waves-effect waves-light btn green accent-4"><i class="material-icons">publish</i></a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+
+                                </table>
+
+                                <!-- Modal Structure -->
+                                <div id="modalDelUser" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Modal Header</h4>
+                                        <p>A bunch of text</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 {% endif %}
             </div>
@@ -301,7 +383,6 @@
                 });
             {% endfor %}
 
-
             $('.js-taxref').each(function () {
                 let $taxref = $(this);
                 $(this).find('#ObsTitle').prepend(spinner);
@@ -330,7 +411,7 @@
                         if ('habitat' === key) {
                             $taxref.parent().find('#info').append('<li>Habitat : ' + habitat(val) + '</li>');
                         }
-                        if (null != rang(val) && null != status(key)) {
+                        if (null != lb(val) && null != status(key)) {
                             $taxref.parent().find('#info').append('<li>' + lb(val) + ' ' + status(key) + '</li>');
                         }
                         if ('rang' === key) {
@@ -342,30 +423,32 @@
 
             $('.materialboxed').click(function (e) {
                 e.stopPropagation();
-            })
+            });
 
             $('.modifObs').click(function (e) {
                 return false;
-            })
+            });
         });
 
         document.addEventListener('DOMContentLoaded', function() {
+            let images =document.querySelectorAll('.materialboxed');
             let elems = document.querySelectorAll('.collapsible');
-            let instances = M.Collapsible.init(elems, {
-                onOpenStart: function (e) {
-                    console.log('onOpenStart ' + $(e).data('index'));
-                    id = $(e).data('index');
-                },
+            let tulles = M.Collapsible.init(elems, {
                 onCloseStart: function (e) {
-                    console.log('onCloseStart ' + $(e).data('index'));
                     deleteMap(e);
                 },
                 onOpenEnd: function (e) {
-                    console.log('onOpenEnd ' + $(e).data('index'));
                     createMap(e);
                 },
-                onCloseEnd: function (e) {
-                    console.log('onCloseEnd ' + $(e).data('index'));
+            });
+            let imagesAnim = M.Materialbox.init(images, {
+                onOpenStart: function (e) {
+                    $(elems).find('#obsMap').remove();
+                },
+                onCloseStart: function (e) {
+                    if ($('li.observePanel.active').length === 1) {
+                        createMap($('li[class*="active"]'));
+                    };
                 }
             });
         });
@@ -374,9 +457,6 @@
             let index = $(e).data('index');
             let lat = $(e).data('lat');
             let long = $(e).data('long');
-
-            console.log('lat: ' + lat);
-            console.log('long: ' + long);
 
             let $mapContainer = $('.' + 'map-container-' + index);
 

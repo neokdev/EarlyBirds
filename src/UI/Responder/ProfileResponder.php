@@ -42,6 +42,8 @@ final class ProfileResponder implements ProfileResponderInterface
     /**
      * @param bool               $redirect
      * @param FormInterface|null $form
+     * @param array|null         $observe
+     * @param array|null         $users
      *
      * @return mixed|Response
      *
@@ -52,7 +54,8 @@ final class ProfileResponder implements ProfileResponderInterface
     public function __invoke(
         bool $redirect = false,
         FormInterface $form = null,
-        array $observe = null
+        array $observe = null,
+        array $users = null
     ) {
         if ($redirect) {
             $response = new RedirectResponse($this->urlGenerator->generate('app_profile'));
@@ -63,6 +66,7 @@ final class ProfileResponder implements ProfileResponderInterface
                     [
                         'form'     => $form->createView(),
                         'observes' => $observe,
+                        'users'    => $users,
                     ]
                 )
             );
