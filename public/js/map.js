@@ -8,42 +8,95 @@ $(function() {
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q'
         }).addTo(mymap);
+/*
+    $('<ul class="birdsList"></ul>').insertAfter($('#observe_ref'));
 
     $('#observe_ref').keyup(function() {
         if ($('#observe_ref').val().length > 3) {
+
+
+            console.log($('.birdsList li').length);
+
+            if ($('.birdsList li').length > 0) {
+                $('.birdsList li').remove();
+            }
+
             //ajax call
             $.getJSON(
                 'http://127.0.0.1:8000/recherche-'+$('#observe_ref').val(),
                 function(data) {
                     //reading of the json object as a table
                     //and implementation under the field
-                    $('<ul id="birdsList"></ul>').insertAfter($('#observe_ref').fadeIn(1000));
+
                     let birdsID = 0;
                     data.forEach(function(datas) {
                         birdsID++;
-                        $('<li id="birds'+ birdsID +'">'+ datas.nomVern +'</li>').insertAfter(
-                            $('#birdsList').fadeIn(1000)
+                        $('<li id="birds'+ birdsID +'">'+ datas.nomVern +'</li>').prependTo(
+                            $('.birdsList')
                         );
                     });
-                    //select value from the li, put it in input field and destroy ul list
-                    let liId = $('#birdsList ~ li');
+                    //select value from the li, put it in input field and destroy li
+                    let liId = $('.birdsList li');
                     for (let i = 0 ; i < liId.length; i++) {
                         let idAttr = $(liId[i]);
                         $(idAttr).click(function () {
                             let value = $(idAttr).text();
                             let input = $('#observe_ref');
                             input.val(value);
-                            $('#birdsList ~ li').remove();
+                            $('.birdsList li').remove();
                         });
                     }
                 }
             );
         } else {
             //message si recherche imprécise
-            $('<ul id="birdsList"><li id="message">veuillez affiner votre recherche</li></ul>').insertAfter($('#observe_ref'));
-            $('#birdsList').fadeOut(4000);
+            if ($('.birdsList li').length > 0) {
+                $('.birdsList li').remove();
+            }
+            $('<p id="message">veuillez affiner votre recherche</p>').prependTo($('#observe_ref'));
+            $('#message').fadeOut(4000);
         }
     });
+*/
+    $('#observe_ref').keyup(function() {
+
+        let searchLgth = $('#observe_ref').val().length;
+        let searchVal = $('#observe_ref').val();
+
+        if (searchLgth === 3) {
+            $.ajax({
+               url: "http://127.0.0.1:8000/recherche-" + searchVal,
+               cache: false,
+               dataType: "json",
+               type: "GET",
+               success: function(result) {
+
+                   let birds = [];
+
+                   result.forEach(function (data) {
+                       birds.push(data.nomVern);
+                   });
+
+                   if (!birds || !birds.length) return;
+                   let suggestions = birds.map(function (item) {
+                       return "\"" + item + "\": null";
+                   });
+
+                   suggestions = "{" + suggestions + "}";
+                   console.log(suggestions);
+                   $("#observe_ref").autocomplete({
+
+                      data: JSON.parse(suggestions),
+                      minLength: 0
+                   });
+               }
+           });
+        }
+
+    });
+
+
+
 
 //INIT_GEOLOCATION
     let latitude = $('input#observe_latitude');
