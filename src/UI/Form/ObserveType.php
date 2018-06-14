@@ -20,30 +20,31 @@ class ObserveType extends AbstractType
      */
     public function buildForm(
         FormBuilderInterface $builder,
-        array $options
+        array                $options
     ) {
         $builder
             ->add('ref', TextType::class, [
                 'label' => false,
-                'attr' => [
-                    'placeholder' => 'nom de l\'oiseau'
+                'attr'  => [
+                    'placeholder'  => 'veuillez choisir un oiseau',
+                    'autocomplete' => 'off'
                 ]
             ])
             ->add('description',TextareaType::class, [
                 'label' => false,
-                'attr' => [
+                'attr'  => [
                     'placeholder' => 'description'
                 ]
             ])
             ->add('latitude',TextType::class,[
                 'label' => false,
-                'attr' => [
+                'attr'  => [
                     'placeholder' => 'latitude'
                 ]
             ])
             ->add('longitude',TextType::class, [
                 'label' => false,
-                'attr' => [
+                'attr'  => [
                     'placeholder' => 'longitude'
                 ]
             ])

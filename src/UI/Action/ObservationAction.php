@@ -47,6 +47,7 @@ final class ObservationAction implements ObservationActionInterface
     /**
      * @param Request                       $request
      * @param ObservationResponderInterface $responder
+     *
      * @return mixed
      */
     public function __invoke(Request $request, ObservationResponderInterface $responder)

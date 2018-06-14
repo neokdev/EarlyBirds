@@ -9,7 +9,7 @@
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
-use App\Domain\Models\TaxRef;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Class ObserveDTO
@@ -18,7 +18,7 @@ use App\Domain\Models\TaxRef;
 class ObserveDTO implements ObserveDTOInterface
 {
     /**
-     * @var TaxRef
+     * @var string
      */
     public $ref;
 
@@ -38,37 +38,37 @@ class ObserveDTO implements ObserveDTOInterface
     public $longitude;
 
     /**
-     * @var string
+     * @var UploadedFile
      */
     public $img;
 
     /**
-     * ObserveDTO                   constructor.
+     * ObserveDTO constructor.
      *
-     * @param TaxRef                $ref
-     * @param string                $description
-     * @param string                $latitude
-     * @param string                $longitude
-     * @param string                $img
+     * @param string            $ref
+     * @param string            $description
+     * @param string            $latitude
+     * @param string            $longitude
+     * @param UploadedFile|null $img
      */
     public function __construct(
-        TaxRef                      $ref,
-        string                      $description,
-        string                      $latitude,
-        string                      $longitude,
-        string                      $img
+        string       $ref,
+        string       $description,
+        string       $latitude,
+        string       $longitude,
+        UploadedFile $img = null
     ) {
-        $this->ref          =       $ref;
-        $this->description  =       $description;
-        $this->latitude     =       $latitude;
-        $this->longitude    =       $longitude;
-        $this->img          =       $img;
+        $this->ref          = $ref;
+        $this->description  = $description;
+        $this->latitude     = $latitude;
+        $this->longitude    = $longitude;
+        $this->img          = $img;
     }
 
     /**
-     * @return TaxRef
+     * @return null|string
      */
-    public function getRef(): TaxRef
+    public function getRef(): ?string
     {
         return $this->ref;
     }
@@ -98,9 +98,9 @@ class ObserveDTO implements ObserveDTOInterface
     }
 
     /**
-     * @return string
+     * @return null|UploadedFile
      */
-    public function getImg(): string
+    public function getImg(): ?UploadedFile
     {
         return $this->img;
     }

@@ -32,6 +32,11 @@ class ObserveRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
+    public function update()
+    {
+        $this->_em->flush();
+    }
+
     /**
      * @param string $userId
      *

@@ -14,7 +14,6 @@ $(function() {
     $('#observe_ref').keyup(function() {
         if ($('#observe_ref').val().length > 3) {
 
-
             console.log($('.birdsList li').length);
 
             if ($('.birdsList li').length > 0) {
@@ -57,13 +56,13 @@ $(function() {
             $('#message').fadeOut(4000);
         }
     });
-*/
+ */
     $('#observe_ref').keyup(function() {
 
         let searchLgth = $('#observe_ref').val().length;
         let searchVal = $('#observe_ref').val();
 
-        if (searchLgth === 3) {
+        if (searchLgth === 1) {
             $.ajax({
                url: "http://127.0.0.1:8000/recherche-" + searchVal,
                cache: false,
@@ -74,7 +73,7 @@ $(function() {
                    let birds = [];
 
                    result.forEach(function (data) {
-                       birds.push(data.nomVern);
+                       birds.push(data.nomComplet);
                    });
 
                    if (!birds || !birds.length) return;
@@ -83,7 +82,6 @@ $(function() {
                    });
 
                    suggestions = "{" + suggestions + "}";
-                   console.log(suggestions);
                    $("#observe_ref").autocomplete({
 
                       data: JSON.parse(suggestions),
