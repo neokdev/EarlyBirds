@@ -29,6 +29,19 @@
                     {{ form_row(form.longitude) }}
                 </div>
 
+                {% if img is defined %}
+                    <div id="picture">
+
+                        <img id="birdImg" src="
+                            {% if img matches '/^https?:/' %}
+                            {{ img | replace({'sz=50':'sz=256'}) }}
+                            {% else %}{{ img }}
+                            {% endif %}
+                         "
+                             alt=""/>
+                    </div>
+                {% endif %}
+
                 <div class="input-field col s12">
                     {{ form_row(form.img) }}
                 </div>
@@ -40,6 +53,7 @@
                 </div>
 
                 {{ form_end(form) }}
+
             </div>
         </div>
         <div id="mapid" class="col s12 m8"></div>

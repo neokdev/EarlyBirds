@@ -10,6 +10,7 @@ namespace App\UI\Responder;
 
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
+use App\Domain\Models\Observe;
 use App\UI\Responder\Interfaces\UpdateObservationResponderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -44,9 +45,10 @@ class UpdateObservationResponder implements UpdateObservationResponderInterface
     }
 
     /**
-     * @param bool $redirect
-     * @param FormInterface                     $form
-     * @param ObserveDTOInterface|null          $observe
+     * @param bool                     $redirect
+     * @param FormInterface            $form
+     * @param ObserveDTOInterface|null $observeDTO
+     * @param string                   $observe
      *
      * @return mixed|RedirectResponse|Response
      *
@@ -57,13 +59,16 @@ class UpdateObservationResponder implements UpdateObservationResponderInterface
     public function __invoke(
         bool                $redirect = false,
         FormInterface       $form,
-        ObserveDTOInterface $observe = null
+        ObserveDTOInterface $observeDTO = null,
+        string              $observe
     ) {
         $redirect
             ? $response = new RedirectResponse($this->urlGeneratorInterface->generate('app_home'))
             : $response = new Response($this->twig->render('Observation.html.twig',[
-                'form' => $form->createView(),
-                'observe' => $observe
+                'form'       => $form->createView(),
+                'observeDTO' => $observeDTO,
+                'img'        => $observe
+
         ]))
         ;
 

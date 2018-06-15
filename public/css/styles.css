@@ -114,3 +114,7 @@ body
 {
     height: 60px;
 }
+
+#birdImg {
+    width: 50%;
+}

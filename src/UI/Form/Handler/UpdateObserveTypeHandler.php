@@ -51,13 +51,20 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
     private $flash;
 
     /**
+     * @var string
+     */
+    private $media;
+
+    /**
      * UpdateObserveTypeHandler constructor.
-     * @param ObserveRepository $observeRepository
+     *
+     * @param ObserveRepository       $observeRepository
      * @param ObserveBuilderInterface $observeBuilser
-     * @param TaxRefRepository $taxrefRepository
-     * @param null $fileOutput
-     * @param string $imageFolder
-     * @param FlashBagInterface $flash
+     * @param TaxRefRepository        $taxrefRepository
+     * @param null                    $fileOutput
+     * @param string                  $imageFolder
+     * @param FlashBagInterface       $flash
+     * @param string                  $media
      */
     public function __construct(
         ObserveRepository       $observeRepository,
@@ -65,7 +72,8 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
         TaxRefRepository        $taxrefRepository,
                                 $fileOutput = null,
         string                  $imageFolder,
-        FlashBagInterface       $flash
+        FlashBagInterface       $flash,
+        string                  $media
     ) {
         $this->observeRepository = $observeRepository;
         $this->observeBuilser    = $observeBuilser;
@@ -73,6 +81,7 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
         $this->fileOutput        = $fileOutput;
         $this->imageFolder       = $imageFolder;
         $this->flash             = $flash;
+        $this->media             = $media;
     }
 
 
@@ -115,7 +124,7 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
                     );
                 }
 
-                $observe->setImg($this->fileOutput->getPath()."/".$this->fileOutput->getFilename());
+                $observe->setImg($this->media.$this->fileOutput->getFilename());
             }
 
             $this->observeRepository->update();

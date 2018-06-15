@@ -55,6 +55,11 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
     private $taxRefRepository;
 
     /**
+     * @var string
+     */
+    private $media;
+
+    /**
      * ObserveTypeHandler constructor.
      *
      * @param ObserveBuilderInterface $observeBuilder
@@ -63,6 +68,7 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
      * @param FlashBagInterface       $flashBag
      * @param TokenStorageInterface   $token
      * @param TaxRefRepository        $taxRefRepository
+     * @param string                  $media
      */
     public function __construct(
         TokenStorageInterface   $token,
@@ -70,7 +76,8 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
         ObserveRepository       $observeRepository,
         string                  $imageFolder,
         FlashBagInterface       $flashBag,
-        TaxRefRepository        $taxRefRepository
+        TaxRefRepository        $taxRefRepository,
+        string                  $media
     ) {
         $this->token             = $token;
         $this->observeBuilder    = $observeBuilder;
@@ -79,6 +86,7 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
         $this->flash             = $flashBag;
         $this->taxRefRepository  = $taxRefRepository;
         $this->fileOutput        = null;
+        $this->media             = $media;
     }
 
     /**
@@ -113,7 +121,7 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
                 $form->getData()->description,
                 $form->getData()->latitude,
                 $form->getData()->longitude,
-                $this->fileOutput->getPath()."/".$this->fileOutput->getFilename()
+                $this->media.$this->fileOutput->getFilename()
             );
 
             $this->observeRepository->save($this->observeBuilder->getObserve());
