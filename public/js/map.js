@@ -101,12 +101,13 @@ $(function() {
     let longitude = $('input#observe_longitude');
 
     function success(pos) {
-       let cLat = pos.coords.latitude;
-       latitude.val(cLat);
+        let cLong = pos.coords.longitude;
+        let cLat = pos.coords.latitude;
 
-       let cLong = pos.coords.longitude;
-       longitude.val(cLong);
-
+        if(longitude.val() === "" && latitude.val() === "") {
+            latitude.val(cLat);
+            longitude.val(cLong);
+        }
        mymap.flyTo([cLat,cLong], 10);
     }
 
