@@ -28,33 +28,29 @@
 </div>
 
     <div class="row">
-        <div class="tabs-vertical">
-            <div class="col s2">
-                <ul class="tabs">
-                    <li class="tab">
-                        <a href="#dashboard"><i class="material-icons" style="font-size: 4em">dashboard</i></a>
-                    </li>
-                    <li class="tab">
-                        <a href="#profil"><i class="material-icons" style="font-size: 4em">contact_mail</i></a>
-                    </li>
-                    <li class="tab">
-                        <a href="#observations"><img id="icon" src="{{ asset('/img/icons/Very-Basic-Binoculars-icon.png') }}"></a>
-                    </li>
-                    <li class="tab">
-                        <a href="#posts"><i class="material-icons" style="font-size: 4em">assignment</i></a>
-                    </li>
-                    {% if is_granted('ROLE_USER')%}
-                    <li class="tab">
-                        <a href="#admin"><i class="material-icons" style="font-size: 4em">assignment</i></a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
+
+        <div class="vertical-tab col s2">
+            <button class="tablinks btn waves-effect waves-light" onclick="verticalTab(event, 'dashboard')" id="defaultOpen">
+                <i class="material-icons" style="font-size: 42px">dashboard</i>
+            </button>
+            <button class="tablinks btn waves-effect waves-light" onclick="verticalTab(event, 'profil')">
+                <i class="material-icons" style="font-size: 42px">contact_mail</i>
+            </button>
+            <button class="tablinks btn waves-effect waves-light" onclick="verticalTab(event, 'observations')">
+                <i class="material-icons" style="font-size: 42px">add_a_photo</i>
+            </button>
+            {% if is_granted('ROLE_USER')%}
+            <button class="tablinks btn waves-effect waves-light" onclick="verticalTab(event, 'admin')">
+                <i class="material-icons" style="font-size: 42px">assignment</i>
+            </button>
+            {% endif %}
+        </div>
+
             <div class="col s10 m9 l8">
-                <div id="dashboard" class="tab-content">
+                <div id="dashboard" class="vertical-tabcontent">
 
                     <div class="row">
-                        <div class="col s12 offset-m1 m5">
+                        <div class="col s12 offset-l1 l5">
 
                             <div class="row">
                                 <div class="col s12">
@@ -85,7 +81,7 @@
 
                         </div>
 
-                        <div class="col s12 offset-m1 m5">
+                        <div class="col s12 offset-l1 l5">
 
                             <div class="row">
                                 <div class="col s12">
@@ -112,7 +108,7 @@
                     </div>
 
                 </div>
-                <div id="profil" class="tab-content">
+                <div id="profil" class="vertical-tabcontent">
 
                     <div class="row" id="loginPanel">
                         <div class="card-panel grey lighten-4 hoverable col s10 offset-s1">
@@ -187,85 +183,181 @@
                         </div>
                     </div>
                 </div>
-                <div id="observations" class="tab-content">
+                <div id="observations" class="vertical-tabcontent">
 
                     <div class="row">
-                        <div class="col s6">
-                            <div class="card-panel blue-grey darken-1">
-                                <h5 class="white-text center">Mes observations</h5>
-                            </div>
-                        </div>
-                        <div class="col s6 center" style="height: inherit">
-                            <a href="{{ path('app_observe') }}" class="waves-effect waves-light btn">Saisir une observation</a>
+
+                        <div id="obsTab" class="col s12">
+
+                            <ul class="tabs z-depth-1">
+                                <li class="tab col s6"><a class="active" href="#myobserves">Mes Observations</a></li>
+                                <li class="tab col s6"><a href="#observes">Observations à valider</a></li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div id="myobserves" class="col s12">
 
-                    <ul class="collapsible popout">
-                        {% for observe in observes %}
-                            <li class="observePanel" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
-                                <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
-
-                                    <div class="imgContainer">
-                                        <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block">
-                                    </div>
-                                    <div id="ObsTitle" class="col s8 xl10  center">
-                                        <p>{{ observe.createdAt|localizeddate('full', 'none') }}</p>
-                                        <hr>
-                                        <div id="obsButtons" class="row">
-                                            <div class="col s4 m3 l2 xl1">
-                                                {% if observe.validator is same as(null) %}
-                                                    <img src="{{ asset('/img/icons/baseline-hourglass_empty-24px.svg') }}">
-                                                    {% else %}
-                                                    <img src="{{ asset('/img/icons/baseline-assignment_turned_in-24px.svg') }}">
-                                                {% endif %}
-                                            </div>
-                                            <div class="col s4 m3 l2 xl1">
-                                                {% if observe.validator is same as(null) %}
-                                                    <img class="modifObs" src="{{ asset('/img/icons/baseline-edit-24px.svg') }}" href="#">
-                                                {% else %}
-                                                    <img src="{{ asset('/img/icons/baseline-edit-24px.svg') }}" style="opacity: 0.5">
-                                                {% endif %}
-                                            </div>
-                                            <div class="col s4 m3 l2 xl1">
-                                                {% if observe.validator is same as(null) %}
-                                                    <img class="delObs" src="{{ asset('/img/icons/baseline-delete-24px.svg') }}">
-                                                {% else %}
-                                                    <img src="{{ asset('/img/icons/baseline-delete-24px.svg') }}" style="opacity: 0.5">
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                    </div>
-
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="card-panel blue-grey darken-1">
+                                    <h5 class="white-text center">Mes observations</h5>
                                 </div>
-                                <div class="collapsible-body">
-                                    <div class="row">
-                                        <div id="mapContainer" class="map-container-{{ observe.id }} row" data-index="{{ observe.id }}">
-                                            <div class="obsMapDiv col s6">
-                                                <ul id="info">
-                                                </ul>
+                            </div>
+                            <div class="col s6 center" style="height: inherit">
+                                <a href="{{ path('app_observe') }}" class="waves-effect waves-light btn">Saisir une observation</a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <ul class="collapsible">
+                                {% for observe in observes %}
+                                    <li class="observePanel" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
+                                        <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
+
+                                            <div class="imgContainer">
+                                                <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block">
+                                            </div>
+                                            <div id="ObsTitle" class="col s8 xl10  center">
+                                                <span>{{ observe.createdAt|localizeddate('full', 'none') }}</span>
+                                                <hr>
+                                                <div id="obsButtons" class="row">
+                                                    <div class="col s4 m3 l2 xl1">
+                                                        {% if observe.validator is same as(null) %}
+                                                            <img src="{{ asset('/img/icons/baseline-hourglass_empty-24px.svg') }}">
+                                                        {% else %}
+                                                            <img src="{{ asset('/img/icons/baseline-assignment_turned_in-24px.svg') }}">
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col s4 m3 l2 xl1">
+                                                        {% if observe.validator is same as(null) %}
+                                                            <img class="modifObs" src="{{ asset('/img/icons/baseline-edit-24px.svg') }}" href="#">
+                                                        {% else %}
+                                                            <img src="{{ asset('/img/icons/baseline-edit-24px.svg') }}" style="opacity: 0.5">
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col s4 m3 l2 xl1">
+                                                        {% if observe.validator is same as(null) %}
+                                                            <img class="delObs" src="{{ asset('/img/icons/baseline-delete-24px.svg') }}">
+                                                        {% else %}
+                                                            <img src="{{ asset('/img/icons/baseline-delete-24px.svg') }}" style="opacity: 0.5">
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <div class="row">
+                                                <div id="mapContainer" class="map-container-{{ observe.id }} row" data-index="{{ observe.id }}">
+                                                    <div class="obsMapDiv col s6">
+                                                        <ul id="info">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <p>{{ observe.description }}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <p>{{ observe.description }}</p>
-                                        </div>
-                                    </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="observes" class="col s12">
+
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="card-panel blue-grey darken-1">
+                                    <h5 class="white-text center">Observations à valider</h5>
                                 </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
+                            </div>
+                            <div class="col s6 center" style="height: inherit">
+                                <a href="{{ path('app_observe') }}" class="waves-effect waves-light btn">Saisir une observation</a>
+                            </div>
+                        </div>
 
+                        <div class="row">
+
+                            <ul class="collapsible">
+                                {% for observe in observes|reverse %}
+                                    <li class="observePanel" data-index="{{ observe.id }}2" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
+                                        <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
+
+                                            <div class="imgContainer">
+                                                <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block">
+                                            </div>
+                                            <div id="ObsTitle" class="col s8 xl10  center">
+                                                <span>{{ observe.createdAt|localizeddate('full', 'none') }}</span>
+                                                <hr>
+                                                <div id="obsButtons" class="row">
+                                                    <div class="col s4 m3 l2 xl1">
+                                                        {% if observe.validator is same as(null) %}
+                                                            <img src="{{ asset('/img/icons/baseline-hourglass_empty-24px.svg') }}">
+                                                        {% else %}
+                                                            <img src="{{ asset('/img/icons/baseline-assignment_turned_in-24px.svg') }}">
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col s4 m3 l2 xl1">
+                                                        {% if observe.validator is same as(null) %}
+                                                            <img class="modifObs" src="{{ asset('/img/icons/baseline-edit-24px.svg') }}" href="#">
+                                                        {% else %}
+                                                            <img src="{{ asset('/img/icons/baseline-edit-24px.svg') }}" style="opacity: 0.5">
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col s4 m3 l2 xl1">
+                                                        {% if observe.validator is same as(null) %}
+                                                            <img class="delObs" src="{{ asset('/img/icons/baseline-delete-24px.svg') }}">
+                                                        {% else %}
+                                                            <img src="{{ asset('/img/icons/baseline-delete-24px.svg') }}" style="opacity: 0.5">
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <div class="row">
+                                                <div id="mapContainer" class="map-container-{{ observe.id }}2 row" data-index="{{ observe.id }}">
+                                                    <div class="obsMapDiv col s6">
+                                                        <ul id="info">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <p>{{ observe.description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    </div>
                 </div>
 
-                </div>
-                <div id="posts" class="tab-content">
-                    <b>POSTS</b>
-                </div>
                 {% if is_granted('ROLE_USER')%}
-                <div id="admin" class="tab-content">
+                <div id="admin" class="vertical-tabcontent">
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">textsms</i>
+                                    <input type="text" id="autocomplete-input" class="autocomplete">
+                                    <label for="autocomplete-input">Rechercher un utilisateur</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col s12">
@@ -286,11 +378,13 @@
                                     <tbody>
 
                                         {% for user in users %}
-                                    <tr>
+                                    <tr class="userContainer">
                                         <td>
-                                            <img class="avatarTable" src="{{ user.img }}">
+                                            {% if user.img is not null %}
+                                                <img class="avatarTable" src="{{ user.img }}">
+                                            {% endif %}
                                         </td>
-                                        <td>{{ user.email }}</td>
+                                        <td class="userMail">{{ user.email }}</td>
                                         <td>
                                             {% if user.roles.0 == "ROLE_USER" %}
                                                 Utilisateur
@@ -391,8 +485,12 @@
 
                 $.getJSON(taxrefData, function (data) {
                     $.each(data, function (key, val) {
-                        $taxref.find('#spinner').remove();
-                        $taxref.parent().find('#bigSpinner').remove();
+                        $taxref.find('#spinner').fadeOut('normal', function () {
+                            $taxref.find('#spinner').remove()
+                        });
+                        $taxref.parent().find('#bigSpinner').fadeOut('normal', function () {
+                            $taxref.parent().find('#bigSpinner').remove()
+                        });
                         if ('nomVern' === key) {
                             $taxref.find('#ObsTitle').prepend('<h6>' + val + '</h6>');
                         }
@@ -428,6 +526,42 @@
             $('.modifObs').click(function (e) {
                 return false;
             });
+
+            $('input.autocomplete').autocomplete({
+                data: {
+            {% for user in users %}
+                    "{{ user.email }}": '{{ user.img }}',
+            {% endfor %}
+                },
+                onAutocomplete: function () {
+                        let mail = this.el.value;
+                        if (mail === "") {
+                            $('.userContainer').each(function () {
+                                $(this).show();
+                            })
+                        }
+                    $('.userContainer').each(function () {
+                        let tdMail = $(this).find('.userMail').html();
+                        $(this).hide();
+                        if (tdMail === mail) {
+                            $(this).show();
+                        }
+                    })
+                },
+            });
+
+            $('input.autocomplete').keyup(function () {
+                console.log(this.value);
+                if (this.value === "") {
+                    $('.userContainer').each(function () {
+                        $(this).show();
+                    })
+                }
+            });
+
+            $('#obsTab').click(function () {
+                $('.collapsible').collapsible('close');
+            });
         });
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -447,11 +581,28 @@
                 },
                 onCloseStart: function (e) {
                     if ($('li.observePanel.active').length === 1) {
-                        createMap($('li[class*="active"]'));
+                        createMap($('li.observePanel.active'));
                     };
                 }
             });
         });
+
+        function verticalTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("vertical-tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
 
         function createMap(e) {
             let index = $(e).data('index');
@@ -469,11 +620,13 @@
             L.tileLayer(
                 'https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q', {
                 maxZoom: 18,
+                    minZoom: 5,
                 id: 'mapbox.streets',
             }).addTo(mymap);
         }
 
         function deleteMap(e) {
+
             let index = $(e).data('index');
             let $map = $('.' + 'map-' + index);
             $($map).remove();
