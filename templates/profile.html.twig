@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             {% set index = 0 %}
-                    {% for observe in observes if index < 5 %}
+                    {% for observe in myObserves if index < 5 %}
 
                         {% set index = index+1 %}
 
@@ -212,15 +212,15 @@
                         <div class="row">
 
                             <ul class="collapsible">
-                                {% for observe in observes %}
+                                {% for observe in myObserves %}
                                     <li class="observePanel" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
                                         <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
 
                                             <div class="imgContainer">
                                                 <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block">
                                             </div>
-                                            <div id="ObsTitle" class="col s8 xl10  center">
-                                                <span>{{ observe.createdAt|localizeddate('full', 'none') }}</span>
+                                            <div class="ObsTitle col s8 xl10  center">
+                                                <span>le {{ observe.createdAt|localizeddate('full', 'none') }}</span>
                                                 <hr>
                                                 <div id="obsButtons" class="row">
                                                     <div class="col s4 m3 l2 xl1">
@@ -285,15 +285,15 @@
                         <div class="row">
 
                             <ul class="collapsible">
-                                {% for observe in observes|reverse %}
+                                {% for observe in observes %}
                                     <li class="observePanel" data-index="{{ observe.id }}2" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
                                         <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
 
                                             <div class="imgContainer">
                                                 <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block">
                                             </div>
-                                            <div id="ObsTitle" class="col s8 xl10  center">
-                                                <span>{{ observe.createdAt|localizeddate('full', 'none') }}</span>
+                                            <div class="ObsTitle col s8 xl10  center">
+                                                <span>le {{ observe.createdAt|localizeddate('full', 'none') }} par {% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}</span>
                                                 <hr>
                                                 <div id="obsButtons" class="row">
                                                     <div class="col s4 m3 l2 xl1">
@@ -479,7 +479,7 @@
 
             $('.js-taxref').each(function () {
                 let $taxref = $(this);
-                $(this).find('#ObsTitle').prepend(spinner);
+                $(this).find('.ObsTitle').prepend(spinner);
                 $taxref.parent().find('#info').append(bigSpinner);
                 let taxrefData = $(this).data('taxref');
 
@@ -492,7 +492,7 @@
                             $taxref.parent().find('#bigSpinner').remove()
                         });
                         if ('nomVern' === key) {
-                            $taxref.find('#ObsTitle').prepend('<h6>' + val + '</h6>');
+                            $taxref.find('.ObsTitle').prepend('<h6>' + val + '</h6>');
                         }
                         if ('nomVern' === key) {
                             $taxref.parent().find('#info').append('<li>Nom vernaculaire : ' + val + '</li>');
@@ -560,6 +560,7 @@
             });
 
             $('#obsTab').click(function () {
+                deleteMap($('.observePanel.active'));
                 $('.collapsible').collapsible('close');
             });
         });

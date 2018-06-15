@@ -86,6 +86,8 @@ final class ProfileAction implements ProfileActionInterface
 
         $myObserves = $this->observeRepository->findMyObservationsByOrderDesc($userId);
 
+        $observesToValidate = $this->observeRepository->findNonValidate();
+
         $users = $this->userRepository->findAll();
 
         $profileType = $this->form->create(ProfileType::class)
@@ -95,6 +97,6 @@ final class ProfileAction implements ProfileActionInterface
             return $profileResponder(true);
         }
 
-        return $profileResponder(false, $profileType, $myObserves, $users);
+        return $profileResponder(false, $profileType, $myObserves, $observesToValidate, $users);
     }
 }

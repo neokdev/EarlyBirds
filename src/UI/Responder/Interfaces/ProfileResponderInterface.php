@@ -13,10 +13,11 @@ use Symfony\Component\Form\FormInterface;
 interface ProfileResponderInterface
 {
     /**
-     * @param bool          $redirect
-     * @param FormInterface $form
-     * @param array|null    $observe
-     * @param array|null    $users
+     * @param bool               $redirect
+     * @param FormInterface|null $form
+     * @param array|null         $observe
+     * @param array|null         $observesToValidate
+     * @param array|null         $users
      *
      * @return mixed
      */
@@ -24,6 +25,7 @@ interface ProfileResponderInterface
         bool $redirect = false,
         FormInterface $form = null,
         array $observe = null,
+        array $observesToValidate = null,
         array $users = null
     );
 }

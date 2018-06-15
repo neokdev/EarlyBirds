@@ -46,4 +46,29 @@ class ObserveRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @return mixed
+     */
+    public function findNonValidate()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.validator IS NULL')
+            ->orderBy('p.updatedAt', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function findValidate()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.validator IS NOT NULL')
+            ->orderBy('p.updatedAt', 'DESC')
+            ->setMaxResults(25)
+            ->getQuery()
+            ->getResult();
+    }
 }
