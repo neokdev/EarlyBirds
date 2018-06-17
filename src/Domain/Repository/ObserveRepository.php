@@ -51,4 +51,13 @@ class ObserveRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findLastObservation()
+    {
+        return $this->createQueryBuilder('obs')
+            ->orderBy('obs.createdAt', 'DESC')
+            ->setMaxResults(100)
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

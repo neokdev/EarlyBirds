@@ -91,6 +91,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
             return $updateObservationResponder(true, $updateObserve);
         }
 
-        return $updateObservationResponder(false, $updateObserve, $observeDTO, $observe->getImg());
+        return $updateObservationResponder(false, $observeDTO, $observe->getImg(),
+                                           $updateObserve);
     }
 }

@@ -60,4 +60,12 @@ $(function() {
 
 //END_GEOLOCATION
 
+    $().ready(function () {
+        $.getJSON('http://127.0.0.1:8000/recherche-les-dernieres-observations',
+                  function(data) {
+                      console.log(data);
+              }
+          );
+    });
+
 });
