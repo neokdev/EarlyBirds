@@ -67,7 +67,7 @@ class ObserveRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.validator IS NOT NULL')
             ->orderBy('p.updatedAt', 'DESC')
-            ->setMaxResults(25)
+//            ->setMaxResults(25)
             ->getQuery()
             ->getResult();
     }

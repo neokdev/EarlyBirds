@@ -68,11 +68,20 @@
                             <div class="card">
                                 <div class="card-image">
                                     <img src="{{ observe.img }}">
-                                    <span class="card-title">Titre d'observation</span>
+                                    <span class="card-title">{% if observe.ref.nomVern is defined %}{{ observe.ref.nomVern }}{% else %}{{ observe.ref.lbNom }}{% endif %}</span>
                                     <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                                 </div>
-                                <div class="card-content">
-                                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                <div class="card-content" style="padding-bottom: 0">
+                                    <div class="row">
+                                        <div class="col s9">
+                                            <div class="row">
+                                                <span>le {{ observe.createdAt|localizeddate('full', 'none') }}</span>
+                                            </div>
+                                            <div class="row">
+                                                <span>{% if observe.validator is same as(null) %}en attente de validation{% else %}validée{% endif %}</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -220,6 +229,7 @@
                                                 <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block">
                                             </div>
                                             <div class="ObsTitle col s8 xl10  center">
+                                                {#<h6>{{ observe.ref.nomVern }}</h6>#}
                                                 <span>le {{ observe.createdAt|localizeddate('full', 'none') }}</span>
                                                 <hr>
                                                 <div id="obsButtons" class="row">

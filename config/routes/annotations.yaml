@@ -9,3 +9,7 @@ social:
 security:
     resource: ../../src/UI/Action/Security
     type: annotation
+
+api:
+    resource: ../../src/UI/Action/Api
+    type: annotation

@@ -130,3 +130,10 @@ body
 .vertical-tab button.active {
     background-color: #ccc;
 }
+
+#ajaxLoader
+{
+    position: relative;
+    top: -35px;
+    left: 98%;
+}

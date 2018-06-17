@@ -43,7 +43,7 @@ class LastObservesResponder implements LastObservesResponderInterface
         return new Response($this->environment->render("lastObserves.html.twig",
             [
                 'observes' => $observes,
-            ])
+                ])
         );
     }
 }

@@ -8,6 +8,7 @@
 
 namespace App\UI\Action;
 
+use App\Domain\Models\Observe;
 use App\Domain\Repository\ObserveRepository;
 use App\UI\Action\Interfaces\LastObservesActionInterface;
 use App\UI\Responder\Interfaces\LastObservesResponderInterface;
@@ -40,6 +41,7 @@ class LastObservesAction implements LastObservesActionInterface
 
     /**
      * @param LastObservesResponderInterface $lastObservesResponder
+     *
      * @return mixed
      */
     public function __invoke(

@@ -6,11 +6,10 @@
  * Time: 10:53
  */
 
-namespace App\UI\Action;
+namespace App\UI\Action\Api;
 
 use App\Domain\Repository\TaxRefRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -21,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *     methods={"GET", "POST"}
  *     )
  */
-class TaxrefAction
+class GetTaxref
 {
     /**
      * @var TaxRefRepository
@@ -39,12 +38,11 @@ class TaxrefAction
     }
 
     /**
-     * @param Request $request
-     * @param         $id
+     * @param $id
      *
      * @return static
      */
-    public function __invoke(Request $request, $id)
+    public function __invoke($id)
     {
 
         $taxref = $this->taxRefRepository->findByIdToArray($id);

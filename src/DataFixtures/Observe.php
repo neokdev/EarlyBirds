@@ -71,6 +71,12 @@ class Observe extends AbstractBaseFixture implements DependentFixtureInterface
             $user      = $this->userRepository->findAll()[$rand];
             $validator = $this->userRepository->findAll()[$rand2];
 
+            $indexes = [];
+            for ($i = 0; $i < 25; $i++) {
+                array_push($indexes, array_rand($this->userRepository->findAll()));
+            }
+            array_unique($indexes);
+
             $observe->setAuthor($user);
             $observe->setRef($taxref);
             $observe->setLatitude($this->faker->latitude(42, 51));
@@ -83,6 +89,9 @@ class Observe extends AbstractBaseFixture implements DependentFixtureInterface
             $date = $this->faker->dateTimeBetween('-1 year', 'now');
             $observe->setCreatedAt($date);
             $observe->setUpdatedAt($date);
+            foreach ($indexes as $index) {
+                $observe->addUpvoter($this->userRepository->findAll()[$index]);
+            }
         });
 
         $manager->flush();
