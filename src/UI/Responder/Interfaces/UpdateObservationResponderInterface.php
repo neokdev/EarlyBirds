@@ -8,7 +8,6 @@
 
 namespace App\UI\Responder\Interfaces;
 
-use App\Domain\Models\Observe;
 use Symfony\Component\Form\FormInterface;
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
 
@@ -27,9 +26,9 @@ interface UpdateObservationResponderInterface
      * @return mixed
      */
     public function __invoke(
-        bool                $redirect   = false,
-        FormInterface       $form,
+        bool                $redirect = false,
         ObserveDTOInterface $observeDTO = null,
-        string              $observe
+        string              $observe,
+        FormInterface       $form
     );
 }

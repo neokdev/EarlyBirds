@@ -24,7 +24,6 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route(
  *     "/modifier-lobservation-{id}",
  *     methods={"GET", "POST"}
- *
  * )
  */
 final class UpdateObservationAction implements UpdateObservationActionInterface

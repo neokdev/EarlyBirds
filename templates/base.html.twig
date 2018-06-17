@@ -18,7 +18,7 @@
         <ul id="dropdown_observe" class="dropdown-content">
             <li><a href="#">Dernières observations</a></li>
             <li><a href="{{ path('app_observe') }}">Saisie d'une observation</a></li>
-            <li><a href="#">Carte</a></li>
+            <li><a href="{{ path('app_map') }}">Carte</a></li>
         </ul>
         <ul id="dropdown_discover" class="dropdown-content">
             <li><a href="#">NAO</a></li>
@@ -86,5 +86,9 @@
                 });
             </script>
         {% endblock %}
+
+    <footer id="footer">
+
+    </footer>
     </body>
 </html>

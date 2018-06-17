@@ -24,6 +24,5 @@ interface UpdateObservationActionInterface
         Request                             $request,
         UpdateObservationResponderInterface $updateObservationResponder,
         string                              $id
-
     );
 }

@@ -15,6 +15,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
+/**
+ * Class ObservationResponder
+ * @package App\UI\Responder
+ */
 final class ObservationResponder implements ObservationResponderInterface
 {
     /**
@@ -60,8 +64,8 @@ final class ObservationResponder implements ObservationResponderInterface
                 $this->environment->render('observation.html.twig', [
                     'form' => $addObservationType->createView(),
                 ])
-        );
-
+            )
+        ;
         return $response;
     }
 }
