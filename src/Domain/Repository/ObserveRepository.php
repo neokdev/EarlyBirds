@@ -3,6 +3,7 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Models\Observe;
+use App\Domain\Models\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -26,9 +27,14 @@ class ObserveRepository extends ServiceEntityRepository
     /**
      * @param Observe $observe
      */
-    public function save(Observe $observe)
+    public function save(Observe $observe): void
     {
         $this->_em->persist($observe);
+        $this->_em->flush();
+    }
+
+    public function update(): void
+    {
         $this->_em->flush();
     }
 

@@ -8,7 +8,6 @@
 
 namespace App\UI\Action;
 
-use App\Domain\Models\Observe;
 use App\Domain\Repository\ObserveRepository;
 use App\UI\Action\Interfaces\LastObservesActionInterface;
 use App\UI\Responder\Interfaces\LastObservesResponderInterface;
@@ -17,8 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class LastObservesAction
  * @Route(
- *     "/last-observe",
- *     name="app_last-observe",
+ *     "/lastobserve",
+ *     name="app_lastobserve",
  *     methods={"GET"}
  * )
  */
