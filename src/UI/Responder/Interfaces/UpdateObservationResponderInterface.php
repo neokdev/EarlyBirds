@@ -21,14 +21,14 @@ interface UpdateObservationResponderInterface
      * @param bool                     $redirect
      * @param FormInterface            $form
      * @param ObserveDTOInterface|null $observeDTO
-     * @param string                   $observe
+     * @param string|null              $observe
      *
      * @return mixed
      */
     public function __invoke(
         bool                $redirect = false,
         ObserveDTOInterface $observeDTO = null,
-        string              $observe,
+        string              $observe = null,
         FormInterface       $form
     );
 }

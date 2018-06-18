@@ -63,7 +63,19 @@ $(function() {
     $().ready(function () {
         $.getJSON('http://127.0.0.1:8000/recherche-les-dernieres-observations',
                   function(data) {
-                      console.log(data);
+
+                      let i = 0;
+                      data.forEach(function (datas) {
+
+                          i++;
+                          let layer = L.marker([datas.latitude,datas.longitude]);
+                          let tab = [];
+                          tab.push(layer);
+                          console.log(datas);
+                          L.featureGroup(tab).bindPopup(datas.ref.nomComplet).addTo(mymap);
+
+
+                      });
               }
           );
     });

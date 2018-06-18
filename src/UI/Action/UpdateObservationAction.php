@@ -88,10 +88,14 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
             ->handleRequest($request);
 
         if ($this->updateObserveTypeHandler->handle($updateObserve, $observe)) {
-            return $updateObservationResponder(true, $updateObserve);
+            return $updateObservationResponder(true, null, null, $updateObserve);
         }
 
-        return $updateObservationResponder(false, $observeDTO, $observe->getImg(),
-                                           $updateObserve);
+        return $updateObservationResponder(
+            false,
+            $observeDTO,
+            $observe->getImg(),
+            $updateObserve
+        );
     }
 }
