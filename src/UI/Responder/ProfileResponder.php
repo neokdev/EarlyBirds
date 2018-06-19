@@ -42,8 +42,11 @@ final class ProfileResponder implements ProfileResponderInterface
     /**
      * @param bool               $redirect
      * @param FormInterface|null $form
+     * @param array|null         $myObserves
+     * @param array|null         $observesToValidate
+     * @param array|null         $users
      *
-     * @return mixed|Response
+     * @return mixed|RedirectResponse|Response
      *
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -52,7 +55,9 @@ final class ProfileResponder implements ProfileResponderInterface
     public function __invoke(
         bool $redirect = false,
         FormInterface $form = null,
-        array $observe = null
+        array $myObserves = null,
+        array $observesToValidate = null,
+        array $users = null
     ) {
         if ($redirect) {
             $response = new RedirectResponse($this->urlGenerator->generate('app_profile'));
@@ -61,8 +66,10 @@ final class ProfileResponder implements ProfileResponderInterface
                 $this->environment->render(
                     'profile.html.twig',
                     [
-                        'form'     => $form->createView(),
-                        'observes' => $observe,
+                        'form'       => $form->createView(),
+                        'myObserves' => $myObserves,
+                        'users'      => $users,
+                        'observes'   => $observesToValidate,
                     ]
                 )
             );

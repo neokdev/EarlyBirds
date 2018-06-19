@@ -69,7 +69,7 @@ class User extends Fixture
 
         $this->faker = Factory::create("fr_FR");
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $user = new \App\Domain\Models\User(
                 $this->faker->email,
                 $this->faker->password,
