@@ -36,7 +36,7 @@ class MyObserve extends AbstractBaseFixture
         $this->user = $manager->getRepository(User::class)->findOneBy(['email' => self::TEST_USER]);
 
         $taxref = null;
-        $this->createMany(Observes::class, 10, function (Observes $observe, $count) {
+        $this->createMany(Observes::class, 0, function (Observes $observe, $count) {
             /** @var TaxRef $taxref */
             while (!isset($taxref) || null === $taxref->getNomVern()) {
                 $taxref = $this->taxRefRepository->findOneBy(['id' => rand(0, 3983)]);

@@ -31,18 +31,25 @@ class Mailer implements MailerInterface
      * @var Environment
      */
     private $environment;
+    /**
+     * @var string
+     */
+    private $logoPath;
 
     /**
      * Mailer constructor.
      * @param Swift_Mailer $mailer
      * @param Environment  $environment
+     * @param string       $logoPath
      */
     public function __construct(
         Swift_Mailer $mailer,
-        Environment $environment
+        Environment $environment,
+        string $logoPath
     ) {
         $this->mailer      = $mailer;
         $this->environment = $environment;
+        $this->logoPath    = $logoPath;
     }
 
     /**
@@ -64,6 +71,7 @@ class Mailer implements MailerInterface
                     "Emails/registerConfirm.html.twig",
                     [
                         'data' => $user,
+//                        'logo' => $message->embed(\Swift_Image::fromPath($this->logoPath)),
                     ]
                 ),
                 'text/html'
