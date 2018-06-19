@@ -14,7 +14,6 @@ App\Domain\DTO\ObserveDTO:
     properties:
         description:
             - NotBlank: ~
-
             - Length:
                 min: 5
                 max: 5000

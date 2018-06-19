@@ -10,10 +10,12 @@ namespace App\UI\Form\Handler;
 
 use App\Domain\Builder\Interfaces\ObserveBuilderInterface;
 use App\Domain\Repository\ObserveRepository;
+use App\Domain\Repository\TaxRefRepository;
 use App\UI\Form\Handler\Interfaces\ObserveTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ObserveTypeHandler implements ObserveTypeHandlerInterface
 {
@@ -38,29 +40,53 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
     private $flash;
 
     /**
-     * @var string
+     * @var UploadedFile
      */
     private $fileOutput;
 
     /**
+     * @var TokenStorageInterface
+     */
+    private $token;
+
+    /**
+     * @var TaxRefRepository
+     */
+    private $taxRefRepository;
+
+    /**
+     * @var string
+     */
+    private $media;
+
+    /**
      * ObserveTypeHandler constructor.
      *
-     * @param ObserveBuilderInterface  $observeBuilder
-     * @param ObserveRepository        $observeRepository
-     * @param string                   $imageFolder
-     * @param FlashBagInterface        $flashBag
+     * @param ObserveBuilderInterface $observeBuilder
+     * @param ObserveRepository       $observeRepository
+     * @param string                  $imageFolder
+     * @param FlashBagInterface       $flashBag
+     * @param TokenStorageInterface   $token
+     * @param TaxRefRepository        $taxRefRepository
+     * @param string                  $media
      */
     public function __construct(
+        TokenStorageInterface   $token,
         ObserveBuilderInterface $observeBuilder,
         ObserveRepository       $observeRepository,
         string                  $imageFolder,
-        FlashBagInterface       $flashBag
+        FlashBagInterface       $flashBag,
+        TaxRefRepository        $taxRefRepository,
+        string                  $media
     ) {
+        $this->token             = $token;
         $this->observeBuilder    = $observeBuilder;
         $this->observeRepository = $observeRepository;
         $this->imageFolder       = $imageFolder;
         $this->flash             = $flashBag;
+        $this->taxRefRepository  = $taxRefRepository;
         $this->fileOutput        = null;
+        $this->media             = $media;
     }
 
     /**
@@ -78,7 +104,6 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
             $file = $form->getData()->img;
 
             if ($file) {
-
                 $this->fileOutput = $file->move(
                     $this->imageFolder,
                     $this->generateUniqueFileName()."."
@@ -86,13 +111,17 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
                 );
             }
 
+            $user = $this->token->getToken()->getUser();
+            $bird = $form->getData()->ref;
+            $result = $this->taxRefRepository->findOneBy(['nomComplet' => $bird]);
+
             $this->observeBuilder->create(
-                $form->getData()->author,
-                $form->getData()->ref,
+                $user,
+                $result,
                 $form->getData()->description,
                 $form->getData()->latitude,
                 $form->getData()->longitude,
-                $this->fileOutput
+                $this->media.$this->fileOutput->getFilename()
             );
 
             $this->observeRepository->save($this->observeBuilder->getObserve());

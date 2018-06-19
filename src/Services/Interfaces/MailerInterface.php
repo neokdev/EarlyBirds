@@ -25,4 +25,11 @@ interface MailerInterface
      * @return mixed
      */
     public function sendResetPasswordTokenLink(User $user);
+
+    /**
+     * @param User $user
+     *
+     * @return mixed
+     */
+    public function sendObservationMail(User $user);
 }

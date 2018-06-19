@@ -12,7 +12,6 @@ namespace App\Domain\Builder\Interfaces;
 use App\Domain\Models\Observe;
 use App\Domain\Models\TaxRef;
 use App\Domain\Models\User;
-use GuzzleHttp\Psr7\UploadedFile;
 
 /**
  * Interface ObserveBuilderInterface

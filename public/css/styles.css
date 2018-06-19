@@ -1,12 +1,17 @@
-#mapid
-{
+#mapid {
     height: 1290px;
+}
+
+#map {
+    height: 1290px;
+    width: 900px;
 }
 
 #loginPanel
 {
     margin-top: 40px;
 }
+
 body
 {
     background-color: #005662;
@@ -131,9 +136,12 @@ body
     background-color: #ccc;
 }
 
-#ajaxLoader
-{
-    position: relative;
+#ajaxLoader {
+  position: relative;
     top: -35px;
     left: 98%;
+}
+
+#birdImg {
+    width: 50%;
 }

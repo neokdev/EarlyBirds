@@ -3,6 +3,7 @@
 parameters:
     locale: 'fr'
     imageFolder: '%kernel.project_dir%/public/media/'
+    media: '../media/'
     logoPath: '%kernel.project_dir%/public/img/logo/logo.png'
 
 services:
@@ -13,6 +14,7 @@ services:
         public: false
         bind:
             $imageFolder: '%imageFolder%'
+            $media: '%media%'
             $logoPath: '%logoPath%'
                             # Allows optimizing the container by removing unused services; this also means
                             # fetching services directly from the container via $container->get() won't work.
