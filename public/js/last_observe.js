@@ -26,7 +26,7 @@ $(document).ready(function() {
         $.each(data, function (key, val) {
             let id = val;
             $('.observe').each(function () {
-                let heart = $(this).find('.material-icons');
+                let heart = $(this).find('.material-icons:first');
                 if (heart.data('id') === id) {
                     heart.html("favorite")
                 }

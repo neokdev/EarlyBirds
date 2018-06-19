@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-action" style="padding-bottom: 0">
                         <div class="row">
-                            <div class="col s9">
+                            <div class="col s9 m6 l6 xl6">
                                 <div class="row">
                                     <span style="font-size: small">le {{ observe.createdAt|localizeddate('full', 'none') }}</span>
                                 </div>
@@ -45,10 +45,17 @@
                                     <span style="font-size: small">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}</span>
                                 </div>
                             </div>
-                            <div class="col s3">
+                            <div class="col s3 m6 l6 xl6">
                                 <div class="row">
                                     <div class="col s12" style="width: max-content">
-                                        <span class="js-like-observe-count" style="position: relative; bottom: 7px">{{ observe.upvoter.count }}</span><a class="js-like-observe" href="{{ path('toggle_observe_heart', {id: observe.id}) }}"> <i id="heart" data-url="{{ path('get_observe_like_status') }}" data-id="{{ observe.id }}" class="material-icons">favorite_border</i></a>
+                                        <span class="js-like-observe-count" style="position: relative; bottom: 7px">{{ observe.upvoter.count }}</span>
+                                        <a class="js-like-observe" href="{{ path('toggle_observe_heart', {id: observe.id}) }}">
+                                            <i id="heart" data-url="{{ path('get_observe_like_status') }}" data-id="{{ observe.id }}" class="material-icons">favorite_border</i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="material-icons">share</i>
+                                        </a>
+
                                     </div>
                                 </div>
 
