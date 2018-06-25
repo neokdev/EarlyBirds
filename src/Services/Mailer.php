@@ -8,6 +8,7 @@
 
 namespace App\Services;
 
+use App\Domain\Models\Contact;
 use App\Domain\Models\User;
 use App\Services\Interfaces\MailerInterface;
 use Swift_Mailer;
@@ -124,6 +125,31 @@ class Mailer implements MailerInterface
                     "Emails/observationMail.html.twig",
                     [
                         'data' => $user,
+                    ]
+                ),
+                'text/html'
+            );
+        $this->mailer->send($message);
+    }
+
+    /**
+     * @param Contact $contact
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendContactMail(Contact $contact)
+    {
+        $message = new Swift_Message($contact->getSubject());
+
+        $message
+            ->setFrom(self::ADMIN_EMAIL)
+            ->setTo($contact->getMail())
+            ->setBody(
+                $this->environment->render(
+                    "Emails/contactMail.html.twig",
+                    [
+                        'data' => $contact,
                     ]
                 ),
                 'text/html'
