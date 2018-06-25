@@ -21,6 +21,7 @@ class SearchBirds implements SearchBirdsInterface
 
     /**
      * SearchBirds constructor.
+     * ------------------------------------------
      * @param TaxRefRepository $taxRefRepository
      */
     public function __construct(TaxRefRepository $taxRefRepository)
@@ -29,7 +30,8 @@ class SearchBirds implements SearchBirdsInterface
     }
 
     /**
-     * @param  string       $name
+     * @param string $name
+     * ---------------------
      * @return JsonResponse
      */
     public function __invoke(string $name)

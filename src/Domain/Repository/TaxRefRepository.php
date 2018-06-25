@@ -46,7 +46,7 @@ class TaxRefRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('t');
 
         return $qb
-                    ->Where($qb->expr()->like('t.nomVern',':name'))
+                    ->Where($qb->expr()->like('t.nomComplet',':name'))
                     ->setParameter('name', $name.'%')
                     ->getQuery()
                     ->getArrayResult()

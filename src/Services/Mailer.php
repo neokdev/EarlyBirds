@@ -104,4 +104,30 @@ class Mailer implements MailerInterface
             );
         $this->mailer->send($message);
     }
+
+    /**
+     * @param User $user
+     * @return mixed|void
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendObservationMail(User $user)
+    {
+        $message = new Swift_Message("Vous avez ajouté une observation");
+
+        $message
+            ->setFrom(self::ADMIN_EMAIL)
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->environment->render(
+                    "Emails/observationMail.html.twig",
+                    [
+                        'data' => $user,
+                    ]
+                ),
+                'text/html'
+            );
+        $this->mailer->send($message);
+    }
 }

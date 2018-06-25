@@ -18,7 +18,7 @@
         <ul id="dropdown_observe" class="dropdown-content">
             <li><a href="{{ path('app_lastobserve') }}">Dernières observations</a></li>
             <li><a href="{{ path('app_observe') }}">Saisie d'une observation</a></li>
-            <li><a href="#">Carte</a></li>
+            <li><a href="{{ path('app_map') }}">Carte</a></li>
         </ul>
         <ul id="dropdown_discover" class="dropdown-content">
             <li><a href="#">NAO</a></li>
@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li><a href="#" class="black-text">Actualités</a></li>
-                <li><a href="#" class="black-text">Contact</a></li>
+                <li><a href="{{ path('app_contact') }}" class="black-text">Contact</a></li>
 
                 {% if is_granted('ROLE_USER') == false %}
                 <li><a href="{{ path('security_login') }}" class="black-text">Login</a></li>
@@ -86,5 +86,9 @@
                 });
             </script>
         {% endblock %}
+
+    <footer id="footer">
+
+    </footer>
     </body>
 </html>
