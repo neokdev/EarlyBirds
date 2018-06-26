@@ -148,4 +148,139 @@ body
 
 #footer {
 
+    /*
+    transform: matrix3d(0.459788, -0.307123, 0, -0.000385,
+    0, 0.465399, 0, 0,
+    0, 0, 1, 0,
+    6.896814, 427.616231, 0, 1);
+    transform-origin: -15px -87px 0px;
+    */
+    /* Vector */
+
+    margin-top: 130px;
+    width: auto;
+    height: 710px;
+
+    background: no-repeat center url('../img/vector/vector_footer.png');
+}
+
+#containerInfos {
+
+   padding-top: 95px;
+}
+
+.info {
+    text-align: right;
+}
+
+#company {
+    color: white;
+    font-size: 36px;
+}
+
+.info1 {
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 18px;
+    text-align: right;
+}
+
+.info2 {
+
+    font-style: italic;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 14px;
+    text-align: right;
+
+}
+
+#info3 {
+    padding-right: 10px;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 17px;
+    font-size: 14px;
+    text-align: right;
+    color:white;
+}
+
+#email {
+
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+}
+
+#email::placeholder {
+    text-decoration-line: line-through;
+    padding: 30px 0 30px 0;
+}
+
+#info5 {
+    background: white;
+}
+
+#info6 {
+
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 10px;
+    text-align: left;
+    color: #FFFBFB;
+}
+
+#info8 {
+    padding-right: 50px;
+}
+
+#info7 {
+    margin-right: 15px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 16px;
+    text-align: right;
+
+    color: #FFFCFC;
+}
+
+svg {
+    margin-left: 20px;
+}
+
+#nosPartenaires {
+    margin-top: 30px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 16px;
+    text-align: right;
+
+    color: #FFFCFC;
+}
+
+#rowPartenaires {
+    padding: 0;
+}
+
+#blackBird {
+
+    height: 165px;
+    width: 165px;
+    z-index: 100;
+
+    position: relative;
+    top: 460px;
+    left: 350px;
+}
+
+a {
+    color: black;
 }
