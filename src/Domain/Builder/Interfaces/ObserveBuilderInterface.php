@@ -20,27 +20,28 @@ use App\Domain\Models\User;
 interface ObserveBuilderInterface
 {
     /**
-     * @param User   $author
-     * @param TaxRef $ref
-     * @param string $description
-     * @param string $latitude
-     * @param string $longitude
-     * @param string $img
+     * @param User      $author
+     * @param TaxRef    $ref
+     * @param string    $description
+     * @param string    $latitude
+     * @param string    $longitude
+     * @param \DateTime $date
+     * @param string    $img
      *
      * @return ObserveBuilderInterface
      */
     public function create(
-        User   $author,
-        TaxRef $ref,
-        string $description,
-        string $latitude,
-        string $longitude,
-        string $img
+        User      $author,
+        TaxRef    $ref,
+        string    $description,
+        string    $latitude,
+        string    $longitude,
+        \DateTime $date,
+        string    $img
     ):self;
 
     /**
      * @return Observe
      */
     public function getObserve(): Observe;
-
 }

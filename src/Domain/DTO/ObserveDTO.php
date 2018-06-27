@@ -38,6 +38,11 @@ class ObserveDTO implements ObserveDTOInterface
     public $longitude;
 
     /**
+     * @var \DateTime
+     */
+    public $obsDate;
+
+    /**
      * @var UploadedFile
      */
     public $img;
@@ -49,6 +54,7 @@ class ObserveDTO implements ObserveDTOInterface
      * @param string            $description
      * @param string            $latitude
      * @param string            $longitude
+     * @param \DateTime         $date
      * @param UploadedFile|null $img
      */
     public function __construct(
@@ -56,12 +62,14 @@ class ObserveDTO implements ObserveDTOInterface
         string       $description,
         string       $latitude,
         string       $longitude,
+        \DateTime    $date,
         UploadedFile $img = null
     ) {
         $this->ref          = $ref;
         $this->description  = $description;
         $this->latitude     = $latitude;
         $this->longitude    = $longitude;
+        $this->obsDate      = $date;
         $this->img          = $img;
     }
 
@@ -95,6 +103,14 @@ class ObserveDTO implements ObserveDTOInterface
     public function getLongitude(): string
     {
         return $this->longitude;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getObsDate(): \DateTime
+    {
+        return $this->obsDate;
     }
 
     /**

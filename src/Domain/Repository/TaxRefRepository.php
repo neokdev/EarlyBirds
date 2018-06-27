@@ -43,11 +43,13 @@ class TaxRefRepository extends ServiceEntityRepository
      */
     public function searchName(string $name)
     {
+        $nameSearch = $name.'%';
+
         $qb = $this->createQueryBuilder('t');
 
         return $qb
                     ->Where($qb->expr()->like('t.nomComplet',':name'))
-                    ->setParameter('name', $name.'%')
+                    ->setParameter('name', $nameSearch)
                     ->getQuery()
                     ->getArrayResult()
         ;

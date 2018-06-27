@@ -14,53 +14,58 @@ observation
 
 {% block body %}
     <div class="row">
-        <div id="form" class="col s12 m4">
-            <div class="row" id="blue">
-                {{ form_start(form) }}
+        <div class="col s12">
+            <div class="row">
+            <div id="form" class="col s6">
 
-                <div class="input-field col s12">
-                    {{ form_row((form.ref)) }}
-                </div>
+                    {{ form_start(form) }}
 
-                <div class="input-field col s12">
-                    {{ form_row(form.description) }}
-                </div>
-
-                <div class="input-field col s12">
-                    {{ form_row(form.latitude) }}
-                </div>
-
-                <div class="input-field col s12">
-                    {{ form_row(form.longitude) }}
-                </div>
-
-                {% if img is defined %}
-                    <div id="picture">
-                        <img id="birdImg" src="
-                            {% if img matches '/^https?:/' %}
-                            {{ img | replace({'sz=50':'sz=256'}) }}
-                            {% else %}{{ img }}
-                            {% endif %}
-                         "
-                             alt=""/>
+                    <div class="input-field col s8 offset-s2">
+                        <span class="label" id="label1">Oiseau observé</span>
+                        {{ form_row((form.ref)) }}
                     </div>
-                {% endif %}
 
-                <div class="input-field col s12">
-                    {{ form_row(form.img) }}
-                </div>
+                    <div class="input-field col s8 offset-s2">
+                        <span class="label">Longitude</span>
+                        {{ form_row(form.longitude) }}
+                    </div>
 
-                <div class="input-field col s12">
-                    <button type="submit" formnovalidate value="Submit without validation">
-                        Soumettre
-                    </button>
-                </div>
+                    <div class="input-field col s8 offset-s2">
+                        <span class="label">Latitude</span>
+                        {{ form_row(form.latitude) }}
+                    </div>
 
-                {{ form_end(form) }}
+                    <div class="input-field col s8 offset-s2">
+                        <span class="label">Date</span>
+                        {{ form_row(form.obsDate) }}
+                    </div>
+
+                    <div class="input-field col s8 offset-s2">
+                        <span class="label">Commentaire</span>
+                        {{ form_row(form.description) }}
+                    </div>
+
+                    <div class="file-field input-field col s6 offset-s3">
+                        <div class="btn" id="uplBtn">
+                            <span>Télécharger une photo</span>
+                            {{ form_row(form.img) }}
+                        </div>
+                    </div>
+
+                    <div class="input-field col s8 offset-s2">
+                        <button id="submitBtn" class="btn waves-effect waves-light col s10"
+                                type="submit"
+                                formnovalidate value="Submit without validation">
+                            Soumettre
+                        </button>
+                    </div>
+
+                    {{ form_end(form) }}
 
             </div>
+            <div id="mapid" class="col s6"></div>
+            </div>
         </div>
-        <div id="mapid" class="col s12 m8"></div>
     </div>
 
 {% endblock %}

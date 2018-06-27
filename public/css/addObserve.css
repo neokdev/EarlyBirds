@@ -1,0 +1,109 @@
+#mapid {
+    height: 81.3em;
+}
+
+#form {
+    background-color: rgba(72, 129, 148, 0.75);
+    height:65em;
+    border-right: 4px solid white;
+}
+
+input#observe_ref {
+
+    padding-left: 10px;
+    height: 4.375em;
+
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input#observe_latitude {
+
+    padding-left: 10px;
+    height: 4.375em;
+
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input#observe_longitude {
+
+    padding-left: 10px;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input#observe_obsDate {
+    padding-left: 10px;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+textarea#observe_description {
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+input::placeholder {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding-left: 15px;
+}
+
+input {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding: 0;
+}
+
+textarea {
+    padding-top: 15px;
+    height: 7.563em;
+    width: 100%;
+}
+
+div#uplBtn {
+    border-radius: 20px;
+    background: #2D9CDB;
+    margin-left: 20px;
+}
+
+div#uplBtn span {
+    font-size: 0.6em;
+}
+
+#submitBtn {
+    background: #F2994A;
+    border-radius: 20px;
+    height: 2em;
+    font-size: 1.3em;
+    margin: 0 0 0 22px;
+}
+
+.label {
+    font-weight:bold;
+    font-Size: 1.125em
+}
+
+#label1:before {
+    content: url('../img/vector/oiseauBlanc.png');
+}
+
+

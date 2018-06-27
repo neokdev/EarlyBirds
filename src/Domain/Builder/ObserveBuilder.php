@@ -28,12 +28,13 @@ class ObserveBuilder implements ObserveBuilderInterface
      * {@inheritdoc}
      */
     public function create(
-        User   $author,
-        TaxRef $ref,
-        string $description,
-        string $latitude,
-        string $longitude,
-        string $img
+        User      $author,
+        TaxRef    $ref,
+        string    $description,
+        string    $latitude,
+        string    $longitude,
+        \DateTime $date,
+        string    $img
     ): ObserveBuilderInterface {
        $this->observe = new Observe();
        $this->observe
@@ -42,6 +43,7 @@ class ObserveBuilder implements ObserveBuilderInterface
             ->setDescription($description)
             ->setLatitude($latitude)
             ->setLongitude($longitude)
+            ->setObsDate($date)
             ->setImg($img)
        ;
        return $this;

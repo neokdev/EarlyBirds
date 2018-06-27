@@ -99,6 +99,7 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
                 ->setDescription($form->getData()->description)
                 ->setLongitude($form->getData()->longitude)
                 ->setLatitude($form->getData()->latitude)
+                ->setObsDate($form->getData()->obsDate)
             ;
 
             if($observe->getRef()->getNomComplet() !== $form->getData()->ref) {

@@ -97,18 +97,63 @@ $(function() {
 
 
 //INIT_GEOLOCATION
+    let birdMarker;
+    let birdMarker2;
+    let birdGroup;
     let latitude = $('input#observe_latitude');
     let longitude = $('input#observe_longitude');
 
-    function success(pos) {
+    function newMarker(e) {
+
+       console.log(birdGroup.hasLayer(birdMarker));
+       if ( birdGroup.hasLayer(birdMarker)) {
+           console.log(true);
+           birdMarker.remove();
+       }
+
+        if (birdMarker2 === undefined) {
+
+            birdMarker2 = L.marker(e.latlng).addTo(mymap);
+            birdMarker2.addTo(mymap);
+
+            let cLat = e.latlng.lat;
+            latitude.val(cLat);
+
+            let cLong = e.latlng.lng;
+            longitude.val(cLong);
+        }
+        birdMarker2.remove();
+        birdMarker2 = L.marker(e.latlng).addTo(mymap);
+        birdMarker2.addTo(mymap);
+
+        let cLat = e.latlng.lat;
+        latitude.val(cLat);
+
+        let cLong = e.latlng.lng;
+        longitude.val(cLong);
+
+    }
+
+    function initMarker(pos) {
         let cLong = pos.coords.longitude;
         let cLat = pos.coords.latitude;
 
         if(longitude.val() === "" && latitude.val() === "") {
             latitude.val(cLat);
             longitude.val(cLong);
+            mymap.flyTo([cLat,cLong], 10);
+            birdMarker = L.marker([latitude.val(),longitude.val()]);
+            birdGroup = L.layerGroup().addLayer(birdMarker).addTo(mymap);
+
+            //layer.bindPopup('<p>hello</p>').openPopup();
         }
-       mymap.flyTo([cLat,cLong], 10);
+        birdMarker = L.marker([latitude.val(),longitude.val()]).addTo(mymap);
+        birdGroup = L.layerGroup().addLayer(birdMarker).addTo(mymap);
+        mymap.flyTo([latitude.val(),longitude.val()], 10);
+    }
+
+    function success(pos) {
+        initMarker(pos);
     }
 
     function error(err) {
@@ -141,34 +186,6 @@ $(function() {
 //END_GEOLOCATION
 
 //SET_UP_POSITION_ON_MAP_AFTER_CLICK
-    let layer;
-
-    function newMarker(e) {
-
-
-        if (layer === undefined) {
-            layer = L.marker(e.latlng).addTo(mymap);
-            layer.addTo(mymap);
-
-            let cLat = e.latlng.lat;
-            latitude.val(cLat);
-
-            let cLong = e.latlng.lng;
-            longitude.val(cLong);
-        }
-
-        layer.remove();
-        layer = L.marker(e.latlng).addTo(mymap);
-        layer.addTo(mymap);
-
-        let cLat = e.latlng.lat;
-        latitude.val(cLat);
-
-        let cLong = e.latlng.lng;
-        longitude.val(cLong);
-
-        return layer;
-    }
 
     mymap.on('click', newMarker);
 
@@ -179,33 +196,30 @@ $(function() {
         let lat = latitude.val();
         let long = longitude.val();
 
-        console.log([lat,long]);
+        if (birdMarker2 === undefined) {
 
-        if (layer === undefined) {
-
-            layer = L.marker([lat,long]).addTo(mymap);
-            layer.addTo(mymap);
+            birdMarker2 = L.marker([lat,long]).addTo(mymap);
+            birdMarker2.addTo(mymap);
 
         }
-        layer.remove();
-        layer = L.marker([lat,long]).addTo(mymap);
-        layer.addTo(mymap);
+        birdMarker2.remove();
+        birdMarker2 = L.marker([lat,long]).addTo(mymap);
+        birdMarker2.addTo(mymap);
     });
 
     latitude.on('blur', function () {
         let lat = latitude.val();
         let long = longitude.val();
 
-        if (layer === undefined) {
+        if (birdMarker2 === undefined) {
 
-            layer = L.marker([lat,long]).addTo(mymap);
-            layer.addTo(mymap);
-
+            birdMarker2 = L.marker([lat,long]).addTo(mymap);
+            birdMarker2.addTo(mymap);
         }
 
-        layer.remove();
-        layer = L.marker([lat,long]).addTo(mymap);
-        layer.addTo(mymap);
+        birdMarker2.remove();
+        birdMarker2 = L.marker([lat,long]).addTo(mymap);
+        birdMarker2.addTo(mymap);
     });
 
 });

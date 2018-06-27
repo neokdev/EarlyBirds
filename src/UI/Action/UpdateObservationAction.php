@@ -84,6 +84,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
             $observe->getDescription(),
             $observe->getLatitude(),
             $observe->getLongitude(),
+            $observe->getObsDate(),
             null
         );
 

@@ -17,6 +17,7 @@
         <field name="latitude"/>
         <field name="longitude"/>
         <field name="img"/>
+        <field name="obsDate" type="datetime"/>
         <many-to-one field="validator" target-entity="App\Domain\Models\User" inversed-by="validatedObserve"/>
         <many-to-many field="upvoter" target-entity="App\Domain\Models\User" inversed-by="upvoted"/>
         <field name="createdAt" type="datetime">

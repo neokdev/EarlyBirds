@@ -10,6 +10,8 @@
         {% endblock %}
     </head>
 
+    <body>
+
     <nav>
         <ul id="dropdown_profile" class="dropdown-content">
             <li><a href="{{ path('app_profile') }}">Profil</a></li>
@@ -39,13 +41,13 @@
                 <li><a href="{{ path('app_contact') }}" class="black-text">Contact</a></li>
 
                 {% if is_granted('ROLE_USER') == false %}
-                <li><a href="{{ path('security_login') }}" class="black-text">Login</a></li>
+                    <li><a href="{{ path('security_login') }}" class="black-text">Login</a></li>
                 {% endif %}
 
                 {% if is_granted('ROLE_USER') %}
-                <li>
-                    <a href="{{ path('app_profile') }}" class="dropdown-trigger black-text"  data-target="dropdown_profile"><i class="material-icons left">person</i>Compte</a>
-                </li>
+                    <li>
+                        <a href="{{ path('app_profile') }}" class="dropdown-trigger black-text"  data-target="dropdown_profile"><i class="material-icons left">person</i>Compte</a>
+                    </li>
                 {% endif %}
 
             </ul>
@@ -66,11 +68,10 @@
         <li><a href="{{ path('security_login') }}">Login</a></li>
     </ul>
 
-    <body>
 
-
-
+    <div class="container" id="bodyContainer">
         {% block body %}{% endblock %}
+    </div>
         <img id="blackBird" src="{{ asset('/img/logo/oiseau-silhouette-noir.png') }}">
         <footer id="footer">
             <div class="container" id="containerInfos">
@@ -86,7 +87,7 @@
 
                 <div class="row info" >
 
-                    <ul class="col s3">
+                    <ul class="col s3" id="infoAssoCopyright">
                         <li class="info2">Copyright 2018</li>
                         <li class="info2">Nao Nos amis les oiseaux</li>
                         <li class="info2">Associations loi 1901</li>

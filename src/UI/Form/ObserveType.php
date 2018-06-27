@@ -5,6 +5,7 @@ namespace App\UI\Form;
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
 use App\Domain\DTO\ObserveDTO;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -48,6 +49,13 @@ class ObserveType extends AbstractType
                     'placeholder' => 'longitude'
                 ]
             ])
+            ->add('obsDate', DateType::class, [
+                'label'       => false,
+                'widget'      => 'single_text',
+                'placeholder' => 'année/mois/jour'
+
+            ]
+                )
             ->add('img',FileType::class, [
                 'label' => false
             ])
@@ -68,6 +76,7 @@ class ObserveType extends AbstractType
                     $form->get('description')->getData(),
                     $form->get('latitude')->getData(),
                     $form->get('longitude')->getData(),
+                    $form->get('obsDate')->getData(),
                     $form->get('img')->getData()
                 );
             },

@@ -121,6 +121,7 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
                 $form->getData()->description,
                 $form->getData()->latitude,
                 $form->getData()->longitude,
+                $form->getData()->obsDate,
                 $this->media.$this->fileOutput->getFilename()
             );
 
