@@ -15,40 +15,76 @@ observation
 {% block body %}
     <div class="row">
         <div class="col s12">
+            <p id="slogan">
+                Nos amis les oiseaux
+            </p>
+
+            <div class="col s10 offset-s1" id="header">
+
+                    <div class="row">
+                        <h3 class="col s10 offset-s1 header_text">Communiquez vos observations</h3>
+
+                        <h5 class="col s10 offset-s1 header_text">
+                            Devenez un acteur éco citoyen et
+                            contribuez à la
+                            biodiversité.<br>
+                            <span id="header_text_light">Participer à
+                            notre
+                            programme
+                            d'étude mis
+                            en place en partenariat
+                            avec le
+                                muséum national d'Histoire Naturel.</span>
+                        </h5>
+                    </div>
+
+            </div>
+
+        </div>
+
+        <div class="col s12">
             <div class="row">
-            <div id="form" class="col s6">
+                <div id="form" class="col s6">
 
                     {{ form_start(form) }}
 
                     <div class="input-field col s8 offset-s2">
+
                         <span class="label" id="label1">Oiseau observé</span>
                         {{ form_row((form.ref)) }}
+                        <span class="form_errors">{{ form_errors(form.ref) }}</span>
                     </div>
 
                     <div class="input-field col s8 offset-s2">
                         <span class="label">Longitude</span>
                         {{ form_row(form.longitude) }}
+                        <span class="form_errors">{{ form_errors(form.longitude) }}</span>
                     </div>
 
                     <div class="input-field col s8 offset-s2">
                         <span class="label">Latitude</span>
                         {{ form_row(form.latitude) }}
+                       <span class="form_errors">{{ form_errors(form.latitude) }}</span>
                     </div>
+
 
                     <div class="input-field col s8 offset-s2">
                         <span class="label">Date</span>
                         {{ form_row(form.obsDate) }}
+                        <span class="form_errors">{{ form_errors(form.obsDate) }}</span>
                     </div>
 
                     <div class="input-field col s8 offset-s2">
                         <span class="label">Commentaire</span>
                         {{ form_row(form.description) }}
+                        <span class="form_errors">{{ form_errors(form.description) }}</span>
                     </div>
 
-                    <div class="file-field input-field col s6 offset-s3">
+                    <div class="file-field input-field col s7 offset-s2">
                         <div class="btn" id="uplBtn">
                             <span>Télécharger une photo</span>
                             {{ form_row(form.img) }}
+                            <span class="form_errors">{{ form_errors(form.img) }}</span>
                         </div>
                     </div>
 
@@ -56,17 +92,29 @@ observation
                         <button id="submitBtn" class="btn waves-effect waves-light col s10"
                                 type="submit"
                                 formnovalidate value="Submit without validation">
-                            Soumettre
+                            Valider l'observation
                         </button>
                     </div>
 
                     {{ form_end(form) }}
 
-            </div>
-            <div id="mapid" class="col s6"></div>
+                </div>
+                <div id="mapid" class="col s6"></div>
             </div>
         </div>
+        <div class="row">
+            <div class="col s3" id="citation">
+                “ Juste là où<br>
+                vous êtes est le<br>
+                bon endroit pour <br>commencer”
+                <br><span id="little_text">Pema Chödrön<span>
+
+            </div>
+        </div>
+
     </div>
+
+
 
 {% endblock %}
 

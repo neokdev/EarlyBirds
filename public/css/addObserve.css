@@ -1,11 +1,14 @@
 #mapid {
     height: 81.3em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #form {
-    background-color: rgba(72, 129, 148, 0.75);
+    background-color: rgba(72, 129, 148, 1);
     height:65em;
     border-right: 4px solid white;
+    padding: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 input#observe_ref {
@@ -82,28 +85,63 @@ textarea {
 div#uplBtn {
     border-radius: 20px;
     background: #2D9CDB;
-    margin-left: 20px;
+    margin-left: 40px;
+
 }
 
 div#uplBtn span {
-    font-size: 0.6em;
+    font-size: 1em;
+    text-transform: capitalize;
 }
 
 #submitBtn {
     background: #F2994A;
     border-radius: 20px;
-    height: 2em;
-    font-size: 1.3em;
+    height: 3em;
+    font-size: 1.125em;
+    text-transform: capitalize;
     margin: 0 0 0 22px;
 }
 
 .label {
     font-weight:bold;
-    font-Size: 1.125em
+    font-Size: 1.125em;
 }
 
 #label1:before {
     content: url('../img/vector/oiseauBlanc.png');
+}
+
+#header {
+
+    height: 378px;
+    background: red;
+    padding-top: 90px;
+    margin-bottom: 100px;
+    background: no-repeat center url("../img/other/observation.jpeg");
+    background-size: cover;
+}
+.header_text {
+
+    text-align: center;
+    color: white;
+}
+
+#header_text_light {
+    font-weight: lighter;
+}
+
+p#popupMap {
+    text-align: center;
+    color: #F2994A;
+}
+
+#form_errors {
+    border-radius: 20px;
+    background: #F2994A;
+    text-transform: capitalize;
+    font-Size: 1.125em;
+    font-weight: bold;
 }
 
 

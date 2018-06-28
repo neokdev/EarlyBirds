@@ -10,10 +10,71 @@
 
 body
 {
-    z-index: -100;
     margin: auto;
     background-color: white;
     font-size: 100%;
+}
+
+#c_body {
+    margin-top: -460px;
+    margin-bottom: -320px;
+}
+
+#navnav {
+
+    height: 519px;
+    width: auto;
+    background: no-repeat center url('../img/vector/background_header.png');
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+nav {
+    background-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+div#c_nav {
+    width: 70%!important;
+    margin: 0 auto!important;
+    background: transparent;
+}
+
+.dp_nav li a {
+    font-size: .9em;
+    color: black;
+}
+
+.dp_nav li a:hover {
+    font-size: .9em;
+    color: #F2994A;
+}
+
+.navbar-fixed {
+    position: fixed;
+    height: 56px;
+    top: 0;
+    z-index: 997;
+}
+a.black-text:hover {
+    color: #F2994A !important;
+}
+
+#slogan {
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: rotateZ(-90deg);
+
+    z-index: 3;
+    position: relative;
+    right: 15px;
+    top: 180px;
 }
 
 .collapsible
@@ -56,7 +117,6 @@ body
     max-width: 64px;
     max-height: 64px;
     margin-top: 10px;
-    margin-left: 40px;
 }
 
 #icon
@@ -144,12 +204,17 @@ body
 #birdImg {
     width: 50%;
 }
-
+/*
+    Footer
+*/
 #footer {
-
-    z-index:10;
-    width: 100%;
     height: 710px;
+
+    width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: -1;
 
     background: no-repeat center url('../img/vector/vector_footer.png');
 }
@@ -262,14 +327,12 @@ svg {
 }
 
 #blackBird {
-
     height: 165px;
     width: 165px;
     z-index: 100;
-
-    position: relative;
-    top: 335px;
-    left: 350px;
+        position: relative;
+        top: 332px;
+        left: 350px;
 }
 
 #infoAssoCopyright {
@@ -280,6 +343,25 @@ a {
     color: black;
 }
 
-#bodyContainer {
-    z-index: 0;
+/*
+    end footer
+*/
+
+/*
+    citation
+*/
+#citation {
+    margin-left: 110px;
+    margin-top: 50px;
+    font-size: 2em;
+    text-align: center;
 }
+
+#little_text {
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: lighter;
+}
+/*
+    end citation
+*/
