@@ -337,13 +337,17 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
+        if (empty($this->roles)) {
+            return ['ROLE_USER'];
+        }
+
         return $this->roles;
     }
 
     /**
-     * @param array $roles
+     * @param string $roles
      */
-    public function setRoles(array $roles): void
+    public function addRole(string $roles): void
     {
         $this->roles[] = $roles;
     }

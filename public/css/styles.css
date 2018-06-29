@@ -1,3 +1,7 @@
+#divautocomplete {
+    font-family: Roboto, serif;
+}
+
 #map {
     height: 1290px;
     width: 900px;
@@ -82,21 +86,19 @@ a.black-text:hover {
     background-color: #005662;
 }
 
-.collapsible-body
-{
+.collapsible-body {
+
     background-color: white;
 }
 
-#profilePicture
-{
+#profilePicture {
     height: auto;
     width: auto;
     max-width: 226px;
     max-height: 226px;
 }
 
-#profile
-{
+#profile {
     height: auto;
     width: auto;
     max-width: 50px;
@@ -110,8 +112,7 @@ a.black-text:hover {
     max-height: 256px;
 }
 
-#logo
-{
+#logo {
     height: auto;
     width: auto;
     max-width: 64px;
@@ -119,8 +120,7 @@ a.black-text:hover {
     margin-top: 10px;
 }
 
-#icon
-{
+#icon {
     height: auto;
     width: auto;
     max-width: 56px;
@@ -134,30 +134,25 @@ a.black-text:hover {
     max-width: 100%;
 }
 
-#obsButtons
-{
+#obsButtons {
     margin-bottom: auto;
 }
 
-.collapsible-header
-{
+.collapsible-header {
     padding-top: 0;
     padding-left: 0;
     padding-bottom: 0;
 }
 
-.imgContainer
-{
+.imgContainer {
     padding-left: 0 !important;
 }
 
-.observePanel
-{
+.observePanel {
     margin-bottom: 3%;
 }
 
-.collapsible
-{
+.collapsible {
     border: 0;
 }
 
@@ -204,6 +199,7 @@ a.black-text:hover {
 #birdImg {
     width: 50%;
 }
+
 /*
     Footer
 */
@@ -365,3 +361,22 @@ a {
 /*
     end citation
 */
+
+#observeTule {
+    font-family: Montserrat, serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.tabs .indicator {
+    display: none;
+}
+
+.tabs .tab a.active {
+    border-bottom: 2px solid #f6b2b5;
+}
+
+nav ul a {
+    font-family: Montserrat, serif;
+    text-transform: uppercase;
+}
