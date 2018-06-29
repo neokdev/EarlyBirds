@@ -144,4 +144,23 @@ p#popupMap {
     font-weight: bold;
 }
 
+.flash-notice {
+    background: white;
+    border-radius: 20px;
+    font-size: 1em;
+    text-transform: capitalize;
+    padding: 5px 5px 5px 10px;
+    text-align: center;
+}
 
+.flash-observe {
+    background: #59A177;
+    color: white;
+    border-radius: 20px;
+    height: 3.000em;
+    vertical-align: center;
+    font-size: 1.200em;
+    text-transform: lowercase;
+    padding: 15px 5px 5px 5px;
+    text-align: center;
+}

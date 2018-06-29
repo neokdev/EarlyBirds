@@ -59,7 +59,7 @@ final class ObservationResponder implements ObservationResponderInterface
         FormInterface $addObservationType = null
     ) {
         $redirect
-            ? $response =  new RedirectResponse($this->urlGenerator->generate('app_home'))
+            ? $response =  new RedirectResponse($this->urlGenerator->generate('app_observe'))
             : $response = new Response(
                 $this->environment->render('observation.html.twig', [
                     'form' => $addObservationType->createView(),

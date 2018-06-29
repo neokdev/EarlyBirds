@@ -233,4 +233,21 @@ $(function() {
         birdMarker2.addTo(map);
     });
 
+    //flash message
+
+    let msgUn = $('.flash-notice');
+    let divUpBtn = $('#divUpBtn');
+    let divSubBtn = $('#divSubBtn');
+    let message = $('.message');
+
+    if (msgUn.text().length > 0) {
+        divSubBtn.hide();
+        divUpBtn.hide();
+        message.fadeOut(3000, function () {
+            divSubBtn.show();
+            divUpBtn.show();
+        });
+
+    }
+
 });

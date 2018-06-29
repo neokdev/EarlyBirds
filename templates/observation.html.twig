@@ -80,7 +80,7 @@ observation
                         <span class="form_errors">{{ form_errors(form.description) }}</span>
                     </div>
 
-                    <div class="file-field input-field col s7 offset-s2">
+                    <div class="file-field input-field col s7 offset-s2" id="divUpBtn">
                         <div class="btn" id="uplBtn">
                             <span>Télécharger une photo</span>
                             {{ form_row(form.img) }}
@@ -88,7 +88,7 @@ observation
                         </div>
                     </div>
 
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s8 offset-s2" id="divSubBtn">
                         <button id="submitBtn" class="btn waves-effect waves-light col s10"
                                 type="submit"
                                 formnovalidate value="Submit without validation">
@@ -96,7 +96,25 @@ observation
                         </button>
                     </div>
 
+                    <div class="input-field col s8 offset-s2 message" >
+                        {% for message in app.flashes('observe') %}
+                            <div class="flash-observe">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="input-field col s10 offset-s1 message">
+                        {% for message in app.flashes('notice') %}
+                            <div class="flash-notice">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
                     {{ form_end(form) }}
+
+
 
                 </div>
                 <div id="mapid" class="col s6"></div>
