@@ -7,11 +7,11 @@ use Doctrine\Common\Collections\Collection;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Observe
 {
     use TimestampableEntity;
+
     /**
      * @var UuidInterface
      */
@@ -104,7 +104,6 @@ class Observe
 
     /**
      * @param TaxRef|null $ref
-     *
      * @return Observe
      */
     public function setRef(?TaxRef $ref): self
@@ -191,7 +190,6 @@ class Observe
     }
 
     /**
-
      * @return User|null
      */
     public function getValidator(): ?User

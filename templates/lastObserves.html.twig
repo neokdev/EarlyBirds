@@ -10,64 +10,70 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-
-        <div class="row">
-            <div class="col s12">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">textsms</i>
-                        <input data-url="{{ path('json_getvalidateobservestaxrefnames') }}" type="text" id="autocomplete-input" class="autocomplete">
-                        <img id="ajaxLoader" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}">
-                        <label for="autocomplete-input">Nom Latin ou Vernaculaire</label>
-                    </div>
-                </div>
-            </div>
+    <div class="row" style="margin-bottom: 61px">
+        <div class="col s1">
+            
         </div>
+        <div class="col s10 center-block" style="background-image: url({{ asset('/img/boris-smokrovic-131485-unsplash.jpg') }}); background-size: 100% 100%; height: 369px">
+            
+        </div>
+        <div class="col s1">
+            
+        </div>
+    </div>
 
-        <div class="row">
+    <div class="row">
+        <div class="col s12">
 
-            {% for observe in observes %}
-
-            <div class="observe col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{ observe.img }}">
-                        <span data-lbnom="{{ observe.ref.lbNom }}" class="card-title">{% if observe.ref.nomVern is defined %}{{ observe.ref.nomVern }}{% else %}{{ observe.ref.lbNom }}{% endif %}</span>
-                    </div>
-                    <div class="card-action" style="padding-bottom: 0">
-                        <div class="row">
-                            <div class="col s9 m6 l6 xl6">
-                                <div class="row">
-                                    <span style="font-size: small">le {{ observe.createdAt|localizeddate('full', 'none') }}</span>
-                                </div>
-                                <div class="row">
-                                    <span style="font-size: small">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}</span>
-                                </div>
-                            </div>
-                            <div class="col s3 m6 l6 xl6">
-                                <div class="row">
-                                    <div class="col s12" style="width: max-content">
-                                        <span class="js-like-observe-count" style="position: relative; bottom: 7px">{{ observe.upvoter.count }}</span>
-                                        <a class="js-like-observe" href="{{ path('toggle_observe_heart', {id: observe.id}) }}">
-                                            <i id="heart" data-url="{{ path('get_observe_like_status') }}" data-id="{{ observe.id }}" class="material-icons">favorite_border</i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="material-icons">share</i>
-                                        </a>
-
-                                    </div>
-                                </div>
-
-                            </div>
+            <div class="row" style="margin-bottom: 106px">
+                <div id="divautocomplete" class="col s8 offset-s2" style="background: #FFFFFF; box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px;">
+                    <div class="row" style="margin-bottom: 0">
+                        <div class="input-field col s12">
+                            <input data-url="{{ path('json_getvalidateobservestaxrefnames') }}" type="text" id="autocomplete-input" class="autocomplete">
+                            <img id="ajaxLoader" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}">
+                            <label for="autocomplete-input">Saisissez le nom latin ou vernaculaire de l’oiseau recherché</label>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            {% endfor %}
+            <div class="row" style="padding-left: 40px; padding-right: 40px">
 
+                {% for observe in observes %}
+
+                <div id="observeTule" class="observe col s12 l5 xl3" style="margin-right: 4%; margin-left: 4%; margin-bottom: 45px">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{ observe.img }}">
+                            <span data-lbnom="{{ observe.ref.lbNom }}" class="left-align truncate card-title black-text" style="padding-left: 18px; padding-bottom: 13px; line-height: 24px">{% if observe.ref.nomVern is defined %}{{ observe.ref.nomVern }}{% else %}{{ observe.ref.lbNom }}{% endif %}</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
+                        </div>
+                        <div class="card-content row" style="padding-bottom: 9px; padding-top: 9px">
+                                <div class="col s6 left-align">
+                                    <div class="row" style="margin-bottom: 0">
+                                        <span class="truncate" style="font-size: 12px">Observé le {{ observe.createdAt|localizeddate('long', 'none') }}</span>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 0">
+                                        <span style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}</span>
+                                    </div>
+                                </div>
+                                <div class="col s4 left-align" style="padding-right: 0px; padding-top: 15px;">
+                                    <span class="js-like-observe-count" style="position: relative; bottom: 8px; font-size: 12px">{{ observe.upvoter.count }}</span>
+                                    <a class="js-like-observe" href="{{ path('toggle_observe_heart', {id: observe.id}) }}">
+                                        <i id="heart" data-url="{{ path('get_observe_like_status') }}" data-id="{{ observe.id }}" class="material-icons" style="color: #EB5757">favorite_border</i>
+                                        <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
+                                    </a>
+                                    <a href="#">
+                                        <i class="material-icons" style="color: #2D9CDB">share</i>
+                                    </a>
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -36,6 +36,32 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param User $user
+     *
+     * @return bool
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function remove(User $user): bool
+    {
+        $this->getEntityManager()->remove($user);
+        $this->getEntityManager()->flush();
+
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function update(): bool
+    {
+        $this->_em->flush();
+
+        return true;
+    }
+
+    /**
      * @return User[] Returns an array of User objects
      */
     /*

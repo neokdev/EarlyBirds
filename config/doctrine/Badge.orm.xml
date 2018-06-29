@@ -6,7 +6,7 @@
 
     <entity name="App\Domain\Models\Badge" table="badge" repository-class="App\Domain\Repository\BadgeRepository">
         <id name="id" type="uuid"/>
-        <many-to-many field="user" target-entity="App\Domain\Models\User" mapped-by="badges"/>
+        <many-to-many field="user" target-entity="App\Domain\Models\User" inversed-by="badges"/>
         <field name="name"/>
         <field name="category" type="integer"/>
         <field name="desc" type="text"/>
