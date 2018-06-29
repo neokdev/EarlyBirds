@@ -4,10 +4,15 @@ $(document).ready(function() {
 
         let $link = $(e.currentTarget);
 
+        $link.find('.material-icons').hide();
+        $link.find('#ajaxLoading').show();
+
         $.ajax({
             method: 'POST',
             url: $link.attr('href')
         }).done(function (data) {
+            $link.find('.material-icons').show();
+            $link.find('#ajaxLoading').hide();
             $link.parent().find('.js-like-observe-count').html(data.hearts);
 
             switch ($link.find('.material-icons').html()) {
@@ -26,7 +31,7 @@ $(document).ready(function() {
         $.each(data, function (key, val) {
             let id = val;
             $('.observe').each(function () {
-                let heart = $(this).find('.material-icons:first');
+                let heart = $(this).find('#heart');
                 if (heart.data('id') === id) {
                     heart.html("favorite")
                 }
