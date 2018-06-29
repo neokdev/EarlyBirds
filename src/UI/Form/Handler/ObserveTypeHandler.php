@@ -121,12 +121,15 @@ class ObserveTypeHandler implements ObserveTypeHandlerInterface
                 $form->getData()->description,
                 $form->getData()->latitude,
                 $form->getData()->longitude,
+                $form->getData()->obsDate,
                 $this->media.$this->fileOutput->getFilename()
             );
 
             $this->observeRepository->save($this->observeBuilder->getObserve());
 
-            $this->flash->add('observe','votre observation à été ajoutée');
+            $this->flash->add('observe','observation enregistrée');
+            $this->flash->add('notice','votre observation sera en ligne dès 
+            validation par nos naturalistes ! Vous pouvez encore la modifer dans votre profil.');
 
             return true;
         }

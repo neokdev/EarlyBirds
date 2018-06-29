@@ -8,7 +8,6 @@
 
 namespace App\UI\Form\Handler;
 
-
 use App\Domain\Builder\Interfaces\ObserveBuilderInterface;
 use App\Domain\Models\Observe;
 use App\Domain\Repository\ObserveRepository;
@@ -99,6 +98,7 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
                 ->setDescription($form->getData()->description)
                 ->setLongitude($form->getData()->longitude)
                 ->setLatitude($form->getData()->latitude)
+                ->setObsDate($form->getData()->obsDate)
             ;
 
             if($observe->getRef()->getNomComplet() !== $form->getData()->ref) {

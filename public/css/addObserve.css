@@ -1,0 +1,166 @@
+#mapid {
+    height: 81.3em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#form {
+    background-color: rgba(72, 129, 148, 1);
+    height:65em;
+    border-right: 4px solid white;
+    padding: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input#observe_ref {
+
+    padding-left: 10px;
+    height: 4.375em;
+
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input#observe_latitude {
+
+    padding-left: 10px;
+    height: 4.375em;
+
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input#observe_longitude {
+
+    padding-left: 10px;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input#observe_obsDate {
+    padding-left: 10px;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+textarea#observe_description {
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+input::placeholder {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding-left: 15px;
+}
+
+input {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding: 0;
+}
+
+textarea {
+    padding-top: 15px;
+    height: 7.563em;
+    width: 100%;
+}
+
+div#uplBtn {
+    border-radius: 20px;
+    background: #2D9CDB;
+    margin-left: 40px;
+
+}
+
+div#uplBtn span {
+    font-size: 1em;
+    text-transform: capitalize;
+}
+
+#submitBtn {
+    background: #F2994A;
+    border-radius: 20px;
+    height: 3em;
+    font-size: 1.125em;
+    text-transform: capitalize;
+    margin: 0 0 0 22px;
+}
+
+.label {
+    font-weight:bold;
+    font-Size: 1.125em;
+}
+
+#label1:before {
+    content: url('../img/vector/oiseauBlanc.png');
+}
+
+#header {
+
+    height: 378px;
+    background: red;
+    padding-top: 90px;
+    margin-bottom: 100px;
+    background: no-repeat center url("../img/other/observation.jpeg");
+    background-size: cover;
+}
+.header_text {
+
+    text-align: center;
+    color: white;
+}
+
+#header_text_light {
+    font-weight: lighter;
+}
+
+p#popupMap {
+    text-align: center;
+    color: #F2994A;
+}
+
+#form_errors {
+    border-radius: 20px;
+    background: #F2994A;
+    text-transform: capitalize;
+    font-Size: 1.125em;
+    font-weight: bold;
+}
+
+.flash-notice {
+    background: white;
+    border-radius: 20px;
+    font-size: 1em;
+    text-transform: capitalize;
+    padding: 5px 5px 5px 10px;
+    text-align: center;
+}
+
+.flash-observe {
+    background: #59A177;
+    color: white;
+    border-radius: 20px;
+    height: 3.000em;
+    vertical-align: center;
+    font-size: 1.200em;
+    text-transform: lowercase;
+    padding: 15px 5px 5px 5px;
+    text-align: center;
+}

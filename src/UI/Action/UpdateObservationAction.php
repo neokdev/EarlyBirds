@@ -18,6 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+
 /**
  * Class UpdateObservationAction
  * @package App\UI\Action
@@ -29,16 +30,19 @@ use Symfony\Component\HttpFoundation\Request;
 final class UpdateObservationAction implements UpdateObservationActionInterface
 {
     /**
+     *
      * @var UpdateObserveTypeHandlerInterface
      */
     private $updateObserveTypeHandler;
 
     /**
+     *
      * @var ObserveRepository
      */
     private $observeRepository;
 
     /**
+     *
      * @var FormFactoryInterface
      */
     private $formFactory;
@@ -80,6 +84,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
             $observe->getDescription(),
             $observe->getLatitude(),
             $observe->getLongitude(),
+            $observe->getObsDate(),
             null
         );
 

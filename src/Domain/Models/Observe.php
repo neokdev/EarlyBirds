@@ -43,6 +43,11 @@ class Observe
     private $longitude;
 
     /**
+     * @var \DateTime
+     */
+    private $obsDate;
+
+    /**
      * @var string
      */
     private $img;
@@ -167,6 +172,24 @@ class Observe
     {
         $this->longitude = $longitude;
 
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getObsDate(): \DateTime
+    {
+        return $this->obsDate;
+    }
+
+    /**
+     * @param \DateTime $obsDate
+     * @return $this
+     */
+    public function setObsDate(\DateTime $obsDate): self
+    {
+        $this->obsDate = $obsDate;
         return $this;
     }
 
