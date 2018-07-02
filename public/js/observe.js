@@ -152,7 +152,38 @@ $(function() {
                dataType: "json",
                type: "GET",
                success: function(result) {
-                   console.log(result[0].author.nickname);
+                   console.log(result[0].obsDate.date);
+                   let dateObs = new Date(result[0].obsDate.date);
+                   let YY = dateObs.getFullYear();
+                   let DD = dateObs.getDate();
+                   let MM;
+
+                   switch(dateObs.getMonth()){
+                       case 1: MM = "Janvier";
+                           break;
+                       case 2: MM = "Février";
+                           break;
+                       case 3: MM = "Mars";
+                           break;
+                       case 4: MM = "Avril";
+                           break;
+                       case 5: MM = "Mai";
+                           break;
+                       case 6: MM = "Juin";
+                           break;
+                       case 7: MM = "Juillet";
+                           break;
+                       case 8: MM = "Août";
+                           break;
+                       case 9: MM = "Septembre";
+                           break;
+                       case 10: MM = "Octobre";
+                           break;
+                       case 11: MM = "Novembre";
+                           break;
+                       case 12: MM = "Décembre";
+                           break;
+                   }
 
                    if (result[0].author.nickname === null) {
                        nickname = "NC";
@@ -160,19 +191,17 @@ $(function() {
                        nickname = result[0].author.nickname;
                    }
 
-                   birdMarker.bindPopup('<div id="popupMap">' +
-                                        '<img id="birdPopup" class="circle responsive-img" src="'+ result[0].img +'"/>' +
-                                        '<br><span id="birdName">'+ result[0].ref.nomComplet +'</span>'+
-                                        '<br>Observé le '+ result[0].obsDate +
-                                        '<br><span id="author">'+ nickname +'</span>'+
-                                        '<br><br>Latitude : '+ result[0].latitude +
-                                        '<br>Longitude :'+ result[0].longitude +
-                                        '</div>'
+                   birdMarker.bindPopup(
+                       '<div id="popupMap">' +
+                       '<img id="birdPopup" class="circle responsive-img" src="'+ result[0].img +'"/>' +
+                       '<br><span id="birdName">'+ result[0].ref.nomComplet +'</span>'+
+                       '<br>Observé le '+ DD +' '+ MM +' '+ YY +
+                       '<br><span id="author">'+ nickname +'</span>'+
+                       '<br><br>Latitude : '+ result[0].latitude + '<br>Longitude :'+ result[0].longitude +
+                       '</div>'
                    ).openPopup();
                }
            });
-
-
 
             birdMarker.addTo(map);
             map.flyTo([latitude.val(),longitude.val()], 10);

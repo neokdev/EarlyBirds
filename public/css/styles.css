@@ -21,7 +21,7 @@ body
 
 #navnav {
 
-    height: 694px;
+    height: 517px;
     width: 100%;
     background: url('../img/vector/background_header.png');
     position: relative;
@@ -34,6 +34,7 @@ nav {
     background-color: transparent;
     box-shadow: none;
     -webkit-box-shadow: none;
+    padding-top: 3em;
 }
 
 div#c_nav {
@@ -118,11 +119,7 @@ a.black-text:hover {
 }
 
 #logo {
-    height: auto;
-    width: auto;
-    max-width: 64px;
-    max-height: 64px;
-    margin-top: 10px;
+
 }
 
 #icon {
