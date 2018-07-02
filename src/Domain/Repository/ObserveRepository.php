@@ -53,6 +53,9 @@ class ObserveRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return array
+     */
     public function findLastObservation()
     {
         return $this->createQueryBuilder('obs')
@@ -62,6 +65,33 @@ class ObserveRepository extends ServiceEntityRepository
             ->setMaxResults(100)
             ->getQuery()
             ->getArrayResult();
+    }
+
+    /**
+     * @param string $userId
+     * @param        $lat
+     * @param        $long
+     * @return array
+     */
+    public function findObservationByLatLong(string $userId, $lat, $long)
+    {
+        $qb = $this->createQueryBuilder('obs')
+            ->andwhere('obs.author = :authorId',
+                    'obs.latitude = :lat',
+                    'obs.longitude = :long')
+            ->setParameters(['authorId'=> $userId,
+                                'lat'  => $lat,
+                                'long' => $long
+                            ])
+            ->leftJoin('obs.author', 'usr')
+            ->addSelect('usr')
+            ->leftJoin('obs.ref','tax')
+            ->addSelect('tax')
+            ;
+
+        $qr = $qb->getQuery()->getArrayResult();
+
+        return $qr;
     }
   
     /**

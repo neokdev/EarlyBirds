@@ -21,10 +21,10 @@ body
 
 #navnav {
 
-    height: 519px;
-    width: auto;
-    background: no-repeat center url('../img/vector/background_header.png');
-    position: sticky;
+    height: 694px;
+    width: 100%;
+    background: url('../img/vector/background_header.png');
+    position: relative;
     top: 0;
     left: 0;
     z-index: -1;
@@ -209,15 +209,14 @@ a.black-text:hover {
     Footer
 */
 #footer {
-    height: 710px;
-
-    width: auto;
+    height: 942px;
+    width: 100%;
     position: relative;
     top: 0;
     left: 0;
     z-index: -1;
-
-    background: no-repeat center url('../img/vector/vector_footer.png');
+    background: url('../img/vector/vector_footer.png');
+    padding-top: 12%;
 }
 
 #containerInfos {
@@ -334,7 +333,7 @@ svg {
     width: 165px;
     z-index: 100;
         position: relative;
-        top: 332px;
+        top: 455px;
         left: 350px;
 }
 

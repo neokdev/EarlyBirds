@@ -139,8 +139,16 @@ div#uplBtn span {
 }
 
 p#popupMap {
+    font-family: Montserrat, serif;
     text-align: center;
     color: #F2994A;
+    font-weight: lighter;
+}
+
+div#popupMap {
+    font-family: Montserrat, serif;
+    text-align: center;
+    font-weight: lighter;
 }
 
 #form_errors {
@@ -179,3 +187,19 @@ p#popupMap {
     z-index: 0;
     width: 9%;
 }
+
+#birdPopup {
+    width: 80px;
+    height: 80px;
+}
+
+#birdName {
+    font-weight: bolder;
+    color: #F2994A;
+}
+
+#author {
+    color: #2D9CDB;
+    font-weight: bolder;
+}
+

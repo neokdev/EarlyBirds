@@ -88,7 +88,7 @@ $(function() {
                       minLength: 0
                    });
                }
-           });
+            });
         }
 
     });
@@ -130,22 +130,6 @@ $(function() {
 
     }
 
-    function initS(cLat, cLong) {
-        console.log(cLat, cLong);
-        map.flyTo([cLat,cLong], 10);
-        birdMarker = L.marker([cLat,cLong]).addTo(map);
-        birdMarker.bindPopup('hello').openPopup();
-        birdMarker.addTo(map);
-        birdMarker.remove(birdMarker);
-
-        /*birdMarker = L.popup()
-         .setLatLng([cLat, cLong])
-         .setContent("I am a standalone popup.")
-         .openOn(mymap);*/
-
-
-    }
-
     function initMarker(pos) {
         let cLong = pos.coords.longitude;
         let cLat = pos.coords.latitude;
@@ -153,14 +137,46 @@ $(function() {
         if (latitude.val() === "" && longitude.val() === "") {
             latitude.val(cLat);
             longitude.val(cLong);
-            initS(cLat,cLong);
-        }
 
-        birdMarker = L.marker([latitude.val(),longitude.val()]).addTo(map);
-        birdMarker.bindPopup('<p id="popupMap">cliquez sur la carte</br>pour situer' +
-                             ' </br>l\'observation.</p>').openPopup();
-        birdMarker.addTo(map);
-        map.flyTo([latitude.val(),longitude.val()], 10);
+            birdMarker = L.marker([latitude.val(),longitude.val()]).addTo(map);
+            birdMarker.bindPopup('<p id="popupMap">cliquez sur la carte</br>pour situer' +
+                                 ' </br>l\'observation.</p>').openPopup();
+            birdMarker.addTo(map);
+            map.flyTo([latitude.val(),longitude.val()], 10);
+        } else {
+            birdMarker = L.marker([latitude.val(),longitude.val()]).addTo(map);
+            let nickname;
+            $.ajax({
+               url: "http://127.0.0.1:8000/search/"+latitude.val()+"/"+longitude.val(),
+               cache: false,
+               dataType: "json",
+               type: "GET",
+               success: function(result) {
+                   console.log(result[0].author.nickname);
+
+                   if (result[0].author.nickname === null) {
+                       nickname = "NC";
+                   } else {
+                       nickname = result[0].author.nickname;
+                   }
+
+                   birdMarker.bindPopup('<div id="popupMap">' +
+                                        '<img id="birdPopup" class="circle responsive-img" src="'+ result[0].img +'"/>' +
+                                        '<br><span id="birdName">'+ result[0].ref.nomComplet +'</span>'+
+                                        '<br>Observé le '+ result[0].obsDate +
+                                        '<br><span id="author">'+ nickname +'</span>'+
+                                        '<br><br>Latitude : '+ result[0].latitude +
+                                        '<br>Longitude :'+ result[0].longitude +
+                                        '</div>'
+                   ).openPopup();
+               }
+           });
+
+
+
+            birdMarker.addTo(map);
+            map.flyTo([latitude.val(),longitude.val()], 10);
+        }
     }
 
     function success(pos) {
