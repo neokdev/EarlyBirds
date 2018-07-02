@@ -14,6 +14,9 @@ use App\Domain\Repository\UserRepository;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
+ini_set('memory_limit', '-1');
+set_time_limit(0);
+
 class Observe extends AbstractBaseFixture implements DependentFixtureInterface
 {
     /**
@@ -63,7 +66,7 @@ class Observe extends AbstractBaseFixture implements DependentFixtureInterface
         $this->createMany(\App\Domain\Models\Observe::class, 100, function (\App\Domain\Models\Observe $observe, $count) {
             /** @var TaxRef $taxref */
             while (!isset($taxref) || null === $taxref->getNomVern()) {
-                $taxref = $this->taxRefRepository->findOneBy(['id' => rand(0, 3983)]);
+                $taxref = $this->taxRefRepository->findOneBy(['id' => rand(0, 100)]);
             }
 
             $rand      = array_rand($this->userRepository->findAll());
@@ -89,6 +92,7 @@ class Observe extends AbstractBaseFixture implements DependentFixtureInterface
             $date = $this->faker->dateTimeBetween('-1 year', 'now');
             $observe->setCreatedAt($date);
             $observe->setUpdatedAt($date);
+            $observe->setObsDate($date);
             foreach ($indexes as $index) {
                 $observe->addUpvoter($this->userRepository->findAll()[$index]);
             }

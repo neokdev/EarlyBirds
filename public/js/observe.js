@@ -208,10 +208,8 @@ $(function() {
         let long = longitude.val();
 
         if (birdMarker2 === undefined) {
-
             birdMarker2 = L.marker([lat,long]).addTo(map);
             birdMarker2.addTo(map);
-
         }
         birdMarker2.remove();
         birdMarker2 = L.marker([lat,long]).addTo(map);
@@ -234,7 +232,6 @@ $(function() {
     });
 
     //flash message
-
     let msgUn = $('.flash-notice');
     let divUpBtn = $('#divUpBtn');
     let divSubBtn = $('#divSubBtn');
@@ -243,11 +240,10 @@ $(function() {
     if (msgUn.text().length > 0) {
         divSubBtn.hide();
         divUpBtn.hide();
-        message.fadeOut(3000, function () {
+        message.fadeOut(9000, function () {
             divSubBtn.show();
             divUpBtn.show();
         });
-
     }
 
 });

@@ -19,11 +19,6 @@ body
     font-size: 100%;
 }
 
-#c_body {
-    margin-top: -460px;
-    margin-bottom: -320px;
-}
-
 #navnav {
 
     height: 519px;
@@ -42,20 +37,27 @@ nav {
 }
 
 div#c_nav {
-    width: 70%!important;
+    width: 83%!important;
     margin: 0 auto!important;
     background: transparent;
 }
 
 .dp_nav li a {
-    font-size: .9em;
+    font-size: .8em;
     color: black;
 }
 
 .dp_nav li a:hover {
-    font-size: .9em;
+
     color: #F2994A;
 }
+
+nav ul a {
+    font-size: 1em;
+    font-family: Montserrat, serif;
+    text-transform: uppercase;
+}
+
 
 .navbar-fixed {
     position: fixed;
@@ -77,8 +79,11 @@ a.black-text:hover {
 
     z-index: 3;
     position: relative;
-    right: 15px;
-    top: 180px;
+    left: 105px;
+    top: 190px;
+
+    font-family: Montserrat;
+    font-weight: lighter;
 }
 
 .collapsible
@@ -222,6 +227,7 @@ a.black-text:hover {
 .info {
     margin: 0;
     text-align: right;
+    font-family: Montserrat, serif;
 }
 
 #company {
@@ -230,6 +236,7 @@ a.black-text:hover {
 }
 
 .info1 {
+    font-family: Montserrat, serif;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -248,7 +255,6 @@ a.black-text:hover {
 }
 
 #info3 {
-    padding-right: 10px;
     font-style: italic;
     font-weight: normal;
     line-height: 17px;
@@ -286,6 +292,7 @@ a.black-text:hover {
     font-size: 10px;
     text-align: left;
     color: #FFFBFB;
+    width: 60%;
 }
 
 #info8 {
@@ -339,6 +346,10 @@ a {
     color: black;
 }
 
+input#email {
+    width: 50%;
+}
+
 /*
     end footer
 */
@@ -347,13 +358,16 @@ a {
     citation
 */
 #citation {
-    margin-left: 110px;
+    font-family: Didot;
+    margin-left: 15%;
     margin-top: 50px;
     font-size: 2em;
     text-align: center;
 }
 
 #little_text {
+    font-family: Montserrat, serif;
+    font-weight: lighter;
     font-size: 0.8em;
     text-align: center;
     font-weight: lighter;
@@ -376,7 +390,3 @@ a {
     border-bottom: 2px solid #f6b2b5;
 }
 
-nav ul a {
-    font-family: Montserrat, serif;
-    text-transform: uppercase;
-}

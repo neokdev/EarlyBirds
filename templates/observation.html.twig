@@ -19,7 +19,7 @@ observation
                 Nos amis les oiseaux
             </p>
 
-            <div class="col s10 offset-s1" id="header">
+            <div class="col s8 offset-s2" id="header">
 
                     <div class="row">
                         <h3 class="col s10 offset-s1 header_text">Communiquez vos observations</h3>
@@ -42,45 +42,45 @@ observation
 
         </div>
 
-        <div class="col s12">
+        <div class="col s10 offset-s1">
             <div class="row">
                 <div id="form" class="col s6">
 
                     {{ form_start(form) }}
 
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
 
                         <span class="label" id="label1">Oiseau observé</span>
                         {{ form_row((form.ref)) }}
                         <span class="form_errors">{{ form_errors(form.ref) }}</span>
                     </div>
 
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <span class="label">Longitude</span>
                         {{ form_row(form.longitude) }}
                         <span class="form_errors">{{ form_errors(form.longitude) }}</span>
                     </div>
 
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <span class="label">Latitude</span>
                         {{ form_row(form.latitude) }}
                        <span class="form_errors">{{ form_errors(form.latitude) }}</span>
                     </div>
 
 
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <span class="label">Date</span>
                         {{ form_row(form.obsDate) }}
                         <span class="form_errors">{{ form_errors(form.obsDate) }}</span>
                     </div>
 
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <span class="label">Commentaire</span>
                         {{ form_row(form.description) }}
                         <span class="form_errors">{{ form_errors(form.description) }}</span>
                     </div>
 
-                    <div class="file-field input-field col s7 offset-s2" id="divUpBtn">
+                    <div class="file-field input-field col s8 offset-s2" id="divUpBtn">
                         <div class="btn" id="uplBtn">
                             <span>Télécharger une photo</span>
                             {{ form_row(form.img) }}
@@ -104,8 +104,10 @@ observation
                         {% endfor %}
                     </div>
 
+
                     <div class="input-field col s10 offset-s1 message">
                         {% for message in app.flashes('notice') %}
+                            <img id="notice_decoration" src="{{ asset('/img/vector/polygon.png') }}"/>
                             <div class="flash-notice">
                                 {{ message }}
                             </div>
