@@ -87,6 +87,10 @@ a.black-text:hover {
     font-weight: lighter;
 }
 
+#logo {
+
+}
+
 .collapsible
 {
     background-color: #005662;
@@ -116,10 +120,6 @@ a.black-text:hover {
     width: auto;
     max-width: 256px;
     max-height: 256px;
-}
-
-#logo {
-
 }
 
 #icon {
