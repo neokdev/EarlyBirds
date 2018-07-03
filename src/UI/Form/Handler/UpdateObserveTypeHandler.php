@@ -129,7 +129,9 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
 
             $this->observeRepository->update();
 
-            $this->flash->add('observe','votre observation à été modifiée');
+            $this->flash->add('observe','observation modifiée');
+            $this->flash->add('notice','votre observation sera en ligne dès 
+            validation par nos naturalistes ! Vous pouvez encore la modifer dans votre profil.');
 
             return true;
         }

@@ -1,6 +1,7 @@
 #mapid {
     height: 81.3em;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-right: 4px solid white;
 }
 
 #c_body {
@@ -11,7 +12,6 @@
 #form {
     background-color: rgba(72, 129, 148, 1);
     height:65em;
-    border-right: 4px solid white;
     padding: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -109,8 +109,8 @@ div#uplBtn span {
 }
 
 .label {
-    font-family: Montserrat, serif;
-    font-weight:bold;
+    font-family: MontSerrat;
+    font-weight: 800;
     font-Size: 1.125em;
 }
 
@@ -128,35 +128,37 @@ div#uplBtn span {
     background-size: cover;
 }
 .header_text {
-    font-family: Montserrat, serif;
+    font-family: MontSerrat;
+    font-weight: 500;
     text-align: center;
     color: white;
 }
 
 #header_text_light {
-    font-family: Montserrat;
-    font-weight: lighter;
+    font-family: MontSerrat;
+    font-weight: 100;
 }
 
 p#popupMap {
-    font-family: Montserrat, serif;
+    font-family: MontSerrat;
     text-align: center;
     color: #F2994A;
-    font-weight: lighter;
+    font-weight: 100;
 }
 
 div#popupMap {
-    font-family: Montserrat, serif;
+    font-family: MontSerrat;
     text-align: center;
-    font-weight: lighter;
+    font-weight: 100;
 }
 
 #form_errors {
     border-radius: 20px;
     background: #F2994A;
-    text-transform: capitalize;
+    text-transform: lowercase;
+    font-family: MontSerrat;
     font-Size: 1.125em;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .flash-notice {
@@ -194,12 +196,63 @@ div#popupMap {
 }
 
 #birdName {
-    font-weight: bolder;
+    font-family: MontSerrat;
+    font-weight: 700;
     color: #F2994A;
 }
 
 #author {
     color: #2D9CDB;
-    font-weight: bolder;
+    font-family: MontSerrat;
+    font-weight: 700;
 }
 
+@media (max-width: 400px) {
+
+    #c_body {
+
+        margin-top: 0;
+    }
+
+    #mapid {
+        height: 26.625em;
+        border: none;
+        box-shadow: none;
+    }
+
+    #header {
+        height: 378px;
+        padding-top: 0!important;
+        margin-bottom: 0!important;
+        background: no-repeat center url(../img/other/observation.jpeg);
+        background-size: cover;
+    }
+
+    #subHeader {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .header_text {
+        font-family: MontSerrat;
+        text-align: center;
+        color: white;
+        margin-top: 2em;
+        font-size: 1.4em;
+    }
+
+    #header_text_light {
+        font-family: MontSerrat;
+        font-weight: 100;
+    }
+
+}
+
+@media (min-width: 401px) and (max-width: 992px) {
+
+    #c_body {
+
+        margin-top: 100px;
+    }
+}

@@ -37,6 +37,14 @@ nav {
     padding-top: 3em;
 }
 
+nav .sidenav-trigger {
+    float: left;
+    position: relative;
+    z-index: 1;
+    height: 56px;
+    margin: 0 18px;
+}
+
 div#c_nav {
     width: 83%!important;
     margin: 0 auto!important;
@@ -66,7 +74,16 @@ nav ul a {
     top: 0;
     z-index: 997;
 }
+
+ul:not(.browser-default) {
+    margin-top: 2em;
+}
+
 a.black-text:hover {
+    color: #F2994A !important;
+}
+
+a.black-text:active {
     color: #F2994A !important;
 }
 
@@ -83,11 +100,12 @@ a.black-text:hover {
     left: 105px;
     top: 190px;
 
-    font-family: Montserrat;
-    font-weight: lighter;
+    font-family:MontSerrat;
+    font-weight: 100;
 }
 
 #logo {
+
 
 }
 
@@ -211,7 +229,6 @@ a.black-text:hover {
     position: relative;
     top: 0;
     left: 0;
-    z-index: -1;
     background: url('../img/vector/vector_footer.png');
     padding-top: 12%;
 }
@@ -223,7 +240,7 @@ a.black-text:hover {
 .info {
     margin: 0;
     text-align: right;
-    font-family: Montserrat, serif;
+    font-family: Montserrat;
 }
 
 #company {
@@ -232,7 +249,7 @@ a.black-text:hover {
 }
 
 .info1 {
-    font-family: Montserrat, serif;
+    font-family: MontSerrat;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -241,9 +258,8 @@ a.black-text:hover {
 }
 
 .info2 {
-
     font-style: italic;
-    font-weight: normal;
+    font-weight: 100;
     line-height: normal;
     font-size: 14px;
     text-align: right;
@@ -252,7 +268,7 @@ a.black-text:hover {
 
 #info3 {
     font-style: italic;
-    font-weight: normal;
+    font-weight: 500;
     line-height: 17px;
     font-size: 14px;
     text-align: right;
@@ -298,7 +314,7 @@ a.black-text:hover {
 #info7 {
     margin-right: 15px;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 800;
     line-height: normal;
     font-size: 16px;
     text-align: right;
@@ -313,7 +329,7 @@ svg {
 #nosPartenaires {
     margin-top: 30px;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 800;
     line-height: normal;
     font-size: 16px;
     text-align: right;
@@ -362,20 +378,18 @@ input#email {
 }
 
 #little_text {
-    font-family: Montserrat, serif;
-    font-weight: lighter;
+    font-family: MontSerrat;
     font-size: 0.8em;
     text-align: center;
-    font-weight: lighter;
+    font-weight: 100;
 }
 /*
     end citation
 */
 
 #observeTule {
-    font-family: Montserrat, serif;
-    font-style: normal;
-    font-weight: normal;
+    font-family: MontSerrat;
+    font-weight: 100;
 }
 
 .tabs .indicator {
@@ -386,3 +400,138 @@ input#email {
     border-bottom: 2px solid #f6b2b5;
 }
 
+/* nav mobile*/
+
+@media (max-width: 400px) {
+    #navnav {
+        display: none;
+    }
+
+    nav {
+        background-color: #BDBDBD;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        height: 4em;
+        padding-top: .3em;
+    }
+
+    #logo {
+        width: 40%;
+        padding-top: .2em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    a.brand-logo.left {
+        left: 2.5em;
+    }
+
+    a.sidenav-trigger.nav-icon {
+        margin: 0 0 0 10%;
+
+    }
+
+
+    .icon-img {
+        width: 7%;
+        position: relative;
+        top: .2em;
+        left: 7em;
+    }
+
+    img#icon-img-un {
+        margin-right: 1.7em;
+    }
+
+    img#icon-img-deux {
+        margin-right: 1.7em;
+    }
+
+
+
+}
+
+@media (min-width: 401px) and (max-width: 992px) {
+    #navnav {
+        display: none;
+    }
+
+    nav {
+        background-color: #BDBDBD;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        height: 4em;
+        padding-top: .4em;
+    }
+
+    #logo {
+        width: 50%;
+        padding-top: .2em;
+    }
+
+    a.brand-logo.left {
+        left: 17.6em;
+    }
+
+    a.sidenav-trigger.nav-icon {
+        margin: 0 0 0 10%;
+
+    }
+
+
+    .icon-img {
+        width: 4%;
+        position: relative;
+        top: .2em;
+        left: 40em;
+    }
+
+    img#icon-img-un {
+        margin-right: 1.7em;
+    }
+
+    img#icon-img-deux {
+        margin-right: 1.7em;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1440px){
+
+    .icon-img {
+        display: none;
+    }
+
+    #slogan {
+        left: 4.5em;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1600px) {
+    .icon-img {
+        display: none;
+    }
+
+    #slogan {
+        left: 7em;
+    }
+
+    div#c_nav {
+        width: 84% !important;
+    }
+}
+
+@media (min-width: 1601px) and (max-width: 1920px) {
+    .icon-img {
+        display: none;
+    }
+
+    #slogan {
+        left: 9em;
+    }
+
+    div#c_nav {
+        width: 84% !important;
+    }
+}

@@ -6,6 +6,7 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
             <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% endblock %}
@@ -32,6 +33,30 @@
             <nav>
                 <div class="nav-wrapper" id="c_nav">
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+                        <a href="{{ path('app_observe') }}" class="nav-icon"><img class="icon-img"
+                                                                    id="icon-img-un" src="{{
+                            asset
+                                ('/img/vector/Very-Basic-Binoculars-icon.png') }}"/></a>
+                        <a href="{{ path('app_lastobserve') }}" class="nav-icon"><img
+                                    class="icon-img"
+                                                                  id="icon-img-deux"
+                                                                          src="{{ asset
+                                ('/img/vector/loupe.png') }}"/></a>
+                    {% if is_granted('ROLE_USER') == false %}
+                        <a href="{{ path('security_login') }}" class="nav-icon"><img
+                                    class="icon-img"
+                                                                          src="{{ asset
+                                ('/img/vector/perso.png') }}"/></a>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('app_profile') }}" class="nav-icon"><img
+                                class="icon-img"
+                                src="{{ asset
+                                    ('/img/vector/perso.png') }}"/></a>
+                    {% endif %}
+
+
                     <ul class="right hide-on-med-and-down">
                         <li>
                             <a class="black-text" href="{{ path('app_home') }}"><i class="material-icons">home</i></a>
@@ -66,13 +91,56 @@
             </nav>
         </div>
 
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="{{ path('app_home') }}">NAO</a></li>
-            <li><a href="{{ path('app_observe') }}">Observer</a></li>
-            <li><a href="#">Découvrir</a></li>
-            <li><a href="#">Actualités</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="{{ path('security_login') }}">Login</a></li>
+        <ul id="dropdown_profile" class="dropdown-content dp_nav">
+            <li><a href="{{ path('app_profile') }}">Profil</a></li>
+            <li><a href="/logout">Se déconnecter</a></li>
+        </ul>
+        <ul id="dropdown_observe" class="dropdown-content dp_nav">
+            <li><a href="{{ path('app_lastobserve') }}">Dernières
+                    observations</a></li>
+            <li><a href="{{ path('app_observe') }}">Saisie d'une observation</a></li>
+            <li><a href="{{ path('app_map') }}">Carte</a></li>
+        </ul>
+        <ul id="dropdown_discover" class="dropdown-content dp_nav">
+            <li><a href="#">NAO</a></li>
+            <li><a href="#">Les oiseaux</a></li>
+        </ul>
+
+        <ul class="sidenav collapsible" id="mobile-demo">
+            <li><a href="{{ path('app_home') }}" class="black-text collapsible-header">NAO</a></li>
+            <li><a class="collapsible-header black-text">Découvrir</a>
+                <ul class="collapsible-body">
+                    <li><a href="#" class="black-text">NAO</a></li>
+                    <li><a href="#" class="black-text">Les oiseaux</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="collapsible-header black-text">Observer</a>
+                <ul class="collapsible-body">
+                    <li><a href="{{ path('app_lastobserve') }}" class="black-text">Dernières
+                            observations</a></li>
+                    <li><a href="{{ path('app_observe') }}" class="black-text">Saisie d'une observation</a></li>
+                    <li><a href="{{ path('app_map') }}" class="black-text">Carte</a></li>
+                </ul>
+
+            </li>
+            <li><a href="#" class="black-text collapsible-header">Actualités</a></li>
+            <li><a href="{{ path('app_contact') }}" class="black-text collapsible-header">Contact</a></li>
+
+            {% if is_granted('ROLE_USER') == false %}
+                <li><a href="{{ path('security_login') }}" class="black-text
+                collapsible-header">Login</a></li>
+            {% endif %}
+
+            {% if is_granted('ROLE_USER') %}
+                <li>
+                    <a  href="#" class="black-text collapsible-header">Compte</a>
+                    <ul class="collapsible-body">
+                        <li><a href="{{ path('app_profile') }}" class="black-text">Profil</a></li>
+                        <li><a href="/logout" class="black-text">Se déconnecter</a></li>
+                    </ul>
+                </li>
+            {% endif %}
         </ul>
        <!-- <div class="container" id="c_body">
             <div class="row">
@@ -106,13 +174,13 @@
                     <p id="info3">Abonnez-vous à la newsletter</p>
                     <input type="email"
                            placeholder="
-                                        "
+                                    "
                            id="email"/>
                     <label id="info4">
                         <input type="checkbox" id="info5"/>
                         <span id="info6">J'accepte que mon email soit utilisé pour m'adresser
-                            la newsletter et j'ai bien pris connaissance de la politique de
-                            confidentialité de nao.</span>
+                        la newsletter et j'ai bien pris connaissance de la politique de
+                        confidentialité de nao.</span>
                     </label>
                 </div>
             </div>
