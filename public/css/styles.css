@@ -306,6 +306,7 @@ input#email {
     width: 30%;
     margin-right: 40px;
     margin-bottom: 20px;
+    text-transform: lowercase;
 
 }
 
@@ -508,11 +509,15 @@ a {
 
     #slogan {
         left: 4em;
-        top: 12em;
+        top: 12.5em;
     }
 
     #navnav {
         display: none;
+    }
+
+    .sidenav {
+        z-index: 10000;
     }
 
     nav {
@@ -521,6 +526,10 @@ a {
         -webkit-box-shadow: none;
         height: 4em;
         padding-top: .4em;
+    }
+
+    ul:not(.browser-default) {
+        margin-top: 0;
     }
 
     #logo {

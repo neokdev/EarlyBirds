@@ -119,19 +119,18 @@ div#uplBtn span {
 }
 
 #header {
-
-    height: 378px;
-    background: red;
+    height: 450px;
     padding-top: 90px;
     margin-bottom: 100px;
     background: no-repeat center url("../img/other/observation.jpeg");
-    background-size: cover;
+    background-size: contain;
 }
 .header_text {
     font-family: MontSerrat;
     font-weight: 500;
     text-align: center;
     color: white;
+    margin-top: 2.4em;
 }
 
 #header_text_light {
@@ -221,7 +220,7 @@ div#popupMap {
     }
 
     #header {
-        height: 378px;
+        margin-top: 3.9em;
         padding-top: 0!important;
         margin-bottom: 0!important;
         background: no-repeat center url(../img/other/observation.jpeg);
@@ -238,8 +237,7 @@ div#popupMap {
         font-family: MontSerrat;
         text-align: center;
         color: white;
-        margin-top: 5em;
-        font-size: 1.8em;
+        font-size: 1em;
     }
 
     #header_text_light {
@@ -248,8 +246,7 @@ div#popupMap {
     }
 
     #header_text_second {
-        margin-top: 2em;
-        font-size: 1.4em;
+        font-size: 1em;
     }
 
     #form {
@@ -279,4 +276,49 @@ div#popupMap {
     #mapid{
         height: 78.5em;
     }
+
+    #header {
+        height: 300px;
+        background: no-repeat center url(../img/other/observation.jpeg);
+        background-size: unset;
+    }
+
+    .header_text {
+        font-family: MontSerrat;
+        text-align: center;
+        color: white;
+        margin-top: .2em;
+        font-size: 1.4em;
+    }
+
+    #header_text_light {
+        font-family: MontSerrat;
+        font-weight: 100;
+        margin-top: 1em;
+    }
+
+    #header_text_second {
+        font-size: 1.4em;
+        margin-top: 1em;
+    }
+
+}
+
+@media (min-width: 993px) and (max-width: 1440px) {
+
+    #header {
+        height: 300px;
+        padding-top: 90px;
+        margin-bottom: 100px;
+        background: no-repeat center url(../img/other/observation.jpeg);
+        background-size: cover;
+    }
+
+    .header_text {
+        font-family: MontSerrat;
+        text-align: center;
+        color: white;
+        margin-top: .2em;
+    }
+
 }
