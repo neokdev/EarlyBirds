@@ -68,6 +68,7 @@ $(function() {
                cache: false,
                dataType: "json",
                type: "GET",
+               crossDomain: true,
                success: function(result) {
 
                    let birds = [];

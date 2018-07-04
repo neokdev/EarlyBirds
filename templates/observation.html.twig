@@ -24,7 +24,7 @@ observation
                         Communiquez vos
                         observations
                     </h3>
-                    <h5 class="col m10 offset-m1 s12 header_text">
+                    <h5 class="col m10 offset-m1 s12 header_text" id="header_text_second">
                         Devenez un acteur éco citoyen et
                         contribuez à la
                         biodiversité.<br>
@@ -45,39 +45,38 @@ observation
                 <div id="form" class="col s12  m6">
 
                     {{ form_start(form) }}
-                    <div class="input-field col s10 offset-s1">
+                    <div class="input-field col l10 offset-l1 s12 m12">
 
                         <span class="label" id="label1">Oiseau observé</span>
                         {{ form_row((form.ref)) }}
                         <span class="form_errors">{{ form_errors(form.ref) }}</span>
                     </div>
 
-                    <div class="input-field col s10 offset-s1">
+                    <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Longitude</span>
                         {{ form_row(form.longitude) }}
                         <span class="form_errors">{{ form_errors(form.longitude) }}</span>
                     </div>
 
-                    <div class="input-field col s10 offset-s1">
+                    <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Latitude</span>
                         {{ form_row(form.latitude) }}
                        <span class="form_errors">{{ form_errors(form.latitude) }}</span>
                     </div>
 
-
-                    <div class="input-field col s10 offset-s1">
+                    <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Date</span>
                         {{ form_row(form.obsDate) }}
                         <span class="form_errors">{{ form_errors(form.obsDate) }}</span>
                     </div>
 
-                    <div class="input-field col s10 offset-s1">
+                    <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Commentaire</span>
                         {{ form_row(form.description) }}
                         <span class="form_errors">{{ form_errors(form.description) }}</span>
                     </div>
 
-                    <div class="file-field input-field col s8 offset-s2" id="divUpBtn">
+                    <div class="file-field input-field col l8 offset-l2 m12 s12" id="divUpBtn">
                         <div class="btn" id="uplBtn">
                             <span>Télécharger une photo</span>
                             {{ form_row(form.img) }}
@@ -85,7 +84,7 @@ observation
                         </div>
                     </div>
 
-                    <div class="input-field col s8 offset-s2" id="divSubBtn">
+                    <div class="input-field col l8 offset-l2 m12 s12" id="divSubBtn">
                         <button id="submitBtn" class="btn waves-effect waves-light col s10"
                                 type="submit"
                                 formnovalidate value="Submit without validation">
@@ -93,7 +92,7 @@ observation
                         </button>
                     </div>
 
-                    <div class="input-field col s8 offset-s2 message" >
+                    <div class="input-field col m8 offset-m2 message" >
                         {% for message in app.flashes('observe') %}
                             <div class="flash-observe">
                                 {{ message }}
@@ -101,7 +100,7 @@ observation
                         {% endfor %}
                     </div>
 
-                    <div class="input-field col s10 offset-s1 message">
+                    <div class="input-field col m10 offset-m1 message">
                         {% for message in app.flashes('notice') %}
                             <img id="notice_decoration" src="{{ asset('/img/vector/polygon.png') }}"/>
                             <div class="flash-notice">
@@ -114,8 +113,8 @@ observation
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s3" id="citation">
+        <div class="row  hide-on-med-and-down">
+            <div class="col m3" id="citation">
                 “ Juste là où<br>
                 vous êtes est le<br>
                 bon endroit pour <br>commencer”

@@ -279,7 +279,7 @@ a.black-text:active {
 
     padding-left: 10px;
     padding-right: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
     border: none;
     background: #FFFCFC;
@@ -290,6 +290,23 @@ a.black-text:active {
     text-decoration-line: line-through;
     padding: 30px 0 30px 0;
     text-decoration-color: initial;
+}
+
+input#email {
+    width: 50%;
+}
+
+#nwslter {
+    background: #C4C4C4;
+    border-radius: 20px;
+    height: 2em;
+    font-size: 1.125em;
+    border: none;
+    color: white;
+    width: 30%;
+    margin-right: 40px;
+    margin-bottom: 20px;
+
 }
 
 #info5 {
@@ -358,9 +375,6 @@ a {
     color: black;
 }
 
-input#email {
-    width: 50%;
-}
 
 /*
     end footer
@@ -449,11 +463,54 @@ input#email {
         margin-right: 1.7em;
     }
 
+    #footer {
 
+        background: #488194;
+        height: auto;
+        position: unset;
+        padding: 0;
+        top: unset;
+        left: unset;
+    }
+
+    #footer-mobile {
+        margin-bottom: 0;
+        padding-top: 0;
+    }
+
+    #citation-mobile {
+        font-family: Didot;
+        font-size: 1em;
+        text-align: center;
+        margin: 0;
+        background: white;
+        padding: 1em 0 1em 0;
+    }
+
+    #little_text {
+        font-family: MontSerrat;
+        font-size: 0.8em;
+        text-align: center;
+        font-weight: 100;
+    }
+
+    #nao {
+        font-family: MontSerrat;
+        font-size: 0.8em;
+        color: white;
+        text-align: center;
+        padding: 1em 0 1em 0;
+    }
 
 }
 
 @media (min-width: 401px) and (max-width: 992px) {
+
+    #slogan {
+        left: 4em;
+        top: 12em;
+    }
+
     #navnav {
         display: none;
     }
@@ -472,7 +529,7 @@ input#email {
     }
 
     a.brand-logo.left {
-        left: 17.6em;
+        left: 19em;
     }
 
     a.sidenav-trigger.nav-icon {
@@ -480,12 +537,11 @@ input#email {
 
     }
 
-
     .icon-img {
         width: 4%;
         position: relative;
         top: .2em;
-        left: 40em;
+        left: 43em;
     }
 
     img#icon-img-un {
@@ -495,20 +551,84 @@ input#email {
     img#icon-img-deux {
         margin-right: 1.7em;
     }
+
+    div#c_nav {
+        width: 88%!important;
+        margin: 0 auto!important;
+        background: transparent;
+    }
+
+    #citation-mobile {
+        font-family: Didot;
+        font-size: 1em;
+        text-align: center;
+        margin: 0;
+        background: white;
+        padding: 1em 0 1em 0;
+    }
+
+    #little_text {
+        font-family: MontSerrat;
+        font-size: 0.8em;
+        text-align: center;
+        font-weight: 100;
+    }
+
+    #nao {
+        font-family: MontSerrat;
+        font-size: 0.8em;
+        color: white;
+        text-align: center;
+        padding: 1em 0 1em 0;
+    }
+
+    #footer {
+
+        background: #488194;
+        height: auto;
+        position: unset;
+        padding: 0;
+        top: unset;
+        left: unset;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: 2.5em;
+    }
 }
 
-@media (min-width: 993px) and (max-width: 1440px){
+@media (min-width: 993px) and (max-width: 1439px){
 
     .icon-img {
         display: none;
     }
 
     #slogan {
-        left: 4.5em;
+        left: 6.8em;
     }
+
+    div#c_nav {
+        width: 84% !important;
+    }
+
+    #footer-mobile {
+        display: none;
+    }
+
+    #blackBird {
+        height: 165px;
+        width: 165px;
+        z-index: 100;
+        position: relative;
+        top: 470px;
+        left: 280px;
+    }
+
+
 }
 
-@media (min-width: 1441px) and (max-width: 1600px) {
+@media (min-width: 1440px) and (max-width: 1600px) {
     .icon-img {
         display: none;
     }
@@ -520,6 +640,14 @@ input#email {
     div#c_nav {
         width: 84% !important;
     }
+
+    #footer-mobile {
+        display: none;
+    }
+
+    #footer {
+        padding-top: 10%;
+    }
 }
 
 @media (min-width: 1601px) and (max-width: 1920px) {
@@ -528,10 +656,35 @@ input#email {
     }
 
     #slogan {
-        left: 9em;
+        left: 9.5em;
     }
 
     div#c_nav {
         width: 84% !important;
+    }
+
+    #footer-mobile {
+        display: none;
+    }
+
+    #footer {
+        padding-top: 10%;
+    }
+
+    #info3 {
+        margin-right: 20px;
+    }
+
+    #blackBird {
+        height: 165px;
+        width: 165px;
+        z-index: 100;
+        position: relative;
+        top: 410px;
+        left: 510px;
+    }
+
+    #footer {
+        padding-top: 5%;
     }
 }

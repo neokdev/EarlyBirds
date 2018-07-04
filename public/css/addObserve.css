@@ -96,7 +96,7 @@ div#uplBtn {
 
 div#uplBtn span {
     font-size: 1em;
-    text-transform: capitalize;
+    text-transform: initial;
 }
 
 #submitBtn {
@@ -104,7 +104,7 @@ div#uplBtn span {
     border-radius: 20px;
     height: 3em;
     font-size: 1.125em;
-    text-transform: capitalize;
+    text-transform: initial;
     margin: 0 0 0 22px;
 }
 
@@ -238,8 +238,8 @@ div#popupMap {
         font-family: MontSerrat;
         text-align: center;
         color: white;
-        margin-top: 2em;
-        font-size: 1.4em;
+        margin-top: 5em;
+        font-size: 1.8em;
     }
 
     #header_text_light {
@@ -247,12 +247,36 @@ div#popupMap {
         font-weight: 100;
     }
 
+    #header_text_second {
+        margin-top: 2em;
+        font-size: 1.4em;
+    }
+
+    #form {
+        box-shadow: none;
+    }
+
 }
 
 @media (min-width: 401px) and (max-width: 992px) {
 
+    #mapid {
+        height: 76em;
+        border: none;
+        box-shadow: none;
+    }
+
     #c_body {
 
         margin-top: 100px;
+        margin-bottom: auto;
+    }
+
+    #form {
+        box-shadow: none;
+    }
+
+    #mapid{
+        height: 78.5em;
     }
 }

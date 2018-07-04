@@ -152,10 +152,10 @@
             {% endblock %}
         </div>
 
-        <img id="blackBird" src="{{ asset('/img/logo/oiseau-silhouette-noir.png') }}">
+        <img class="hide-on-med-and-down" id="blackBird" src="{{ asset('/img/logo/oiseau-silhouette-noir.png') }}">
         <div id="footer">
-            <div class="row info" id="containerInfos">
-                <ul class="col s3 offset-s8">
+            <div class="row info hide-on-med-and-down" id="containerInfos">
+                <ul class="col m3 offset-m8 l3 offset-l8">
                     <li id="company">nao</li>
                     <li class="info1">Impasse du Gypaète</li>
                     <li class="info1">40190 Saint-Paul Lès Dax</li>
@@ -164,18 +164,19 @@
                 </ul>
             </div>
 
-            <div class="row info">
-                <ul class="col s4" id="infoAssoCopyright">
+            <div class="row info hide-on-med-and-down">
+                <ul class="col m4 l4 hide-on-med-and-down" id="infoAssoCopyright">
                     <li class="info2">Copyright 2018</li>
                     <li class="info2">Nao Nos amis les oiseaux</li>
                     <li class="info2">Associations loi 1901</li>
                 </ul>
-                <div class="col s3 offset-s4">
+                <div class="col m3 offset-m4 l3 offset-l4 hide-on-med-and-down">
                     <p id="info3">Abonnez-vous à la newsletter</p>
                     <input type="email"
                            placeholder="
-                                    "
-                           id="email"/>
+                                                       "
+                           id="email"/><br>
+                    <button type="submit" id="nwslter">envoyer</button><br>
                     <label id="info4">
                         <input type="checkbox" id="info5"/>
                         <span id="info6">J'accepte que mon email soit utilisé pour m'adresser
@@ -186,15 +187,15 @@
             </div>
 
 
-            <div class="row info">
-                <ul class="col s4">
+            <div class="row info hide-on-med-and-down">
+                <ul class="col m4 l4 hide-on-med-and-down">
                     <li><a href="{{ path('app_faq') }}">FAQ</a></li>
                     <li><a href="{{ path('app_site_mapping') }}">Plan du Site</a></li>
                     <li><a href="{{ path('app_legal') }}">Mentions Légales</a></li>
                     <li><a href="{{ path('app_confidentiality') }}">Politique de
                             confidentialité</a></li>
                 </ul>
-                <div class="col s7" id="info8">
+                <div class="col m7 l7 hide-on-med-and-down" id="info8">
                     <p id="info7">Suivez-nous</p>
                     <div>
                         <svg width="15" height="28" viewBox="0 0 15 28" fill="none"
@@ -211,7 +212,7 @@
                         </svg>
                     </div>
                     <p id="nosPartenaires">Nos partenaires</p>
-                    <div class="col s12" id="rowPartenaires">
+                    <div class="col m12 l12 hide-on-med-and-down" id="rowPartenaires">
                         <img src="{{ asset
                             ('/img/logo/federation-francaise-de-la-randonnee-pedestre-randonnee-fspartenaires-nao.png') }}"/>
                         <img class="imgPartenires" src="{{ asset('/img/logo/45759partenaires-nao.png') }}"/>
@@ -221,6 +222,17 @@
                         <img class="imgPartenires" src="{{ asset
                             ('/img/logo/vne_vne_LogoMNHN-partenaires-nao.png') }}">
                     </div>
+                </div>
+            </div>
+            <div class="row show-on-medium-and-down" id="footer-mobile">
+                <div class="col s12 show-on-medium-and-down" id="citation-mobile">
+                    “ Juste là où<br>
+                    vous êtes est le<br>
+                    bon endroit pour <br>commencer”
+                    <br><span id="little_text">Pema Chödrön</span>
+                </div>
+                <div class="col s12 show-on-medium-and-down" id="nao">
+                    Nao
                 </div>
             </div>
         </div>
