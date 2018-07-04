@@ -321,4 +321,13 @@ div#popupMap {
         margin-top: .2em;
     }
 
+    #subHeader {
+        margin-top: -6em;
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1920px) {
+    #subHeader {
+        margin-top: -6em;
+    }
 }
