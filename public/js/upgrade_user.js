@@ -8,7 +8,7 @@ $(document).ready(function() {
         $link.find('#ajaxLoading').show();
 
         $.ajax({
-            method: 'PATCH',
+            method: 'POST',
             url: $link.attr('href')
         }).done(function (data) {
             $('.modal').modal('close');

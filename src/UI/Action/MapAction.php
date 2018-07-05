@@ -10,7 +10,7 @@ namespace App\UI\Action;
 
 use App\UI\Action\Interfaces\MapActionInterface;
 use App\UI\Responder\Interfaces\MapResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class MapAction

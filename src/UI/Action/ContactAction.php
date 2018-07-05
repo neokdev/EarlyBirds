@@ -12,9 +12,9 @@ use App\UI\Action\Interfaces\ContactActionInterface;
 use App\UI\Form\ContactType;
 use App\UI\Form\Handler\Interfaces\ContactTypeHandlerInterface;
 use App\UI\Responder\Interfaces\ContactResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ContactAction
