@@ -13,7 +13,7 @@ namespace App\UI\Action;
 
 use App\UI\Action\Interfaces\ConfidentialityActionInterface;
 use App\UI\Responder\Interfaces\ConfidentialityResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ConfidentialityAction

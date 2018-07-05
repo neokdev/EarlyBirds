@@ -14,7 +14,7 @@ use App\UI\Action\Interfaces\UpdateObservationActionInterface;
 use App\UI\Form\Handler\Interfaces\UpdateObserveTypeHandlerInterface;
 use App\UI\Form\ObserveType;
 use App\UI\Responder\Interfaces\UpdateObservationResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 

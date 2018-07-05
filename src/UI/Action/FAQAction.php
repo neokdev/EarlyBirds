@@ -14,7 +14,7 @@ namespace App\UI\Action;
 
 use App\UI\Action\Interfaces\FAQActionInterface;
 use App\UI\Responder\Interfaces\FAQResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class FAQAction
