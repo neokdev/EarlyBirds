@@ -12,7 +12,8 @@
     </head>
     
     <body>
-    <div id="navnav"></div>
+    <div id="navnav">
+    </div>
     <ul id="dropdown_profile" class="dropdown-content dp_nav">
         <li><a href="{{ path('app_profile') }}">Profil</a></li>
         <li><a href="/logout">Se déconnecter</a></li>
@@ -74,14 +75,9 @@
         <li><a href="#">Contact</a></li>
         <li><a href="{{ path('security_login') }}">Login</a></li>
     </ul>
-    <div class="container" id="c_body">
-        <div class="row">
 
-                {% block body %}
-                {% endblock %}
-        </div>
-    </div>
-
+    {% block body %}
+    {% endblock %}
 
     <img id="blackBird" src="{{ asset('/img/logo/oiseau-silhouette-noir.png') }}">
     <div id="footer">

@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route(
  *     "/upgradeuser/{id}",
  *     name="upgrade_user",
- *     methods={"PATCH"}
+ *     methods={"POST"}
  * )
  */
 class UpgradeUser
