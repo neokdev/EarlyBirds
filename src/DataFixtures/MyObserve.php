@@ -8,6 +8,8 @@ use App\Domain\Models\User;
 use App\Domain\Repository\TaxRefRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 
+ini_set('memory_limit', '-1');
+set_time_limit(0);
 class MyObserve extends AbstractBaseFixture
 {
     private const TEST_USER = 'neokdev@gmail.com';
@@ -39,7 +41,7 @@ class MyObserve extends AbstractBaseFixture
         $this->createMany(Observes::class, 0, function (Observes $observe, $count) {
             /** @var TaxRef $taxref */
             while (!isset($taxref) || null === $taxref->getNomVern()) {
-                $taxref = $this->taxRefRepository->findOneBy(['id' => rand(0, 3983)]);
+                $taxref = $this->taxRefRepository->findOneBy(['id' => rand(0, 100)]);
             }
 
             $observe->setAuthor($this->user);

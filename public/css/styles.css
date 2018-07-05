@@ -19,17 +19,12 @@ body
     font-size: 100%;
 }
 
-#c_body {
-    margin-top: -460px;
-    margin-bottom: -320px;
-}
-
 #navnav {
 
-    height: 519px;
-    width: auto;
-    background: no-repeat center url('../img/vector/background_header.png');
-    position: sticky;
+    height: 517px;
+    width: 100%;
+    background: url('../img/vector/background_header.png');
+    position: relative;
     top: 0;
     left: 0;
     z-index: -1;
@@ -39,23 +34,39 @@ nav {
     background-color: transparent;
     box-shadow: none;
     -webkit-box-shadow: none;
+    padding-top: 3em;
+}
+
+nav .sidenav-trigger {
+    float: left;
+    position: relative;
+    z-index: 1;
+    height: 56px;
+    margin: 0 18px;
 }
 
 div#c_nav {
-    width: 70%!important;
+    width: 83%!important;
     margin: 0 auto!important;
     background: transparent;
 }
 
 .dp_nav li a {
-    font-size: .9em;
+    font-size: .8em;
     color: black;
 }
 
 .dp_nav li a:hover {
-    font-size: .9em;
+
     color: #F2994A;
 }
+
+nav ul a {
+    font-size: 1em;
+    font-family: Montserrat, serif;
+    text-transform: uppercase;
+}
+
 
 .navbar-fixed {
     position: fixed;
@@ -63,8 +74,38 @@ div#c_nav {
     top: 0;
     z-index: 997;
 }
+
+ul:not(.browser-default) {
+    margin-top: 2em;
+}
+
 a.black-text:hover {
     color: #F2994A !important;
+}
+
+a.black-text:active {
+    color: #F2994A !important;
+}
+
+#little_nav {
+    width: 76px;
+    background-color: white;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 370px;
+    z-index: 15000;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+#little_nav li {
+    border-bottom: 1px solid black;
+    padding: 1em 0;
+}
+
+#little_nav li:hover {
+    background: #BDBDBD;
 }
 
 #slogan {
@@ -77,8 +118,17 @@ a.black-text:hover {
 
     z-index: 3;
     position: relative;
-    right: 15px;
-    top: 180px;
+    left: 105px;
+    top: 190px;
+
+    font-family:MontSerrat;
+    font-weight: 100;
+}
+
+
+#logo {
+
+
 }
 
 .collapsible
@@ -110,14 +160,6 @@ a.black-text:hover {
     width: auto;
     max-width: 256px;
     max-height: 256px;
-}
-
-#logo {
-    height: auto;
-    width: auto;
-    max-width: 64px;
-    max-height: 64px;
-    margin-top: 10px;
 }
 
 #icon {
@@ -204,15 +246,13 @@ a.black-text:hover {
     Footer
 */
 #footer {
-    height: 710px;
-
-    width: auto;
+    height: 942px;
+    width: 100%;
     position: relative;
     top: 0;
     left: 0;
-    z-index: -1;
-
-    background: no-repeat center url('../img/vector/vector_footer.png');
+    background: url('../img/vector/vector_footer.png');
+    padding-top: 12%;
 }
 
 #containerInfos {
@@ -222,6 +262,7 @@ a.black-text:hover {
 .info {
     margin: 0;
     text-align: right;
+    font-family: Montserrat;
 }
 
 #company {
@@ -230,6 +271,7 @@ a.black-text:hover {
 }
 
 .info1 {
+    font-family: MontSerrat;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -238,9 +280,8 @@ a.black-text:hover {
 }
 
 .info2 {
-
     font-style: italic;
-    font-weight: normal;
+    font-weight: 100;
     line-height: normal;
     font-size: 14px;
     text-align: right;
@@ -248,9 +289,8 @@ a.black-text:hover {
 }
 
 #info3 {
-    padding-right: 10px;
     font-style: italic;
-    font-weight: normal;
+    font-weight: 500;
     line-height: 17px;
     font-size: 14px;
     text-align: right;
@@ -261,7 +301,7 @@ a.black-text:hover {
 
     padding-left: 10px;
     padding-right: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
     border: none;
     background: #FFFCFC;
@@ -272,6 +312,24 @@ a.black-text:hover {
     text-decoration-line: line-through;
     padding: 30px 0 30px 0;
     text-decoration-color: initial;
+}
+
+input#email {
+    width: 50%;
+}
+
+#nwslter {
+    background: #C4C4C4;
+    border-radius: 20px;
+    height: 2em;
+    font-size: 1.125em;
+    border: none;
+    color: white;
+    width: 30%;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    text-transform: lowercase;
+
 }
 
 #info5 {
@@ -286,6 +344,7 @@ a.black-text:hover {
     font-size: 10px;
     text-align: left;
     color: #FFFBFB;
+    width: 60%;
 }
 
 #info8 {
@@ -295,7 +354,7 @@ a.black-text:hover {
 #info7 {
     margin-right: 15px;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 800;
     line-height: normal;
     font-size: 16px;
     text-align: right;
@@ -310,7 +369,7 @@ svg {
 #nosPartenaires {
     margin-top: 30px;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 800;
     line-height: normal;
     font-size: 16px;
     text-align: right;
@@ -327,7 +386,7 @@ svg {
     width: 165px;
     z-index: 100;
         position: relative;
-        top: 332px;
+        top: 455px;
         left: 350px;
 }
 
@@ -339,6 +398,7 @@ a {
     color: black;
 }
 
+
 /*
     end footer
 */
@@ -347,25 +407,26 @@ a {
     citation
 */
 #citation {
-    margin-left: 110px;
+    font-family: Didot;
+    margin-left: 15%;
     margin-top: 50px;
     font-size: 2em;
     text-align: center;
 }
 
 #little_text {
+    font-family: MontSerrat;
     font-size: 0.8em;
     text-align: center;
-    font-weight: lighter;
+    font-weight: 100;
 }
 /*
     end citation
 */
 
 #observeTule {
-    font-family: Montserrat, serif;
-    font-style: normal;
-    font-weight: normal;
+    font-family: MontSerrat;
+    font-weight: 100;
 }
 
 .tabs .indicator {
@@ -376,7 +437,316 @@ a {
     border-bottom: 2px solid #f6b2b5;
 }
 
-nav ul a {
-    font-family: Montserrat, serif;
-    text-transform: uppercase;
+/* nav mobile*/
+
+@media (max-width: 400px) {
+    #navnav {
+        display: none;
+    }
+
+    nav {
+        background-color: #BDBDBD;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        height: 4em;
+        padding-top: .3em;
+    }
+
+    #logo {
+        width: 40%;
+        padding-top: .2em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    a.brand-logo.left {
+        left: 2.5em;
+    }
+
+    a.sidenav-trigger.nav-icon {
+        margin: 0 0 0 10%;
+
+    }
+
+
+    .icon-img {
+        width: 7%;
+        position: relative;
+        top: .2em;
+        left: 7em;
+    }
+
+    img#icon-img-un {
+        margin-right: 1.7em;
+    }
+
+    img#icon-img-deux {
+        margin-right: 1.7em;
+    }
+
+    #footer {
+
+        background: #488194;
+        height: auto;
+        position: unset;
+        padding: 0;
+        top: unset;
+        left: unset;
+    }
+
+    #footer-mobile {
+        margin-bottom: 0;
+        padding-top: 0;
+    }
+
+    #citation-mobile {
+        font-family: Didot;
+        font-size: 1em;
+        text-align: center;
+        margin: 0;
+        background: white;
+        padding: 1em 0 1em 0;
+    }
+
+    #little_text {
+        font-family: MontSerrat;
+        font-size: 0.8em;
+        text-align: center;
+        font-weight: 100;
+    }
+
+    #nao {
+        font-family: MontSerrat;
+        font-size: 0.8em;
+        color: white;
+        text-align: center;
+        padding: 1em 0 1em 0;
+    }
+
+    #little_nav {
+        display: none;
+    }
+
+}
+
+@media (min-width: 401px) and (max-width: 992px) {
+
+    #slogan {
+        left: 4em;
+        top: 12.5em;
+    }
+
+    #navnav {
+        display: none;
+    }
+
+    .sidenav {
+        z-index: 10000;
+    }
+
+    nav {
+        background-color: #BDBDBD;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        height: 4em;
+        padding-top: .4em;
+    }
+
+    ul:not(.browser-default) {
+        margin-top: 0;
+    }
+
+    #logo {
+        width: 50%;
+        padding-top: .2em;
+    }
+
+    a.brand-logo.left {
+        left: 19em;
+    }
+
+    a.sidenav-trigger.nav-icon {
+        margin: 0 0 0 10%;
+
+    }
+
+    .icon-img {
+        width: 4%;
+        position: relative;
+        top: .2em;
+        left: 43em;
+    }
+
+    img#icon-img-un {
+        margin-right: 1.7em;
+    }
+
+    img#icon-img-deux {
+        margin-right: 1.7em;
+    }
+
+    div#c_nav {
+        width: 88%!important;
+        margin: 0 auto!important;
+        background: transparent;
+    }
+
+    #citation-mobile {
+        font-family: Didot;
+        font-size: 1em;
+        text-align: center;
+        margin: 0;
+        background: white;
+        padding: 1em 0 1em 0;
+    }
+
+    #little_text {
+        font-family: MontSerrat;
+        font-size: 0.8em;
+        text-align: center;
+        font-weight: 100;
+    }
+
+    #nao {
+        font-family: MontSerrat;
+        font-size: 0.8em;
+        color: white;
+        text-align: center;
+        padding: 1em 0 1em 0;
+    }
+
+    #footer {
+
+        background: #488194;
+        height: auto;
+        position: unset;
+        padding: 0;
+        top: unset;
+        left: unset;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: 2.5em;
+    }
+
+    #little_nav {
+        display: none;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1439px){
+
+    .icon-img {
+        display: none;
+    }
+
+    #slogan {
+        left: 6.8em;
+    }
+
+    div#c_nav {
+        width: 84% !important;
+    }
+
+    #footer-mobile {
+        display: none;
+    }
+
+    #blackBird {
+        height: 165px;
+        width: 165px;
+        z-index: 100;
+        position: relative;
+        top: 470px;
+        left: 280px;
+    }
+
+    #little_nav {
+        width: 5%;
+        background-color: white;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 240px;
+        z-index: 15000;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+}
+
+@media (min-width: 1440px) and (max-width: 1600px) {
+    .icon-img {
+        display: none;
+    }
+
+    #slogan {
+        left: 7em;
+    }
+
+    div#c_nav {
+        width: 84% !important;
+    }
+
+    #footer-mobile {
+        display: none;
+    }
+
+    #footer {
+        padding-top: 10%;
+    }
+
+    #little_nav {
+        width: 5%;
+        background-color: white;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 240px;
+        z-index: 15000;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media (min-width: 1601px) and (max-width: 1920px) {
+    .icon-img {
+        display: none;
+    }
+
+    #slogan {
+        left: 9.5em;
+    }
+
+    div#c_nav {
+        width: 84% !important;
+    }
+
+    #footer-mobile {
+        display: none;
+    }
+
+    #footer {
+        padding-top: 10%;
+    }
+
+    #info3 {
+        margin-right: 20px;
+    }
+
+    #blackBird {
+        height: 165px;
+        width: 165px;
+        z-index: 100;
+        position: relative;
+        top: 410px;
+        left: 510px;
+    }
+
+    #footer {
+        padding-top: 5%;
+    }
 }
