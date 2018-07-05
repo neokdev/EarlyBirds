@@ -78,22 +78,39 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
     ) {
 
         $observe = $this->observeRepository->findOneBy(['id' => $id]);
+        $ref = $observe->getRef();
 
-        $observeDTO = new ObserveDTO(
-            $observe->getRef()->getNomComplet(),
-            $observe->getDescription(),
-            $observe->getLatitude(),
-            $observe->getLongitude(),
-            $observe->getObsDate(),
-            null
-        );
+        if ($ref == null) {
+            $observeDTO = new ObserveDTO(
+                $ref,
+                $observe->getDescription(),
+                $observe->getLatitude(),
+                $observe->getLongitude(),
+                $observe->getObsDate(),
+                null
+            );
+        } else {
+            $observeDTO = new ObserveDTO(
+                $observe->getRef()->getNomComplet(),
+                $observe->getDescription(),
+                $observe->getLatitude(),
+                $observe->getLongitude(),
+                $observe->getObsDate(),
+                null
+            );
+        }
 
         $updateObserve = $this->formFactory
             ->create(ObserveType::class, $observeDTO)
             ->handleRequest($request);
 
         if ($this->updateObserveTypeHandler->handle($updateObserve, $observe)) {
-            return $updateObservationResponder(true, null, null, $updateObserve);
+            return $updateObservationResponder(
+                true,
+                null,
+                null,
+                $updateObserve
+            );
         }
 
         return $updateObservationResponder(

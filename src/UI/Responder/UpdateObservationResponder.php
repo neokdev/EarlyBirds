@@ -61,7 +61,7 @@ class UpdateObservationResponder implements UpdateObservationResponderInterface
         FormInterface       $form
     ) {
         $redirect
-            ? $response = new RedirectResponse($this->urlGeneratorInterface->generate('app_home'))
+            ? $response = new RedirectResponse($this->urlGeneratorInterface->generate('app_observe'))
             : $response = new Response($this->twig->render('Observation.html.twig', [
                 'form'       => $form->createView(),
                 'observeDTO' => $observeDTO,

@@ -57,6 +57,9 @@ $(function() {
         }
     });
  */
+
+    let domainUrl = "https://www.projet5.nekbot.com/";
+
     $('#observe_ref').keyup(function() {
 
         let searchLgth = $('#observe_ref').val().length;
@@ -64,11 +67,10 @@ $(function() {
 
         if (searchLgth === 1) {
             $.ajax({
-               url: "http://127.0.0.1:8000/recherche-" + searchVal,
+               url: domainUrl + "recherche-" + searchVal,
                cache: false,
                dataType: "json",
                type: "GET",
-               crossDomain: true,
                success: function(result) {
 
                    let birds = [];
@@ -148,13 +150,20 @@ $(function() {
             birdMarker = L.marker([latitude.val(),longitude.val()]).addTo(map);
             let nickname;
             $.ajax({
-               url: "http://127.0.0.1:8000/search/"+latitude.val()+"/"+longitude.val(),
+               url: domainUrl + "search/"+latitude.val()+"/"+longitude.val(),
                cache: false,
                dataType: "json",
                type: "GET",
                success: function(result) {
                    console.log(result[0].obsDate.date);
                    let dateObs = new Date(result[0].obsDate.date);
+                   let ref = result[0].ref;
+                   let refName;
+                   if (ref == null) {
+                       refName ="NC";
+                   } else {
+                       refName = result[0].ref.nomComplet;
+                   }
                    let YY = dateObs.getFullYear();
                    let DD = dateObs.getDate();
                    let MM;
@@ -195,7 +204,7 @@ $(function() {
                    birdMarker.bindPopup(
                        '<div id="popupMap">' +
                        '<img id="birdPopup" class="circle responsive-img" src="'+ result[0].img +'"/>' +
-                       '<br><span id="birdName">'+ result[0].ref.nomComplet +'</span>'+
+                       '<br><span id="birdName">'+ refName +'</span>'+
                        '<br>Observé le '+ DD +' '+ MM +' '+ YY +
                        '<br><span id="author">'+ nickname +'</span>'+
                        '<br><br>Latitude : '+ result[0].latitude + '<br>Longitude :'+ result[0].longitude +
@@ -277,7 +286,7 @@ $(function() {
         birdMarker2.addTo(map);
     });
 
-    //flash message
+    //flash message after valide or update obs
     let msgUn = $('.flash-notice');
     let divUpBtn = $('#divUpBtn');
     let divSubBtn = $('#divSubBtn');

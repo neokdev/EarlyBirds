@@ -29,7 +29,7 @@ class ObserveBuilder implements ObserveBuilderInterface
      */
     public function create(
         User      $author,
-        TaxRef    $ref,
+                  $ref,
         string    $description,
         string    $latitude,
         string    $longitude,

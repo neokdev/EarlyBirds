@@ -101,7 +101,14 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
                 ->setObsDate($form->getData()->obsDate)
             ;
 
-            if($observe->getRef()->getNomComplet() !== $form->getData()->ref) {
+            if ($observe->getRef() == null) {
+                $bird = $form->getData()->ref;
+                $result = $this->taxrefRepository->findOneBy(['nomComplet' => $bird]);
+
+                $observe->setRef($result);
+            }
+
+            if ($observe->getRef()->getNomComplet() !== $form->getData()->ref) {
 
                 $bird = $form->getData()->ref;
                 $result = $this->taxrefRepository->findOneBy(['nomComplet' => $bird]);

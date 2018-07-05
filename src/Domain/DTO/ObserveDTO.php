@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ObserveDTO implements ObserveDTOInterface
 {
     /**
-     * @var string
+     * @var null
      */
     public $ref;
 
@@ -50,7 +50,7 @@ class ObserveDTO implements ObserveDTOInterface
     /**
      * ObserveDTO constructor.
      *
-     * @param string            $ref
+     * @param null|string       $ref
      * @param string            $description
      * @param string            $latitude
      * @param string            $longitude
@@ -58,7 +58,7 @@ class ObserveDTO implements ObserveDTOInterface
      * @param UploadedFile|null $img
      */
     public function __construct(
-        string       $ref,
+                     $ref,
         string       $description,
         string       $latitude,
         string       $longitude,
