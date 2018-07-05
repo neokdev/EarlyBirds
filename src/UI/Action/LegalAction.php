@@ -13,7 +13,7 @@ namespace App\UI\Action;
 
 use App\UI\Action\Interfaces\LegalActionInterface;
 use App\UI\Responder\Interfaces\LegalResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class LegalAction

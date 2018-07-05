@@ -13,7 +13,7 @@ namespace App\UI\Action;
 
 use App\UI\Action\Interfaces\SiteMappingActionInterface;
 use App\UI\Responder\Interfaces\SiteMappingResponderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class SiteMappingAction
