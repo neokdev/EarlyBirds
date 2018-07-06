@@ -16,6 +16,8 @@ $(function() {
     )
      .addTo(mymap);
 
+    let domainUrl = document.location.origin;//set base uri origin to ajax request !!!!!!
+
     //INIT_GEOLOCATION
     let latitude = $('input#observe_latitude');
     let longitude = $('input#observe_longitude');
@@ -61,7 +63,7 @@ $(function() {
 //END_GEOLOCATION
 
     $().ready(function () {
-        $.getJSON('http://127.0.0.1:8000/recherche-les-dernieres-observations',
+        $.getJSON(domainUrl + '/recherche-les-dernieres-observations',
                   function(data) {
 
                       let i = 0;

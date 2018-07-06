@@ -27,6 +27,8 @@ class ContactBuilder implements ContactBuilderInterface
      * @param string $mail
      * @param string $message
      * @param string $subject
+     * @param bool   $response
+     * @param bool   $marketing
      *
      * @return ContactBuilder
      */
@@ -34,13 +36,17 @@ class ContactBuilder implements ContactBuilderInterface
         string $author,
         string $mail,
         string $message,
-        string $subject
+        string $subject,
+        bool   $response,
+        bool   $marketing
     ): self {
         $this->contact = new Contact(
             $author,
             $message,
             $subject,
-            $mail
+            $mail,
+            $response,
+            $marketing
         );
 
         return $this;
