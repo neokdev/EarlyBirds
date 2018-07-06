@@ -43,9 +43,19 @@ class GetValidateObservesTaxrefNames
         $autocomplete = [];
         /** @var Observe $observes */
         foreach ($observes as $observe) {
+            if ($observe->getRef()) {
+                $nomVern = $observe->getRef()->getNomVern();
+            } else {
+                $nomVern = "Non identifié";
+            }
+            if ($observe->getRef()) {
+                $lbNom = $observe->getRef()->getLbNom();
+            } else {
+                $lbNom = "Non identifié";
+            }
             /** @var Observe $observe */
-            $autocomplete[$observe->getRef()->getNomVern()] = null;
-            $autocomplete[$observe->getRef()->getLbNom()]   = null;
+            $autocomplete[$nomVern] = null;
+            $autocomplete[$lbNom]   = null;
         }
 
         return new JsonResponse($autocomplete);
