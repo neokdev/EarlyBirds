@@ -17,6 +17,7 @@ body
     margin: auto;
     background-color: white;
     font-size: 100%;
+    max-width: 1920px;
 }
 
 #navnav {
@@ -125,15 +126,9 @@ a.black-text:active {
     font-weight: 100;
 }
 
-
 #logo {
 
 
-}
-
-.collapsible
-{
-    background-color: #005662;
 }
 
 .collapsible-body {
@@ -394,7 +389,7 @@ svg {
     padding-top: 30px;
 }
 
-a {
+.footer-link {
     color: black;
 }
 

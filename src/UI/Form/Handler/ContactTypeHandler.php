@@ -13,6 +13,7 @@ use App\Domain\Repository\ContactRepository;
 use App\Services\Mailer;
 use App\UI\Form\Handler\Interfaces\ContactTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class ContactTypeHandler implements ContactTypeHandlerInterface
 {
@@ -32,19 +33,27 @@ class ContactTypeHandler implements ContactTypeHandlerInterface
     private $mailer;
 
     /**
+     * @var FlashBagInterface
+     */
+    private $flash;
+
+    /**
      * ContactTypeHandler constructor.
      * @param ContactBuilderInterface $contactBuilder
-     * @param ContactRepository $contactRepository
-     * @param Mailer $mailer
+     * @param ContactRepository       $contactRepository
+     * @param Mailer                  $mailer
+     * @param FlashBagInterface       $flash
      */
     public function __construct(
         ContactBuilderInterface $contactBuilder,
         ContactRepository       $contactRepository,
-        Mailer                  $mailer
+        Mailer                  $mailer,
+        FlashBagInterface       $flash
     ) {
         $this->contactBuilder    = $contactBuilder;
         $this->contactRepository = $contactRepository;
         $this->mailer            = $mailer;
+        $this->flash             = $flash;
     }
 
 
@@ -62,12 +71,16 @@ class ContactTypeHandler implements ContactTypeHandlerInterface
                 $form->getData()->author,
                 $form->getData()->message,
                 $form->getData()->mail,
-                $form->getData()->subject
+                $form->getData()->subject,
+                $form->getData()->marketing,
+                $form->getData()->response
             );
 
             $this->contactRepository->save($this->contactBuilder->getContact());
 
             $this->mailer->sendContactMail($this->contactBuilder->getContact());
+
+            $this->flash->add('notie','message envoyé');
 
             return true;
         }

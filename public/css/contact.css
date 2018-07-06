@@ -5,9 +5,9 @@
 
 #form {
     background: #F2F2F2;
-    padding-bottom: 9em;
+    padding-bottom: 25em;
     padding-top: 4em;
-    margin-top: 0;
+    margin-top: -2.3em;
 }
 
 #paraph {
@@ -77,6 +77,14 @@ textarea {
     width: 100%;
 }
 
+.check {
+    margin-top: 2em;
+}
+
+#check_response {
+    margin-top: 6em;
+}
+
 #submitBtn {
     background: #F2994A;
     border-radius: 20px;
@@ -84,6 +92,34 @@ textarea {
     font-size: 1.125em;
     text-transform: initial;
     margin: 0 0 0 22px;
+}
+
+.contact-div {
+    margin-top: 5.5em;
+    font-family: MontSerrat;
+}
+
+.contact-li {
+    margin-bottom: 1em;
+}
+
+.contact_bold_text {
+    font-weight: 700;
+    font-size: 1.250em;
+}
+
+.contact_light_text {
+    font-weight: 300;
+    font-size: 1.125em;
+}
+
+.contact_nao_text {
+    font-weight: 300;
+    font-size: 2.250em;
+}
+
+.contact_nao_letter {
+    color:#039be5;
 }
 
 #slogan {
@@ -99,4 +135,88 @@ textarea {
     top: 100px;
     font-family: MontSerrat;
     font-weight: 100;
+}
+
+#blackBird {
+    top: unset;
+    bottom: 18em;
+}
+
+#footer {
+    position: absolute;
+    top: 125em;
+}
+
+#citation {
+    display: none;
+}
+
+#citation-mobile {
+    display: none;
+}
+
+.flash-notice {
+    background: #59A177;
+    color: white;
+    border-radius: 20px;
+    height: 3.000em;
+    vertical-align: center;
+    font-family: MontSerrat;
+    font-weight: 700;
+    font-size: 1.200em;
+    text-transform: lowercase;
+    text-align: center;
+}
+
+@media (min-width: 1441px ) and (max-width: 1920px) {
+    #blackBird {
+        top: unset;
+        bottom: 18.5em;
+    }
+}
+
+@media (min-width: 993px ) and (max-width: 1440px) {
+    #blackBird {
+        top: unset;
+        bottom: 20.2em;
+    }
+}
+
+@media (min-width: 401px ) and (max-width: 992px) {
+    #form {
+        margin-top: 28em;
+        padding-bottom: 0;
+    }
+
+    #submitBtn{
+        margin: 0 2em 0 22px;
+    }
+
+    .contact-div {
+        margin-top: 3em;
+        margin-bottom: 3em;
+    }
+
+    #slogan {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    #footer {
+        position: unset;
+        top: unset;
+    }
+    #form {
+        margin-top: 28em;
+        padding-bottom: 0;
+    }
+
+    #paraph {
+        margin-bottom: 8em;
+    }
+
+    #slogan {
+        display: none;
+    }
 }
