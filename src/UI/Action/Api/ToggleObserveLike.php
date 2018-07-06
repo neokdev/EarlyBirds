@@ -62,11 +62,16 @@ class ToggleObserveLike
                 /** @var Observe $observe */
                 $observe->removeUpvoter($currentUser);
                 $this->observeRepository->update();
-            } else {
-                /** @var Observe $observe */
-                $observe->addUpvoter($currentUser);
-                $this->observeRepository->update();
+
+                $upvoterCount = count($observe->getUpvoter());
+
+                return new JsonResponse(['hearts' => $upvoterCount]);
             }
+
+            /** @var Observe $observe */
+            $observe->addUpvoter($currentUser);
+
+            $this->observeRepository->update();
         }
 
         $upvoterCount = count($observe->getUpvoter());

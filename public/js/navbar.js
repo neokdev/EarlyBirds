@@ -7,5 +7,7 @@ $(function() {
         $('.dropdown-content').css('position','absolute').css('top','60px');
     });
     $('.sidenav').sidenav();
-    $('.collapsible').collapsible();
+
+    // Line disabled for making observe map working in card profile
+    $('#mobile-demo').collapsible();
 });
