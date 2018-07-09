@@ -568,7 +568,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                             <a href="#modalDelUser{{ user.id }}" class="waves-effect waves-light btn red darken-2 modal-trigger"><i class="material-icons">delete</i></a>
 
                                             {% if display == "Utilisateur" %}
-                                                <a href="#modalUpUser{{ user.id }}" class="waves-effect waves-light btn green accent-4 modal-trigger"><i class="material-icons">publish</i></a>
+                                                <a href="#modalUpUser{{ user.id }}" class="waves-effect waves-light btn green accent-4 modal-trigger"><i class="material-icons">arrow_upward</i></a>
                                             {% endif %}
 
                                         </td>
@@ -641,7 +641,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                                     <a href="#!" class="modal-close waves-effect waves-light btn">Annuler</a>
                                                     <a data-id="{{ user.id }}" href="{{ path('upgrade_user', {id: user.id}) }}" class="js-upgrade-user waves-effect waves-light btn green accent-4">
                                                         <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloaderongreen.gif') }}" style="display: none; position: relative; top: 2px; right: 10px;">
-                                                        <i class="material-icons left">publish</i>Upgrade
+                                                        <i class="material-icons left">arrow_upward</i>Upgrade
                                                     </a>
                                                 </div>
                                             </div>
