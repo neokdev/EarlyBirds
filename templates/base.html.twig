@@ -39,7 +39,6 @@
 
         <div class="navbar-fixed">
 
-
             <nav>
                 <div class="nav-wrapper" id="c_nav">
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -253,7 +252,7 @@
         </div>
 
             {% block javascripts %}
-                <script>
+                <script type="text/javascript">
                     M.AutoInit();
                 </script>
                 <script
@@ -261,7 +260,7 @@
                 </script>
                 <script
                         src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-                <script
+                <script type="text/javascript"
                         src="{{ asset('js/navbar.js') }}">
                 </script>
             {% endblock %}

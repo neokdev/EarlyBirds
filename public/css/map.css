@@ -1,0 +1,49 @@
+p#popupMap {
+    font-family: MontSerrat;
+    text-align: center;
+    color: #F2994A;
+    font-weight: 100;
+}
+
+div#popupMap {
+    font-family: MontSerrat;
+    text-align: center;
+    font-weight: 100;
+}
+#birdPopup {
+    width: 80px;
+    height: 80px;
+}
+
+#birdName {
+    font-family: MontSerrat;
+    font-weight: 700;
+    color: #F2994A;
+}
+
+#author {
+    color: #2D9CDB;
+    font-family: MontSerrat;
+    font-weight: 700;
+}
+
+
+#header {
+    height: 450px;
+    padding-top: 90px;
+    margin-bottom: 100px;
+    background: no-repeat center url("../img/other/observation.jpeg");
+    background-size: contain;
+}
+.header_text {
+    font-family: MontSerrat;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    margin-top: 2.4em;
+}
+
+#header_text_light {
+    font-family: MontSerrat;
+    font-weight: 100;
+}

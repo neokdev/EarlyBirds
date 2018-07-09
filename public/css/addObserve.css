@@ -138,18 +138,6 @@ div#uplBtn span {
     font-weight: 100;
 }
 
-p#popupMap {
-    font-family: MontSerrat;
-    text-align: center;
-    color: #F2994A;
-    font-weight: 100;
-}
-
-div#popupMap {
-    font-family: MontSerrat;
-    text-align: center;
-    font-weight: 100;
-}
 
 #form_errors {
     border-radius: 20px;
@@ -187,6 +175,19 @@ div#popupMap {
     right: 420px;
     z-index: 0;
     width: 9%;
+}
+
+p#popupMap {
+    font-family: MontSerrat;
+    text-align: center;
+    color: #F2994A;
+    font-weight: 100;
+}
+
+div#popupMap {
+    font-family: MontSerrat;
+    text-align: center;
+    font-weight: 100;
 }
 
 #birdPopup {
@@ -326,8 +327,22 @@ div#popupMap {
     }
 }
 
-@media (min-width: 1440px) and (max-width: 1920px) {
+@media (min-width: 1441px) and (max-width: 1920px) {
     #subHeader {
         margin-top: -6em;
+    }
+
+    #notice_decoration {
+        position: absolute;
+        top: .7em;
+        right: 40em;
+        z-index: 0;
+        width: 5%;
+    }
+
+    div#uplBtn {
+        border-radius: 20px;
+        background: #2D9CDB;
+        margin-left: 27%;
     }
 }

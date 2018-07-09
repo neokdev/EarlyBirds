@@ -166,6 +166,7 @@ $(function() {
                    } else {
                        refName = result[0].ref.nomComplet;
                    }
+
                    let YY = dateObs.getFullYear();
                    let DD = dateObs.getDate();
                    let MM;
