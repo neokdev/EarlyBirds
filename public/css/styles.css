@@ -2,11 +2,6 @@
     font-family: Roboto, serif;
 }
 
-#map {
-    height: 1290px;
-    width: 900px;
-}
-
 #loginPanel
 {
     margin-top: 40px;
@@ -447,6 +442,11 @@ svg {
         padding-top: .3em;
     }
 
+    ul#mobile-demo {
+        margin-top: 0;
+        z-index: 10000;
+    }
+
     #logo {
         width: 40%;
         padding-top: .2em;
@@ -467,7 +467,7 @@ svg {
 
 
     .icon-img {
-        width: 7%;
+        width: 2.5em;
         position: relative;
         top: .2em;
         left: 7em;
@@ -549,8 +549,9 @@ svg {
         padding-top: .4em;
     }
 
-    ul:not(.browser-default) {
+    ul#mobile-demo {
         margin-top: 0;
+        z-index: 10000;
     }
 
     #logo {
@@ -669,6 +670,11 @@ svg {
         text-align: center;
         padding: 0;
         margin: 0;
+    }
+
+    #mobile-demo {
+        margin-top: 0;
+        z-index: 10000;
     }
 
 }

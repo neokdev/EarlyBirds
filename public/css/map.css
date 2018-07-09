@@ -1,3 +1,15 @@
+#c_body {
+    margin-top: -400px;
+    margin-bottom: -320px;
+}
+
+#map {
+
+    width: 1247px;
+    height: 809px;
+    margin: auto;
+}
+
 p#popupMap {
     font-family: MontSerrat;
     text-align: center;
@@ -10,6 +22,7 @@ div#popupMap {
     text-align: center;
     font-weight: 100;
 }
+
 #birdPopup {
     width: 80px;
     height: 80px;
@@ -27,14 +40,14 @@ div#popupMap {
     font-weight: 700;
 }
 
-
 #header {
     height: 450px;
-    padding-top: 90px;
-    margin-bottom: 100px;
-    background: no-repeat center url("../img/other/observation.jpeg");
-    background-size: contain;
+    padding-top: 5em;
+    margin-bottom: 2em;
+    background: no-repeat center url("../img/other/map.jpeg");
+    background-size: cover;
 }
+
 .header_text {
     font-family: MontSerrat;
     font-weight: 500;
@@ -43,7 +56,151 @@ div#popupMap {
     margin-top: 2.4em;
 }
 
-#header_text_light {
+#help_text {
+    text-align: center;
     font-family: MontSerrat;
-    font-weight: 100;
+    font-weight: 300;
+    font-size: 1em;
+    margin-bottom: 2em;
+    padding: 0;
 }
+
+#help_text_info {
+    text-align: center;
+    font-family: MontSerrat;
+    font-weight: 300;
+    font-size: 1.5em;
+    color: #99bfcc;
+}
+
+#linkBtn {
+    margin-top: 3em;
+    background: #F2994A;
+    border-radius: 20px;
+    padding-top: .7em;
+    height: 3em;
+    font-size: 1.5em;
+    text-transform: initial;
+    font-family: MontSerrat;
+    font-weight: 700;
+}
+
+#subHeader {
+    margin-top: -6em;
+}
+
+
+@media (max-width: 401px) {
+    #c_body {
+        margin-top: unset;
+        margin-bottom: unset;
+    }
+
+    #map {
+        height: 300px;
+        width: 400px;
+    }
+
+    #subHeader {
+        margin-top: 4em;
+        padding: 0;
+    }
+
+    #header {
+        padding: 0;
+        width: 400px;
+        height: 114px;
+    }
+
+    #footer-mobile {
+        margin-bottom: 0;
+        padding-top: unset;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #linkBtn {
+        margin-bottom: 2em;
+        margin-top: 3em;
+        background: #F2994A;
+        border-radius: 20px;
+        padding-top: .3em;
+        height: 3em;
+        font-size: 1em;
+        font-family: MontSerrat;
+        font-weight: 700;
+        text-transform: initial;
+    }
+
+    #slogan {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 401px) {
+    #header {
+        height: 300px;
+        background: no-repeat center url("../img/other/map.jpeg");
+        background-size: cover;
+    }
+
+    #c_body {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    #subHeader {
+        margin-top: 7em;
+    }
+
+    #map {
+
+        width: 850px;
+        height: 600px;
+        margin: auto;
+    }
+
+    #linkBtn {
+        margin-bottom: 2em;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: unset;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #slogan {
+        display: none;
+    }
+}
+
+@media (max-width: 1440px) and (min-width: 993px) {
+    #header {
+        height: 450px;
+        background: no-repeat center url("../img/other/map.jpeg");
+        background-size: cover;
+    }
+}
+
+@media (max-width: 1920px) and (min-width: 1441px) {
+    #header {
+        height: 450px;
+        background: no-repeat center url("../img/other/map.jpeg");
+        background-size: cover;
+    }
+
+    #map {
+
+        width: 1600px;
+        height: 809px;
+        margin: auto;
+    }
+}
+
+

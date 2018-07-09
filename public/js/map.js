@@ -110,13 +110,11 @@ $(function() {
                               nickname = "NC";
                           } else {
                               nickname = datas.author.nickname;
-                              console.log(datas.author)
                           }
 
                           let layer = L.marker([datas.latitude,datas.longitude]);
                           let tab = [];
                           tab.push(layer);
-                          console.log(datas);
                           L.featureGroup(tab).bindPopup(
                               '<div id="popupMap">' +
                               '<img id="birdPopup" class="circle responsive-img" src="'+ datas.img +'"/>' +
