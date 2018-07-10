@@ -353,6 +353,16 @@ class User implements UserInterface
     }
 
     /**
+     * @return User
+     */
+    public function removeRoles(): self
+    {
+        $this->roles = null;
+
+        return $this;
+    }
+
+    /**
  * @return Collection|Observe[]
  */
     public function getObserves(): Collection

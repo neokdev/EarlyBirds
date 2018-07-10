@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Neok
- * Date: 26/06/2018
- * Time: 00:01
+ * Date: 25/06/2018
+ * Time: 14:07
  */
 
 namespace App\UI\Action\Api;
@@ -13,14 +13,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class UpgradeUser
+ * Class DeleteUser
  * @Route(
- *     "/upgradeuser/{id}",
- *     name="upgrade_user",
+ *     "/getusers",
+ *     name="getusers",
  *     methods={"POST"}
  * )
  */
-class UpgradeUser
+class GetUsers
 {
     /**
      * @var UserRepository
@@ -37,22 +37,24 @@ class UpgradeUser
     }
 
     /**
-     * @param user Id $id
-     *
      * @return JsonResponse
      */
-    public function __invoke($id)
+    public function __invoke()
     {
-        $user = $this->userRepository->findOneBy(['id' => $id]);
+        $users = $this->userRepository->findAll();
 
-        if (in_array("ROLE_NATURALIST", $user->getRoles())) {
-            $user->addRole("ROLE_ADMIN");
-        } else {
-            $user->addRole("ROLE_NATURALIST");
+        $autocomplete = [];
+        foreach ($users as $user) {
+            $mail = $user->getEmail();
+            if ($user->getImg()) {
+                $img = $user->getImg();
+            } else {
+                $img = null;
+            }
+            $autocomplete[$mail] = $img;
         }
 
-        $status = $this->userRepository->update();
-
-        return new JsonResponse($status);
+        return new JsonResponse($autocomplete);
     }
+
 }

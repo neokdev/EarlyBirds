@@ -13,14 +13,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class UpgradeUser
+ * Class DowngradeUser
  * @Route(
- *     "/upgradeuser/{id}",
- *     name="upgrade_user",
+ *     "/downgradeuser/{id}",
+ *     name="downgrade_user",
  *     methods={"POST"}
  * )
  */
-class UpgradeUser
+class DowngradeUser
 {
     /**
      * @var UserRepository
@@ -45,10 +45,14 @@ class UpgradeUser
     {
         $user = $this->userRepository->findOneBy(['id' => $id]);
 
-        if (in_array("ROLE_NATURALIST", $user->getRoles())) {
-            $user->addRole("ROLE_ADMIN");
-        } else {
+        if (in_array("ROLE_ADMIN", $user->getRoles())) {
+            $user = $user->removeRoles();
+            $this->userRepository->update();
+            $user->addRole("ROLE_USER");
             $user->addRole("ROLE_NATURALIST");
+        } else {
+            $user = $user->removeRoles();
+            $user->addRole("ROLE_USER");
         }
 
         $status = $this->userRepository->update();
