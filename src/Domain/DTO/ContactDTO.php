@@ -34,22 +34,38 @@ class ContactDTO implements ContactDTOInterface
     public $mail;
 
     /**
+     * @var boolean
+     */
+    public $marketing;
+
+    /**
+     * @var boolean
+     */
+    public $response;
+
+    /**
      * Contact constructor.
      *
      * @param string $author
      * @param string $message
      * @param string $subject
      * @param string $mail
+     * @param bool   $marketing
+     * @param bool   $response
      */
     public function __construct(
         string $author,
         string $message,
         string $subject,
-        string $mail
+        string $mail,
+        bool   $marketing,
+        bool   $response
     ) {
-        $this->author  = $author;
-        $this->message = $message;
-        $this->subject = $subject;
-        $this->mail    = $mail;
+        $this->author    = $author;
+        $this->message   = $message;
+        $this->subject   = $subject;
+        $this->mail      = $mail;
+        $this->response  = $response;
+        $this->marketing = $marketing;
     }
 }

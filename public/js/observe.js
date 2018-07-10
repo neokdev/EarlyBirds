@@ -58,16 +58,18 @@ $(function() {
     });
  */
 
-    let domainUrl = "https://www.projet5.nekbot.com/";
+    let domainUrl = document.location.origin;//set base uri origin to ajax request !!!!!!
 
-    $('#observe_ref').keyup(function() {
+    $('#observe_ref').keyup(function(e) {
 
+        e.preventDefault();
         let searchLgth = $('#observe_ref').val().length;
         let searchVal = $('#observe_ref').val();
 
+
         if (searchLgth === 1) {
             $.ajax({
-               url: domainUrl + "recherche-" + searchVal,
+               url: domainUrl + "/recherche-" + searchVal,
                cache: false,
                dataType: "json",
                type: "GET",
@@ -150,12 +152,12 @@ $(function() {
             birdMarker = L.marker([latitude.val(),longitude.val()]).addTo(map);
             let nickname;
             $.ajax({
-               url: domainUrl + "search/"+latitude.val()+"/"+longitude.val(),
+               url: domainUrl + "/search/"+latitude.val()+"/"+longitude.val(),
                cache: false,
                dataType: "json",
                type: "GET",
                success: function(result) {
-                   console.log(result[0].obsDate.date);
+
                    let dateObs = new Date(result[0].obsDate.date);
                    let ref = result[0].ref;
                    let refName;
@@ -164,6 +166,7 @@ $(function() {
                    } else {
                        refName = result[0].ref.nomComplet;
                    }
+
                    let YY = dateObs.getFullYear();
                    let DD = dateObs.getDate();
                    let MM;
