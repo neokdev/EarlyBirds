@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
           integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
           crossorigin=""/>
+    <link rel="stylesheet" href="{{ asset('/css/profil.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -60,6 +61,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                     </div>
                                 </div>
                             </div>
+
                             {% set index = 0 %}
                     {% for observe in myObserves if index < 5 %}
 
@@ -69,7 +71,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                             <div class="card">
                                 <div class="card-image">
                                     <img src="{{ observe.img }}">
-                                    <span data-lbnom="{{ observe.ref.lbNom }}" class="left-align truncate card-title black-text" style="padding-left: 18px; padding-bottom: 13px"><b>{% if observe.ref.nomVern is defined %}{{ observe.ref.nomVern }}{% else %}{{ observe.ref.lbNom }}{% endif %}</b></span>
+                                    <span {% if observe.ref %}data-lbnom="{{ observe.ref.lbNom }}"{% endif %} class="left-align truncate card-title black-text" style="padding-left: 18px; padding-bottom: 13px"><b>{% if observe.ref.nomVern is defined %}{{ observe.ref.nomVern }}{% elseif observe.ref.lbNom is defined %}{{ observe.ref.lbNom }}{% else %}Non identifié{% endif %}</b></span>
                                     <a class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                                 </div>
                                 <div class="card-content row" style="padding-bottom: 9px; padding-top: 9px">
@@ -237,7 +239,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                 {% for observe in myObserves %}
 
                                 <li class="observePanel" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
-                                    <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
+                                    <div class="collapsible-header js-taxref" data-taxref="{% if observe.ref %}{{ path('taxref', {id: observe.ref.id}) }}{% endif %}">
                                         <div style="position: relative;top: 45px;left: 95%;width: 40px!important;">
                                             <a class="btn-floating waves-effect waves-light orange darken-1"><i class="material-icons" style="width: 40px">add</i></a>
                                         </div>
@@ -246,7 +248,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                             <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block; position: relative;right: 41px;">
                                         </div>
                                         <div class="ObsTitle col s8 xl10  center">
-                                            <h6>{{ observe.ref.nomVern }}</h6>
+                                            <h6>{% if observe.ref %}{{ observe.ref.nomVern }}{% else %}Non identifié{% endif %}</h6>
                                             <span>le {{ observe.createdAt|localizeddate('full', 'none') }}</span>
                                             <hr>
                                             <div id="obsButtons" class="row">
@@ -280,61 +282,65 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                             <div id="mapContainer" class="map-container-{{ observe.id }} row" data-index="{{ observe.id }}">
                                                 <div class="obsMapDiv col s6">
                                                     <ul id="info">
-                                                        <li>Règne : {{ observe.ref.regne }}</li>
-                                                        <li>Embranchement : {{ observe.ref.phylum }}</li>
-                                                        <li>Famille : {{ observe.ref.famille }}</li>
-                                                        <li class="js-taxrefrang" data-rang="{{ observe.ref.rang }}"></li>
-                                                        <li>Nom vernaculaire : {{ observe.ref.nomVern }}</li>
-                                                        <li class="js-taxrefhab" data-hab="{{ observe.ref.habitat }}"></li>
-                                                        {% if observe.ref.fr %}
-                                                            <li class="js-taxref-fr" data-fr="{{ observe.ref.fr }}"></li>
+                                                        <li>Règne : {% if observe.ref %}{{ observe.ref.regne }}{% else %}inconnu{% endif %}</li>
+                                                        <li>Embranchement : {% if observe.ref %}{{ observe.ref.phylum }}{% else %}inconnu{% endif %}</li>
+                                                        <li>Famille : {% if observe.ref %}{{ observe.ref.famille }}{% else %}inconnu{% endif %}</li>
+                                                        <li class="js-taxrefrang" data-rang="{% if observe.ref %}{{ observe.ref.rang }}{% endif %}"></li>
+                                                        <li>Nom vernaculaire : {% if observe.ref %}{{ observe.ref.nomVern }}{% else %}inconnu{% endif %}</li>
+                                                        {% if observe.ref %}
+                                                            <li class="js-taxrefhab" data-hab="{% if observe.ref %}{{ observe.ref.habitat }}{% endif %}"></li>
                                                         {% endif %}
-                                                        {% if observe.ref.gf %}
-                                                            <li class="js-taxref-gf" data-gf="{{ observe.ref.gf }}"></li>
+                                                        {% if observe.ref %}
+                                                            {% if observe.ref.fr %}
+                                                                <li class="js-taxref-fr" data-fr="{{ observe.ref.fr }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.gf %}
+                                                                <li class="js-taxref-gf" data-gf="{{ observe.ref.gf }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.mar %}
+                                                                <li class="js-taxref-mar" data-mar="{{ observe.ref.mar }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.gua %}
+                                                                <li class="js-taxref-gua" data-gua="{{ observe.ref.gua }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.sm %}
+                                                                <li class="js-taxref-sm" data-sm="{{ observe.ref.sm }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.spm %}
+                                                                <li class="js-taxref-spm" data-spm="{{ observe.ref.spm }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.may %}
+                                                                <li class="js-taxref-may" data-may="{{ observe.ref.may }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.epa %}
+                                                                <li class="js-taxref-epa" data-epa="{{ observe.ref.epa }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.reu %}
+                                                                <li class="js-taxref-reu" data-reu="{{ observe.ref.reu }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.sa %}
+                                                                <li class="js-taxref-sa" data-sa="{{ observe.ref.sa }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.ta %}
+                                                                <li class="js-taxref-ta" data-ta="{{ observe.ref.ta }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.nc %}
+                                                                <li class="js-taxref-nc" data-nc="{{ observe.ref.nc }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.wf %}
+                                                                <li class="js-taxref-wf" data-wf="{{ observe.ref.wf }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.pf %}
+                                                                <li class="js-taxref-pf" data-pf="{{ observe.ref.pf }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.cli %}
+                                                                <li class="js-taxref-cli" data-cli="{{ observe.ref.cli }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.sb %}
+                                                                <li class="js-taxref-sb" data-sb="{{ observe.ref.sb }}"></li>
+                                                            {% endif %}
+                                                            <li><a href="https://inpn.mnhn.fr/espece/cd_nom/{{ observe.ref.cdNom }}">lien INPN</a></li>
                                                         {% endif %}
-                                                        {% if observe.ref.mar %}
-                                                            <li class="js-taxref-mar" data-mar="{{ observe.ref.mar }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.gua %}
-                                                            <li class="js-taxref-gua" data-gua="{{ observe.ref.gua }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.sm %}
-                                                            <li class="js-taxref-sm" data-sm="{{ observe.ref.sm }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.spm %}
-                                                            <li class="js-taxref-spm" data-spm="{{ observe.ref.spm }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.may %}
-                                                            <li class="js-taxref-may" data-may="{{ observe.ref.may }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.epa %}
-                                                            <li class="js-taxref-epa" data-epa="{{ observe.ref.epa }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.reu %}
-                                                            <li class="js-taxref-reu" data-reu="{{ observe.ref.reu }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.sa %}
-                                                            <li class="js-taxref-sa" data-sa="{{ observe.ref.sa }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.ta %}
-                                                            <li class="js-taxref-ta" data-ta="{{ observe.ref.ta }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.nc %}
-                                                            <li class="js-taxref-nc" data-nc="{{ observe.ref.nc }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.wf %}
-                                                            <li class="js-taxref-wf" data-wf="{{ observe.ref.wf }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.pf %}
-                                                            <li class="js-taxref-pf" data-pf="{{ observe.ref.pf }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.cli %}
-                                                            <li class="js-taxref-cli" data-cli="{{ observe.ref.cli }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.sb %}
-                                                            <li class="js-taxref-sb" data-sb="{{ observe.ref.sb }}"></li>
-                                                        {% endif %}
-                                                        <li><a href="https://inpn.mnhn.fr/espece/cd_nom/{{ observe.ref.cdNom }}">lien INPN</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -377,7 +383,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                 {% for observe in observes %}
 
                                 <li class="observePanel" data-index="{{ observe.id }}2" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
-                                    <div class="collapsible-header js-taxref" data-taxref="{{ path('taxref', {id: observe.ref.id}) }}">
+                                    <div class="collapsible-header js-taxref" data-taxref="{% if observe.ref %}{{ path('taxref', {id: observe.ref.id}) }}{% endif %}">
                                         <div style="position: relative;top: 45px;left: 95%;width: 40px!important;">
                                             <a class="btn-floating waves-effect waves-light orange darken-1"><i class="material-icons" style="width: 40px">add</i></a>
                                         </div>
@@ -385,7 +391,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                             <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block; position: relative;right: 41px;">
                                         </div>
                                         <div class="ObsTitle col s8 xl10  center">
-                                            <h6>{{ observe.ref.nomVern }}</h6>
+                                            <h6>{% if observe.ref %}{{ observe.ref.nomVern }}{% else %}Non identifié{% endif %}</h6>
                                             <span>le {{ observe.createdAt|localizeddate('full', 'none') }} par {% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}</span>
 
                                             <hr>
@@ -420,59 +426,64 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                             <div id="mapContainer" class="map-container-{{ observe.id }}2 row" data-index="{{ observe.id }}">
                                                 <div class="obsMapDiv col s6">
                                                     <ul id="info">
-                                                        <li>Règne : {{ observe.ref.regne }}</li>
-                                                        <li>Embranchement : {{ observe.ref.phylum }}</li>
-                                                        <li>Famille : {{ observe.ref.famille }}</li>
-                                                        <li class="js-taxrefrang" data-rang="{{ observe.ref.rang }}"></li>
-                                                        <li>Nom vernaculaire : {{ observe.ref.nomVern }}</li>
-                                                        <li class="js-taxrefhab" data-hab="{{ observe.ref.habitat }}"></li>
-                                                        {% if observe.ref.fr %}
-                                                            <li class="js-taxref-fr" data-fr="{{ observe.ref.fr }}"></li>
+                                                        <li>Règne : {% if observe.ref %}{{ observe.ref.regne }}{% else %}inconnu{% endif %}</li>
+                                                        <li>Embranchement : {% if observe.ref %}{{ observe.ref.phylum }}{% else %}inconnu{% endif %}</li>
+                                                        <li>Famille : {% if observe.ref %}{{ observe.ref.famille }}{% else %}inconnu{% endif %}</li>
+                                                        <li class="js-taxrefrang" data-rang="{% if observe.ref %}{{ observe.ref.rang }}{% endif %}"></li>
+                                                        <li>Nom vernaculaire : {% if observe.ref %}{{ observe.ref.nomVern }}{% else %}inconnu{% endif %}</li>
+                                                        {% if observe.ref %}
+                                                            <li class="js-taxrefhab" data-hab="{% if observe.ref %}{{ observe.ref.habitat }}{% endif %}"></li>
                                                         {% endif %}
-                                                        {% if observe.ref.gf %}
-                                                            <li class="js-taxref-gf" data-gf="{{ observe.ref.gf }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.mar %}
-                                                            <li class="js-taxref-mar" data-mar="{{ observe.ref.mar }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.gua %}
-                                                            <li class="js-taxref-gua" data-gua="{{ observe.ref.gua }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.sm %}
-                                                            <li class="js-taxref-sm" data-sm="{{ observe.ref.sm }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.spm %}
-                                                            <li class="js-taxref-spm" data-spm="{{ observe.ref.spm }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.may %}
-                                                            <li class="js-taxref-may" data-may="{{ observe.ref.may }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.epa %}
-                                                            <li class="js-taxref-epa" data-epa="{{ observe.ref.epa }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.reu %}
-                                                            <li class="js-taxref-reu" data-reu="{{ observe.ref.reu }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.sa %}
-                                                            <li class="js-taxref-sa" data-sa="{{ observe.ref.sa }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.ta %}
-                                                            <li class="js-taxref-ta" data-ta="{{ observe.ref.ta }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.nc %}
-                                                            <li class="js-taxref-nc" data-nc="{{ observe.ref.nc }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.wf %}
-                                                            <li class="js-taxref-wf" data-wf="{{ observe.ref.wf }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.pf %}
-                                                            <li class="js-taxref-pf" data-pf="{{ observe.ref.pf }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.cli %}
-                                                            <li class="js-taxref-cli" data-cli="{{ observe.ref.cli }}"></li>
-                                                        {% endif %}
-                                                        {% if observe.ref.sb %}
-                                                            <li class="js-taxref-sb" data-sb="{{ observe.ref.sb }}"></li>
+                                                        {% if observe.ref %}
+                                                            {% if observe.ref.fr %}
+                                                                <li class="js-taxref-fr" data-fr="{{ observe.ref.fr }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.gf %}
+                                                                <li class="js-taxref-gf" data-gf="{{ observe.ref.gf }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.mar %}
+                                                                <li class="js-taxref-mar" data-mar="{{ observe.ref.mar }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.gua %}
+                                                                <li class="js-taxref-gua" data-gua="{{ observe.ref.gua }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.sm %}
+                                                                <li class="js-taxref-sm" data-sm="{{ observe.ref.sm }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.spm %}
+                                                                <li class="js-taxref-spm" data-spm="{{ observe.ref.spm }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.may %}
+                                                                <li class="js-taxref-may" data-may="{{ observe.ref.may }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.epa %}
+                                                                <li class="js-taxref-epa" data-epa="{{ observe.ref.epa }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.reu %}
+                                                                <li class="js-taxref-reu" data-reu="{{ observe.ref.reu }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.sa %}
+                                                                <li class="js-taxref-sa" data-sa="{{ observe.ref.sa }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.ta %}
+                                                                <li class="js-taxref-ta" data-ta="{{ observe.ref.ta }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.nc %}
+                                                                <li class="js-taxref-nc" data-nc="{{ observe.ref.nc }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.wf %}
+                                                                <li class="js-taxref-wf" data-wf="{{ observe.ref.wf }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.pf %}
+                                                                <li class="js-taxref-pf" data-pf="{{ observe.ref.pf }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.cli %}
+                                                                <li class="js-taxref-cli" data-cli="{{ observe.ref.cli }}"></li>
+                                                            {% endif %}
+                                                            {% if observe.ref.sb %}
+                                                                <li class="js-taxref-sb" data-sb="{{ observe.ref.sb }}"></li>
+                                                            {% endif %}
+                                                            <li><a href="https://inpn.mnhn.fr/espece/cd_nom/{{ observe.ref.cdNom }}">lien INPN</a></li>
                                                         {% endif %}
                                                     </ul>
                                                 </div>
@@ -504,7 +515,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">textsms</i>
-                                    <input type="text" id="autocomplete-input" class="autocomplete">
+                                    <input type="text" data-url="{{ path('getusers') }}" id="autocomplete-input" class="autocomplete">
                                     <label for="autocomplete-input">Rechercher un utilisateur</label>
                                 </div>
                             </div>
@@ -537,7 +548,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                             {% endif %}
                                         </td>
                                         <td class="userMail">{{ user.email }}</td>
-                                        <td>
+                                        <td class="userRole">
                                             {% set display = "" %}
                                             {% for role in user.roles %}
                                                 {% if role|trim|replace({'ROLE_USER': "", 'ROLE_NATURALIST': ""}) == "ROLE_ADMIN" %}
@@ -554,14 +565,29 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                         <td>{{ user.observes.count }}</td>
                                         <td>{{ user.createdAt|date('d/m/Y') }}</td>
                                         <td>
-                                            <a href="#modalDelUser{{ user.id }}" class="waves-effect waves-light btn red darken-2 modal-trigger"><i class="material-icons">delete</i></a>
-                                            {% if is_granted('ROLE_ADMIN') %}
-                                                <a href="#modalUpUser{{ user.id }}" class="waves-effect waves-light btn green accent-4 modal-trigger"><i class="material-icons">publish</i></a>
+
+                                            {% if app.user.email != user.email %}
+
+                                                <a href="#modalDelUser{{ user.id }}" class="waves-effect waves-light btn red darken-2 modal-trigger"><i class="material-icons">delete</i></a>
+
+                                                {% if display == "Utilisateur" or display == "Naturaliste" %}
+                                                    <a href="#modalUpUser{{ user.id }}" class="js-upgradeBtn waves-effect waves-light btn green accent-4 modal-trigger"><i class="material-icons">arrow_upward</i></a>
+                                                {% else %}
+                                                    <a href="#modalUpUser{{ user.id }}" class="js-upgradeBtn waves-effect waves-light btn green accent-4 modal-trigger" style="display: none"><i class="material-icons">arrow_upward</i></a>
+                                                {% endif %}
+
+                                                {% if display == "ADMIN" or display == "Naturaliste" %}
+                                                    <a href="#modalDownUser{{ user.id }}" class="js-downgradeBtn waves-effect waves-light btn orange modal-trigger"><i class="material-icons">arrow_downward</i></a>
+                                                {% else %}
+                                                    <a href="#modalDownUser{{ user.id }}" class="js-downgradeBtn waves-effect waves-light btn orange modal-trigger" style="display: none"><i class="material-icons">arrow_downward</i></a>
+                                                {% endif %}
+
                                             {% endif %}
+
                                         </td>
                                     </tr>
 
-                                            <!-- Modal Structure -->
+                                            <!-- Modal delete Structure -->
                                             <div id="modalDelUser{{ user.id }}" class="modal">
                                                 <div class="modal-content">
                                                     <h4>Supprimer {% set display = "" %}
@@ -597,7 +623,7 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                                 </div>
                                             </div>
 
-                                            <!-- Modal Structure -->
+                                            <!-- Modal upgrade Structure -->
                                             <div id="modalUpUser{{ user.id }}" class="modal">
                                                 <div class="modal-content">
                                                     <h4>Upgrader {% set display = "" %}
@@ -628,7 +654,43 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
                                                     <a href="#!" class="modal-close waves-effect waves-light btn">Annuler</a>
                                                     <a data-id="{{ user.id }}" href="{{ path('upgrade_user', {id: user.id}) }}" class="js-upgrade-user waves-effect waves-light btn green accent-4">
                                                         <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloaderongreen.gif') }}" style="display: none; position: relative; top: 2px; right: 10px;">
-                                                        <i class="material-icons left">publish</i>Upgrade
+                                                        <i class="material-icons left">arrow_upward</i>Upgrade
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal downgrade Structure -->
+                                            <div id="modalDownUser{{ user.id }}" class="modal">
+                                                <div class="modal-content">
+                                                    <h4>Downgrader {% set display = "" %}
+                                                        {% for role in user.roles %}
+                                                            {% if role|trim|replace({'ROLE_USER': "", 'ROLE_NATURALIST': ""}) == "ROLE_ADMIN" %}
+                                                                {% set display = "l'administrateur" %}
+                                                            {% elseif role|trim|replace({'ROLE_USER': ""}) == "ROLE_NATURALIST" %}
+                                                                {% set display = "le naturaliste" %}
+                                                            {% else %}
+                                                                {% set display = "l'utilisateur" %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        {{ display }}</h4>
+                                                    <p>Voulez-vous vraiment downgrader {% set display = "" %}
+                                                        {% for role in user.roles %}
+                                                            {% if role|trim|replace({'ROLE_USER': "", 'ROLE_NATURALIST': ""}) == "ROLE_ADMIN" %}
+                                                                {% set display = "l'administrateur" %}
+                                                            {% elseif role|trim|replace({'ROLE_USER': ""}) == "ROLE_NATURALIST" %}
+                                                                {% set display = "le naturaliste" %}
+                                                            {% else %}
+                                                                {% set display = "l'utilisateur" %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        {{ display }} ?</p>
+                                                    <p>Avec l'adresse email : "{{ user.email }}"</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="#!" class="modal-close waves-effect waves-light btn">Annuler</a>
+                                                    <a data-id="{{ user.id }}" href="{{ path('downgrade_user', {id: user.id}) }}" class="js-downgrade-user waves-effect waves-light btn orange">
+                                                        <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloaderonorange.gif') }}" style="display: none; position: relative; top: 2px; right: 10px;">
+                                                        <i class="material-icons left">arrow_downward</i>Downgrade
                                                     </a>
                                                 </div>
                                             </div>
@@ -661,333 +723,17 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);">
     <script src="{{ asset('js/my_last_observe.js') }}"></script>
     <script src="{{ asset('js/delete_user.js') }}"></script>
     <script src="{{ asset('js/upgrade_user.js') }}"></script>
+    <script src="{{ asset('js/downgrade_user.js') }}"></script>
+    <script src="{{ asset('js/profile.js') }}"></script>
     <script>
         $(document).ready(function() {
             // Flash message display loop
             {% for flash in app.flashes('profile') %}
-                $(function () {
-                    M.toast({html: '<span>{{ flash }}</span>'});
-                });
+            $(function () {
+                M.toast({html: '<span>{{ flash }}</span>'});
+            });
             {% endfor %}
-
-            $('.tabs').tabs();
-
-            $('.js-taxrefrang').each(function () {
-                $(this).html('Rang : ' + rang($(this).data('rang')));
-            });
-
-            $('.js-taxrefhab').each(function () {
-                $(this).html('Habitat : ' + habitat($(this).data('hab')));
-            });
-
-            $('.js-taxref-fr').each(function () {
-                $(this).html(lb($(this).data('fr')) + " en France métropolitaine");
-            });
-
-            $('.js-taxref-gf').each(function () {
-                $(this).html(lb($(this).data('gf')) + " en Guyane française");
-            });
-
-            $('.js-taxref-mar').each(function () {
-                $(this).html(lb($(this).data('mar')) + " à la Martinique");
-            });
-
-            $('.js-taxref-gua').each(function () {
-                $(this).html(lb($(this).data('gua')) + " à la Guadeloupe");
-            });
-
-            $('.js-taxref-sm').each(function () {
-                $(this).html(lb($(this).data('sm')) + " à Saint-Martin");
-            });
-
-            $('.js-taxref-spm').each(function () {
-                $(this).html(lb($(this).data('spm')) + " à Saint-Pierre et Miquelon");
-            });
-
-            $('.js-taxref-may').each(function () {
-                $(this).html(lb($(this).data('may')) + " à Mayotte");
-            });
-
-            $('.js-taxref-epa').each(function () {
-                $(this).html(lb($(this).data('epa')) + " aux Îles Éparses");
-            });
-
-            $('.js-taxref-reu').each(function () {
-                $(this).html(lb($(this).data('reu')) + " à la Réunion");
-            });
-
-            $('.js-taxref-sa').each(function () {
-                $(this).html(lb($(this).data('sa')) + " aux îles subantarctiques");
-            });
-
-            $('.js-taxref-ta').each(function () {
-                $(this).html(lb($(this).data('ta')) + " en Terre Adélie");
-            });
-
-            $('.js-taxref-nc').each(function () {
-                $(this).html(lb($(this).data('nc')) + " en Nouvelle-Calédonie");
-            });
-
-            $('.js-taxref-wf').each(function () {
-                $(this).html(lb($(this).data('wf')) + " à Wallis et Futuna");
-            });
-
-            $('.js-taxref-pf').each(function () {
-                $(this).html(lb($(this).data('pf')) + " en Polynésie française");
-            });
-
-            $('.js-taxref-cli').each(function () {
-                $(this).html(lb($(this).data('cli')) + " à Clipperton");
-            });
-
-            $('.js-taxref-sb').each(function () {
-                $(this).html(lb($(this).data('sb')) + " à Saint-Barthélemy");
-            });
-
-            $('.materialboxed').click(function (e) {
-                e.stopPropagation();
-            });
-
-            $('.modifObs').click(function () {
-                return false;
-            });
-
-            $('input.autocomplete').autocomplete({
-                data: {
-            {% for user in users %}
-                    "{{ user.email }}": '{{ user.img }}',
-            {% endfor %}
-                },
-                onAutocomplete: function () {
-                        let mail = this.el.value;
-                        if (mail === "") {
-                            $('.userAutocomplete').each(function () {
-                                $(this).show();
-                            })
-                        }
-                    $('.userAutocomplete').each(function () {
-                        let tdMail = $(this).find('.userMail').html();
-                        $(this).hide();
-                        if (tdMail === mail) {
-                            $(this).show();
-                        }
-                    })
-                },
-            });
-
-            $('input.autocomplete').keyup(function () {
-                if (this.value === "") {
-                    $('.userAutocomplete').each(function () {
-                        $(this).show();
-                    })
-                }
-            });
-
-            $('#obsTab').click(function () {
-                deleteMap($('.observePanel.active'));
-                $('.collapsible').collapsible('close');
-            });
         });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            let images =document.querySelectorAll('.materialboxed');
-            let elems = document.querySelectorAll('.collapsible');
-            let tulles = M.Collapsible.init(elems, {
-                onCloseStart: function (e) {
-                    deleteMap(e);
-                },
-                onOpenEnd: function (e) {
-                    createMap(e);
-                },
-            });
-            let imagesAnim = M.Materialbox.init(images, {
-                onOpenStart: function (e) {
-                    $(elems).find('#obsMap').remove();
-                },
-                onCloseStart: function (e) {
-                    if ($('li.observePanel.active').length === 1) {
-                        createMap($('li.observePanel.active'));
-                    };
-                }
-            });
-        });
-
-        function verticalTab(evt, tabName) {
-            let i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("vertical-tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-
-        function createMap(e) {
-            let index = $(e).data('index');
-            let lat = $(e).data('lat');
-            let long = $(e).data('long');
-
-            let $mapContainer = $('.' + 'map-container-' + index);
-
-            $($mapContainer).append('<div id="obsMap" class="map-' + index + ' col s12 l6" style="height: 400px; padding: 0"></div>');
-
-            let mymap = L.map('obsMap').setView([lat, long], 11);
-
-            L.marker([lat, long]).addTo(mymap);
-
-            L.tileLayer(
-                'https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmVva2lsbGVyMTEzIiwiYSI6ImNqZ2h2c2xxMzBsbm0ycWsxemJ6YnNpZXEifQ.PiGeZsNjVNyo1G80Y1KD4Q', {
-                maxZoom: 18,
-                    minZoom: 5,
-                id: 'mapbox.streets',
-            }).addTo(mymap);
-        }
-
-        function deleteMap(e) {
-
-            let index = $(e).data('index');
-            let $map = $('.' + 'map-' + index);
-            $($map).remove();
-        }
-
-        function lb(rang) {
-            switch (rang) {
-                case "A":
-                    return "Absente";
-                    break;
-                case "B":
-                    return "Accidentelle / Visiteuse";
-                    break;
-                case "C":
-                    return "Cryptogène";
-                    break;
-                case "D":
-                    return "Douteuse";
-                    break;
-                case "E":
-                    return "Endémique";
-                    break;
-                case "F":
-                    return "Trouvée en fouille";
-                    break;
-                case "I":
-                    return "Introduite";
-                    break;
-                case "J":
-                    return "Introduite envahissante";
-                    break;
-                case "M":
-                    return "Domestique / Introduite non établie";
-                    break;
-                case "P":
-                    return "Présente";
-                    break;
-                case "Q":
-                    return "Mentionnée par erreur";
-                    break;
-                case "S":
-                    return "Subendémique";
-                    break;
-                case "W":
-                    return "Disparue";
-                    break;
-                case "X":
-                    return "Éteinte";
-                    break;
-                case "Y":
-                    return "Introduite éteinte";
-                    break;
-                case "Z":
-                    return "Endémique éteinte";
-                    break;
-            }
-        }
-
-        function rang(rang) {
-            switch (rang) {
-                case "KD":
-                    return "Règne";
-                    break;
-                case "PH":
-                    return "Embranchement";
-                    break;
-                case "CL":
-                    return "Classe";
-                    break;
-                case "OR":
-                    return "Ordre";
-                    break;
-                case "FM":
-                    return "Famille";
-                    break;
-                case "GN":
-                    return "Genre";
-                    break;
-                case "AGES":
-                    return "Agrégat";
-                    break;
-                case "ES":
-                    return "Espèce";
-                    break;
-                case "SSES":
-                    return "Sous-espèce";
-                    break;
-                case "CVAR":
-                    return "Convariété";
-                    break;
-                case "VAR":
-                    return "Variété";
-                    break;
-                case "FO":
-                    return "Forme";
-                    break;
-                case "SSFO":
-                    return "Sous-forme";
-                    break;
-                case "RACE":
-                    return "Race";
-                    break;
-                case "HYB":
-                    return "Hybride";
-                    break;
-            }
-        }
-
-        function habitat(habitat) {
-            switch (habitat) {
-                case 1:
-                    return "Marin";
-                    break;
-                case 2:
-                    return "Eau douce";
-                    break;
-                case 3:
-                    return "Terrestre";
-                    break;
-                case 4:
-                    return "Marin & Eau douce";
-                    break;
-                case 5:
-                    return "Marin & Terrestre";
-                    break;
-                case 6:
-                    return "Eau saumâtre";
-                    break;
-                case 7:
-                    return "Continental (terrestre et/ou eau douce)";
-                    break;
-                case 8:
-                    return 'Continental (terrestre et eau douce)';
-                    break;
-            }
-        }
     </script>
 {% endblock %}
 

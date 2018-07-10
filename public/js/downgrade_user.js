@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.js-upgrade-user').on('click', function (e) {
+    $('.js-downgrade-user').on('click', function (e) {
         e.preventDefault();
 
         let $link = $(e.currentTarget);
@@ -20,18 +20,18 @@ $(document).ready(function() {
             let $upgradeBtn = $('.userContainer-' + id).find('.js-upgradeBtn');
             let $downgradeBtn = $('.userContainer-' + id).find('.js-downgradeBtn');
             let role = $roleCollumn.html().trim();
-            if (role === "Utilisateur") {
-                $roleCollumn.fadeOut('normal', function () {
-                    $roleCollumn.html("Naturaliste").show();
-                    $downgradeBtn.fadeIn('normal');
-                    $upgradeBtn.show();
-                });
-            }
             if (role === "Naturaliste") {
                 $roleCollumn.fadeOut('normal', function () {
-                    $roleCollumn.html("ADMIN").show();
+                    $roleCollumn.html("Utilisateur").show();
+                    $upgradeBtn.show();
+                    $downgradeBtn.fadeOut('normal');
+                });
+            }
+            if (role === "ADMIN") {
+                $roleCollumn.fadeOut('normal', function () {
+                    $roleCollumn.html("Naturaliste").show();
                     $downgradeBtn.show();
-                    $upgradeBtn.fadeOut('normal');
+                    $upgradeBtn.fadeIn('normal');
                 });
             }
         });
