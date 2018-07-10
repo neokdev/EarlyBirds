@@ -1,4 +1,3 @@
-M.AutoInit();
 $(function() {
     $(".dropdown-trigger").dropdown(
         { hover: true }
@@ -7,5 +6,5 @@ $(function() {
         $('.dropdown-content').css('position','absolute').css('top','60px');
     });
     $('.sidenav').sidenav();
-    $('.collapsible').collapsible();
+    $('#mobile-demo').collapsible();
 });

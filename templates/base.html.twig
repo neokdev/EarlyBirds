@@ -39,7 +39,6 @@
 
         <div class="navbar-fixed">
 
-
             <nav>
                 <div class="nav-wrapper" id="c_nav">
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -204,10 +203,10 @@
 
             <div class="row info hide-on-med-and-down">
                 <ul class="col m4 l4 hide-on-med-and-down">
-                    <li><a href="{{ path('app_faq') }}">FAQ</a></li>
-                    <li><a href="{{ path('app_site_mapping') }}">Plan du Site</a></li>
-                    <li><a href="{{ path('app_legal') }}">Mentions Légales</a></li>
-                    <li><a href="{{ path('app_confidentiality') }}">Politique de
+                    <li><a class="footer-link" href="{{ path('app_faq') }}">FAQ</a></li>
+                    <li><a class="footer-link" href="{{ path('app_site_mapping') }}">Plan du Site</a></li>
+                    <li><a class="footer-link" href="{{ path('app_legal') }}">Mentions Légales</a></li>
+                    <li><a class="footer-link" href="{{ path('app_confidentiality') }}">Politique de
                             confidentialité</a></li>
                 </ul>
                 <div class="col m7 l7 hide-on-med-and-down" id="info8">
@@ -253,12 +252,15 @@
         </div>
 
             {% block javascripts %}
+                <script type="text/javascript">
+                    M.AutoInit();
+                </script>
                 <script
                         src="https://code.jquery.com/jquery-3.3.1.js">
                 </script>
                 <script
                         src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-                <script
+                <script type="text/javascript"
                         src="{{ asset('js/navbar.js') }}">
                 </script>
             {% endblock %}

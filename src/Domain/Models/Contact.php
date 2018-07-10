@@ -42,24 +42,40 @@ class Contact
     private $mail;
 
     /**
+     * @var boolean
+     */
+    private $marketing;
+
+    /**
+     * @var boolean
+     */
+    private $response;
+
+    /**
      * Contact constructor.
      *
      * @param string $author
      * @param string $message
      * @param string $subject
      * @param string $mail
+     * @param bool   $marketing
+     * @param bool   $response
      */
     public function __construct(
         string $author,
         string $message,
         string $subject,
-        string $mail
+        string $mail,
+        bool   $marketing,
+        bool   $response
     ) {
-        $this->id      = Uuid::uuid4();
-        $this->author  = $author;
-        $this->message = $message;
-        $this->subject = $subject;
-        $this->mail    = $mail;
+        $this->id        = Uuid::uuid4();
+        $this->author    = $author;
+        $this->message   = $message;
+        $this->subject   = $subject;
+        $this->mail      = $mail;
+        $this->marketing = $marketing;
+        $this->response  = $response;
     }
 
     /**
@@ -153,4 +169,45 @@ class Contact
 
         return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function isMarketing(): bool
+    {
+        return $this->marketing;
+    }
+
+    /**
+     * @param bool $marketing
+     *
+     * @return self
+     */
+    public function setMarketing(bool $marketing): self
+    {
+        $this->marketing = $marketing;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isResponse(): bool
+    {
+        return $this->response;
+    }
+
+    /**
+     * @param bool $response
+     *
+     * @return self
+     */
+    public function setResponse(bool $response): self
+    {
+        $this->response = $response;
+
+        return $this;
+    }
+
 }

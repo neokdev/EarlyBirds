@@ -61,6 +61,8 @@ class ObserveRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('obs')
             ->leftJoin('obs.ref', 'tax')
             ->addSelect('tax')
+            ->leftJoin('obs.author', 'auth')
+            ->addSelect('auth')
             ->orderBy('obs.createdAt', 'DESC')
             ->setMaxResults(100)
             ->getQuery()
