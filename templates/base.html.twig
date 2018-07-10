@@ -229,12 +229,11 @@
                     <div class="col m12 l12 hide-on-med-and-down" id="rowPartenaires">
                         <img src="{{ asset
                             ('/img/logo/federation-francaise-de-la-randonnee-pedestre-randonnee-fspartenaires-nao.png') }}"/>
-                        <img class="imgPartenires" src="{{ asset('/img/logo/45759partenaires-nao.png') }}"/>
-                        <img class="imgPartenires" src="{{ asset('/img/logo/Logo Geo-Decouvertepartenaires-nao.png') }}"/>
+                        <img class="imgPartenires" src="{{ asset('/img/logo/hydraelec2.png') }}"/>
+                        <img class="imgPartenires" src="{{ asset('/img/logo/natgeo2.png') }}"/>
                         <img class="imgPartenires" src="{{ asset
                             ('/img/logo/logo-5partenaires-nao.png') }}"/>
-                        <img class="imgPartenires" src="{{ asset
-                            ('/img/logo/vne_vne_LogoMNHN-partenaires-nao.png') }}">
+                        <img class="imgPartenires" src="{{ asset('/img/logo/vne_vne_LogoMNHN-partenaires-nao.png') }}">
                     </div>
                 </div>
             </div>
@@ -252,14 +251,16 @@
         </div>
 
             {% block javascripts %}
-                <script type="text/javascript">
-                    M.AutoInit();
-                </script>
                 <script
                         src="https://code.jquery.com/jquery-3.3.1.js">
                 </script>
                 <script
-                        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+                        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js">
+
+                </script>
+                <script type="text/javascript">
+                    M.AutoInit();
+                </script>
                 <script type="text/javascript"
                         src="{{ asset('js/navbar.js') }}">
                 </script>
