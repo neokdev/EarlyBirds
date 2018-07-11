@@ -19,7 +19,7 @@ App\Domain\DTO\ObserveDTO:
                 max: 5000
                 minMessage: 'votre description doit contenir {{ limit }} 50 caractères minimum.'
                 maxMessage: 'votre description doit contenir {{ limit }} 5000 caractères maximum.'
-                #groups: [Observe]
+
         latitude:
             - NotBlank: ~
 
@@ -28,7 +28,7 @@ App\Domain\DTO\ObserveDTO:
 
         img:
             - Image:
-                maxSize: 3M
+                maxSize: 1M
                 maxSizeMessage: 'votre image pèse trop lourd ({{ size }} {{ suffix }}). La taille
                  aximum authorizée est {{ limit }} {{ suffix }}.'
                 mimeTypes: [image/jpeg, image/png]

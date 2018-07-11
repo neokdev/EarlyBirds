@@ -112,6 +112,9 @@
     padding-bottom: 2rem;
     margin-top: -3em;
     margin-bottom: 3em;
+    background: #FFFDFD;
+    border: 1px solid black;
+    border-top: none;
 }
 
 @media (max-width: 992px) and (min-width: 401px) {

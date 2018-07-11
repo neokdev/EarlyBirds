@@ -314,6 +314,7 @@ div#popupMap {
         margin-bottom: 100px;
         background: no-repeat center url(../img/other/observation.jpeg);
         background-size: cover;
+
     }
 
     .header_text {
@@ -321,6 +322,11 @@ div#popupMap {
         text-align: center;
         color: white;
         margin-top: .2em;
+        font-size: 1.5em
+    }
+
+    #header_text_bold {
+        font-size: 2em;
     }
 
     #subHeader {
@@ -346,4 +352,17 @@ div#popupMap {
         background: #2D9CDB;
         margin-left: 27%;
     }
+
+    .header_text {
+        font-family: MontSerrat;
+        text-align: center;
+        color: white;
+        margin-top: 6em;
+        font-size: 1.5em
+    }
+
+    #header_text_bold {
+        font-size: 2em;
+    }
+
 }
