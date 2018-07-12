@@ -17,12 +17,16 @@ use App\UI\Responder\Interfaces\UpdateObservationResponderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class UpdateObservationAction
  * @package App\UI\Action
  * @Route(
  *     "/modifier-lobservation-{id}",
+ *     name="app_update_observation",
  *     methods={"GET", "POST"}
  * )
  */
@@ -47,22 +51,38 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
     private $formFactory;
 
     /**
+     * @var TokenStorageInterface
+     */
+    private $token;
+
+    /**
+     * @var AuthorizationCheckerInterface
+     */
+    private $authChecker;
+
+    /**
      * UpdateObservationAction constructor.
      *
      * @param UpdateObserveTypeHandlerInterface $updateObserveTypeHandler
      * @param ObserveRepository                 $observeRepository
      * @param FormFactoryInterface              $formFactory
+     * @param TokenStorageInterface             $token
+     * @param AuthorizationCheckerInterface     $authChecker
      */
     public function __construct(
         UpdateObserveTypeHandlerInterface $updateObserveTypeHandler,
         ObserveRepository                 $observeRepository,
-        FormFactoryInterface              $formFactory
-    ) {
+        FormFactoryInterface              $formFactory,
+        TokenStorageInterface             $token,
+        AuthorizationCheckerInterface     $authChecker
+    )
+    {
         $this->updateObserveTypeHandler = $updateObserveTypeHandler;
         $this->observeRepository        = $observeRepository;
         $this->formFactory              = $formFactory;
+        $this->token                    = $token;
+        $this->authChecker              = $authChecker;
     }
-
     /**
      * @param Request                             $request
      * @param UpdateObservationResponderInterface $updateObservationResponder
@@ -76,8 +96,23 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
         string                              $id
     ) {
 
+
         $observe = $this->observeRepository->findOneBy(['id' => $id]);
         $ref = $observe->getRef();
+
+        if (true === $this->authChecker->isGranted('ROLE_USER')) {
+            $userObsId = $observe->getAuthor()->getId();
+            $uId = $this->token->getToken()->getUser();
+            $userId = $uId->getId();
+
+            if ( $userId !== $userObsId) {
+                throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cette 
+            observation, vous ne pouvez pas la modifié');
+            }
+        } else {
+            throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cette 
+            observation, vous ne pouvez pas la modifié');
+        }
 
         if ($ref == null) {
             $observeDTO = new ObserveDTO(

@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ObservationAction
  * @Route(
- *     "/observe",
+ *     "/saisir-une-observation",
  *     name="app_observe",
  *     methods={"GET","POST"}
  * )
