@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class ConfidentialityAction
  * @package App\UI\Action
  * @Route(
- *     path="/politique_de_confidentialite",
+ *     path="/politique-de-confidentialite",
  *     name="app_confidentiality",
  *     methods={"GET"},
  * )

@@ -1,1 +1,82 @@
 {% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+          integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="{{ asset('css/legal.css') }}"
+{% endblock %}
+
+{% block title %}
+    Nos Amis les Oiseaux : traitement des données personnelles
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col l12 m12 s12" id="subHeader">
+        <p id="slogan">
+            Nos amis les oiseaux
+        </p>
+
+        <div class="col l8 offset-l2 m8 offset-m2 s12" id="header">
+            <h1 class="col m10 offset-m1 s12 header_text">
+                foire aux questions
+            </h1>
+        </div>
+    </div>
+
+    <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1" id="intro">
+        <h2 class="sub_title">Code de conduite</h2>
+         <ul class="paraph_pge">
+            <li>1. Inscription<span class="bold-text">Staut (badges)</span><a class="paraph_link" href="mailto: contact@nao.org">contact@nao.org</a></li>
+            <li>
+                L’inscription sur le site NAO.org est gratuite et s'adresse à des personnes physiques.
+                Elle implique au préalable une acceptation des présentes conditions
+                d’utilisation. L'inscription est nominative et les informations données
+                doivent être véritables. Une personne inscrite peut toutefois choisir
+                de contribuer sous un nom d'utilisateur (pseudo) pour conserver son anonymat.
+            </li>
+           </ul>
+        <p class="paraph_pge">
+            Si vous observez une espèce rare ou signalée comme en danger,
+            nous vous engageons à nous contacter au préalable pour évaluer, ensemble,
+            les risques d'une éventuelle parution publique. En effet, les conséquences de la
+            diffusion, à grande échelle, de sa localisation pourraient être préjudiciables
+            pour l'oiseau et son habitat.<br>
+            Nous vous rappelons le code de conduite que NAO préconise :
+        </p>
+
+
+        <p class="paraph_pge">
+            Toutes les personnes qui souhaitent soumettre une observation doivent s‘enregistrer.
+            La procédure est simple et unique. Les indications personnelles demandées nous permettent,
+            si nécessaire, de vous contacter et de garantir la qualité des informations transmises sur le site.
+            Ces données personnelles font l'objet d'une attention particulière de notre part.
+            Nous vous invitons à consulter notre <a class="paraph_link" href="{{ path
+                ('app_confidentiality')
+            }}">politique de
+                confidentialité.</a>
+            Enfin, un internaute qui souhaite seulement consulter les observations, sans accéder
+            aux fonctions avancées, n'a pas besoin de s'inscrire.
+        </p>
+
+        <p class="paraph_pge">
+            Vous pouvez réinitialiser votre mot de passe. Il vous suffit de vous rendre sur la page de connexion
+            et de cliquer sur « J’ai perdu mon mot de passe ». Suivez les instructions et vous pourrez rapidement
+            vous reconnecter.
+            En cas de problème persistant, n'hésitez pas à nous adresser un email à
+            <a class="paraph_link" href="mailto: contact@nao.org">contact@nao.org</a>.
+        </p>
+
+    </div>
+    <h3 class="paraph_subtitle">
+            Que dois-je faire si j'observe une espèce rare ou en voie de disparition ?
+        </h3>
+
+    {% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}
