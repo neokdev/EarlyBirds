@@ -10,6 +10,7 @@ namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ObserveDTOInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class ObserveDTO
@@ -23,26 +24,50 @@ class ObserveDTO implements ObserveDTOInterface
     public $ref;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 50,
+     *      max = 5000,
+     *      minMessage = "votre description doit contenir au moins {{ limit }} carctères",
+     *      maxMessage = "votre description doit contenir moins de {{ limit }} carctères"
+     * )
      * @var string
      */
     public $description;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "votre latitude doit contenir au moins {{ limit }} carctères"
+     * )
+     *
      * @var string
      */
     public $latitude;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "votre longitude doit contenir au moins {{ limit }} carctères"
+     * )
      * @var string
      */
     public $longitude;
 
     /**
+     * @Assert\Date()
      * @var \DateTime
      */
     public $obsDate;
 
     /**
+     *  @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     mimeTypesMessage = "votre image doit être de type jpeg ou png et inférieur à 1025K0"
+     * )
      * @var UploadedFile
      */
     public $img;

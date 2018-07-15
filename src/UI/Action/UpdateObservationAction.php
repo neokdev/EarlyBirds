@@ -33,19 +33,16 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 final class UpdateObservationAction implements UpdateObservationActionInterface
 {
     /**
-     *
      * @var UpdateObserveTypeHandlerInterface
      */
     private $updateObserveTypeHandler;
 
     /**
-     *
      * @var ObserveRepository
      */
     private $observeRepository;
 
     /**
-     *
      * @var FormFactoryInterface
      */
     private $formFactory;
