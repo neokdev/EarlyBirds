@@ -1,0 +1,124 @@
+#map {
+    height: 512px;
+    margin: auto;
+}
+
+#research {
+    margin-top: 14em;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding-left: 1em;
+
+}
+
+#subHeader {
+    margin-top: -23em;
+}
+
+#slogan {
+    left: 6em;
+    top: 9em;
+}
+
+#header {
+    height: 300px;
+    background: no-repeat center url("../img/other/observation.jpg");
+    background-size: cover;
+}
+
+.header_text {
+    font-family: MontSerrat;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    margin-top: 2em;
+    font-size: 3.500em;
+}
+
+input::placeholder {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding-left: 1em;
+}
+
+.sub_title {
+    font-weight: 500;
+    font-size: 2em;
+    font-family: MontSerrat;
+
+}
+
+#discover_bird {
+    margin-top: 5em;
+    margin-bottom: -.2em;
+}
+
+@media (max-width: 400px) {
+
+    #subHeader {
+        margin-top: 6em;
+    }
+
+    #header {
+        height: 215px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 3em;
+        font-size: 2em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 992px) {
+
+    #subHeader {
+        margin-top: 15em;
+    }
+
+    #header {
+        height: 300px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 2em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #citation {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1401px) and (max-width: 1920px) {
+
+    #header {
+        height: 450px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 4em;
+    }
+}
