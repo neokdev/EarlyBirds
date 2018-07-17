@@ -45,7 +45,9 @@ class Gamification
 
         $userScore = $user->getScore();
         if (!$userScore) {
-            $user->setScore(0);
+            $userScore = 0;
+
+            $user->setScore($userScore);
             $this->userRepository->update();
         }
 
@@ -62,7 +64,7 @@ class Gamification
      *
      * @return mixed
      */
-    public function getActualLevel(array $levels, ?int $userScore)
+    public function getActualLevel(array $levels, int $userScore)
     {
         foreach ($levels as $level) {
             if ($level->getPoints() > $userScore) {
