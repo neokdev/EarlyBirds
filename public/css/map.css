@@ -41,7 +41,7 @@ div#popupMap {
 }
 
 #header {
-    height: 450px;
+    height: 300px;
     padding-top: 5em;
     margin-bottom: 2em;
     background: no-repeat center url("../img/other/map.jpeg");
@@ -53,7 +53,6 @@ div#popupMap {
     font-weight: 500;
     text-align: center;
     color: white;
-    margin-top: 2.4em;
 }
 
 #help_text {
@@ -146,6 +145,10 @@ div#popupMap {
         background-size: cover;
     }
 
+    .header_text {
+        font-size: 3.3em;
+    }
+
     #c_body {
         margin-top: auto;
         margin-bottom: auto;
@@ -182,10 +185,17 @@ div#popupMap {
 
 @media (max-width: 1440px) and (min-width: 993px) {
     #header {
-        height: 450px;
+        height: 300px;
         background: no-repeat center url("../img/other/map.jpeg");
         background-size: cover;
+        margin-top: 3.5em;
     }
+
+    #slogan {
+        left: 5.9em;
+    }
+
+
 }
 
 @media (max-width: 1920px) and (min-width: 1441px) {
@@ -193,6 +203,11 @@ div#popupMap {
         height: 450px;
         background: no-repeat center url("../img/other/map.jpeg");
         background-size: cover;
+        margin-top: 3.9em;
+    }
+
+    .header_text {
+        margin-top: 2em;
     }
 
     #map {

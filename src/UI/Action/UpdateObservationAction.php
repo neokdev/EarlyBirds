@@ -8,11 +8,11 @@
 
 namespace App\UI\Action;
 
-use App\Domain\DTO\ObserveDTO;
+use App\Domain\DTO\UpdateObserveDTO;
 use App\Domain\Repository\ObserveRepository;
 use App\UI\Action\Interfaces\UpdateObservationActionInterface;
 use App\UI\Form\Handler\Interfaces\UpdateObserveTypeHandlerInterface;
-use App\UI\Form\ObserveType;
+use App\UI\Form\UpdateObserveType;
 use App\UI\Responder\Interfaces\UpdateObservationResponderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -80,6 +80,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
         $this->token                    = $token;
         $this->authChecker              = $authChecker;
     }
+
     /**
      * @param Request                             $request
      * @param UpdateObservationResponderInterface $updateObservationResponder
@@ -112,7 +113,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
         }
 
         if ($ref == null) {
-            $observeDTO = new ObserveDTO(
+            $observeDTO = new UpdateObserveDTO(
                 $ref,
                 $observe->getDescription(),
                 $observe->getLatitude(),
@@ -121,7 +122,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
                 null
             );
         } else {
-            $observeDTO = new ObserveDTO(
+            $observeDTO = new UpdateObserveDTO(
                 $observe->getRef()->getNomComplet(),
                 $observe->getDescription(),
                 $observe->getLatitude(),
@@ -132,7 +133,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
         }
 
         $updateObserve = $this->formFactory
-            ->create(ObserveType::class, $observeDTO)
+            ->create(UpdateObserveType::class, $observeDTO)
             ->handleRequest($request);
 
         if ($this->updateObserveTypeHandler->handle($updateObserve, $observe)) {

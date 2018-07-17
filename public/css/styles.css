@@ -115,10 +115,12 @@ a.black-text:active {
     z-index: 3;
     position: relative;
     left: 105px;
-    top: 190px;
+    top: 185px;
 
     font-family:MontSerrat;
     font-weight: 100;
+
+    width: 10em;
 }
 
 #birdImg {
@@ -565,7 +567,7 @@ svg {
     }
 
     #slogan {
-        left: 7em;
+        left: 6em;
     }
 
     div#c_nav {
@@ -597,9 +599,13 @@ svg {
     .icon-img {
         display: none;
     }
+    #header {
+        margin-top: 2.9em;
+    }
 
     #slogan {
-        left: 9.5em;
+        left: 8.7em;
+        top: 190px;
     }
 
     div#c_nav {

@@ -3,8 +3,8 @@
 }
 
 #header {
-    height: 450px;
-    padding-top: 5em;
+    height: 300px;
+    margin-top: unset;
     margin-bottom: 2em;
     background: no-repeat center url("../img/other/faq.jpeg");
     background-size: cover;

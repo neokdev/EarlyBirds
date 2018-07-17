@@ -1,22 +1,22 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Neok
- * Date: 09/05/2018
- * Time: 15:04
+ * User: havartjeremie
+ * Date: 16/07/2018
+ * Time: 21:37
  */
 
 namespace App\Domain\DTO;
 
-use App\Domain\DTO\Interfaces\ObserveDTOInterface;
+use App\Domain\DTO\Interfaces\UpdateObserveDTOInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class ObserveDTO
+ * Class UpdateObserveDTO
  * @package App\Domain\DTO
  */
-class ObserveDTO implements ObserveDTOInterface
+class UpdateObserveDTO implements UpdateObserveDTOInterface
 {
     /**
      * @var null
@@ -38,7 +38,7 @@ class ObserveDTO implements ObserveDTOInterface
     /**
      * @Assert\NotBlank(message="la latitude ne peut pas être vide")
      * @Assert\Length(
-     *      min = 1,
+     *      min = 2,
      *      minMessage = "votre latitude doit contenir au moins {{ limit }} carctères"
      * )
      *
@@ -49,7 +49,7 @@ class ObserveDTO implements ObserveDTOInterface
     /**
      * @Assert\NotBlank(message="la longitude ne peut pas être vide")
      * @Assert\Length(
-     *      min = 2,
+     *      min = 1,
      *      minMessage = "votre longitude doit contenir au moins {{ limit }} carctères"
      * )
      * @var string
@@ -63,7 +63,7 @@ class ObserveDTO implements ObserveDTOInterface
     public $obsDate;
 
     /**
-     *  @Assert\NotBlank(message="veuillez sélectionner une image")
+     *
      *  @Assert\File(
      *     maxSize = "1M",
      *     mimeTypes = {"image/jpeg", "image/png"},
@@ -76,15 +76,15 @@ class ObserveDTO implements ObserveDTOInterface
     /**
      * ObserveDTO constructor.
      *
-     * @param null|string            $ref
-     * @param null|string            $description
-     * @param null|string            $latitude
-     * @param null|string            $longitude
-     * @param \DateTime|null         $date
-     * @param UploadedFile|null      $img
+     * @param null|string       $ref
+     * @param null|string       $description
+     * @param null|string       $latitude
+     * @param null|string       $longitude
+     * @param \DateTime|null    $date
+     * @param UploadedFile|null $img
      */
     public function __construct(
-                     $ref,
+                     $ref         = null,
         string       $description = null,
         string       $latitude    = null,
         string       $longitude   = null,

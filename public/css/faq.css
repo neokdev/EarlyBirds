@@ -3,11 +3,12 @@
 }
 
 #header {
-    height: 450px;
-    padding-top: 5em;
+
     margin-bottom: 2em;
     background: no-repeat center url("../img/other/faq.jpeg");
     background-size: cover;
+    height: 300px;
+    margin-top: unset;
 }
 
 .header_text {

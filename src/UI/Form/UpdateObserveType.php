@@ -1,9 +1,15 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: havartjeremie
+ * Date: 16/07/2018
+ * Time: 21:43
+ */
 
 namespace App\UI\Form;
 
-use App\Domain\DTO\Interfaces\ObserveDTOInterface;
-use App\Domain\DTO\ObserveDTO;
+use App\Domain\DTO\Interfaces\UpdateObserveDTOInterface;
+use App\Domain\DTO\UpdateObserveDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -13,7 +19,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class ObserveType extends AbstractType
+class UpdateObserveType extends AbstractType
 {
     /**
      * @param FormBuilderInterface  $builder
@@ -54,12 +60,12 @@ class ObserveType extends AbstractType
                 ]
             ])
             ->add('obsDate', DateType::class, [
-                'label'       => false,
-                'widget'      => 'single_text',
-                'required' => true
+                   'label'       => false,
+                   'widget'      => 'single_text',
+                   'required' => true
 
-            ]
-                )
+               ]
+            )
             ->add('img',FileType::class, [
                 'label' => false,
                 'required' => false
@@ -74,18 +80,18 @@ class ObserveType extends AbstractType
         OptionsResolver $resolver
     ) {
         $resolver->setDefaults([
-            'data_class' => ObserveDTOInterface::class,
-            'empty_data' => function (FormInterface $form) {
-                return new ObserveDTO(
-                    $form->get('ref')->getData(),
-                    $form->get('description')->getData(),
-                    $form->get('latitude')->getData(),
-                    $form->get('longitude')->getData(),
-                    $form->get('obsDate')->getData(),
-                    $form->get('img')->getData()
-                );
-            },
-            'label'      => false
-        ]);
+           'data_class' => UpdateObserveDTOInterface::class,
+           'empty_data' => function (FormInterface $form) {
+               return new UpdateObserveDTO(
+                   $form->get('ref')->getData(),
+                   $form->get('description')->getData(),
+                   $form->get('latitude')->getData(),
+                   $form->get('longitude')->getData(),
+                   $form->get('obsDate')->getData(),
+                   $form->get('img')->getData()
+               );
+           },
+           'label'      => false
+       ]);
     }
 }

@@ -16,7 +16,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-input#observe_ref {
+input#update_observe_ref {
 
     padding-left: 10px;
     height: 4.375em;
@@ -27,7 +27,7 @@ input#observe_ref {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-input#observe_latitude {
+input#update_observe_latitude {
 
     padding-left: 10px;
     height: 4.375em;
@@ -38,7 +38,7 @@ input#observe_latitude {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-input#observe_longitude {
+input#update_observe_longitude {
 
     padding-left: 10px;
     height: 4.375em;
@@ -48,7 +48,7 @@ input#observe_longitude {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-input#observe_obsDate {
+input#update_observe_obsDate {
     padding-left: 10px;
     height: 4.375em;
     border: none;
@@ -57,7 +57,7 @@ input#observe_obsDate {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-textarea#observe_description {
+textarea#update_observe_description {
 
     padding-left: 10px;
     padding-right: 10px;

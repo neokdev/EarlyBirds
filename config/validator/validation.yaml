@@ -9,21 +9,3 @@ App\Domain\DTO\ForgottenPasswordDTO:
         email:
             - App\Validator\NonExistingEmail:
                 groups: [ForgottenPassword]
-#
-#App\Domain\DTO\ObserveDTO:
-    #properties:
-        #description:
-           # - NotBlank: ~
-            #- Length:
-                #min: 5
-                #max: 5000
-                #minMessage: 'votre description doit contenir {{ limit }} 50 caractères minimum.'
-               # maxMessage: 'votre description doit contenir {{ limit }} 5000 caractères maximum.'
-
-        #img:
-            #- Image:
-                #maxSize: 1M
-                #maxSizeMessage: 'votre image pèse trop lourd ({{ size }} {{ suffix }}). La taille
-                # maximum authorizée est {{ limit }} {{ suffix }}.'
-               # mimeTypes: [image/jpeg, image/png]
-                #mimeTypesMessage: 'Veuillez choisir un image au format jpeg ou png.'

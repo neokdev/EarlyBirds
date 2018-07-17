@@ -13,7 +13,7 @@
         <many-to-one field="ref" target-entity="App\Domain\Models\TaxRef" fetch="EXTRA_LAZY">
             <join-column nullable="true"/>
         </many-to-one>
-        <field name="description" type="text"/>
+        <field name="description" type="text" nullable="false"/>
         <field name="latitude"/>
         <field name="longitude"/>
         <field name="img"/>

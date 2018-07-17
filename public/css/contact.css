@@ -173,6 +173,10 @@ textarea {
         top: unset;
         bottom: 18.5em;
     }
+
+    #slogan {
+        left: 9.4em;
+    }
 }
 
 @media (min-width: 993px ) and (max-width: 1440px) {
