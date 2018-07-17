@@ -54,7 +54,7 @@
                                 <span class="truncate" style="font-size: 12px">Observé le {{ observe.createdAt|localizeddate('long', 'none') }}</span>
                             </div>
                             <div class="row" style="margin-bottom: 0">
-                                <span style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}</span>
+                                <span style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</span>
                             </div>
                         </div>
                         <div class="col s4 left-align" style="padding-right: 0; padding-top: 15px;">
