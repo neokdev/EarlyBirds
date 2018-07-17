@@ -1,0 +1,69 @@
+#linkBtn {
+    background: #F2994A;
+    border-radius: 20px;
+    font-size: 1.125em;
+    text-transform: initial;
+    margin-top: 19em;
+}
+
+.title {
+    font-family: MontSerrat;
+    font-size: 2.250em;
+    font-weight: 500;
+}
+
+.subTitle {
+    font-family: MontSerrat;
+    font-weight: 300;
+    font-size: 1.5em;
+    width: 18em;
+
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: rotateZ(-90deg);
+
+    position: relative;
+    top: 22em;
+    left: 3em;
+
+    background-color: lightgrey;
+    padding: 1em;
+}
+
+.paraph {
+    font-family: MontSerrat;
+    font-weight: 200;
+    font-size: 1.300em;
+    padding-left: 3em !important;
+}
+
+#separator {
+    height: 30em;
+    background: lightgrey;
+    margin-top: 25em;
+}
+
+.img-user {
+    width: 17.500em !important;
+}
+
+#first-circle-img {
+    margin-top: 8em;
+}
+
+#img-user-separator {
+    margin-top: 16em;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#text-separator {
+    margin-top: 6.5em;
+    font-size: 1.875em;
+    font-family: MontSerrat;
+    font-weight: 400;
+    text-align: center;
+}

@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class LegalAction
  * @package App\UI\Action
  * @Route(
- *     path="/mentions_legales",
+ *     path="/mentions-legales",
  *     name="app_legal",
  *     methods={"GET"}
  * )

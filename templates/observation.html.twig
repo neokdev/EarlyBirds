@@ -9,19 +9,22 @@
 {% endblock %}
 
 {% block title %}
-observation
+saisir-une-observation
 {% endblock %}
 
 {% block body %}
     <div class="row">
-        <div class="col m12 s12" id="subHeader">
-            <p id="slogan">
-                Nos amis les oiseaux
-            </p>
+        {{ form_start(form) }}
+        <div class="col l12 m12 s12" id="subHeader">
+            <div class=" col l2 m2 s2">
+                <p id="slogan">
+                    Nos amis les oiseaux
+                </p>
+            </div>
 
-            <div class="col m8 offset-m2 s12" id="header">
+            <div class="col m8 s12" id="header">
                 <h1 class="col m10 offset-m1 s12 header_text">
-                    <span>Communiquez vos
+                    <span id="header_text_bold">Communiquez vos
                     observations</span><br><br>
                     Devenez un acteur éco citoyen et
                     contribuez à la
@@ -36,55 +39,54 @@ observation
                 </h1>
             </div>
         </div>
+        <div class="input-field col l10 offset-l1 s12 m12" id="err">
+            <span class="form_errors">{{ form_errors(form.description) }}</span>
+            <span class="form_errors">{{ form_errors(form.ref) }}</span>
+            <span class="form_errors">{{ form_errors(form.longitude) }}</span>
+            <span class="form_errors">{{ form_errors(form.latitude) }}</span>
+            <span class="form_errors">{{ form_errors(form.obsDate) }}</span>
+            <span class="form_errors">{{ form_errors(form.img) }}</span>
+        </div>
         <div class="col m10 offset-m1 s12">
             <div class="row">
                 <div id="mapid" class="col s12 m6"></div>
                 <div id="form" class="col s12  m6">
 
-                    {{ form_start(form) }}
                     <div class="input-field col l10 offset-l1 s12 m12">
-
                         <span class="label" id="label1">Oiseau observé</span>
-                        {{ form_row((form.ref)) }}
-                        <span class="form_errors">{{ form_errors(form.ref) }}</span>
+                        {{ form_widget((form.ref)) }}
                     </div>
 
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Longitude</span>
-                        {{ form_row(form.longitude) }}
-                        <span class="form_errors">{{ form_errors(form.longitude) }}</span>
+                        {{ form_widget(form.longitude) }}
                     </div>
 
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Latitude</span>
-                        {{ form_row(form.latitude) }}
-                       <span class="form_errors">{{ form_errors(form.latitude) }}</span>
+                        {{ form_widget(form.latitude) }}
                     </div>
 
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Date</span>
-                        {{ form_row(form.obsDate) }}
-                        <span class="form_errors">{{ form_errors(form.obsDate) }}</span>
+                        {{ form_widget(form.obsDate) }}
                     </div>
 
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Commentaire</span>
-                        {{ form_row(form.description) }}
-                        <span class="form_errors">{{ form_errors(form.description) }}</span>
+                        {{ form_widget(form.description) }}
                     </div>
 
                     <div class="file-field input-field col l8 offset-l2 m12 s12" id="divUpBtn">
                         <div class="btn" id="uplBtn">
                             <span>Télécharger une photo</span>
-                            {{ form_row(form.img) }}
-                            <span class="form_errors">{{ form_errors(form.img) }}</span>
+                            {{ form_widget(form.img) }}
                         </div>
                     </div>
 
                     <div class="input-field col l8 offset-l2 m12 s12" id="divSubBtn">
                         <button id="submitBtn" class="btn waves-effect waves-light col s10"
-                                type="submit"
-                                formnovalidate value="Submit without validation">
+                                type="submit">
                             Validez l'observation
                         </button>
                     </div>
@@ -106,7 +108,6 @@ observation
                         {% endfor %}
                     </div>
 
-                    {{ form_end(form) }}
                 </div>
             </div>
         </div>
@@ -118,6 +119,8 @@ observation
                 <br><span id="little_text">Pema Chödrön</span>
             </div>
         </div>
+
+        {{ form_end(form) }}
     </div>
 {% endblock %}
 

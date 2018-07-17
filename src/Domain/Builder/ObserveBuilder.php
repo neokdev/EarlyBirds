@@ -36,16 +36,16 @@ class ObserveBuilder implements ObserveBuilderInterface
         \DateTime $date,
         string    $img
     ): ObserveBuilderInterface {
-       $this->observe = new Observe();
-       $this->observe
-            ->setAuthor($author)
-            ->setRef($ref)
-            ->setDescription($description)
-            ->setLatitude($latitude)
-            ->setLongitude($longitude)
-            ->setObsDate($date)
-            ->setImg($img)
-       ;
+       $this->observe = new Observe(
+           $author,
+           $ref,
+           $description,
+           $latitude,
+           $longitude,
+           $date,
+           $img
+       );
+
        return $this;
     }
 

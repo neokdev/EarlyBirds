@@ -207,6 +207,20 @@ div#popupMap {
     font-weight: 700;
 }
 
+.form_errors {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 500;
+    font-family: MontSerrat;
+    color: red;
+
+}
+
+#err {
+    border-radius: 20em;
+    padding-bottom: 1em;
+}
+
 @media (max-width: 400px) {
 
     #c_body {
@@ -314,6 +328,8 @@ div#popupMap {
         margin-bottom: 100px;
         background: no-repeat center url(../img/other/observation.jpeg);
         background-size: cover;
+        margin-top: 3.4em;
+
     }
 
     .header_text {
@@ -321,6 +337,11 @@ div#popupMap {
         text-align: center;
         color: white;
         margin-top: .2em;
+        font-size: 1.5em
+    }
+
+    #header_text_bold {
+        font-size: 2em;
     }
 
     #subHeader {
@@ -346,4 +367,17 @@ div#popupMap {
         background: #2D9CDB;
         margin-left: 27%;
     }
+
+    .header_text {
+        font-family: MontSerrat;
+        text-align: center;
+        color: white;
+        margin-top: 6em;
+        font-size: 1.5em
+    }
+
+    #header_text_bold {
+        font-size: 2em;
+    }
+
 }

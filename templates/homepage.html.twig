@@ -1,30 +1,97 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NAO - Homepage{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
+{% endblock %}
+
+{% block title %}Observer les oiseaux, préserver la diversité biologique
+    Balise
+{% endblock %}
 
 {% block body %}
-    <h1 class="col s12">Homepage</h1>
+    <div class="row">
+
+        <div class="col l12 m12 s12" id="subHeaer">
+            <div class=" col l2 m2 s2">
+                <p id="slogan">
+                    Nos amis les oiseaux
+                </p>
+            </div>
+            <div class=" col l8 m8 s12" id="header">
+                <div class="video-container">
+                    <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
 
 
-
-    <div class="carousel carousel-slider fullscreen">
-        <a class="carousel-item" href="#one!"><img src="{{ asset('img/carousel/1.jpg') }}"></a>
-        <a class="carousel-item" href="#two!"><img src="{{ asset('img/carousel/2.jpg') }}"></a>
-        <a class="carousel-item" href="#three!"><img src="{{ asset('img/carousel/3.png') }}"></a>
-        <a class="carousel-item" href="#four!"><img src="{{ asset('img/carousel/4.jpg') }}"></a>
-        <a class="carousel-item" href="#five!"><img src="{{ asset('img/carousel/5.jpg') }}"></a>
+        <div class="col l10 offset-l1 m10 offset-m1 s12">
+            <h1 class="col l8 offset-l2 m8 offset-m2 s12 title">L'Ornithologie, une science
+                populaire</h1>
+            <p class="col l8 offset-l2 m8 offset-m2 s12 paraph">
+                L’ornithologie, ou science de l’étude des oiseaux sauvages, s’est toujours appuyée
+                sur les observations de réseaux d’amateurs passionnés. Elle se nourrit de votre
+                plaisir à décrire et reconnaître ces multiples plumages, d’y associer un vol ou
+                un comportement, de localiser une espèce et bien sûr, d’échanger et de partager ses connaissances.
+                Ce lien historique et singulier entre professionnels -les naturalistes- et “ornithos”
+                amateurs ou débutants prend tout son sens avec l’expression “science populaire”.
+            </p>
+            <p class="col l8 offset-l2 m8 offset-m2 s12 paraph">
+                Nos Amis les Oiseaux, c'est l'expression de cette particularité : même si ce site
+                est tout d’abord un outil de terrain pratique et simple pour compiler et partager
+                vos observations, c’est également un "lieu unique" pour tous les amoureux de la
+                nature qui ont envie de <span>participer, ensemble, à préserver la diversité
+                biologique.</span><br><br>
+                Apprenez-en plus sur notre association, ses valeurs, ses actions :
+            </p>
+        </div>
     </div>
+    <div class="row">
+        <div class="col s1">
+            <h2 class="subTitle">DÉCOUVRIR LES OISEAUX</h2>
+        </div>
+        <div class="col l7 m7 s12">
+            <a class="col l4 offset-l6 m4 offset-m6 waves-effect waves-light btn"
+               id="linkBtn" href="">Découvrez nos
+                actions</a>
+        </div>
+        <div class="col l4 m4">
+            <div class="row" id="first-circle-img">
+                <p class="col l4 s4">
+                    “ Le peu qu'on peut faire, le très peu qu'on peut faire, il faut le faire  “
+                </p>
+                <img class="circle img-user" src="{{ asset
+                        ('img/homepage/faq.jpeg') }}"
+                                            alt="photo
+                de profil de l'observateur">
+            </div>
+        </div>
+        <div class="col l12 m12 s12" id="separator">
+            <div class="col l2 offset-l1 m2 offset-m1">
+                <img class="circle img-user" id="img-user-separator" src="{{ asset
+                    ('img/homepage/faq.jpeg') }}"
+                     alt="photo
+                de profil de l'observateur">
+            </div>
+            <p class="col l5 offset-l1 m5 offset-m1" id="text-separator">“ Comment puis-je
+                contribuer à la
+                préservation de la
+                biodiversité ?  “</p>
+
+
+        </div>
+
+    </div>
+
+
+
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script>
-        let elem = document.querySelector('.carousel');
-        let instance = M.Carousel.init(elem, {
-            fullWidth: true,
-            indicators: true,
-        });
-
         {% for flash in app.flashes('homepage') %}
         $(function() {
             M.toast({html: '<span>{{ flash }}</span>'});

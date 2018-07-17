@@ -8,15 +8,18 @@
 
 namespace App\UI\Action;
 
-use App\Domain\DTO\ObserveDTO;
+use App\Domain\DTO\UpdateObserveDTO;
 use App\Domain\Repository\ObserveRepository;
 use App\UI\Action\Interfaces\UpdateObservationActionInterface;
 use App\UI\Form\Handler\Interfaces\UpdateObserveTypeHandlerInterface;
-use App\UI\Form\ObserveType;
+use App\UI\Form\UpdateObserveType;
 use App\UI\Responder\Interfaces\UpdateObservationResponderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class UpdateObservationAction
@@ -30,22 +33,29 @@ use Symfony\Component\Routing\Annotation\Route;
 final class UpdateObservationAction implements UpdateObservationActionInterface
 {
     /**
-     *
      * @var UpdateObserveTypeHandlerInterface
      */
     private $updateObserveTypeHandler;
 
     /**
-     *
      * @var ObserveRepository
      */
     private $observeRepository;
 
     /**
-     *
      * @var FormFactoryInterface
      */
     private $formFactory;
+
+    /**
+     * @var TokenStorageInterface
+     */
+    private $token;
+
+    /**
+     * @var AuthorizationCheckerInterface
+     */
+    private $authChecker;
 
     /**
      * UpdateObservationAction constructor.
@@ -53,15 +63,22 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
      * @param UpdateObserveTypeHandlerInterface $updateObserveTypeHandler
      * @param ObserveRepository                 $observeRepository
      * @param FormFactoryInterface              $formFactory
+     * @param TokenStorageInterface             $token
+     * @param AuthorizationCheckerInterface     $authChecker
      */
     public function __construct(
         UpdateObserveTypeHandlerInterface $updateObserveTypeHandler,
         ObserveRepository                 $observeRepository,
-        FormFactoryInterface              $formFactory
-    ) {
+        FormFactoryInterface              $formFactory,
+        TokenStorageInterface             $token,
+        AuthorizationCheckerInterface     $authChecker
+    )
+    {
         $this->updateObserveTypeHandler = $updateObserveTypeHandler;
         $this->observeRepository        = $observeRepository;
         $this->formFactory              = $formFactory;
+        $this->token                    = $token;
+        $this->authChecker              = $authChecker;
     }
 
     /**
@@ -77,11 +94,26 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
         string                              $id
     ) {
 
+
         $observe = $this->observeRepository->findOneBy(['id' => $id]);
         $ref = $observe->getRef();
 
+        if (true === $this->authChecker->isGranted('ROLE_USER')) {
+            $userObsId = $observe->getAuthor()->getId();
+            $uId = $this->token->getToken()->getUser();
+            $userId = $uId->getId();
+
+            if ( $userId !== $userObsId) {
+                throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cette 
+            observation, vous ne pouvez pas la modifié');
+            }
+        } else {
+            throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cette 
+            observation, vous ne pouvez pas la modifié');
+        }
+
         if ($ref == null) {
-            $observeDTO = new ObserveDTO(
+            $observeDTO = new UpdateObserveDTO(
                 $ref,
                 $observe->getDescription(),
                 $observe->getLatitude(),
@@ -90,7 +122,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
                 null
             );
         } else {
-            $observeDTO = new ObserveDTO(
+            $observeDTO = new UpdateObserveDTO(
                 $observe->getRef()->getNomComplet(),
                 $observe->getDescription(),
                 $observe->getLatitude(),
@@ -101,7 +133,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
         }
 
         $updateObserve = $this->formFactory
-            ->create(ObserveType::class, $observeDTO)
+            ->create(UpdateObserveType::class, $observeDTO)
             ->handleRequest($request);
 
         if ($this->updateObserveTypeHandler->handle($updateObserve, $observe)) {

@@ -101,37 +101,47 @@ class UpdateObserveTypeHandler implements UpdateObserveTypeHandlerInterface
                 ->setObsDate($form->getData()->obsDate)
             ;
 
-            if ($observe->getRef() == null) {
-                $bird = $form->getData()->ref;
-                $result = $this->taxrefRepository->findOneBy(['nomComplet' => $bird]);
-
-                $observe->setRef($result);
+            if ($form->getData()->ref === null && $observe->getRef() === null) {
+                $observe->setRef(null);
             }
 
-            if ($observe->getRef()->getNomComplet() !== $form->getData()->ref) {
+            if ($form->getData()->ref !== null) {
+                if ($observe->getRef() === null) {
+                    $bird = $form->getData()->ref;
+                    $result = $this->taxrefRepository->findOneBy(['nomComplet' => $bird]);
 
-                $bird = $form->getData()->ref;
-                $result = $this->taxrefRepository->findOneBy(['nomComplet' => $bird]);
+                    $observe->setRef($result);
+                } elseif ($observe->getRef()->getNomComplet() !== $form->getData()->ref  &&
+                    $form->getData()->ref !== null
+                ) {
+                    $bird = $form->getData()->ref;
+                    $result = $this->taxrefRepository->findOneBy(['nomComplet' => $bird]);
 
-                $observe->setRef($result);
+                    $observe->setRef($result);
+                }
             }
 
             if($observe->getImg() !== $form->getData()->img) {
 
-                /**
-                 * @var UploadedFile $file
-                 */
-                $file = $form->getData()->img;
+                if ($form->getData()->img === null) {
+                    $observe->setImg($observe->getImg());
+                } else {
+                    /**
+                     * @var UploadedFile $file
+                     */
+                    $file = $form->getData()->img;
 
-                if ($file) {
-                    $this->fileOutput = $file->move(
-                        $this->imageFolder,
-                        $this->generateUniqueFileName()."."
-                        .$file->guessExtension()
-                    );
+                    if ($file) {
+                        $this->fileOutput = $file->move(
+                            $this->imageFolder,
+                            $this->generateUniqueFileName()."."
+                            .$file->guessExtension()
+                        );
+                    }
+
+                    $observe->setImg($this->media.$this->fileOutput->getFilename());
                 }
 
-                $observe->setImg($this->media.$this->fileOutput->getFilename());
             }
 
             $this->observeRepository->update();
