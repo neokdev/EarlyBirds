@@ -1,0 +1,62 @@
+.ObserveAjaxLoader {
+    position: relative;
+    bottom: 30px;
+    left: 98%;
+}
+
+.card img{
+    height: 230px;
+    width: 100%;
+    object-fit: contain;
+}
+
+#lastObserveHeader div {
+    padding-left: 4%;
+    margin-bottom: 0;
+    height: 378px;
+    background-position: 40% 400%;
+}
+
+#lastObserveHeader h1 {
+    font-family: Didot, serif;
+    font-size: 40px;
+    color: #579BC1;
+}
+
+#lastObserveHeader p {
+    font-family: Montserrat, serif;
+}
+
+@media (max-width: 992px) {
+    #lastObserveHeader {
+        position: relative;
+        margin-top: 100px;
+    }
+
+    #lastObserveSearch {
+        position: relative;
+        margin-top: 100px;
+    }
+
+    #lastObserveTulles {
+        position: relative;
+        margin-top: 100px;
+    }
+}
+
+@media (min-width: 993px) {
+    #lastObserveHeader {
+        position: relative;
+        bottom: 343px;
+    }
+
+    #lastObserveSearch {
+        position: relative;
+        bottom: 343px;
+    }
+
+    #lastObserveTulles {
+        position: relative;
+        bottom: 343px;
+    }
+}

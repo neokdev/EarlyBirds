@@ -9,3 +9,4 @@ App\Domain\DTO\ForgottenPasswordDTO:
         email:
             - App\Validator\NonExistingEmail:
                 groups: [ForgottenPassword]
+

@@ -75,7 +75,7 @@ $(document).ready(function() {
 });
 
 function hideAjaxLoader() {
-    $('#ajaxLoader').fadeOut('normal', function () {
+    $('.ObserveAjaxLoader').fadeOut('normal', function () {
         $(this).hide();
     });
 }

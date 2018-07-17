@@ -3,7 +3,6 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Models\Observe;
-use App\Domain\Models\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -119,8 +118,24 @@ class ObserveRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.validator IS NOT NULL')
             ->orderBy('p.updatedAt', 'DESC')
-//            ->setMaxResults(25)
+            ->setMaxResults(100)
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * @param Observe $observe
+     *
+     * @return bool
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function remove(Observe $observe): bool
+    {
+        $this->getEntityManager()->remove($observe);
+        $this->getEntityManager()->flush();
+
+        return true;
     }
 }

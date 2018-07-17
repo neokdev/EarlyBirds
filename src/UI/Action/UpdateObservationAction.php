@@ -26,7 +26,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
  * @package App\UI\Action
  * @Route(
  *     "/modifier-lobservation-{id}",
- *     name="app_update_observation",
+ *     name="modifyobserve",
  *     methods={"GET", "POST"}
  * )
  */

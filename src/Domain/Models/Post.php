@@ -23,6 +23,11 @@ class Post
     /**
      * @var string
      */
+    private $title;
+
+    /**
+     * @var string
+     */
     private $content;
 
     /**

@@ -8,38 +8,38 @@
 
 namespace App\UI\Action\Api;
 
-use App\Domain\Repository\UserRepository;
+use App\Domain\Repository\ObserveRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class DeleteUser
+ * Class DeleteObserve
  * @Route(
- *     "/deluser/{id}",
- *     name="delete_user",
+ *     "/delobserve/{id}",
+ *     name="delete_observe",
  *     methods={"DELETE"}
  * )
- * @IsGranted("ROLE_ADMIN")
+ * @IsGranted("ROLE_NATURALIST")
  */
-class DeleteUser
+class DeleteObserve
 {
     /**
-     * @var UserRepository
+     * @var ObserveRepository
      */
-    private $userRepository;
+    private $observeRepository;
 
     /**
-     * DeleteUser constructor.
-     * @param UserRepository $userRepository
+     * DeleteObserve constructor.
+     * @param ObserveRepository $observeRepository
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(ObserveRepository $observeRepository)
     {
-        $this->userRepository = $userRepository;
+        $this->observeRepository = $observeRepository;
     }
 
     /**
-     * @param user Id $id
+     * @param observeId $id
      *
      * @return JsonResponse
      *
@@ -48,9 +48,9 @@ class DeleteUser
      */
     public function __invoke($id)
     {
-        $user = $this->userRepository->findOneBy(['id' => $id]);
+        $observe = $this->observeRepository->findOneBy(['id' => $id]);
 
-        $status = $this->userRepository->remove($user);
+        $status = $this->observeRepository->remove($observe);
 
         return new JsonResponse($status);
     }

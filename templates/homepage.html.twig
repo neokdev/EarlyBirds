@@ -91,5 +91,11 @@
 
 {% block javascripts %}
     {{ parent() }}
-
+    <script>
+        {% for flash in app.flashes('homepage') %}
+        $(function() {
+            M.toast({html: '<span>{{ flash }}</span>'});
+        });
+        {% endfor %}
+    </script>
 {% endblock %}

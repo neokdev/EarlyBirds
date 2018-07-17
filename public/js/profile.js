@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let tulles = M.Collapsible.init(elems, {
         onCloseStart: function (e) {
             deleteMap(e);
+            addPlus(e);
         },
         onOpenEnd: function (e) {
             createMap(e);
+            addMinus(e);
         },
     });
     let imagesAnim = M.Materialbox.init(images, {
@@ -22,14 +24,33 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 $(document).ready(function() {
+    disableFields();
+
+    $('.modifyProfileBtn').click(function (e) {
+        e.preventDefault();
+        if ($(this).hasClass('on')) {
+            disableFields();
+            $(this).removeClass('on');
+        } else {
+            enableFields();
+            $(this).addClass('on');
+        }
+    });
+
+    $('.js-cancelBtn').click(function (e) {
+        e.preventDefault();
+        disableFields();
+        $('.modifyProfileBtn').removeClass('on');
+    });
+
     $('.tabs').tabs();
 
     $('.js-taxrefrang').each(function () {
-        $(this).html('Rang : ' + rang($(this).data('rang')));
+        $(this).html('<b>Rang : </b>' + rang($(this).data('rang')));
     });
 
     $('.js-taxrefhab').each(function () {
-        $(this).html('Habitat : ' + habitat($(this).data('hab')));
+        $(this).html('<b>Habitat : </b>' + habitat($(this).data('hab')));
     });
 
     $('.js-taxref-fr').each(function () {
@@ -100,15 +121,14 @@ $(document).ready(function() {
         e.stopPropagation();
     });
 
-    $('.modifObs').click(function () {
-        return false;
-    });
-
     $('input.autocomplete').on('focus', function () {
+        let $loader = $('.UserAjaxLoader');
+        $loader.show();
         $.ajax({
             method: 'POST',
             url: $(this).data('url')
         }).done(function (data) {
+            $loader.fadeOut('normal');
             $('input.autocomplete').autocomplete({
                 data: data,
                 onAutocomplete: function () {
@@ -180,6 +200,36 @@ function createMap(e) {
             minZoom: 5,
             id: 'mapbox.streets',
         }).addTo(mymap);
+}
+
+function disableFields() {
+    $('.js-nickname-input').find('input').attr('disabled', true);
+    $('.js-firstname-input').find('input').attr('disabled', true);
+    $('.js-lastname-input').find('input').attr('disabled', true);
+    $('.js-avatar-input').attr('disabled', true);
+    $('.js-avatar-btn').addClass('disabled');
+    $('.js-submitBtn').addClass('disabled');
+    $('.js-cancelBtn').addClass('disabled');
+    $('.deleteProfileBtn').fadeOut('normal');
+}
+
+function enableFields() {
+    $('.js-nickname-input').find('input').attr('disabled', false);
+    $('.js-firstname-input').find('input').attr('disabled', false);
+    $('.js-lastname-input').find('input').attr('disabled', false);
+    $('.js-avatar-input').attr('disabled', false);
+    $('.js-avatar-btn').removeClass('disabled');
+    $('.js-submitBtn').removeClass('disabled');
+    $('.js-cancelBtn').removeClass('disabled');
+    $('.deleteProfileBtn').show();
+}
+
+function addMinus(e) {
+    $(e).find('.btn-floating i').html('remove');
+}
+
+function addPlus(e) {
+    $(e).find('.btn-floating i').html('add');
 }
 
 function deleteMap(e) {

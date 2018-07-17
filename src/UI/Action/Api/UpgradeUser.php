@@ -9,6 +9,7 @@
 namespace App\UI\Action\Api;
 
 use App\Domain\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *     name="upgrade_user",
  *     methods={"POST"}
  * )
+ * @IsGranted("ROLE_ADMIN")
  */
 class UpgradeUser
 {
