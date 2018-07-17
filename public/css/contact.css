@@ -85,6 +85,15 @@ textarea {
     margin-top: 6em;
 }
 
+.form_errors {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 500;
+    font-family: MontSerrat;
+    color: red;
+
+}
+
 #submitBtn {
     background: #F2994A;
     border-radius: 20px;
