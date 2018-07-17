@@ -212,7 +212,7 @@
     margin-bottom: 0;
 }
 
-#obsContent a {
+#obsContent li a {
     font-style: italic;
     font-weight: bold;
 }
