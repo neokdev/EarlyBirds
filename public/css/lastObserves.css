@@ -4,6 +4,10 @@
     left: 98%;
 }
 
+.card-image span {
+    font-weight: bold!important;
+ }
+
 #observeTule > div > div.card-image > img {
     height: 230px;
     width: 100%;
