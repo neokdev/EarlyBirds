@@ -118,10 +118,6 @@
     margin-bottom: 0;
 }
 
-#obsMap {
-    left: 8px;
-}
-
 .imgContainer {
     padding-left: 0 !important;
 }
@@ -213,6 +209,7 @@
 
 #obsContent p {
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 #obsContent a {
@@ -232,4 +229,8 @@
     font-family: Montserrat, serif;
     text-transform: none;
     font-weight: bold;
+}
+
+.obsMapDiv {
+    margin-bottom: 20px;
 }
