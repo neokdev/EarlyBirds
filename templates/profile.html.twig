@@ -454,6 +454,9 @@
                                                                 {% if observe.ref.sb %}
                                                                     <li class="js-taxref-sb" data-sb="{{ observe.ref.sb }}"></li>
                                                                 {% endif %}
+                                                                <li><b>Date : </b>{{ observe.obsDate|localizeddate('long', 'none') }}</li>
+                                                                <li><b>Latitude : </b>{{ observe.latitude }}</li>
+                                                                <li><b>Longitude : </b>{{ observe.longitude }}</li>
                                                                 <li><a href="https://inpn.mnhn.fr/espece/cd_nom/{{ observe.ref.cdNom }}">lien INPN</a></li>
                                                             {% endif %}
                                                         </ul>
@@ -615,6 +618,9 @@
                                                                 {% if observe.ref.sb %}
                                                                     <li class="js-taxref-sb" data-sb="{{ observe.ref.sb }}"></li>
                                                                 {% endif %}
+                                                                <li><b>Date : </b>{{ observe.obsDate|localizeddate('long', 'none') }}</li>
+                                                                <li><b>Latitude : </b>{{ observe.latitude }}</li>
+                                                                <li><b>Longitude : </b>{{ observe.longitude }}</li>
                                                                 <li><a href="https://inpn.mnhn.fr/espece/cd_nom/{{ observe.ref.cdNom }}">lien INPN</a></li>
                                                             {% endif %}
                                                         </ul>

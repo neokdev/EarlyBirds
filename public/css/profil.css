@@ -211,6 +211,15 @@
     color: #00BCD4;
 }
 
+#obsContent p {
+    margin-top: 0;
+}
+
+#obsContent a {
+    font-style: italic;
+    font-weight: bold;
+}
+
 .observePanel {
     font-family: Montserrat, serif;
 }
