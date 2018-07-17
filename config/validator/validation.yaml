@@ -13,13 +13,14 @@ App\Domain\DTO\ForgottenPasswordDTO:
 App\Domain\DTO\ObserveDTO:
     properties:
         description:
+#            - NotNull: ~
             - NotBlank: ~
             - Length:
                 min: 5
                 max: 5000
                 minMessage: 'votre description doit contenir {{ limit }} 50 caractères minimum.'
                 maxMessage: 'votre description doit contenir {{ limit }} 5000 caractères maximum.'
-                #groups: [Observe]
+                groups: [Observe]
         latitude:
             - NotBlank: ~
 

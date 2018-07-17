@@ -1,15 +1,96 @@
 #profilePicture {
     height: auto;
     width: auto;
-    max-width: 226px;
-    max-height: 226px;
+    max-width: 180px;
+    max-height: 180px;
 }
+
+#profilePanel #upperPannel {
+    margin-bottom: 0;
+    height: 336px;
+    background-position: 40% 400%;
+}
+
+#profileDetails {
+    margin-top: 67px;
+    margin-left: 3%;
+}
+
+#profilePanel #nick {
+    color: #2F80ED;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#profilePanel #level {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+    #profileContent {
+        position: relative;
+        margin-top: 100px;
+    }
+
+    #profilePanel {
+        position: relative;
+        margin-top: 100px;
+        padding: 0;
+    }
+
+    #admin > div:nth-child(2) > div > div > table > thead > tr {
+        padding-top: 40px;
+    }
+}
+
+@media (min-width: 993px) {
+    #profileContent {
+        position: relative;
+        bottom: 343px;
+    }
+
+    #profilePanel {
+        position: relative;
+        bottom: 343px;
+        padding: 0;
+    }
+}
+
 
 #thumbnails {
     height: auto;
     width: auto;
     max-width: 256px;
     max-height: 256px;
+}
+
+#myObsTop {
+    display: flex;
+}
+
+#myObsTop #myObsTopBtn {
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+#moreBtn {
+    position: relative;
+    top: 38px;
+    left: 95%;
+    width: 40px!important;
+    margin-bottom: 104px;
+}
+
+.badge {
+    font-size: 24px !important;
+    color: #F2994A !important;
+}
+
+.js-obs-count .badge {
+    margin-top: 14px;
 }
 
 .avatarTable {
@@ -19,8 +100,8 @@
     max-width: 100%;
 }
 
-#obsButtons {
-    margin-bottom: auto;
+.obsButtons {
+    margin-top: 15px;
 }
 
 .collapsible-header {
@@ -29,26 +110,43 @@
     padding-bottom: 0;
 }
 
+#obsContent {
+    padding-bottom: 0;
+}
+
+#mapContainer {
+    margin-bottom: 0;
+}
+
+#obsMap {
+    left: 8px;
+}
+
 .imgContainer {
     padding-left: 0 !important;
 }
 
 .observePanel {
     margin-bottom: 3%;
+    font-family: Roboto, serif;
+}
+
+.tablinks p {
+    margin-top: 0;
+}
+
+.tablinks i {
+    font-size: 42px;
 }
 
 /* Style the tab */
 .vertical-tab {
-    float: left;
-    /*border: 1px solid #ccc;*/
-    /*background-color: #f1f1f1;*/
-    width: 30%;
-    height: 300px;
+    width: 100%;
+    height: 1565px;
 }
 
-/* Style the buttons inside the tab */
-.vertical-tab button {
-    height: 75px;
+.vertical-tab a {
+    height: 110px;
     display: block;
     background-color: inherit;
     color: black;
@@ -62,13 +160,13 @@
 }
 
 /* Change background color of buttons on hover */
-.vertical-tab button:hover {
-    background-color: #ddd;
+.vertical-tab a:hover {
+    background-color: #00BCD4;
 }
 
 /* Create an active/current "tab button" class */
-.vertical-tab button.active {
-    background-color: #ccc;
+.vertical-tab a.active {
+    color: #FF9800;
 }
 
 #ajaxLoader {
@@ -87,4 +185,42 @@
 
 .tabs .tab a.active {
     border-bottom: 2px solid #f6b2b5;
+}
+
+.UserAjaxLoader {
+    position: relative;
+    bottom: 30px;
+    left: 98%;
+}
+
+.card-panel {
+    font-family: Montserrat, serif;
+}
+
+#submitBtn{
+    border-radius: 20px;
+    margin: 10px;
+}
+
+#admin a {
+    margin: 2px 1% 2px 1%;
+}
+
+#obsContent b {
+    text-transform: uppercase;
+    color: #00BCD4;
+}
+
+.observePanel {
+    font-family: Montserrat, serif;
+}
+
+#info > li {
+    margin: 2px;
+}
+
+#obsContent #submitBtn {
+    font-family: Montserrat, serif;
+    text-transform: none;
+    font-weight: bold;
 }

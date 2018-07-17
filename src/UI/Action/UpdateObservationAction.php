@@ -23,6 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\UI\Action
  * @Route(
  *     "/modifier-lobservation-{id}",
+ *     name="modifyobserve",
  *     methods={"GET", "POST"}
  * )
  */
