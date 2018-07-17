@@ -1,19 +1,8 @@
-#map {
-    height: 512px;
-    margin: auto;
-}
 
-#research {
-    margin-top: 14em;
-    height: 4.375em;
-    border: none;
-    background: #FFFCFC;
-    border-radius: 20px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-decoration-line: underline;
-    text-decoration-color: #2D9CDB;
-    padding-left: 1em;
-
+#intro {
+    border: 1px solid black;
+    background: #FFFDFD;
+    padding: 2em;
 }
 
 #subHeader {
@@ -40,22 +29,51 @@
     font-size: 3.500em;
 }
 
-input::placeholder {
-    text-decoration-line: underline;
-    text-decoration-color: #2D9CDB;
-    padding-left: 1em;
-}
-
 .sub_title {
-    font-weight: 500;
-    font-size: 2em;
     font-family: MontSerrat;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.250em;
+    margin-top: 3em;
+}
+
+.second_sub_title {
+    font-family: MontSerrat;
+    font-weight: 700;
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.third_sub_title {
+    font-family: MontSerrat;
+    font-weight: 500;
+    font-size: 1em;
+    margin-bottom: 0;
 
 }
 
-#discover_bird {
-    margin-top: 5em;
-    margin-bottom: -.2em;
+.paraph_page {
+    font-family: MontSerrat;
+    font-weight: 300;
+    font-size: 1em;
+    margin-top: 0;
+}
+
+ul.paraph_page {
+    margin-top: 0;
+}
+
+.paraph_link {
+    color:#2D9CDB;
+}
+
+.bold-text {
+    font-family: MontSerrat;
+    font-weight: 500;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+    color: black;
 }
 
 @media (max-width: 400px) {
