@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class FAQAction
  * @package App\UI\Action
  * @Route(
- *     path="/Foire-aux-questions",
+ *     path="/foire-aux-questions",
  *     name="app_faq",
  *     methods={"GET"}
  * )

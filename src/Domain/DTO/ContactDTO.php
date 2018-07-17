@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ContactDTO implements ContactDTOInterface
 {
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank("vous devez renseigner un nom d'auteur")
      * @Assert\Length(
      *      min = 5,
      *      max = 50,
@@ -26,7 +26,7 @@ class ContactDTO implements ContactDTOInterface
     public $author;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank("le message ne peut pas être vide")
      * @Assert\Length(
      *      min = 50,
      *      max = 5000,
@@ -38,7 +38,7 @@ class ContactDTO implements ContactDTOInterface
     public $message;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank("le message doit avoir un sujet")
      * @Assert\Length(
      *      min = 5,
      *      max = 15,
@@ -50,6 +50,7 @@ class ContactDTO implements ContactDTOInterface
     public $subject;
 
     /**
+     * @Assert\NotBlank("l'email doit être complété")
      * @Assert\Email(
      *     message = "l'email '{{ value }}' n'est pas valide",
      *     checkMX = true
@@ -59,32 +60,33 @@ class ContactDTO implements ContactDTOInterface
     public $mail;
 
     /**
+     * @Assert\NotBlank("la case doit être cochée")
      * @var boolean
      */
     public $marketing;
 
     /**
+     * @Assert\NotBlank("la case doit être cochée")
      * @var boolean
      */
     public $response;
 
     /**
-     * Contact constructor.
-     *
-     * @param string $author
-     * @param string $message
-     * @param string $subject
-     * @param string $mail
-     * @param bool   $marketing
-     * @param bool   $response
+     * ContactDTO constructor.
+     * @param string|null $author
+     * @param string|null $message
+     * @param string|null $subject
+     * @param string|null $mail
+     * @param bool|null   $marketing
+     * @param bool|null   $response
      */
     public function __construct(
-        string $author,
-        string $message,
-        string $subject,
-        string $mail,
-        bool   $marketing,
-        bool   $response
+        string $author    = null,
+        string $message   = null,
+        string $subject   = null,
+        string $mail      = null,
+        bool   $marketing = null,
+        bool   $response  = null
     ) {
         $this->author    = $author;
         $this->message   = $message;
