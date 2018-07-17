@@ -59,6 +59,9 @@ class ObserveRepository extends ServiceEntityRepository
     public function findLastObservation()
     {
         return $this->createQueryBuilder('obs')
+            ->leftJoin('obs.validator', 'v')
+            ->addSelect('v')
+            ->andWhere('v IS NOT NULL')
             ->leftJoin('obs.ref', 'tax')
             ->addSelect('tax')
             ->leftJoin('obs.author', 'auth')
