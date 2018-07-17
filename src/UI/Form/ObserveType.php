@@ -35,7 +35,7 @@ class ObserveType extends AbstractType
                 'label' => false,
                 'attr'  => [
                     'placeholder' => 'description'
-                ]
+                ],
             ])
             ->add('latitude',TextType::class,[
                 'label' => false,

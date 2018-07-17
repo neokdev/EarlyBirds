@@ -7,6 +7,7 @@
 
     <entity name="App\Domain\Models\Post" table="post" repository-class="App\Domain\Repository\PostRepository">
         <id name="id" type="uuid"/>
+        <field name="title"/>
         <field name="content" type="text"/>
         <many-to-one field="author" target-entity="App\Domain\Models\User" inversed-by="posts"/>
         <field name="category" nullable="true"/>

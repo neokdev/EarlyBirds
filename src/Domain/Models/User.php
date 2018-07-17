@@ -132,6 +132,7 @@ class User implements UserInterface
      * @param string      $firstname
      * @param string      $lastname
      * @param string      $img
+     * @param int         $score
      * @param null|string $resetPasswordToken
      */
     public function __construct(
@@ -144,6 +145,7 @@ class User implements UserInterface
         ?string $firstname,
         ?string $lastname,
         ?string $img,
+        ?int    $score,
         ?string $resetPasswordToken
     ) {
         $this->id                 = Uuid::uuid4();
@@ -155,6 +157,7 @@ class User implements UserInterface
         $this->firstname          = $firstname;
         $this->lastname           = $lastname;
         $this->img                = $img;
+        $this->score              = $score;
         $this->resetPasswordToken = $resetPasswordToken;
         $this->observes           = new ArrayCollection();
         $this->badges             = new ArrayCollection();
@@ -197,9 +200,9 @@ class User implements UserInterface
     }
 
     /**
-     * @param string $nickname
+     * @param null|string $nickname
      */
-    public function setNickname(string $nickname): void
+    public function setNickname(?string $nickname): void
     {
         $this->nickname = $nickname;
     }
@@ -215,7 +218,7 @@ class User implements UserInterface
     /**
      * @param string $firstname
      */
-    public function setFirstname(string $firstname): void
+    public function setFirstname(?string $firstname): void
     {
         $this->firstname = $firstname;
     }
@@ -231,7 +234,7 @@ class User implements UserInterface
     /**
      * @param string $lastname
      */
-    public function setLastname(string $lastname): void
+    public function setLastname(?string $lastname): void
     {
         $this->lastname = $lastname;
     }
@@ -420,9 +423,9 @@ class User implements UserInterface
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getScore(): int
+    public function getScore(): ?int
     {
         return $this->score;
     }
