@@ -45,7 +45,7 @@
             <div class="card">
                 <div class="card-image">
                     <img src="{{ observe.img }}">
-                    <span {% if observe.ref %}data-lbnom="{{ observe.ref.lbNom }}"{% endif %} class="left-align truncate card-title black-text" style="padding-left: 18px; padding-bottom: 13px; line-height: 24px"><b>{% if observe.ref.nomVern is defined %}{{ observe.ref.nomVern }}{% elseif observe.ref.lbNom is defined %}{{ observe.ref.lbNom }}{% else %}Non identifié{% endif %}</b></span>
+                    <span {% if observe.ref %}data-lbnom="{{ observe.ref.lbNom }}"{% endif %} class="left-align truncate card-title black-text" style="padding-left: 18px; padding-bottom: 13px; line-height: 24px">{% if observe.ref.nomVern is defined %}{{ observe.ref.nomVern }}{% elseif observe.ref.lbNom is defined %}{{ observe.ref.lbNom }}{% else %}Non identifié{% endif %}</span>
                     <a class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                 </div>
                 <div class="card-content row" style="padding-bottom: 9px; padding-top: 9px">

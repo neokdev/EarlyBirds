@@ -39,7 +39,7 @@ $(document).ready(function() {
         })
     });
 
-    $('.observe').hide("normal", function () {
+    $('.observe').hide(function () {
         $('.observe:lt(9)').show()
     });
 
