@@ -47,4 +47,10 @@ class PostRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function save(Post $post)
+    {
+        $this->_em->persist($post);
+        $this->_em->flush();
+    }
 }

@@ -9,7 +9,6 @@
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\AddCommentDTOInterface;
-use App\Domain\Models\User;
 
 class AddCommentDTO implements AddCommentDTOInterface
 {
@@ -19,9 +18,13 @@ class AddCommentDTO implements AddCommentDTOInterface
     public $content;
 
     /**
-     * @var User
+     * AddCommentDTO constructor.
+     * @param string $content
      */
-    public $author;
+    public function __construct(string $content)
+    {
+        $this->content = $content;
+    }
 
 
 }

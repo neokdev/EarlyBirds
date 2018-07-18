@@ -37,20 +37,17 @@ class AddPostDTO implements AddPostDTOInterface
      * AddPostDTO constructor.
      * @param null|string       $title
      * @param null|string       $content
-     * @param null|User         $author
      * @param null|string       $category
      * @param null|UploadedFile $img
      */
     public function __construct(
         string       $title    = null,
         string       $content  = null,
-        User         $author   = null,
         string       $category = null,
         UploadedFile $img      = null
     ) {
         $this->title    = $title;
         $this->content  = $content;
-        $this->author   = $author;
         $this->category = $category;
         $this->img      = $img;
     }
