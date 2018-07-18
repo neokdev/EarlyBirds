@@ -41,11 +41,6 @@ class Post
     private $category;
 
     /**
-     * @var \DateTime
-     */
-    private $date;
-
-    /**
      * @var string
      */
     private $img;
@@ -56,12 +51,33 @@ class Post
     private $favouredBy;
 
     /**
-     * Post constructor.
+     * @var Comment
      */
-    public function __construct()
-    {
-        $this->id         = Uuid::uuid4();
-        $this->favouredBy = new ArrayCollection();
+    private $postComments;
+
+    /**
+     * Post constructor.
+     * @param string $title
+     * @param string $content
+     * @param User   $author
+     * @param string $category
+     * @param string $img
+     */
+    public function __construct(
+        string $title,
+        string $content,
+        User   $author,
+        string $category,
+        string $img
+    ) {
+        $this->id           = Uuid::uuid4();
+        $this->favouredBy   = new ArrayCollection();
+        $this->author       = $author;
+        $this->title        = $title;
+        $this->category     = $category;
+        $this->content      = $content;
+        $this->img          = $img;
+        $this->postComments = new ArrayCollection();
     }
 
     /**
@@ -125,6 +141,40 @@ class Post
         if ($this->favouredBy->contains($favouredBy)) {
             $this->favouredBy->removeElement($favouredBy);
             $favouredBy->removeFavoured($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getPostComments()
+    {
+        return $this->postComments;
+    }
+
+    /**
+     * @param Comment $comment
+     * @return $this
+     */
+    public function addPostComments(Comment $comment): self
+    {
+        if (!$this->postComments->contains($comment)) {
+            $this->postComments[] = $comment;
+            $comment->setPost($this);
+        }
+        return $this;
+    }
+
+    /**
+     * @param Comment $comment
+     * @return $this
+     */
+    public function removePostComments(Comment $comment) :self
+    {
+        if ($this->postComments->contains($comment)) {
+            $this->postComments->removeElement($comment);
         }
 
         return $this;

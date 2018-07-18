@@ -78,7 +78,8 @@
                             <a class="dropdown-trigger black-text" href="#!" data-target="dropdown_observe">Observer</a>
                         </li>
 
-                        <li><a href="#" class="black-text">Actualités</a></li>
+                        <li><a href="{{ path('app_actuality') }}"
+                               class="black-text">Actualités</a></li>
                         <li><a href="{{ path('app_contact') }}" class="black-text">Contact</a></li>
 
                         {% if is_granted('ROLE_USER') == false %}
@@ -137,7 +138,8 @@
                 </ul>
 
             </li>
-            <li><a href="#" class="black-text collapsible-header">Actualités</a></li>
+            <li><a href="{{ path('app_actuality') }}" class="black-text
+            collapsible-header">Actualités</a></li>
             <li><a href="{{ path('app_contact') }}" class="black-text collapsible-header">Contact</a></li>
 
             {% if is_granted('ROLE_USER') == false %}
