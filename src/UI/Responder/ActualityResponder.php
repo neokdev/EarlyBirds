@@ -8,7 +8,6 @@
 
 namespace App\UI\Responder;
 
-
 use App\UI\Responder\Interfaces\ActualityResponderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
