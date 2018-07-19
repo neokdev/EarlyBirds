@@ -46,6 +46,11 @@ class Post
     private $img;
 
     /**
+     * @var string
+     */
+    private $miniature;
+
+    /**
      * @var User
      */
     private $favouredBy;
@@ -62,13 +67,15 @@ class Post
      * @param User   $author
      * @param string $category
      * @param string $img
+     * @param string $miniature
      */
     public function __construct(
         string $title,
         string $content,
         User   $author,
         string $category,
-        string $img
+        string $img,
+        string $miniature
     ) {
         $this->id           = Uuid::uuid4();
         $this->favouredBy   = new ArrayCollection();
@@ -77,6 +84,7 @@ class Post
         $this->category     = $category;
         $this->content      = $content;
         $this->img          = $img;
+        $this->miniature    = $miniature;
         $this->postComments = new ArrayCollection();
     }
 
@@ -271,4 +279,25 @@ class Post
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getMiniature(): string
+    {
+        return $this->miniature;
+    }
+
+    /**
+     * @param string $miniature
+     * @return Post
+     */
+    public function setMiniature(string $miniature): self
+    {
+        $this->miniature = $miniature;
+
+        return $this;
+    }
+
+
 }

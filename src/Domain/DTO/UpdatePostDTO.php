@@ -23,7 +23,6 @@ class UpdatePostDTO implements UpdatePostDTOInterface
      */
     public $content;
 
-
     /**
      * @var string
      */
@@ -35,21 +34,30 @@ class UpdatePostDTO implements UpdatePostDTOInterface
     public $img;
 
     /**
+     * @var UploadedFile
+     */
+    public $miniature;
+
+    /**
      * AddPostDTO constructor.
      * @param null|string       $title
      * @param null|string       $content
      * @param null|string       $category
      * @param null|UploadedFile $img
+     * @param null|UploadedFile $miniature
      */
     public function __construct(
-        string       $title    = null,
-        string       $content  = null,
-        string       $category = null,
-        UploadedFile $img      = null
+        string       $title     = null,
+        string       $content   = null,
+        string       $category  = null,
+        UploadedFile $img       = null,
+        UploadedFile $miniature = null
+
     ) {
-        $this->title    = $title;
-        $this->content  = $content;
-        $this->category = $category;
-        $this->img      = $img;
+        $this->title     = $title;
+        $this->content   = $content;
+        $this->category  = $category;
+        $this->img       = $img;
+        $this->miniature = $miniature;
     }
 }

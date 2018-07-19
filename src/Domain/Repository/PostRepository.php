@@ -66,9 +66,26 @@ class PostRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
+    /**
+     * @param Post $post
+     */
     public function delete(Post $post): void
     {
         $this->_em->remove($post);
         $this->_em->flush();
+    }
+
+    /**
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findLastArticle()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->orderBy('p.updatedAt', 'DESC')
+            ->setMaxResults(1);
+        $qr = $qb->getQuery()->getOneOrNullResult();
+        return $qr;
+
     }
 }

@@ -60,6 +60,10 @@ class UpdatePostType extends AbstractType
                 'label'    => false,
                 'required' => false
             ])
+            ->add('miniature', FileType::class, [
+                'label'    => false,
+                'required' => false
+            ])
         ;
     }
 
@@ -76,7 +80,8 @@ class UpdatePostType extends AbstractType
                             $form->get('title')->getData(),
                             $form->get('content')->getData(),
                             $form->get('category')->getData(),
-                            $form->get('img')->getData()
+                            $form->get('img')->getData(),
+                            $form->get('miniature')->getData()
                         );
                     },
                     'label' =>false

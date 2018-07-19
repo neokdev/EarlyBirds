@@ -25,14 +25,16 @@ class PostBuilder implements PostBuilderInterface
         string $content,
         User   $author,
         string $category,
-        string $img
+        string $img,
+        string $miniature
     ) {
         $this->post = new Post(
             $title,
             $content,
             $author,
             $category,
-            $img
+            $img,
+            $miniature
         );
     }
 

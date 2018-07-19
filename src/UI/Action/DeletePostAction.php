@@ -8,7 +8,6 @@
 
 namespace App\UI\Action;
 
-
 use App\Domain\Repository\PostRepository;
 use App\UI\Responder\Interfaces\DeletePostResponderInterface;
 use Symfony\Component\HttpFoundation\Request;

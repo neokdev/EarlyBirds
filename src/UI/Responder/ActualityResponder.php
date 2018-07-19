@@ -8,6 +8,7 @@
 
 namespace App\UI\Responder;
 
+use App\Domain\Models\Post;
 use App\UI\Responder\Interfaces\ActualityResponderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -29,16 +30,18 @@ class ActualityResponder implements ActualityResponderInterface
     }
 
     /**
-     * @param $post
+     * @param $post|null
      * @return Response
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke($post)
+    public function __invoke(array $post, Post $lasPost = null)
     {
-        $response =  new Response($this->twig->render('actuality.html.twig', ['post' =>
-            $post]));
+        $response =  new Response($this->twig->render('actuality.html.twig', [
+            'posts'     =>  $post,
+            'lastPost' => $lasPost
+        ]));
         return $response;
     }
 }

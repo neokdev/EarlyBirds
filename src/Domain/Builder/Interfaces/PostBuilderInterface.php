@@ -24,6 +24,7 @@ interface PostBuilderInterface
      * @param User   $author
      * @param string $category
      * @param string $img
+     * @param string $miniature
      * @return mixed
      */
     public function create(
@@ -31,7 +32,8 @@ interface PostBuilderInterface
         string $content,
         User   $author,
         string $category,
-        string $img
+        string $img,
+        string $miniature
     );
 
     /**

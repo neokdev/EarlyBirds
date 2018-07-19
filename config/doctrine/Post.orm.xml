@@ -22,6 +22,7 @@
         </one-to-many>
         <field name="category" nullable="true"/>
         <field name="img" nullable="true"/>
+        <field name="miniature" nullable="true"/>
         <many-to-many field="favouredBy" target-entity="App\Domain\Models\User" mapped-by="favoured"/>
         <field name="createdAt" type="datetime">
             <gedmo:timestampable on="create"/>

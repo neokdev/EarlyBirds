@@ -8,7 +8,6 @@
 
 namespace App\UI\Action;
 
-
 use App\Domain\Repository\PostRepository;
 use App\UI\Action\Interfaces\ArticleActionInterface;
 use App\UI\Responder\Interfaces\ArticleResponderInterface;

@@ -47,10 +47,15 @@ class ActualityAction implements ActualityActionInterface
         $this->actualityResponder = $actualityResponder;
     }
 
+    /**
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function __invoke()
     {
         $post = $this->postRepository->findAll();
+        $lastPost = $this->postRepository->findLastArticle();
         $responder = $this->actualityResponder;
-        return $responder($post);
+        return $responder($post, $lastPost);
     }
 }

@@ -115,6 +115,29 @@ class UpdatePostTypeHandler implements UpdatePostTypeHandlerInterface
 
             }
 
+            if($updPost->getMiniature() !== $form->getData()->miniature) {
+
+                if ($form->getData()->miniature === null) {
+                    $updPost->setMiniature($updPost->getMiniature());
+                } else {
+                    /**
+                     * @var UploadedFile $fileMiniature
+                     */
+                    $fileMiniature = $form->getData()->miniature;
+
+                    if ($fileMiniature) {
+                        $this->fileOutput = $fileMiniature->move(
+                            $this->imageFolder,
+                            $this->generateUniqueFileName()."."
+                            .$fileMiniature->guessExtension()
+                        );
+                    }
+
+                    $updPost->setMiniature($this->media.$this->fileOutput->getFilename());
+                }
+
+            }
+
             $this->postRepository->update();
 
             $this->flash->add("notice","votre article à bien été modifié il va mintenant être soumis à validation");

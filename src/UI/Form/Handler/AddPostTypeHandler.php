@@ -97,6 +97,19 @@ class AddPostTypeHandler implements AddPostTypeHandlerInterface
                 );
             }
 
+            /**
+             * @var UploadedFile $fileMiniature
+             */
+            $fileMiniature = $form->getData()->miniature;
+
+            if ($fileMiniature) {
+                $this->fileOutput = $fileMiniature->move(
+                    $this->imageFolder,
+                    $this->generateUniqueFileName()."."
+                    .$fileMiniature->guessExtension()
+                );
+            }
+
             $user = $this->token->getToken()->getUser();
 
             $this->postBuilder->create(
@@ -104,6 +117,7 @@ class AddPostTypeHandler implements AddPostTypeHandlerInterface
                 $form->getData()->content,
                 $user,
                 $form->getData()->category,
+                $this->media.$this->fileOutput->getFilename(),
                 $this->media.$this->fileOutput->getFilename()
 
             );

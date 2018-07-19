@@ -8,8 +8,13 @@
 
 namespace App\UI\Responder\Interfaces;
 
+use App\Domain\Models\Post;
 
+/**
+ * Interface ActualityResponderInterface
+ * @package App\UI\Responder\Interfaces
+ */
 interface ActualityResponderInterface
 {
-    public function __invoke($post);
+    public function __invoke(array $post, Post $lastPost = null);
 }

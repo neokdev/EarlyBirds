@@ -8,7 +8,6 @@
 
 namespace App\UI\Action;
 
-
 use App\Domain\DTO\UpdatePostDTO;
 use App\Domain\Repository\PostRepository;
 use App\UI\Action\Interfaces\UpdatePostActionInterface;
@@ -87,7 +86,6 @@ class UpdatePostAction implements UpdatePostActionInterface
         $this->updatePostTypeHandler = $updatePostTypeHandler;
     }
 
-
     public function __invoke(Request $request)
     {
         $responder = $this->updatePostResponder;
@@ -113,6 +111,7 @@ class UpdatePostAction implements UpdatePostActionInterface
             $updPost->getTitle(),
             $updPost->getContent(),
             $updPost->getCategory(),
+            null,
             null
         );
 
