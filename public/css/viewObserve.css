@@ -1,0 +1,98 @@
+#viewObserveHeader div {
+    padding-left: 4%;
+    margin-bottom: 0;
+    height: 378px;
+    background-position: 40% 400%;
+}
+
+#viewObserveHeader h1 {
+    font-family: Didot, serif;
+    font-size: 40px;
+    color: #579BC1;
+}
+
+#viewObserveHeader p {
+    font-family: Montserrat, serif;
+    font-size: 16px;
+}
+
+#viewObserveHeader a {
+    border-radius: 20px;
+    margin: 10px;
+    background-color: #2D9CDB!important;
+    text-transform: none;
+}
+
+#observation {
+    font-family: Montserrat, serif;
+    text-transform: uppercase;
+}
+
+#observation > div {
+    padding-top: 30px;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+#top > div.col.s12.l8 {
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+#top i.material-icons.left {
+    margin-bottom: 10px;
+}
+
+#top span {
+    color: #009587;
+    font-style: italic;
+    font-size: 12px;
+    position: relative;
+    top: 5px;
+}
+
+@media (max-width: 992px) {
+    #viewObserveHeader {
+        position: relative;
+        margin-top: 100px;
+    }
+
+    #observation {
+        position: relative;
+        margin-top: 100px;
+    }
+}
+
+@media (min-width: 993px) {
+    #viewObserveHeader {
+        position: relative;
+        bottom: 343px;
+    }
+
+    #observation {
+        position: relative;
+        bottom: 343px;
+    }
+}
+
+#observation b {
+    text-transform: uppercase;
+    color: #00BCD4;
+}
+
+#observation li a {
+    font-style: italic;
+    font-weight: bold;
+}
+
+#info > li {
+    margin: 2px 0 2px 0;
+}
+
+#observeBtn {
+    border-radius: 20px;
+    margin: 20px 1% 20px 1%;
+    font-family: Montserrat, serif;
+    text-transform: none;
+    font-weight: bold;
+}
