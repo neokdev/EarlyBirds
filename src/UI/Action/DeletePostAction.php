@@ -13,6 +13,9 @@ use App\Domain\Repository\PostRepository;
 use App\UI\Responder\Interfaces\DeletePostResponderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route(
@@ -36,18 +39,33 @@ class DeletePostAction
     private $deletePostResponder;
 
     /**
+     * @var AuthorizationCheckerInterface
+     */
+    private $authChecker;
+
+    /**
+     * @var TokenStorageInterface
+     */
+    private $token;
+
+    /**
      * DeletePostAction constructor.
-     * @param PostRepository               $postRepository
-     * @param DeletePostResponderInterface $deletePostResponder
+     * @param PostRepository                $postRepository
+     * @param DeletePostResponderInterface  $deletePostResponder
+     * @param AuthorizationCheckerInterface $authChecker
+     * @param TokenStorageInterface         $token
      */
     public function __construct(
-        PostRepository               $postRepository,
-        DeletePostResponderInterface $deletePostResponder)
-    {
+        PostRepository                $postRepository,
+        DeletePostResponderInterface  $deletePostResponder,
+        AuthorizationCheckerInterface $authChecker,
+        TokenStorageInterface         $token
+    ) {
         $this->postRepository      = $postRepository;
         $this->deletePostResponder = $deletePostResponder;
+        $this->authChecker         = $authChecker;
+        $this->token               = $token;
     }
-
 
     /**
      * @param Request $request
@@ -57,7 +75,24 @@ class DeletePostAction
     {
         $id = $request->attributes->get('id');
         $post = $this->postRepository->findOneBy(['id' => $id]);
-        $this->postRepository->delete($post);
+
+        if (true === $this->authChecker->isGranted('ROLE_USER')) {
+            $userPostId = $post->getAuthor()->getId();
+            $uId = $this->token->getToken()->getUser();
+            $userId = $uId->getId();
+
+            if ( $userId === $userPostId) {
+                $this->postRepository->delete($post);
+            } else {
+                throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
+            article, vous ne pouvez pas le modifié');
+            }
+        } elseif (true === $this->authChecker->isGranted('ROLE_ADMIN')){
+            $this->postRepository->delete($post);
+        } else {
+            throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
+            article, vous ne pouvez pas le modifié');
+        }
 
         $responder = $this->deletePostResponder;
         return $responder();

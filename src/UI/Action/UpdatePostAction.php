@@ -101,12 +101,12 @@ class UpdatePostAction implements UpdatePostActionInterface
             $userId = $uId->getId();
 
             if ( $userId !== $userPostId) {
-                throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cette 
-            observation, vous ne pouvez pas la modifié');
+                throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
+            article, vous ne pouvez pas le modifié');
             }
         } else {
-            throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cette 
-            observation, vous ne pouvez pas la modifié');
+            throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
+            article, vous ne pouvez pas le modifié');
         }
 
         $updPostDto = new UpdatePostDTO(
