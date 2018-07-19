@@ -47,7 +47,6 @@ class ContactBuilder implements ContactBuilderInterface
             $mail,
             $marketing,
             $response
-
         );
 
         return $this;

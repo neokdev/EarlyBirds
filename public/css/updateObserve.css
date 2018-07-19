@@ -139,13 +139,23 @@ div#uplBtn span {
 }
 
 
-#form_errors {
-    border-radius: 20px;
-    background: #F2994A;
-    text-transform: lowercase;
+
+.form_errors {
+    text-align: right;
+    font-size: .9em;
+    font-weight: 300;
     font-family: MontSerrat;
-    font-Size: 1.125em;
-    font-weight: 800;
+    margin-top: 0;
+    color: #F2994A;
+
+}
+
+span.form_errors ul {
+    margin-top: 0;
+}
+
+#error-img {
+    text-align: center;
 }
 
 .flash-notice {
@@ -205,20 +215,6 @@ div#popupMap {
     color: #2D9CDB;
     font-family: MontSerrat;
     font-weight: 700;
-}
-
-.form_errors {
-    text-align: center;
-    font-size: 1.3em;
-    font-weight: 500;
-    font-family: MontSerrat;
-    color: red;
-
-}
-
-#err {
-    border-radius: 20em;
-    padding-bottom: 1em;
 }
 
 @media (max-width: 400px) {

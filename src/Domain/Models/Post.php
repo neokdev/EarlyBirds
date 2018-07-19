@@ -179,4 +179,96 @@ class Post
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImg(): string
+    {
+        return $this->img;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param string $title
+     * @return Post
+     */
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @param string $content
+     * @return Post
+     */
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @param string $category
+     * @return Post
+     */
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @param string $img
+     * @return Post
+     */
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
+
+        return $this;
+    }
 }

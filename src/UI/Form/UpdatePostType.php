@@ -58,7 +58,7 @@ class UpdatePostType extends AbstractType
             ])
             ->add('img', FileType::class, [
                 'label'    => false,
-                'required' => true
+                'required' => false
             ])
         ;
     }

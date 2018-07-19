@@ -32,24 +32,31 @@
                             {% endfor %}
                         </div>
 
+                        <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1" id="err">
+
+
+
+
+                        </div>
+
                         <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1">
                             <span class="label"></span>
-                            {{ form_row(form.subject) }}
+                            {{ form_widget(form.subject) }}
                             <span class="form_errors">{{ form_errors(form.subject) }}</span>
                         </div>
                     <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1">
                             <span class="label"></span>
-                            {{ form_row(form.author) }}
-                            <span class="form_errors">{{ form_errors(form.author) }}</span>
+                            {{ form_widget(form.author) }}
+                        <span class="form_errors">{{ form_errors(form.author) }}</span>
                         </div>
                         <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1">
                             <span class="label"></span>
-                            {{ form_row(form.mail) }}
+                            {{ form_widget(form.mail) }}
                             <span class="form_errors">{{ form_errors(form.mail) }}</span>
                         </div>
                         <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1">
                             <span class="label"></span>
-                            {{ form_row(form.message) }}
+                            {{ form_widget(form.message) }}
                             <span class="form_errors">{{ form_errors(form.message) }}</span>
                         </div>
                         <div class="input-field col l6 s11 m8 offset-l4" id="divSubBtn">

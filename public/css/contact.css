@@ -86,12 +86,17 @@ textarea {
 }
 
 .form_errors {
-    text-align: center;
-    font-size: 1.3em;
-    font-weight: 500;
+    text-align: right;
+    font-size: .9em;
+    font-weight: 300;
     font-family: MontSerrat;
+    margin-top: 0;
     color: red;
 
+}
+
+span.form_errors ul {
+    margin-top: 0;
 }
 
 #submitBtn {
@@ -164,7 +169,7 @@ textarea {
     display: none;
 }
 
-.flash-notice {
+.notice {
     background: #59A177;
     color: white;
     border-radius: 20px;
@@ -174,6 +179,7 @@ textarea {
     font-weight: 700;
     font-size: 1.200em;
     text-transform: lowercase;
+    padding-bottom: .8em;
     text-align: center;
 }
 

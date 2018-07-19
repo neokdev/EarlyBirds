@@ -80,7 +80,7 @@ class ContactTypeHandler implements ContactTypeHandlerInterface
 
             $this->mailer->sendContactMail($this->contactBuilder->getContact());
 
-            $this->flash->add('notie','message envoyé');
+            $this->flash->add('notice','message envoyé');
 
             return true;
         }
