@@ -34,7 +34,7 @@ class ContactType extends AbstractType
         $builder
             ->add('message', TextareaType::class, [
                 'label'   => false,
-                'require' => true,
+                'required' => true,
                 'attr' => [
                     'placeholder' =>'votre message'
                 ]
@@ -42,7 +42,7 @@ class ContactType extends AbstractType
 
             ->add('author', TextType::class, [
                 'label'   => false,
-                'require' => true,
+                'required' => true,
                 'attr' => [
                     'placeholder' =>'votre nom et prénom'
                 ]
@@ -50,7 +50,7 @@ class ContactType extends AbstractType
 
             ->add('subject', TextType::class, [
                 'label'   => false,
-                'require' => true,
+                'required' => true,
                 'attr' => [
                     'placeholder' => 'sujet du mail'
                 ]
@@ -58,7 +58,7 @@ class ContactType extends AbstractType
 
             ->add('mail', TextType::class, [
                 'label'   => false,
-                'require' => true,
+                'required' => true,
                 'attr' => [
                     'placeholder' => 'votre email'
                 ]

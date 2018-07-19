@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ContactDTO implements ContactDTOInterface
 {
     /**
-     * @Assert\NotBlank("vous devez renseigner un nom d'auteur")
+     * @Assert\NotBlank(message= "vous devez renseigner un nom d'auteur")
      * @Assert\Length(
      *      min = 5,
      *      max = 50,
@@ -26,7 +26,7 @@ class ContactDTO implements ContactDTOInterface
     public $author;
 
     /**
-     * @Assert\NotBlank("le message ne peut pas être vide")
+     * @Assert\NotBlank(message="le message ne peut pas être vide")
      * @Assert\Length(
      *      min = 50,
      *      max = 5000,
@@ -38,10 +38,10 @@ class ContactDTO implements ContactDTOInterface
     public $message;
 
     /**
-     * @Assert\NotBlank("le message doit avoir un sujet")
+     * @Assert\NotBlank(message= "le message doit avoir un sujet")
      * @Assert\Length(
      *      min = 5,
-     *      max = 15,
+     *      max = 50,
      *      minMessage = "votre sujet doit contenir au moins {{ limit }} carctères",
      *      maxMessage = "votre sujet doit contenir moins de {{ limit }} carctères"
      * )
@@ -50,7 +50,7 @@ class ContactDTO implements ContactDTOInterface
     public $subject;
 
     /**
-     * @Assert\NotBlank("l'email doit être complété")
+     * @Assert\NotBlank(message= "l'email doit être complété")
      * @Assert\Email(
      *     message = "l'email '{{ value }}' n'est pas valide",
      *     checkMX = true
@@ -60,13 +60,13 @@ class ContactDTO implements ContactDTOInterface
     public $mail;
 
     /**
-     * @Assert\NotBlank("la case doit être cochée")
+     * @Assert\NotBlank(message= "la case doit être cochée")
      * @var boolean
      */
     public $marketing;
 
     /**
-     * @Assert\NotBlank("la case doit être cochée")
+     * @Assert\NotBlank(message= "la case doit être cochée")
      * @var boolean
      */
     public $response;

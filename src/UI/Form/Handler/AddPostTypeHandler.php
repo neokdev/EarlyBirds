@@ -102,7 +102,7 @@ class AddPostTypeHandler implements AddPostTypeHandlerInterface
             $this->postBuilder->create(
                 $form->getData()->title,
                 $form->getData()->content,
-                $user->getId(),
+                $user,
                 $form->getData()->category,
                 $this->media.$this->fileOutput->getFilename()
 

@@ -70,8 +70,8 @@ class ContactTypeHandler implements ContactTypeHandlerInterface
             $this->contactBuilder->create(
                 $form->getData()->author,
                 $form->getData()->message,
-                $form->getData()->mail,
                 $form->getData()->subject,
+                $form->getData()->mail,
                 $form->getData()->marketing,
                 $form->getData()->response
             );

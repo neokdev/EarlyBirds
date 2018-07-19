@@ -11,6 +11,7 @@ namespace App\UI\Responder;
 
 use App\UI\Responder\Interfaces\AddPostResponderInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
@@ -52,7 +53,7 @@ class AddPostResponder implements AddPostResponderInterface
     public function __invoke(bool $redirect = false, FormInterface $form = null)
     {
         $redirect
-            ? $response = new Response($this->url->generate('app_add_post'))
+            ? $response = new RedirectResponse($this->url->generate('app_add_post'))
             : $response = new Response($this->twig->render('addPost.html.twig',
                    ['form' => $form->createView()
         ]))
