@@ -163,7 +163,7 @@ ul#category-list {
 
 #newsletter button {
     border-radius: 20px;
-    background: orange;
+    background: #fb8c00;
     margin-top: 1em;
     margin-bottom: 2em;
     box-shadow: none;
@@ -201,4 +201,11 @@ ul#category-list {
     font-weight: 500;
     font-size: 1.500em;
     padding-bottom: 0;
+}
+
+.category-head-link {
+    color: #fb8c00;
+    font-family: MontSerrat;
+    font-weight: 500;
+    font-size: 1em;
 }

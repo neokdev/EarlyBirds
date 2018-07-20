@@ -28,11 +28,12 @@
             </div>
         </div>
 
-        <div class="col l10 offset-l1 m10 offset-m1 s12" id="search-container">
-            <input class="col l8 offset-l2 m8 offset-m2 s12"
+        <div class="input-field col l10 offset-l1 m10 offset-m1 s12" id="search-container">
+            <input class="col l8 offset-l2 m8 offset-m2 s12 autocomplete"
                    type="text"
                    placeholder="Champ de Recherche"
                    id="search"
+                   autocomplete="off"
             />
         </div>
 
@@ -82,8 +83,70 @@
                         </div>
                         <div class="collapsible-body">
                             <ul id="category-list">
-                                <li><a href="" class="category-link">Oiseaux</a></li>
-                                <li><a href="" class="category-link">Migrations</a></li>
+                               <li>
+                                   <p class="category-head-link">vie de l'association</p>
+                                   <ul>
+                                       <li><a href="#" data-cat="CRAG" class="category-link">CR,
+                                               AG</a></li>
+                                       <li><a href="#" data-cat="benevola" class="category-link">Bénévolat,
+                                               partenariat</a></li>
+                                       <li><a href="#" data-cat="facts" class="category-link">faits marquants</a></li>
+                                   </ul>
+                               </li>
+                                <li>
+                                    <p class="category-head-link">Événement</p>
+                                    <ul>
+                                        <li><a href="#" data-cat="agenda"
+                                               class="category-link">Agenda asso</a></li>
+                                        <li>
+                                            <a href="#" data-cat="autres"
+                                               class="category-link">
+                                                Autres  : exemple "Fête de la nature", we Oiseaux des jardins
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="category-head-link">L’art d'observer les oiseaux</p>
+                                    <ul>
+                                        <li><a href="#" data-cat="places"
+                                               class="category-link">Lieux, balades</a></li>
+                                        <li><a href="#" data-cat="birdwatcher"
+                                               class="category-link">Attitude du birdwatcher</a></li>
+                                        <li><a href="#" data-cat="gear" class="category-link">équipement</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" data-cat="bird"
+                                       class="category-head-link">Identifier un oiseau (comment reconnaître un .... ?)</a></li>
+                                <li>
+                                    <p class="category-link">Ornithologie sans frontières</p>
+                                    <ul>
+                                        <li><a href="#" data-cat="exoticbirds"
+                                               class="category-link">Oiseaux exotiques</a></li>
+                                        <li><a href="#" data-cat="travel"
+                                               class="category-link">Voyages, expériences ornithologiques</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="category-head-link">Biodiversité / environnement</p>
+                                    <ul>
+                                        <li><a href="#" data-cat="preserv"
+                                               class="category-link">Zones à préserver</a></li>
+                                        <li><a href="#" data-cat="farming"
+                                               class="category-link">Agriculture, jardinage, conseils pratiques</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="category-head-link">Programmes de recherche et
+                                        publications</p>
+                                    <ul>
+                                        <li><a href="#" data-cat="program"
+                                               class="category-link">Programmes de recherche en cours</a></li>
+                                        <li><a href="#" data-cat="document"
+                                               class="category-link">documents scientifiques</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </li>

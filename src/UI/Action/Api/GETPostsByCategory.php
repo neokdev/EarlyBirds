@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: havartjeremie
  * Date: 20/07/2018
- * Time: 19:25
+ * Time: 21:58
  */
 
 namespace App\UI\Action\Api;
@@ -16,17 +16,17 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route(
- *     path="/actualite/search-post",
+ *     path="/actualite/search-post-category-{search}",
  *     methods={"GET"}
  * )
- * Class GETPostsInit
+ * Class GETPostsByCategory
  * @package App\UI\Action\Api
  */
-class GETPostsInit
+class GETPostsByCategory
 {
     /**
-     * @var PostRepository
-     */
+    * @var PostRepository
+    */
     private $postRepository;
 
     /**
@@ -53,9 +53,8 @@ class GETPostsInit
      */
     public function __invoke(Request $request)
     {
-
-        $listPost = $this->postRepository->initAll();
+        $search = $request->attributes->get('search');
+        $listPost = $this->postRepository->findByCategory($search);
         return new JsonResponse($listPost,200);
-
     }
 }

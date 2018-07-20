@@ -16,7 +16,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route(
- *     path="/actualite/search-post-{search}"
+ *     path="/actualite/search-post-{search}",
+ *     methods={"GET"}
  * )
  * Class GETPostsBySearch
  * @package App\UI\Action\Api
@@ -35,14 +36,15 @@ class GETPostsBySearch
 
     /**
      * GETPostsBySearch constructor.
-     * @param PostRepository $postRepository
+     * @param PostRepository      $postRepository
      * @param SerializerInterface $serializer
      */
-    public function __construct(PostRepository $postRepository,
-                                SerializerInterface $serializer)
+    public function __construct(
+        PostRepository      $postRepository,
+        SerializerInterface $serializer)
     {
         $this->postRepository = $postRepository;
-        $this->serializer = $serializer;
+        $this->serializer     = $serializer;
     }
 
     /**
@@ -54,7 +56,6 @@ class GETPostsBySearch
         $search = $request->attributes->get('search');
         $listPost = $this->postRepository->findBySearch($search);
         return new JsonResponse($listPost,200);
-
     }
 
 }

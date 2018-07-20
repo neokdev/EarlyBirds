@@ -80,23 +80,73 @@ $(function () {
                     }
                 }
             );
-        }
+        } else {
 
-        $.getJSON(document.location.href + '/search-post-' + e.target.value,
-            function (data) {
-                contentDiv.html("");
-                if (data.length === 0) {
-                    contentDiv.html("<p>pas de resultat pour votre recherche</p>");
-                } else {
-                    data.forEach(function (datas) {
-                        construct(datas);
-                    })
-
+            $.getJSON(document.location.href + '/search-post-'+e.target.value,
+                function (data) {
+                    contentDiv.html("");
+                    if (data.length === 0) {
+                        contentDiv.html("<p>pas de resultat pour votre recherche</p>");
+                    } else {
+                        data.forEach(function (datas) {
+                            construct(datas);
+                        })
+                    }
                 }
-            }
-        );
+            );
+/*
+            if (e.target.value.length === 1) {
+                $.ajax({
+                       url: document.location.href + "/search-post-"+ e.target.value,
+                       cache: false,
+                       dataType: "json",
+                       type: "GET",
+                       success: function(result) {
 
+                           let article = [];
+
+                           result.forEach(function (datas) {
+
+                               article.push(datas.title);
+                           });
+
+                           if (!article || !article.length) return;
+                           let suggestions = article.map(function (item) {
+                               return "\"" + item + "\": null";
+                           });
+
+                           suggestions = "{" + suggestions + "}";
+                           searchBar.autocomplete({
+                              data: JSON.parse(suggestions),
+                              minLength: 0
+                          });
+
+                           contentDiv.html("");
+                           result.forEach(function (datas) {
+                               construct(datas);
+                           });
+                       }
+                });
+            }*/
+
+        }
     });
+
+   $('.category-link').on('click', function () {
+       category = $('.category-link').attr('data-cat');
+       $.getJSON(document.location.href + '/search-post-category-'+category,
+           function (data) {
+               contentDiv.html("");
+               if (data.length === 0) {
+                   contentDiv.html("<p>pas de resultat pour votre recherche</p>");
+               } else {
+                   data.forEach(function (datas) {
+                       construct(datas);
+                   })
+               }
+           }
+       );
+   });
 
 
 });

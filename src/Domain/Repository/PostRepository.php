@@ -120,5 +120,38 @@ class PostRepository extends ServiceEntityRepository
        return $result = $qr->getQuery()->getArrayResult();
     }
 
-    public
+    /**
+     * @return array
+     */
+    public function initAll()
+    {
+        $qb = $this->createQueryBuilder('p');
+            $qr = $qb->leftJoin('p.author','a')
+                     ->addSelect('a')
+                     ->leftJoin('p.favouredBy','f')
+                     ->addSelect('f')
+                     ->orderBy('p.createdAt','DESC')
+        ;
+
+        return $result = $qr->getQuery()->getArrayResult();
+    }
+
+    /**
+     * @param $search
+     * @return array
+     */
+    public function findByCategory($search)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qr = $qb->where('p.category', ':cat')
+            ->setParameter('cat', $search)
+            ->leftJoin('p.author','a')
+            ->addSelect('a')
+            ->leftJoin('p.favouredBy','f')
+            ->addSelect('f')
+            ->orderBy('p.createdAt','DESC')
+        ;
+
+        return $result = $qr->getQuery()->getArrayResult();
+    }
 }
