@@ -9,7 +9,9 @@
 namespace App\UI\Action\Interfaces;
 
 
+use Symfony\Component\HttpFoundation\Request;
+
 interface ArticleActionInterface
 {
-    public function __invoke();
+    public function __invoke(Request $request);
 }
