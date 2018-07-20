@@ -66,7 +66,7 @@ class ValidateObserve
         $observe     = $this->observeRepository->findOneBy(['id' => $id]);
 
         $author = $observe->getAuthor();
-        $author->setScore($author->getScore() + 20);
+        $author->setScore($author->getScore() + 30);
         $this->userRepository->update();
 
         $observe->setValidator($currentUser);

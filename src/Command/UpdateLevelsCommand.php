@@ -71,7 +71,7 @@ class UpdateLevelsCommand extends Command
         $cacatoes = new Level();
 
         $cacatoes->setName('Cacatoès');
-        $cacatoes->setPoints(970);
+        $cacatoes->setPoints(460);
 
         $cactoesStatus = $this->repository->save($cacatoes);
         if ($cactoesStatus) {
@@ -81,7 +81,7 @@ class UpdateLevelsCommand extends Command
         $toucan = new Level();
 
         $toucan->setName('Toucan');
-        $toucan->setPoints(1810);
+        $toucan->setPoints(820);
 
         $toucanStatus = $this->repository->save($toucan);
         if ($toucanStatus) {
@@ -91,7 +91,7 @@ class UpdateLevelsCommand extends Command
         $hibou = new Level();
 
         $hibou->setName('Hibou');
-        $hibou->setPoints(2830);
+        $hibou->setPoints(1540);
 
         $hibouStatus = $this->repository->save($hibou);
         if ($hibouStatus) {
@@ -101,11 +101,31 @@ class UpdateLevelsCommand extends Command
         $heron = new Level();
 
         $heron->setName('Héron');
-        $heron->setPoints(3670);
+        $heron->setPoints(2260);
 
         $heronStatus = $this->repository->save($heron);
         if ($heronStatus) {
             $output->writeln("created level ".$heron->getName());
+        }
+
+        $cygne = new Level();
+
+        $cygne->setName('Cygne');
+        $cygne->setPoints(8100);
+
+        $cygneStatus = $this->repository->save($cygne);
+        if ($cygneStatus) {
+            $output->writeln("created level ".$cygne->getName());
+        }
+
+        $phenix = new Level();
+
+        $phenix->setName('Phénix');
+        $phenix->setPoints(22000);
+
+        $phenixStatus = $this->repository->save($phenix);
+        if ($phenixStatus) {
+            $output->writeln("created level ".$phenix->getName());
         }
 
         $output->writeln('Levels Updated');

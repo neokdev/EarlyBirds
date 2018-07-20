@@ -8,14 +8,12 @@
 
 namespace App\DataFixtures;
 
+use App\Domain\Models\Observe as ObserveClassName;
 use App\Domain\Models\TaxRef;
 use App\Domain\Repository\TaxRefRepository;
 use App\Domain\Repository\UserRepository;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
-ini_set('memory_limit', '-1');
-set_time_limit(0);
 
 class Observe extends AbstractBaseFixture implements DependentFixtureInterface
 {
@@ -55,15 +53,13 @@ class Observe extends AbstractBaseFixture implements DependentFixtureInterface
 
     /**
      * @param ObjectManager $manager
-     *
-     * @return mixed
      */
-    protected function loadData(ObjectManager $manager)
+    protected function loadData(ObjectManager $manager): void
     {
 //        $this->user = array_rand($manager->getRepository(\App\Domain\Models\User::class)->findAll());
 
         $taxref = null;
-        $this->createMany(\App\Domain\Models\Observe::class, 100, function (\App\Domain\Models\Observe $observe, $count) {
+        $this->createMany(ObserveClassName::class, 100, function (ObserveClassName $observe, $count) {
             /** @var TaxRef $taxref */
             while (!isset($taxref) || null === $taxref->getNomVern()) {
                 $taxref = $this->taxRefRepository->findOneBy(['id' => rand(0, 100)]);
@@ -98,7 +94,6 @@ class Observe extends AbstractBaseFixture implements DependentFixtureInterface
             foreach ($indexes as $index) {
                 $observe->addUpvoter($this->userRepository->findAll()[$index]);
             }
-            $observe->setObsDate($date);
         });
 
         $manager->flush();

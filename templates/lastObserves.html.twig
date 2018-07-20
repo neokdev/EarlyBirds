@@ -15,8 +15,9 @@
         <div  id="lastObserveHeader" class="row" style="margin-bottom: 61px">
             <div class="col s12" style="background-image: url('{{ asset('/img/other/mike-wilson-300693-unsplash.jpg') }}'); background-size: 100% 100%; height: 369px">
                 <h1>Parcourez les observations</h1>
-                <p class="flow-text">Découvrez les toutes espèces répertoriées en France par nos contributeurs et apprenez-en davantage sur chaque oiseau d'un simple clic sur sa fiche ou en utilisant notre moteur de recherche.</p>
-                <p class="flow-text"><b>L' accès à l'inventaire est libre et participatif</b><br/>Partager dès maintenant vos propres observations !</p>
+                <p>Découvrez les toutes espèces répertoriées en France par nos contributeurs et apprenez-en davantage sur chaque oiseau d'un simple clic sur sa fiche ou en utilisant notre moteur de recherche.</p>
+                <p><b>L' accès à l'inventaire est libre et participatif</b><br/>Partager dès maintenant vos propres observations !</p>
+                <a href="{{ path('app_observe') }}" class="waves-effect waves-light btn orange darken-1">Ajouter une observation</a>
             </div>
         </div>
 
@@ -25,7 +26,7 @@
 
                 <div class="row">
                     <div id="divautocomplete" class="col s8 offset-s2" style="background: #FFFFFF; box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px;">
-                        <div class="row" style="margin-bottom: 0">
+                        <div class="row" style="margin-bottom: 0; padding-left: 5%; padding-right: 5%;">
                             <div class="input-field col s12">
                                 <input data-url="{{ path('json_getvalidateobservestaxrefnames') }}" type="text" id="autocomplete-input" class="autocomplete">
                                 <img class="ObserveAjaxLoader" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}">
@@ -46,7 +47,7 @@
                 <div class="card-image">
                     <img src="{{ observe.img }}">
                     <span {% if observe.ref %}data-lbnom="{{ observe.ref.lbNom }}"{% endif %} class="left-align truncate card-title black-text" style="padding-left: 18px; padding-bottom: 13px; line-height: 24px">{% if observe.ref.nomVern is defined %}{{ observe.ref.nomVern }}{% elseif observe.ref.lbNom is defined %}{{ observe.ref.lbNom }}{% else %}Non identifié{% endif %}</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
+                    <a href="{{ path('app_view_observe', {id: observe.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                 </div>
                 <div class="card-content row" style="padding-bottom: 9px; padding-top: 9px">
                         <div class="col s6 left-align">
@@ -54,15 +55,21 @@
                                 <span class="truncate" style="font-size: 12px">Observé le {{ observe.createdAt|localizeddate('long', 'none') }}</span>
                             </div>
                             <div class="row" style="margin-bottom: 0">
-                                <span style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</span>
+                                <span class="truncate" style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</span>
                             </div>
                         </div>
                         <div class="col s4 left-align" style="padding-right: 0; padding-top: 15px;">
                             <span class="js-like-observe-count" style="position: relative; bottom: 8px; font-size: 12px">{{ observe.upvoter.count }}</span>
+                            {% if is_granted('ROLE_USER')%}
                             <a class="js-like-observe" href="{{ path('toggle_observe_heart', {id: observe.id}) }}">
                                 <i id="heart" data-url="{{ path('get_observe_like_status') }}" data-id="{{ observe.id }}" class="material-icons" style="color: #EB5757">favorite_border</i>
                                 <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
                             </a>
+                            {% else %}
+                                <a href="{{ path('security_login') }}">
+                                    <i class="material-icons" style="color: #EB5757">favorite_border</i>
+                                </a>
+                                {% endif %}
                             <a href="#">
                                 <i class="material-icons" style="color: #2D9CDB">share</i>
                             </a>

@@ -82,6 +82,7 @@ class User extends Fixture
                 $this->faker->firstName,
                 $this->faker->lastName,
                 $this->faker->imageUrl(1920, 1080, 'people', true, 'user', false),
+                $this->faker->numberBetween(100, 22000),
                 null
             );
 

@@ -5,6 +5,9 @@
     "composer/ca-bundle": {
         "version": "1.1.1"
     },
+    "dealerdirect/phpcodesniffer-composer-installer": {
+        "version": "v0.4.4"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -95,6 +98,9 @@
     "egulias/email-validator": {
         "version": "2.1.4"
     },
+    "escapestudios/symfony2-coding-standard": {
+        "version": "3.4.1"
+    },
     "fig/link-util": {
         "version": "1.0.0"
     },
@@ -130,6 +136,9 @@
     },
     "league/oauth2-google": {
         "version": "2.2.0"
+    },
+    "mayflower/mo4-coding-standard": {
+        "version": "v2.1.1"
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -202,6 +211,9 @@
             "version": "4.0",
             "ref": "e65a105bf4cd5b1b79012ba029954927f05922e8"
         }
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.3.0"
     },
     "stof/doctrine-extensions-bundle": {
         "version": "1.2",
