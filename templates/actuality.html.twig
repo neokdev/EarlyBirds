@@ -42,9 +42,12 @@
                             <img class="circle" id="head-img" src="{{
                             lastPost.miniature }}">
                         </p>
-                        <span class="card-title" id="head-article-title">{{ lastPost.title
-                            }}</span><em>{{ lastPost
-                            .author.email }}</em>
+                        <h2 class="card-title" id="head-article-title">{{ lastPost.title
+                            }}</h2>
+                        <p><em>{% if lastPost.author.nickName is not null %}{{ lastPost.author
+                                .nickName }}{% else %} nc {% endif %}</em></p>
+                        <p>{{ lastPost.category }}</p>
+
                         <p class="truncate" id="head-content">{{ lastPost.content }}</p>
                         <a class="btn-floating halfway-fab waves-effect waves-light orange
                         darken-1 btn-card"
@@ -109,9 +112,12 @@
                             <div class="card-image">
                                 <img src="{{ post.img }}">
                                 <h2 class="card-title" id="article-card-title">{{ post.title }}</h2>
-
                             </div>
                             <div class="card-content">
+                                <p>auteur : <em>{% if lastPost.author.nickName is not null %}
+                                            {{ lastPost.author.nickName }}
+                                        {% else %} nc {% endif %}</em></p>
+                                <p>category : {{ post.category }}</p>
                                 <p class="truncate">I am a very simple card. I am good at containing
                                     small bits
                                     of information. I am convenient because I require little markup to use effectively.</p>

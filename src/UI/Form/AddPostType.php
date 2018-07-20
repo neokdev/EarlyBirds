@@ -48,8 +48,8 @@ class AddPostType extends AbstractType
             ])
             ->add('category', ChoiceType::class, [
                 'choices' => [
-                    'cat1' => 1,
-                    'cat2' => 2
+                    'Oiseaux'    => 'Oiseaux',
+                    'Migrations' => 'Migrations'
                 ],
                 'placeholder' => 'choisissez une catégorie'
             ])
