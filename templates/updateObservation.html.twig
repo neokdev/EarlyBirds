@@ -40,12 +40,11 @@
             </div>
         </div>
         <div class="input-field col l10 offset-l1 s12 m12" id="err">
-            <span class="form_errors">{{ form_errors(form.description) }}</span>
-            <span class="form_errors">{{ form_errors(form.ref) }}</span>
-            <span class="form_errors">{{ form_errors(form.longitude) }}</span>
-            <span class="form_errors">{{ form_errors(form.latitude) }}</span>
-            <span class="form_errors">{{ form_errors(form.obsDate) }}</span>
-            <span class="form_errors">{{ form_errors(form.img) }}</span>
+
+
+
+
+
         </div>
         <div class="col m10 offset-m1 s12">
             <div class="row">
@@ -55,29 +54,35 @@
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label" id="label1">Oiseau observé</span>
                         {{ form_widget((form.ref)) }}
+                        <span class="form_errors">{{ form_errors(form.ref) }}</span>
                     </div>
 
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Longitude</span>
                         {{ form_widget(form.longitude) }}
+                        <span class="form_errors">{{ form_errors(form.longitude) }}</span>
                     </div>
 
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Latitude</span>
                         {{ form_widget(form.latitude) }}
+                        <span class="form_errors">{{ form_errors(form.latitude) }}</span>
                     </div>
 
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Date</span>
                         {{ form_widget(form.obsDate) }}
+                        <span class="form_errors">{{ form_errors(form.obsDate) }}</span>
                     </div>
 
                     <div class="input-field col l10 offset-l1 s12 m12">
                         <span class="label">Commentaire</span>
                         {{ form_widget(form.description) }}
+                        <span class="form_errors">{{ form_errors(form.description) }}</span>
                     </div>
 
                     <div class="file-field input-field col l8 offset-l2 m12 s12" id="divUpBtn">
+                        <div><span class="form_errors">{{ form_errors(form.img) }}</span></div>
                         <div class="btn" id="uplBtn">
                             <span>Télécharger une photo</span>
                             {{ form_widget(form.img) }}

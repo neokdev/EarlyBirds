@@ -1,0 +1,205 @@
+#subHeader {
+    margin-top: -23em;
+}
+
+#slogan {
+    top: 130px;
+}
+
+#header {
+
+    margin-bottom: 5em;
+    background: no-repeat center url("../img/other/actualite.jpeg");
+    background-size: cover;
+    height: 378px;
+    margin-top: unset;
+}
+
+.header_text {
+    font-family: MontSerrat;
+    font-weight: 500;
+    font-size: 3em;
+    text-align: center;
+    color: black;
+    text-transform: uppercase;
+    margin-top: 4em;
+}
+
+#search-container {
+    margin-top: 2em;
+    margin-bottom: 8em;
+}
+
+#search-container input#search {
+    padding-left: 15px;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 1.4em;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+
+}
+
+#search-container input {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding-left: 15px;
+}
+
+#search-container input::placeholder {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+}
+
+#head-card, #article-card {
+    border-radius: 1em;
+}
+
+#head-img {
+    width: 14.250em;
+    height: 14.250em;
+    text-align: center;
+}
+
+#head-img-container {
+    text-align: center;
+}
+
+.btn-card {
+    position: absolute;
+    right: 2em !important;
+    bottom: 2.5em !important;
+    width: 4em;
+    height: 4em;
+}
+
+.btn-card i {
+    padding-top: .4em;
+}
+
+#first-article-title {
+    font-family: MontSerrat;
+    font-size: 1.875em;
+    font-weight: 500;
+    text-align: center;
+    color: #8148B6;
+}
+
+#head-article-title {
+    font-family: MontSerrat;
+    font-weight: 500;
+    font-size: 1.500em;
+    text-align: left;
+    color: #00BCD4;
+}
+
+#head-content {
+    font-family: MontSerrat;
+    font-weight: 300;
+    font-size: 0.875em;
+    text-align: left;
+}
+
+.head-heart {
+    color: red;
+}
+
+.head-share {
+    color: #2D9CDB;
+}
+
+.head-link {
+    text-align: center;
+}
+
+#head-article-link {
+    color: #2D9CDB;
+    text-align: left;
+}
+
+#category, #newsletter {
+    border-radius: 1em;
+}
+
+#category-title, #newsletter-title {
+    font-family: MontSerrat;
+    font-size: 1.500em;
+    font-weight: 500;
+    color: #8148B6;
+    margin: 0;
+}
+
+.category-link {
+    font-family: MontSerrat;
+    font-weight: 500;
+    font-size: 0.875em;
+    color: #8148B6;
+}
+
+ul#category-list {
+    margin-top: 0;
+}
+
+#newsletter-body {
+    padding-top: .5em;
+}
+
+#newsletter-form {
+    text-align: center;
+}
+
+#newsletter-span {
+    font-family: MontSerrat;
+    font-weight: 300;
+    text-align: left;
+    color: #488194;
+}
+
+#newsletter-span-link {
+    font-weight: 500;
+    color: #488194;
+}
+
+#newsletter button {
+    border-radius: 20px;
+    background: orange;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    box-shadow: none;
+
+    text-transform: lowercase;
+}
+
+#newsletter input {
+    border-radius: 10px;
+    background: #EEEEEE;
+    margin: 1em 0;
+    width: 17em;
+    height: 3em;
+
+    text-transform: lowercase;
+}
+#newsletter input#email {
+    margin-top: 0;
+    box-shadow: none;
+}
+
+#newsletter input::placeholder {
+    text-decoration-line: none;
+}
+
+#newsletter-title-container {
+    text-align: center;
+    border: none;
+}
+
+#article-card-title {
+    color: #fb8c00;
+    font-family: MontSerrat;
+    font-weight: 500;
+    font-size: 1.500em;
+    padding-bottom: 0;
+}

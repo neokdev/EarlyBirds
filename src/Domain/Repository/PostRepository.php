@@ -47,4 +47,45 @@ class PostRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @param Post $post
+     * @return void
+     */
+    public function save(Post $post): void
+    {
+        $this->_em->persist($post);
+        $this->_em->flush();
+    }
+
+    /**
+     * @return void
+     */
+    public function update(): void
+    {
+        $this->_em->flush();
+    }
+
+    /**
+     * @param Post $post
+     */
+    public function delete(Post $post): void
+    {
+        $this->_em->remove($post);
+        $this->_em->flush();
+    }
+
+    /**
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findLastArticle()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->orderBy('p.updatedAt', 'DESC')
+            ->setMaxResults(1);
+        $qr = $qb->getQuery()->getOneOrNullResult();
+        return $qr;
+
+    }
 }

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+    <button type="submit">envoyer</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}

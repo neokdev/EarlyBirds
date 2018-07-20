@@ -149,7 +149,7 @@ class Mailer implements MailerInterface
                 $this->environment->render(
                     "Emails/contactMail.html.twig",
                     [
-                        'data' => $contact,
+                        'data' => $contact
                     ]
                 ),
                 'text/html'

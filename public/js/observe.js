@@ -304,11 +304,4 @@ $(function() {
         });
     }
 
-    //error message
-    let msg = $('.form_errors').text();
-    let divError = $('#err');
-    if (msg.length > 0) {
-        divError.css("background", "lightcoral");
-    }
-
 });

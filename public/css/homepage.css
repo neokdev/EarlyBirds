@@ -67,3 +67,110 @@
     font-weight: 400;
     text-align: center;
 }
+
+
+#row_participate {
+margin-top: 6em;
+}
+
+.paraph_deux {
+    font-family: MontSerrat;
+    font-weight: 200;
+    font-size: 1.300em;
+    padding-right: 6em !important;
+}
+
+#particpate {
+    font-family: MontSerrat;
+    font-weight: 300;
+    font-size: 1.5em;
+    width: 18em;
+    position: relative;
+    z-index: 3;
+    bottom: 3em;
+    right: 3em;
+}
+
+#participate_background {
+    width: 27em;
+    height: 5em;
+    background: lightgrey;
+    z-index: 0;
+
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: rotateZ(-90deg);
+
+    position: relative;
+    top: 7em;
+    left: 0;
+}
+
+#participate_group {
+    margin-top: 12em;
+    margin-left: 6em;
+}
+
+.infog {
+    margin-top: 5em;
+}
+
+.infog_subtitle {
+    font-family: MontSerrat;
+    font-size: 1em;
+    font-weight: 300;
+    text-align: center;
+
+}
+
+#infog_linkBtn {
+    background: #F2994A;
+    border-radius: 20px;
+    font-size: 1.125em;
+    text-transform: initial;
+    margin-top: 5em;
+}
+
+#observatory {
+    margin-top: 10em;
+}
+
+#observatory_subtitle {
+    font-family: MontSerrat;
+    font-weight: 300;
+    font-size: 1.5em;
+    width: 18em;
+
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: rotateZ(-90deg);
+
+    position: relative;
+    top: 22em;
+    left: 3em;
+}
+
+#observatory_background {
+    width: 24em;
+    height: 5em;
+
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: rotateZ(-90deg);
+
+    position: relative;
+    top: 37em;
+    left: 3em;
+
+    background-color: lightgrey;
+    padding: 1em;
+}

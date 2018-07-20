@@ -33,28 +33,32 @@ class ContactType extends AbstractType
     ) {
         $builder
             ->add('message', TextareaType::class, [
-                'label' => false,
+                'label'   => false,
+                'required' => true,
                 'attr' => [
                     'placeholder' =>'votre message'
                 ]
             ])
 
             ->add('author', TextType::class, [
-                'label' => false,
+                'label'   => false,
+                'required' => true,
                 'attr' => [
                     'placeholder' =>'votre nom et prénom'
                 ]
             ])
 
             ->add('subject', TextType::class, [
-                'label' => false,
+                'label'   => false,
+                'required' => true,
                 'attr' => [
                     'placeholder' => 'sujet du mail'
                 ]
             ])
 
             ->add('mail', TextType::class, [
-                'label' => false,
+                'label'   => false,
+                'required' => true,
                 'attr' => [
                     'placeholder' => 'votre email'
                 ]
