@@ -110,7 +110,24 @@
                                     <li><b>Longitude : </b>{{ observe.longitude }}</li>
                                     <li><a href="https://inpn.mnhn.fr/espece/cd_nom/{{ observe.ref.cdNom }}">lien INPN</a></li>
                                 {% endif %}
+                                <li><b>Auteur de l'observation : </b>{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</li>
                             </ul>
+                            <div class="row center">
+                                <div class="col s12" style="height: 50px">
+                                    <span class="js-like-observe-count" style="position: relative; bottom: 12px; font-size: 16px">{{ observe.upvoter.count }}</span>
+                                    {% if is_granted('ROLE_USER')%}
+                                        <a class="js-like-observe" href="{{ path('toggle_observe_heart', {id: observe.id}) }}">
+                                            <i id="heart" data-url="{{ path('get_observe_like_status') }}" data-id="{{ observe.id }}" class="material-icons" style="color: #EB5757; font-size: 40px">favorite_border</i>
+                                            <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px; height: 32px;">
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('security_login') }}">
+                                            <i class="material-icons" style="color: #EB5757">favorite_border</i>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="divider"></div>
