@@ -26,7 +26,34 @@ $(function () {
 
        let YY = dateArticle.getFullYear();
        let DD = dateArticle.getDate();
-       let MM = dateArticle.getMonth();
+       let MM;
+
+       switch(dateArticle.getMonth()){
+           case 1: MM = "Janvier";
+               break;
+           case 2: MM = "Février";
+               break;
+           case 3: MM = "Mars";
+               break;
+           case 4: MM = "Avril";
+               break;
+           case 5: MM = "Mai";
+               break;
+           case 6: MM = "Juin";
+               break;
+           case 7: MM = "Juillet";
+               break;
+           case 8: MM = "Août";
+               break;
+           case 9: MM = "Septembre";
+               break;
+           case 10: MM = "Octobre";
+               break;
+           case 11: MM = "Novembre";
+               break;
+           case 12: MM = "Décembre";
+               break;
+       }
 
        contentDiv.append(
            "<div class='col l6 m6 s12'>" +
@@ -38,7 +65,7 @@ $(function () {
                     "<div class='card-content'>" +
                         "<p>auteur : "+ nickname +"</p>"+
                         "<p class='chip'>"+ datas.category +" </p>"+
-                        "<p>crée le : <em>"+DD+"-"+MM+"-"+YY+"</em></p>"+
+                        "<p>crée le : <em>"+DD+" "+MM+" "+YY+"</em></p>"+
                         "<p class='truncate'>" +
                             datas.content +
                         "</p>"+
@@ -70,6 +97,7 @@ $(function () {
         if (e.target.value.length === 0) {
             $.getJSON(document.location.href + '/search-post',
                 function (data) {
+                console.log(data);
                     contentDiv.html("");
                     if (data.length === 0) {
                         contentDiv.html("<p>pas de resultat pour votre recherche</p>");

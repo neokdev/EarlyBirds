@@ -55,7 +55,7 @@
                             </em>
                         </p>
                         <p class="chip">{{ lastPost.category }}</p>
-                        <p>crée le : <em>{{ lastPost.createdAt|date('d-M-Y à H-m-s') }}
+                        <p>crée le : <em>{{ lastPost.createdAt|localizeddate('long', 'none') }}
                             </em>
                         </p>
 
@@ -86,23 +86,24 @@
                                <li>
                                    <p class="category-head-link">vie de l'association</p>
                                    <ul>
-                                       <li><a href="#" data-cat="CRAG" class="category-link">CR,
-                                               AG</a></li>
-                                       <li><a href="#" data-cat="benevola" class="category-link">Bénévolat,
-                                               partenariat</a></li>
-                                       <li><a href="#" data-cat="facts" class="category-link">faits marquants</a></li>
+                                       <li data-cat="CRAG" class="category-link">CR,
+                                               AG</li>
+                                       <li data-cat="benevola" class="category-link">Bénévolat,
+                                               partenariat</li>
+                                       <li data-cat="facts" class="category-link">faits
+                                           marquants</li>
                                    </ul>
                                </li>
                                 <li>
                                     <p class="category-head-link">Événement</p>
                                     <ul>
-                                        <li><a href="#" data-cat="agenda"
-                                               class="category-link">Agenda asso</a></li>
-                                        <li>
-                                            <a href="#" data-cat="autres"
+                                        <li data-cat="agenda"
+                                               class="category-link">Agenda asso</li>
+                                        <li
+                                            data-cat="autres"
                                                class="category-link">
                                                 Autres  : exemple "Fête de la nature", we Oiseaux des jardins
-                                            </a>
+
                                         </li>
 
                                     </ul>
@@ -110,41 +111,42 @@
                                 <li>
                                     <p class="category-head-link">L’art d'observer les oiseaux</p>
                                     <ul>
-                                        <li><a href="#" data-cat="places"
-                                               class="category-link">Lieux, balades</a></li>
-                                        <li><a href="#" data-cat="birdwatcher"
-                                               class="category-link">Attitude du birdwatcher</a></li>
-                                        <li><a href="#" data-cat="gear" class="category-link">équipement</a></li>
+                                        <li data-cat="places"
+                                               class="category-link">Lieux, balades</li>
+                                        <li data-cat="birdwatcher"
+                                               class="category-link">Attitude du birdwatcher</li>
+                                        <li data-cat="gear"
+                                            class="category-link">équipement</li>
                                     </ul>
                                 </li>
-                                <li><a href="#" data-cat="bird"
-                                       class="category-head-link">Identifier un oiseau (comment reconnaître un .... ?)</a></li>
+                                <li data-cat="bird"
+                                       class="category-head-link">Identifier un oiseau (comment reconnaître un .... ?)</li>
                                 <li>
                                     <p class="category-link">Ornithologie sans frontières</p>
                                     <ul>
-                                        <li><a href="#" data-cat="exoticbirds"
-                                               class="category-link">Oiseaux exotiques</a></li>
-                                        <li><a href="#" data-cat="travel"
-                                               class="category-link">Voyages, expériences ornithologiques</a></li>
+                                        <li data-cat="exoticbirds"
+                                               class="category-link">Oiseaux exotiques</li>
+                                        <li data-cat="travel"
+                                               class="category-link">Voyages, expériences ornithologiques</li>
                                     </ul>
                                 </li>
                                 <li>
                                     <p class="category-head-link">Biodiversité / environnement</p>
                                     <ul>
-                                        <li><a href="#" data-cat="preserv"
-                                               class="category-link">Zones à préserver</a></li>
-                                        <li><a href="#" data-cat="farming"
-                                               class="category-link">Agriculture, jardinage, conseils pratiques</a></li>
+                                        <li data-cat="preserv"
+                                               class="category-link">Zones à préserver</li>
+                                        <li data-cat="farming"
+                                               class="category-link">Agriculture, jardinage, conseils pratiques</li>
                                     </ul>
                                 </li>
                                 <li>
                                     <p class="category-head-link">Programmes de recherche et
                                         publications</p>
                                     <ul>
-                                        <li><a href="#" data-cat="program"
-                                               class="category-link">Programmes de recherche en cours</a></li>
-                                        <li><a href="#" data-cat="document"
-                                               class="category-link">documents scientifiques</a></li>
+                                        <li data-cat="program"
+                                               class="category-link">Programmes de recherche en cours</li>
+                                        <li data-cat="document"
+                                               class="category-link">documents scientifiques</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -192,7 +194,7 @@
                                             {{ lastPost.author.nickName }}
                                         {% else %} nc {% endif %}</em></p>
                                 <p class="chip">{{ post.category }}</p>
-                                <p>crée le : <em>{{ post.createdAt|date('d-M-Y à H-m-s') }}
+                                <p>crée le : <em>{{ post.createdAt|localizeddate('long', 'none') }}
                                     </em>
                                 </p>
                                 <p class="truncate">I am a very simple card. I am good at containing

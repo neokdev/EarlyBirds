@@ -135,6 +135,7 @@
     font-weight: 500;
     font-size: 0.875em;
     color: #8148B6;
+    cursor: pointer;
 }
 
 ul#category-list {

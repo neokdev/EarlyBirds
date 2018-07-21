@@ -110,7 +110,7 @@ class PostRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p');
             $qr = $qb
             ->where($qb->expr()->like('p.title',':search'))
-            ->setParameter('search' , $search.'%')
+            ->setParameter('search' , '%'.$search.'%')
                 ->leftJoin('p.author','a')
                 ->addSelect('a')
                 ->leftJoin('p.favouredBy','f')
