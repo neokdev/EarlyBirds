@@ -17,7 +17,7 @@ $(function () {
 
        if (favorite.length > 0)
        {
-           favorite.forEach(function (fav) {
+           favorite.forEach(function () {
                favored ++;
            });
        } else { favored = ""}
@@ -94,40 +94,6 @@ $(function () {
                     }
                 }
             );
-/*
-            if (e.target.value.length === 1) {
-                $.ajax({
-                       url: document.location.href + "/search-post-"+ e.target.value,
-                       cache: false,
-                       dataType: "json",
-                       type: "GET",
-                       success: function(result) {
-
-                           let article = [];
-
-                           result.forEach(function (datas) {
-
-                               article.push(datas.title);
-                           });
-
-                           if (!article || !article.length) return;
-                           let suggestions = article.map(function (item) {
-                               return "\"" + item + "\": null";
-                           });
-
-                           suggestions = "{" + suggestions + "}";
-                           searchBar.autocomplete({
-                              data: JSON.parse(suggestions),
-                              minLength: 0
-                          });
-
-                           contentDiv.html("");
-                           result.forEach(function (datas) {
-                               construct(datas);
-                           });
-                       }
-                });
-            }*/
 
         }
     });

@@ -1,1 +1,18 @@
 {% extends 'base.html.twig' %}
+
+{% bloc stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/article.css') }}">
+{% endblock %}
+
+{% block body %}
+    <a href=""><i class="material-icons head-heart"
+        >favorite_border</i></a>
+    <a href=""><i class="material-icons head-share"
+        >share</i></a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/article.js') }}"></script>
+{% endblock %}
