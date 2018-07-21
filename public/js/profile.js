@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
     let imagesAnim = M.Materialbox.init(images, {
-        onOpenStart: function (e) {
+        onOpenStart: function () {
             $(elems).find('#obsMap').remove();
         },
-        onCloseStart: function (e) {
+        onCloseStart: function () {
             if ($('li.observePanel.active').length === 1) {
                 createMap($('li.observePanel.active'));
             }
@@ -161,6 +161,42 @@ $(document).ready(function() {
     $('#obsTab').click(function () {
         deleteMap($('.observePanel.active'));
         $('.collapsible').collapsible('close');
+    });
+
+    $('.js-like-post').on('click', function (e) {
+        e.preventDefault();
+
+        let $link = $(e.currentTarget);
+
+        $link.find('.material-icons').hide();
+        $link.find('#ajaxLoading').show();
+
+        $.ajax({
+            method: 'POST',
+            url: $link.attr('href')
+        }).done(function (data) {
+            $link.find('.material-icons').show();
+            $link.find('#ajaxLoading').hide();
+            $link.parent().find('.js-like-post-count').html(data.hearts);
+
+            switch ($link.find('.material-icons').html()) {
+                case "favorite_border":
+                    $link.find('.material-icons').html('favorite');
+                    break;
+                case "favorite":
+                    $link.find('.material-icons').html('favorite_border');
+                    break;
+            }
+        });
+    });
+
+    let postUrl = $('#postheart').data('url');
+    $.getJSON(postUrl, function (data) {
+        $.each(data, function (key, val) {
+            if ($('#postheart').data('id') === val) {
+                $('#postheart').html("favorite");
+            }
+        })
     });
 });
 

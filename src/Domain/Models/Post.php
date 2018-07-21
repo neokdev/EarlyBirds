@@ -68,6 +68,8 @@ class Post
      * @param string $category
      * @param string $img
      * @param string $miniature
+     *
+     * @throws \Exception
      */
     public function __construct(
         string $title,
@@ -238,6 +240,7 @@ class Post
 
     /**
      * @param string $title
+     *
      * @return Post
      */
     public function setTitle(string $title): self
@@ -249,6 +252,7 @@ class Post
 
     /**
      * @param string $content
+     *
      * @return Post
      */
     public function setContent(string $content): self
@@ -260,6 +264,7 @@ class Post
 
     /**
      * @param string $category
+     *
      * @return Post
      */
     public function setCategory(string $category): self
@@ -271,6 +276,7 @@ class Post
 
     /**
      * @param string $img
+     *
      * @return Post
      */
     public function setImg(string $img): self
@@ -290,6 +296,7 @@ class Post
 
     /**
      * @param string $miniature
+     *
      * @return Post
      */
     public function setMiniature(string $miniature): self
@@ -298,6 +305,4 @@ class Post
 
         return $this;
     }
-
-
 }

@@ -234,3 +234,12 @@
 .obsMapDiv {
     margin-bottom: 20px;
 }
+
+.card {
+    font-family: Montserrat, serif;
+}
+
+.card .card-image span {
+    color: #F2994A!important;
+    font-weight: bold;
+}

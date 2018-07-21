@@ -2,26 +2,27 @@
 /**
  * Created by PhpStorm.
  * User: Neok
- * Date: 18/06/2018
- * Time: 17:37
+ * Date: 21/07/2018
+ * Time: 09:41
  */
 
 namespace App\UI\Action\Api;
 
+use App\Domain\Models\Post;
 use App\Domain\Models\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
- * Class GetObserveLikeStatus
+ * Class GetPostFoufouredStatus
  * @Route(
- *     "/lastobserve/heart",
- *     name="get_observe_like_status",
+ *     "/getfavoured",
+ *     name="get_favoured",
  *     methods={"GET"}
  * )
  */
-class GetObserveLikeStatus
+class GetPostFavouredStatus
 {
     /**
      * @var TokenStorageInterface
@@ -29,7 +30,7 @@ class GetObserveLikeStatus
     private $tokenStorage;
 
     /**
-     * ToggleObserveLike constructor.
+     * GetPostFoufouredStatus constructor.
      * @param TokenStorageInterface $tokenStorage
      */
     public function __construct(TokenStorageInterface $tokenStorage)
@@ -42,15 +43,15 @@ class GetObserveLikeStatus
      */
     public function __invoke()
     {
-        /** @var User $currentUser */
         $currentUser = $this->tokenStorage->getToken()->getUser();
 
-        /** @var array $upvotes */
-        $upvotes = $currentUser->getUpvoted()->getValues();
+        /** @var User $currentUser */
+        $favoured = $currentUser->getFavoured()->getValues();
 
         $status = [];
-        foreach ($upvotes as $upvote) {
-            array_push($status, $upvote->getId());
+        /** @var Post $fav */
+        foreach ($favoured as $fav) {
+            array_push($status, $fav->getId());
         }
 
         return new JsonResponse($status);
