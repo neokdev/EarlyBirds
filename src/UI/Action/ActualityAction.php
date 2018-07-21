@@ -53,7 +53,7 @@ class ActualityAction implements ActualityActionInterface
      */
     public function __invoke()
     {
-        $post = $this->postRepository->findAll();
+        $post = $this->postRepository->findLastFivePost();
         $lastPost = $this->postRepository->findLastArticle();
         $responder = $this->actualityResponder;
         return $responder($post, $lastPost);

@@ -11,6 +11,7 @@ namespace App\UI\Action;
 use App\Domain\Repository\PostRepository;
 use App\UI\Action\Interfaces\ArticleActionInterface;
 use App\UI\Responder\Interfaces\ArticleResponderInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -49,8 +50,11 @@ class ArticleAction implements ArticleActionInterface
     }
 
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-
+        $id = $request->attributes->get('id');
+        $post = $this->postRepository->find(['id' => $id]);
+        $responder = $this->articleResponder;
+        return $responder($post);
     }
 }

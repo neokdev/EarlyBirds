@@ -82,10 +82,76 @@ class PostRepository extends ServiceEntityRepository
     public function findLastArticle()
     {
         $qb = $this->createQueryBuilder('p')
-            ->orderBy('p.updatedAt', 'DESC')
+            ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults(1);
         $qr = $qb->getQuery()->getOneOrNullResult();
         return $qr;
 
+    }
+
+    /**
+     * @return array
+     */
+    public function findLastFivePost()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults(6);
+        $qr = $qb->getQuery()->getArrayResult();
+        return $qr;
+    }
+
+    /**
+     * @param string $search
+     * @return mixed
+     */
+    public function findBySearch(string $search)
+    {
+        $qb = $this->createQueryBuilder('p');
+            $qr = $qb
+            ->where($qb->expr()->like('p.title',':search'))
+            ->setParameter('search' , $search.'%')
+                ->leftJoin('p.author','a')
+                ->addSelect('a')
+                ->leftJoin('p.favouredBy','f')
+                ->addSelect('f')
+                ->orderBy('p.createdAt','DESC')
+            ;
+       return $result = $qr->getQuery()->getArrayResult();
+    }
+
+    /**
+     * @return array
+     */
+    public function initAll()
+    {
+        $qb = $this->createQueryBuilder('p');
+            $qr = $qb->leftJoin('p.author','a')
+                     ->addSelect('a')
+                     ->leftJoin('p.favouredBy','f')
+                     ->addSelect('f')
+                     ->orderBy('p.createdAt','DESC')
+        ;
+
+        return $result = $qr->getQuery()->getArrayResult();
+    }
+
+    /**
+     * @param $search
+     * @return array
+     */
+    public function findByCategory($search)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qr = $qb->where('p.category', ':cat')
+            ->setParameter('cat', $search)
+            ->leftJoin('p.author','a')
+            ->addSelect('a')
+            ->leftJoin('p.favouredBy','f')
+            ->addSelect('f')
+            ->orderBy('p.createdAt','DESC')
+        ;
+
+        return $result = $qr->getQuery()->getArrayResult();
     }
 }

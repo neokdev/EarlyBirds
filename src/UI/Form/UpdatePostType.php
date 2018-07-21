@@ -51,8 +51,34 @@ class UpdatePostType extends AbstractType
             ])
             ->add('category', ChoiceType::class, [
                 'choices' => [
-                    'Oiseaux'    => 'Oiseaux',
-                    'Migrations' => 'Migrations'
+                    'vie de l\'association' => [
+                        'CR, AG'                 => 'CRAG',
+                        'Bénévolat, partenariat' => 'benevola',
+                        'faits marquants'        => 'facts'
+                    ],
+                    'Évènements' => [
+                        'Agenda asso'                                                        => 'agenda',
+                        'Autres  : exemple "Fête de la nature", we Oiseaux des jardins, etc' => 'autres'
+                    ],
+                    'L’art d\'observer les oiseaux' => [
+                        'Lieux, balades'             => 'places',
+                        'Attitude du birdwatcher'    => 'birdwatcher',
+                        'équipement'                 => 'gear'
+                    ],
+                    'Identifier un oiseau (comment reconnaître un .... ?)' => 'bird',
+                    'Ornithologie sans frontières' => [
+                        'Oiseaux exotiques'                    => 'exoticbirds',
+                        'Voyages, expériences ornithologiques' => 'travel'
+                    ],
+                    'Biodiversité / environnement' => [
+                        'Zones à préserver'                          => 'preserv',
+                        'Agriculture, jardinage, conseils pratiques' => 'farming'
+                    ],
+                    'Programmes de recherche et publications' => [
+                        'Programmes de recherche en cours' => 'program',
+                        'documents scientifiques'          => 'document'
+                    ]
+
                 ],
                 'placeholder' => 'choisissez une catégorie'
             ])

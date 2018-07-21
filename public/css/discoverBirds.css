@@ -58,6 +58,36 @@ input::placeholder {
     margin-bottom: -.2em;
 }
 
+p#popupMap {
+    font-family: MontSerrat;
+    text-align: center;
+    color: #F2994A;
+    font-weight: 100;
+}
+
+div#popupMap {
+    font-family: MontSerrat;
+    text-align: center;
+    font-weight: 100;
+}
+
+#birdPopup {
+    width: 80px;
+    height: 80px;
+}
+
+#birdName {
+    font-family: MontSerrat;
+    font-weight: 700;
+    color: #F2994A;
+}
+
+#author {
+    color: #2D9CDB;
+    font-family: MontSerrat;
+    font-weight: 700;
+}
+
 .discoverAjaxLoader {
     position: relative;
     bottom: 30px;

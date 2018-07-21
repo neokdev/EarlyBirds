@@ -8,7 +8,9 @@
 
 namespace App\UI\Responder\Interfaces;
 
+use App\Domain\Models\Post;
+
 interface ArticleResponderInterface
 {
-    public function __invoke($post);
+    public function __invoke(Post $post);
 }

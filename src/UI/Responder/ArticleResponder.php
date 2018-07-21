@@ -8,8 +8,9 @@
 
 namespace App\UI\Responder;
 
-
+use App\Domain\Models\Post;
 use App\UI\Responder\Interfaces\ArticleResponderInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
 /**
@@ -23,10 +24,31 @@ class ArticleResponder implements ArticleResponderInterface
      */
     private $twig;
 
-
-    public function __invoke($post)
+    /**
+     * ArticleResponder constructor.
+     * @param Environment $twig
+     */
+    public function __construct(Environment $twig)
     {
+        $this->twig = $twig;
+    }
 
+    /**
+     * @param Post $post
+     * @return Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function __invoke(Post $post)
+    {
+        $response = new Response(
+            $this->twig->render(
+                'article.html.twig',
+                ['post' => $post]
+            ));
+
+        return $response;
     }
 
 }
