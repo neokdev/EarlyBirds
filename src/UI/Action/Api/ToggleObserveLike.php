@@ -45,12 +45,13 @@ class ToggleObserveLike
         $this->tokenStorage      = $tokenStorage;
         $this->observeRepository = $observeRepository;
     }
+
     /**
-     * @param Observe $id
+     * @param string $id
      *
      * @return JsonResponse
      */
-    public function __invoke(Observe $id)
+    public function __invoke(string $id)
     {
         $observe     = $this->observeRepository->findOneBy(['id' => $id]);
         $currentUser = $this->tokenStorage->getToken()->getUser();

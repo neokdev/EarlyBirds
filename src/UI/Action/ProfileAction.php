@@ -15,6 +15,7 @@ use App\UI\Action\Interfaces\ProfileActionInterface;
 use App\UI\Form\Handler\Interfaces\ProfileTypeHandlerInterface;
 use App\UI\Form\ProfileType;
 use App\UI\Responder\Interfaces\ProfileResponderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,6 +28,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
  *     name="app_profile",
  *     methods={"GET", "POST"}
  * )
+ * @IsGranted("ROLE_USER")
  */
 final class ProfileAction implements ProfileActionInterface
 {

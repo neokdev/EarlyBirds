@@ -124,6 +124,19 @@ class ObserveRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return mixed
+     */
+    public function findValidateLimitTwo()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.validator IS NOT NULL')
+            ->orderBy('p.updatedAt', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
      * @param Observe $observe
      *
      * @return bool

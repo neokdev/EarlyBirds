@@ -7,13 +7,13 @@
 }
 
 .title {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-size: 2.250em;
     font-weight: 500;
 }
 
 .subTitle {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1.5em;
     width: 18em;
@@ -34,7 +34,7 @@
 }
 
 .paraph {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 200;
     font-size: 1.300em;
     padding-left: 3em !important;
@@ -63,7 +63,7 @@
 #text-separator {
     margin-top: 6.5em;
     font-size: 1.875em;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 400;
     text-align: center;
 }
@@ -74,14 +74,14 @@ margin-top: 6em;
 }
 
 .paraph_deux {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 200;
     font-size: 1.300em;
     padding-right: 6em !important;
 }
 
 #particpate {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1.5em;
     width: 18em;
@@ -119,7 +119,7 @@ margin-top: 6em;
 }
 
 .infog_subtitle {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-size: 1em;
     font-weight: 300;
     text-align: center;
@@ -134,12 +134,21 @@ margin-top: 6em;
     margin-top: 5em;
 }
 
+/*#observatory {*/
+    /*margin-top: 10em;*/
+/*}*/
+
 #observatory {
-    margin-top: 10em;
+    font-family: Montserrat, serif;
+}
+
+#observatory_observation div.card-image span {
+    color: #F2994A;
+    font-weight: bold;
 }
 
 #observatory_subtitle {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1.5em;
     width: 18em;
