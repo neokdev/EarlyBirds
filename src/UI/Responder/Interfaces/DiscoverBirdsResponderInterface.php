@@ -8,8 +8,12 @@
 
 namespace App\UI\Responder\Interfaces;
 
-
 interface DiscoverBirdsResponderInterface
 {
-    public function __invoke();
+    /**
+     * @param array $observes
+     *
+     * @return mixed
+     */
+    public function __invoke(array $observes);
 }

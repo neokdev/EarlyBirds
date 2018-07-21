@@ -39,6 +39,16 @@
     text-transform: none;
 }
 
+#observeTule div.card-image span {
+    font-family: Montserrat, serif;
+    color: #F2994A!important;
+    font-weight: bold;
+}
+
+#observeTule > div > div.card-content > div > div > span {
+    font-family: Montserrat, serif;
+}
+
 @media (max-width: 992px) {
     #lastObserveHeader {
         position: relative;

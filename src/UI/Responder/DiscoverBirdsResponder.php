@@ -29,13 +29,16 @@ class DiscoverBirdsResponder implements DiscoverBirdsResponderInterface
     }
 
     /**
-     * @return Response
+     * @param array $observes
+     *
+     * @return mixed|Response
+     *
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke()
+    public function __invoke(array $observes)
     {
-        return new Response($this->twig->render('discoverBirds.html.twig'));
+        return new Response($this->twig->render('discoverBirds.html.twig', ['observes' => $observes]));
     }
 }
