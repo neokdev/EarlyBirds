@@ -5,11 +5,73 @@
 {% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
-    <button type="submit">envoyer</button>
-    {{ form_end(form) }}
+    <div class="row">
+        {{ form_start(form) }}
+            <div class="col m10 offset-m1 s12">
+                    <div id="form" class="col s12  m6">
+
+                        <div class="input-field col l10 offset-l1 s12 m12">
+                            <span class="label" id="label1">Oiseau observé</span>
+                            {{ form_widget((form.title)) }}
+                            <span class="form_errors">{{ form_errors(form.title) }}</span>
+                        </div>
+
+                        <div class="input-field col l10 offset-l1 s12 m12">
+                            <span class="label">Longitude</span>
+                            {{ form_widget(form.content) }}
+                            <span class="form_errors">{{ form_errors(form.content) }}</span>
+                        </div>
+
+                        <div class="input-field col l10 offset-l1 s12 m12">
+                            <span class="label">Latitude</span>
+                            {{ form_widget(form.category) }}
+                            <span class="form_errors">{{ form_errors(form.category) }}</span>
+                        </div>
+
+                        <div class="file-field input-field col l8 offset-l2 m12 s12" id="divUpBtn">
+                            <div><span class="form_errors" id="error-img">{{ form_errors(form.miniature)
+                                    }}</span></div>
+                            <div class="btn" id="uplBtn">
+                                <span>Télécharger une miniature</span>
+                                {{ form_widget(form.miniature) }}
+                            </div>
+                        </div>
+
+                        <div class="file-field input-field col l8 offset-l2 m12 s12" id="divUpBtn">
+                            <div><span class="form_errors" id="error-img">{{ form_errors(form.img)
+                                    }}</span></div>
+                            <div class="btn" id="uplBtn">
+                                <span>Télécharger une photo</span>
+                                {{ form_widget(form.img) }}
+                            </div>
+                        </div>
+
+                        <div class="input-field col l8 offset-l2 m12 s12" id="divSubBtn">
+                            <button id="submitBtn" class="btn waves-effect waves-light col s10"
+                                    type="submit">
+                                Validez l'observation
+                            </button>
+                        </div>
+
+                        <div class="input-field col m10 offset-m1 message">
+                            {% for message in app.flashes('notice') %}
+                                <img id="notice_decoration" src="{{ asset('/img/vector/polygon.png') }}"/>
+                                <div class="flash-notice">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+            </div>
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}
 
 {% block javascripts %}
-{{ parent() }}
+    {{ parent() }}
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script src="{{ asset('js/addPost.js') }}"></script>
 {% endblock %}

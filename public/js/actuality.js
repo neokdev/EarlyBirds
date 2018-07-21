@@ -2,6 +2,7 @@ $(function () {
 
     let searchBar = $('input#search');
     let contentDiv = $('#article');
+    let role = $('#author').attr('data-author');
 
    function construct(datas) {
        let nickname;
@@ -21,6 +22,19 @@ $(function () {
                favored ++;
            });
        } else { favored = ""}
+
+       let content;
+
+       if (role === "ROLE_ADMIN" || role === "ROLE_NATURALIST") {
+           content =
+               "<a id='data-delete-post' data-delete='"+document.location.origin+"/delete-post-"+datas.id+"'>" +
+               "<i class='material-icons head-delete'>delete</i>"+
+               "</a>"+ "<a href='"+document.location.origin+"/modifier-article-"+datas.id+"'>" +
+               "<i class='material-icons head-edit'>edit</i>"+
+               "</a>";
+       } else {
+           content = "";
+       }
 
        let dateArticle = new Date(datas.createdAt.date);
 
@@ -55,6 +69,8 @@ $(function () {
                break;
        }
 
+       console.log(datas.id);
+
        contentDiv.append(
            "<div class='col l6 m6 s12'>" +
                 "<div class='card' id='article-card'>" +
@@ -69,11 +85,11 @@ $(function () {
                         "<p class='truncate'>" +
                             datas.content +
                         "</p>"+
-                        "<a id='head-article-link' href='"+document.location.domain+"/article-"+ datas.id +"'>en lire" +
+                        "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>en lire" +
                         " plus</a>"+
                     "</div>"+
                     "<div class='card-action'>" +
-                        "<a href='"+ document.location.domain +"/article-'"+ datas.id +" " +
+                        "<a href='"+ document.location.href +"/article-"+ datas.id + "'" +
                             "class='btn-floating halfway-fab waves-effect waves-light\n" +
                             "orange darken-1 btn-card'><i" +
                             " class='material-icons'>add</i></a>"+
@@ -83,7 +99,7 @@ $(function () {
                                 "</a>"+
                                "<a href=''>" +
                                "<i class='material-icons head-share'>share</i>"+
-                               "</a>"+
+                               "</a>"+ content +
                             "</div>"+
                     "</div>"
                + "</div>"
@@ -142,5 +158,18 @@ $(function () {
        );
    });
 
+    $('.data-delete-post').on('click', function () {
+
+
+        $.ajax({
+            method: "DELETE",
+            url: document.location.origin + $('.data-delete-post').attr('data-delete'),
+            timeout: 3000,
+            success: function () {
+                document.location.reload();
+            }
+        }
+        );
+    });
 
 });

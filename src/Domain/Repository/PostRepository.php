@@ -68,11 +68,14 @@ class PostRepository extends ServiceEntityRepository
 
     /**
      * @param Post $post
+     * @return bool
      */
-    public function delete(Post $post): void
+    public function delete(Post $post): bool
     {
         $this->_em->remove($post);
         $this->_em->flush();
+
+        return true;
     }
 
     /**
@@ -97,7 +100,7 @@ class PostRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p')
             ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults(6);
-        $qr = $qb->getQuery()->getArrayResult();
+        $qr = $qb->getQuery()->getResult();
         return $qr;
     }
 
@@ -143,7 +146,7 @@ class PostRepository extends ServiceEntityRepository
     public function findByCategory($search)
     {
         $qb = $this->createQueryBuilder('p');
-        $qr = $qb->where('p.category', ':cat')
+        $qr = $qb->where('p.category = :cat')
             ->setParameter('cat', $search)
             ->leftJoin('p.author','a')
             ->addSelect('a')

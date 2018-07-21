@@ -52,6 +52,14 @@
     text-decoration-color: #2D9CDB;
 }
 
+#add-article-btn {
+    background: #F2994A;
+    border-radius: 20px;
+    height: 3em;
+    font-size: 1.125em;
+    text-transform: lowercase;
+}
+
 #head-card, #article-card {
     border-radius: 1em;
 }
@@ -107,6 +115,15 @@
 
 .head-share {
     color: #2D9CDB;
+}
+
+.head-delete {
+    color: red;
+    cursor: pointer;
+}
+
+.head-edit {
+    color: #F2994A;
 }
 
 .head-link {

@@ -28,26 +28,48 @@
             </div>
         </div>
 
-        <div class="input-field col l10 offset-l1 m10 offset-m1 s12" id="search-container">
-            <input class="col l8 offset-l2 m8 offset-m2 s12 autocomplete"
+        <div class="col l10 offset-l1 m10 offset-m1 s12" id="search-container">
+            <input class="col l8 offset-l2 m8 offset-m2 s12"
                    type="text"
                    placeholder="Champ de Recherche"
                    id="search"
                    autocomplete="off"
             />
+            <div class="col l10 offset-l1 m10 offset-m1 s12" >
+                <div>
+                    {% if app.user %}
+                        {% for role in app.user.roles %}
+                            <p id="author" data-author="{{ role }}"></p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN') == true %}
+                    <a  href="{{ path('app_add_post') }}"
+                       id="add-article-btn"
+                       class="col l4
+                    offset-l4 m4 offset-m4
+                    s12 btn
+                waves-effect">
+                        ajouter un article
+                    </a>
+                {% endif %}
+            </div>
         </div>
 
         <div class="col l10 offset-l1 m10 offset-m1 s12">
+
             <div class="col l4 m4 s12">
                 <div class="card grey lighten-5"  id="head-card">
                     <div class="card-content">
                         <h2 id="first-article-title">Sur le perchoir</h2>
+                        {% if lastPost is not null %}
                         <p id="head-img-container">
-                            <img class="circle" id="head-img" src="{{
-                            lastPost.miniature }}">
+                            <img class="circle" id="head-img" src="
+                            {{lastPost.miniature }}">
                         </p>
-                        <h2 class="card-title" id="head-article-title">{{ lastPost.title
-                            }}</h2>
+                        <h2 class="card-title" id="head-article-title">
+                            {{ lastPost.title}}
+                        </h2>
                         <p>
                             <em>{% if lastPost.author.nickName is not null %}
                                     {{ lastPost.author.nickName }}
@@ -58,7 +80,6 @@
                         <p>crée le : <em>{{ lastPost.createdAt|localizeddate('long', 'none') }}
                             </em>
                         </p>
-
                         <p class="truncate" id="head-content">{{ lastPost.content }}</p>
                         <a href="{{ path('app_read_article', {'id' : lastPost.id} ) }}"
                            class="btn-floating halfway-fab waves-effect waves-light orange
@@ -73,8 +94,21 @@
                                           >favorite_border</i></a>
                             <a href=""><i class="material-icons head-share"
                                           >share</i></a>
+
+                            {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN') == true %}
+                            <a class="data-delete-post" data-delete="{{ path('app_delete_article',
+                                {'id' : lastPost.id}) }}"><i
+                                        class="material-icons
+                            head-delete"
+                                >delete</i></a>
+                            <a href="{{ path('app_update_post', {'id' : lastPost.id}) }}"><i
+                                        class="material-icons
+                            head-edit"
+                                >edit</i></a>
+                            {% endif %}
                         </div>
                     </div>
+                    {% endif %}
                 </div>
                 <ul class="collapsible grey lighten-5" id="category">
                     <li>
@@ -182,6 +216,7 @@
             </div>
 
             <div class="col l8 m8 s12" id="article">
+                {% if posts is not null %}
                 {% for post in posts %}
                     <div class="col l6 m6 s12">
                         <div class="card" id="article-card">
@@ -219,11 +254,19 @@
                                                  >favorite_border</i></a>
                                     <a href=""><i class="material-icons head-share"
                                                  >share</i></a>
+                                    {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN') == true %}
+                                    <a data-delete="{{ path ('app_delete_article', {'id' : post.id}) }}"><i
+                                                class="material-icons head-delete data-delete-post"
+                                        >delete</i></a>
+                                    <a href="{{ path('app_update_post', {'id' : post.id}) }}">
+                                        <i class="material-icons head-edit">edit</i></a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -231,7 +274,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-
     <script type="text/javascript" src="{{ asset('js/actuality.js') }}"></script>
 {% endblock %}
 

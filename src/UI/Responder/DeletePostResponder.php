@@ -33,7 +33,7 @@ class DeletePostResponder implements DeletePostResponderInterface
      */
     public function __invoke()
     {
-        $response = new RedirectResponse($this->url->generate('app_add_post'));
+        $response = new RedirectResponse($this->url->generate('app_actuality'));
         return $response;
     }
 }
