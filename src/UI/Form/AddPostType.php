@@ -43,7 +43,7 @@ class AddPostType extends AbstractType
                 'label'    => false,
                 'required' => true,
                 'attr'     => [
-                    'placeholder' => 'votre article'
+                    'class' => 'tinymce'
                 ]
             ])
             ->add('category', ChoiceType::class, [

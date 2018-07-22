@@ -8,22 +8,22 @@
     <div class="row">
         {{ form_start(form) }}
             <div class="col m10 offset-m1 s12">
-                    <div id="form" class="col s12  m6">
+
 
                         <div class="input-field col l10 offset-l1 s12 m12">
-                            <span class="label" id="label1">Oiseau observé</span>
+                            <span class="label" id="label1">Titre de l'article</span>
                             {{ form_widget((form.title)) }}
                             <span class="form_errors">{{ form_errors(form.title) }}</span>
                         </div>
 
                         <div class="input-field col l10 offset-l1 s12 m12">
-                            <span class="label">Longitude</span>
+                            <span class="label">votre article</span>
                             {{ form_widget(form.content) }}
                             <span class="form_errors">{{ form_errors(form.content) }}</span>
                         </div>
 
                         <div class="input-field col l10 offset-l1 s12 m12">
-                            <span class="label">Latitude</span>
+                            <span class="label"></span>
                             {{ form_widget(form.category) }}
                             <span class="form_errors">{{ form_errors(form.category) }}</span>
                         </div>
@@ -47,9 +47,10 @@
                         </div>
 
                         <div class="input-field col l8 offset-l2 m12 s12" id="divSubBtn">
-                            <button id="submitBtn" class="btn waves-effect waves-light col s10"
+                            <button id="submitBtn" formnovalidate="formnovalidate" class="btn
+                            waves-effect waves-light col s10"
                                     type="submit">
-                                Validez l'observation
+                                Envoyer votre article
                             </button>
                         </div>
 
@@ -62,8 +63,6 @@
                             {% endfor %}
                         </div>
 
-                    </div>
-
             </div>
         {{ form_end(form) }}
     </div>
@@ -72,6 +71,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script src='{{ asset('tinymce/js/tinymce/tinymce.min.js') }}'></script>
     <script src="{{ asset('js/addPost.js') }}"></script>
 {% endblock %}

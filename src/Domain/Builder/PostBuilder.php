@@ -20,6 +20,16 @@ class PostBuilder implements PostBuilderInterface
      */
     private $post;
 
+    /**
+     * @param string $title
+     * @param string $content
+     * @param User   $author
+     * @param string $category
+     * @param string $img
+     * @param string $miniature
+     * @return mixed|void
+     * @throws \Exception
+     */
     public function create(
         string $title,
         string $content,

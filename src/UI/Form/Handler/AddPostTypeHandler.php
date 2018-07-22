@@ -124,7 +124,7 @@ class AddPostTypeHandler implements AddPostTypeHandlerInterface
 
             $this->postRepository->save($this->postBuilder->getPost());
 
-            $this->flash->add("notice","votre article à bien été enregistré il va mintenant être soumis à validation");
+            $this->flash->add("notice","votre article à bien été enregistré");
 
             return true;
         }
