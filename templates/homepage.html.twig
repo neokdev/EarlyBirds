@@ -135,7 +135,7 @@
                 <div class="card-image">
                     <img src="{{ lastPost.img }}">
                     <span class="card-title truncate">{{ lastPost.title }}</span>
-                    {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>#}
+                    <a href="{{ path('app_read_article', {id: lastPost.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                 </div>
                 <div class="card-content">
                     <div class="row">
@@ -146,14 +146,20 @@
                     <div class="divider"></div>
                     <div class="row" style="margin: 10px 0 0 0;">
                         <div class="col s8">
-                            {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" >en lire plus</a>#}
+                            <a href="{{ path('app_read_article', {id: lastPost.id}) }}" >en lire plus</a>
                         </div>
                         <div class="col s4 right-align">
                             <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ lastPost.favouredBy.count }}</span>
+                             {% if is_granted('ROLE_USER')%}
                              <a class="js-like-post" href="{{ path('toogle_post_heart', {id: lastPost.id}) }}">
                                 <i id="postheart" data-url="{{ path('get_favoured') }}" data-id="{{ lastPost.id }}" class="material-icons" style="color: #EB5757">favorite_border</i>
                                 <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
                             </a>
+                            {% else %}
+                                <a href="{{ path('security_login') }}">
+                                    <i class="material-icons" style="color: #EB5757">favorite_border</i>
+                                </a>
+                                {% endif %}
                             <a href="#">
                                 <i class="material-icons" style="color: #2D9CDB">share</i>
                             </a>

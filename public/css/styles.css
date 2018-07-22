@@ -117,7 +117,7 @@ a.black-text:active {
     left: 105px;
     top: 185px;
 
-    font-family:MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 100;
 
     width: 10em;
@@ -147,7 +147,7 @@ a.black-text:active {
 .info {
     margin: 0;
     text-align: right;
-    font-family: Montserrat;
+    font-family: Montserrat, serif;
 }
 
 #company {
@@ -156,7 +156,7 @@ a.black-text:active {
 }
 
 .info1 {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -182,39 +182,22 @@ a.black-text:active {
     color:white;
 }
 
-#email {
-
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 20px;
-
-    border: none;
+#email_inline {
+    padding: 10px 5% 10px 5%;
+    width: 150% !important;
+    position: relative;
+    right: 40%;
     background: #FFFCFC;
     border-radius: 20px;
 }
 
-#email::placeholder {
-    text-decoration-line: line-through;
-    padding: 30px 0 30px 0;
-    text-decoration-color: initial;
-}
-
-input#email {
-    width: 50%;
-}
-
-#nwslter {
+#footer > div:nth-child(2) > div > form > div:nth-child(2) > button {
     background: #C4C4C4;
-    border-radius: 20px;
-    height: 2em;
-    font-size: 1.125em;
-    border: none;
-    color: white;
-    width: 30%;
-    margin-right: 40px;
+    right: 13%;
     margin-bottom: 20px;
+    border-radius: 20px;
+    color: white;
     text-transform: lowercase;
-
 }
 
 #info5 {
@@ -292,7 +275,7 @@ svg {
     citation
 */
 #citation {
-    font-family: Didot;
+    font-family: Didot, serif;
     margin-left: 15%;
     margin-top: 50px;
     font-size: 2em;
@@ -300,7 +283,7 @@ svg {
 }
 
 #little_text {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-size: 0.8em;
     text-align: center;
     font-weight: 100;
@@ -379,7 +362,7 @@ svg {
     }
 
     #citation-mobile {
-        font-family: Didot;
+        font-family: Didot, serif;
         font-size: 1em;
         text-align: center;
         margin: 0;
@@ -388,14 +371,14 @@ svg {
     }
 
     #little_text {
-        font-family: MontSerrat;
+        font-family: MontSerrat, serif;
         font-size: 0.8em;
         text-align: center;
         font-weight: 100;
     }
 
     #nao {
-        font-family: MontSerrat;
+        font-family: MontSerrat, serif;
         font-size: 0.8em;
         color: white;
         text-align: center;
@@ -472,7 +455,7 @@ svg {
     }
 
     #citation-mobile {
-        font-family: Didot;
+        font-family: Didot, serif;
         font-size: 1em;
         text-align: center;
         margin: 0;
@@ -481,14 +464,14 @@ svg {
     }
 
     #little_text {
-        font-family: MontSerrat;
+        font-family: MontSerrat, serif;
         font-size: 0.8em;
         text-align: center;
         font-weight: 100;
     }
 
     #nao {
-        font-family: MontSerrat;
+        font-family: MontSerrat, serif;
         font-size: 0.8em;
         color: white;
         text-align: center;
@@ -558,7 +541,6 @@ svg {
         margin-top: 0;
         z-index: 10000;
     }
-
 }
 
 @media (min-width: 1440px) and (max-width: 1600px) {

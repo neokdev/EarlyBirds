@@ -97,7 +97,7 @@ class PostRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p')
             ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults(6);
-        $qr = $qb->getQuery()->getArrayResult();
+        $qr = $qb->getQuery()->getResult();
         return $qr;
     }
 

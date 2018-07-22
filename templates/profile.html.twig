@@ -142,7 +142,7 @@
                                         <div class="card-image">
                                             <img src="{{ favoured.img }}">
                                             <span class="card-title truncate">{{ favoured.title }}</span>
-                                            {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>#}
+                                            <a href="{{ path('app_read_article', {id: favoured.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                                         </div>
                                         <div class="card-content">
                                             <div class="row">
@@ -153,7 +153,7 @@
                                             <div class="divider"></div>
                                             <div class="row" style="margin: 10px 0 0 0;">
                                                 <div class="col s7">
-                                                    {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" >en lire plus</a>#}
+                                                    <a href="{{ path('app_read_article', {id: favoured.id}) }}" >en lire plus</a>
                                                 </div>
                                                 <div class="col s5 right-align">
                                                     <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ favoured.favouredBy.count }}</span>
@@ -238,7 +238,7 @@
                                         <div class="card-image">
                                             <img src="{{ post.img }}">
                                             <span class="card-title truncate">{{ post.title }}</span>
-                                            {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>#}
+                                            <a href="{{ path('app_read_article', {id: post.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                                         </div>
                                         <div class="card-content">
                                             <div class="row">
@@ -249,7 +249,7 @@
                                             <div class="divider"></div>
                                             <div class="row" style="margin: 10px 0 0 0;">
                                                 <div class="col s12">
-                                                    {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" >en lire plus</a>#}
+                                                    <a href="{{ path('app_read_article', {id: post.id}) }}" >en lire plus</a>
                                                 </div>
                                             </div>
                                         </div>
