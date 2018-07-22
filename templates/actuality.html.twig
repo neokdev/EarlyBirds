@@ -71,7 +71,7 @@
                             {{ lastPost.title}}
                         </h2>
                         <p>
-                            <em>{% if lastPost.author.nickName is not null %}
+                            <em>{% if lastPost.author is not null %}
                                     {{ lastPost.author.nickName }}
                                 {% else %} nc {% endif %}
                             </em>
@@ -80,13 +80,12 @@
                         <p>crée le : <em>{{ lastPost.createdAt|localizeddate('long', 'none') }}
                             </em>
                         </p>
-                        <p class="truncate" id="head-content">{{ lastPost.content }}</p>
                         <a href="{{ path('app_read_article', {'id' : lastPost.id} ) }}"
                            class="btn-floating halfway-fab waves-effect waves-light orange
                         darken-1 btn-card"
                            ><i class="material-icons">add</i></a>
                         <a id="head-article-link" href="{{ path('app_read_article', {'id' : lastPost
-                            .id} ) }}">en lire plus</a>
+                            .id} ) }}">lire</a>
                     </div>
                     <div class="card-action">
                         <div class="head-link">
@@ -95,8 +94,10 @@
                             <a href=""><i class="material-icons head-share"
                                           >share</i></a>
 
-                            {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN') == true %}
-                            <a class="data-delete-post" data-delete="{{ path('app_delete_article',
+                            {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN')
+                                == true %}
+                            <a class="data-delete-post" data-delete="{{ path
+                                ('app_delete_article',
                                 {'id' : lastPost.id}) }}"><i
                                         class="material-icons
                             head-delete"
@@ -120,23 +121,24 @@
                                <li>
                                    <p class="category-head-link">vie de l'association</p>
                                    <ul>
-                                       <li data-cat="CRAG" class="category-link">CR,
+                                       <li data-cat="CR, AG" class="category-link">CR,
                                                AG</li>
-                                       <li data-cat="benevola" class="category-link">Bénévolat,
+                                       <li data-cat="Bénévolat, partenariat"
+                                           class="category-link">Bénévolat,
                                                partenariat</li>
-                                       <li data-cat="facts" class="category-link">faits
+                                       <li data-cat="faits marquants" class="category-link">faits
                                            marquants</li>
                                    </ul>
                                </li>
                                 <li>
                                     <p class="category-head-link">Événement</p>
                                     <ul>
-                                        <li data-cat="agenda"
+                                        <li data-cat="Agenda asso"
                                                class="category-link">Agenda asso</li>
                                         <li
-                                            data-cat="autres"
+                                            data-cat="Autres  : exemple Fête de la nature"
                                                class="category-link">
-                                                Autres  : exemple "Fête de la nature", we Oiseaux des jardins
+                                                Autres  : exemple Fête de la nature
 
                                         </li>
 
@@ -145,41 +147,41 @@
                                 <li>
                                     <p class="category-head-link">L’art d'observer les oiseaux</p>
                                     <ul>
-                                        <li data-cat="places"
+                                        <li data-cat="Lieux, balades"
                                                class="category-link">Lieux, balades</li>
-                                        <li data-cat="birdwatcher"
+                                        <li data-cat="Attitude du birdwatcher"
                                                class="category-link">Attitude du birdwatcher</li>
-                                        <li data-cat="gear"
+                                        <li data-cat="équipement"
                                             class="category-link">équipement</li>
                                     </ul>
                                 </li>
-                                <li data-cat="bird"
-                                       class="category-head-link">Identifier un oiseau (comment reconnaître un .... ?)</li>
+                                <li data-cat="Identifier un oiseau"
+                                       class="category-head-link">Identifier un oiseau</li>
                                 <li>
                                     <p class="category-link">Ornithologie sans frontières</p>
                                     <ul>
-                                        <li data-cat="exoticbirds"
+                                        <li data-cat="Oiseaux exotiques"
                                                class="category-link">Oiseaux exotiques</li>
-                                        <li data-cat="travel"
-                                               class="category-link">Voyages, expériences ornithologiques</li>
+                                        <li data-cat="Voyages, expériences"
+                                               class="category-link">Voyages, expériences</li>
                                     </ul>
                                 </li>
                                 <li>
                                     <p class="category-head-link">Biodiversité / environnement</p>
                                     <ul>
-                                        <li data-cat="preserv"
+                                        <li data-cat="Zones à préserver"
                                                class="category-link">Zones à préserver</li>
-                                        <li data-cat="farming"
-                                               class="category-link">Agriculture, jardinage, conseils pratiques</li>
+                                        <li data-cat="Agriculture, jardinage, conseils"
+                                               class="category-link">Agriculture, jardinage, conseils</li>
                                     </ul>
                                 </li>
                                 <li>
                                     <p class="category-head-link">Programmes de recherche et
                                         publications</p>
                                     <ul>
-                                        <li data-cat="program"
+                                        <li data-cat="Programmes de recherche en cours"
                                                class="category-link">Programmes de recherche en cours</li>
-                                        <li data-cat="document"
+                                        <li data-cat="documents scientifiques"
                                                class="category-link">documents scientifiques</li>
                                     </ul>
                                 </li>
@@ -225,19 +227,16 @@
                                 <h2 class="card-title" id="article-card-title">{{ post.title }}</h2>
                             </div>
                             <div class="card-content">
-                                <p>auteur : <em>{% if lastPost.author.nickName is not null %}
-                                            {{ lastPost.author.nickName }}
+                                <p>auteur : <em>{% if post.author.nickName is not null %}
+                                            {{ post.author.nickName }}
                                         {% else %} nc {% endif %}</em></p>
                                 <p class="chip">{{ post.category }}</p>
                                 <p>crée le : <em>{{ post.createdAt|localizeddate('long', 'none') }}
                                     </em>
                                 </p>
-                                <p class="truncate">I am a very simple card. I am good at containing
-                                    small bits
-                                    of information. I am convenient because I require little markup to use effectively.</p>
                                 <a
                                     id="head-article-link"
-                                    href="{{ path('app_read_article', {'id' : post.id} ) }}">en lire plus
+                                    href="{{ path('app_read_article', {'id' : post.id} ) }}">lire
                                 </a>
                             </div>
                             <div class="card-action">
@@ -254,9 +253,12 @@
                                                  >favorite_border</i></a>
                                     <a href=""><i class="material-icons head-share"
                                                  >share</i></a>
-                                    {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN') == true %}
-                                    <a data-delete="{{ path ('app_delete_article', {'id' : post.id}) }}"><i
-                                                class="material-icons head-delete data-delete-post"
+                                    {% if is_granted('ROLE_NATURALIST') == true or is_granted
+                                        ('ROLE_ADMIN') == true %}
+                                    <a class="data-delete-post" data-delete="{{ path
+                                        ('app_delete_article', {'id' : post
+                                        .id}) }}"><i
+                                                class="material-icons head-delete"
                                         >delete</i></a>
                                     <a href="{{ path('app_update_post', {'id' : post.id}) }}">
                                         <i class="material-icons head-edit">edit</i></a>
@@ -275,6 +277,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/actuality.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/delete_post.js') }}"></script>
 {% endblock %}
 
 

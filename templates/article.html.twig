@@ -6,10 +6,64 @@
 {% endblock %}
 
 {% block body %}
-    <a href=""><i class="material-icons head-heart"
-        >favorite_border</i></a>
-    <a href=""><i class="material-icons head-share"
-        >share</i></a>
+    <div class="row">
+        <div class="col l12 m12 s12" id="subHeader">
+            <div class=" col l2 m2 s2">
+                <p id="slogan">
+                    Nos amis les oiseaux
+                </p>
+            </div>
+            {% if post %}
+                <div class="col m8 s12" id="header" data-bckg="{{ post.img }}">
+                    <h1 class="col m10 offset-m1 s12 header_text">
+                        {{ post.title }}
+                    </h1>
+                </div>
+                <div class="col l4 offset-l4 m4 offset-m4 s12">
+                    <p id="info-article">
+                        {{ post.author.nickname }}
+                        {% for role in post.author.roles %}
+                            {% if role  == "ROLE_USER" %}
+                                Naturaliste
+                            {% elseif role  == "ROLE_ADMIN"  %}
+                                Administrateur
+                            {% endif %}
+                        {% endfor %}
+                        {{ post.createdAt|localizeddate('long',
+                            'none') }} {{ post.category }}
+                    </p>
+                    <div class="head-link">
+                        <a href=""><i class="material-icons head-heart"
+                            >favorite_border</i></a>
+                        <a href=""><i class="material-icons head-share"
+                            >share</i></a>
+
+                        {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN')
+                            == true %}
+                            <a class="data-delete-post" data-delete="{{ path
+                                ('app_delete_article',
+                                {'id' : post.id}) }}"><i
+                                        class="material-icons
+                            head-delete"
+                                >delete</i></a>
+                            <a href="{{ path('app_update_post', {'id' : post.id}) }}"><i
+                                        class="material-icons
+                            head-edit"
+                                >edit</i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col l10 offset-l1 m10 offset-m1 s12">
+            <div class="col l10 offset-l1 m10 offset-m1 s12" id="content-article">
+                {{ post.content|raw }}
+
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}
 
 {% block javascripts %}

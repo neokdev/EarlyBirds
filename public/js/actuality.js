@@ -27,7 +27,7 @@ $(function () {
 
        if (role === "ROLE_ADMIN" || role === "ROLE_NATURALIST") {
            content =
-               "<a id='data-delete-post' data-delete='"+document.location.origin+"/delete-post-"+datas.id+"'>" +
+               "<a class='data-delete-post' data-delete='"+document.location.origin+"/delete-post-"+datas.id+"'>" +
                "<i class='material-icons head-delete'>delete</i>"+
                "</a>"+ "<a href='"+document.location.origin+"/modifier-article-"+datas.id+"'>" +
                "<i class='material-icons head-edit'>edit</i>"+
@@ -82,15 +82,15 @@ $(function () {
                         "<p>auteur : "+ nickname +"</p>"+
                         "<p class='chip'>"+ datas.category +" </p>"+
                         "<p>crée le : <em>"+DD+" "+MM+" "+YY+"</em></p>"+
-                        "<p class='truncate'>" +
+                        "<div class='post-content truncate'>" +
                             datas.content +
-                        "</p>"+
+                        "</div>"+
                         "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>en lire" +
                         " plus</a>"+
                     "</div>"+
                     "<div class='card-action'>" +
                         "<a href='"+ document.location.href +"/article-"+ datas.id + "'" +
-                            "class='btn-floating halfway-fab waves-effect waves-light\n" +
+                            " class='btn-floating halfway-fab waves-effect waves-light\n" +
                             "orange darken-1 btn-card'><i" +
                             " class='material-icons'>add</i></a>"+
                             "<div class='head-link'>"+
@@ -143,7 +143,7 @@ $(function () {
     });
 
    $('.category-link').on('click', function () {
-       category = $('.category-link').attr('data-cat');
+       category = $(this).attr('data-cat');
        $.getJSON(document.location.href + '/search-post-category-'+category,
            function (data) {
                contentDiv.html("");
@@ -157,19 +157,5 @@ $(function () {
            }
        );
    });
-
-    $('.data-delete-post').on('click', function () {
-
-
-        $.ajax({
-            method: "DELETE",
-            url: document.location.origin + $('.data-delete-post').attr('data-delete'),
-            timeout: 3000,
-            success: function () {
-                document.location.reload();
-            }
-        }
-        );
-    });
 
 });

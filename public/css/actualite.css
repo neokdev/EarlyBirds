@@ -57,6 +57,7 @@
     border-radius: 20px;
     height: 3em;
     font-size: 1.125em;
+    padding-top: .5em;
     text-transform: lowercase;
 }
 
@@ -102,12 +103,20 @@
     color: #00BCD4;
 }
 
-#head-content {
+#head-content, #head-content h1,#head-content p, .post-content, .post-content h1, .post-content p {
     font-family: MontSerrat;
     font-weight: 300;
-    font-size: 0.875em;
+    font-size: 1em;
     text-align: left;
 }
+
+#head-content h1, .post-content h1 {
+    font-family: MontSerrat;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+
 
 .head-heart {
     color: red;
@@ -219,6 +228,7 @@ ul#category-list {
     font-weight: 500;
     font-size: 1.500em;
     padding-bottom: 0;
+    text-shadow: 4px 4px 12px rgba(78, 78, 78, 1);
 }
 
 .category-head-link {

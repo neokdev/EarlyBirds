@@ -1,0 +1,107 @@
+#subHeader {
+    margin-top: -23em;
+}
+
+#slogan {
+    top: 130px;
+}
+
+#header {
+    margin-bottom: 5em;
+    background: no-repeat center url("../img/other/actualite.jpeg");
+    background-size: cover;
+    height: 378px;
+    margin-top: unset;
+}
+
+.header_text {
+    font-family: Didot;
+    font-size: 3em;
+    text-align: center;
+    color: black;
+    text-transform: uppercase;
+    margin-top: 6.3em;
+}
+
+div#uplBtn {
+    border-radius: 20px;
+    background: #2D9CDB;
+
+}
+
+div#uplBtn span {
+    font-size: 1em;
+    text-transform: initial;
+}
+
+#submitBtn {
+    background: #F2994A;
+    border-radius: 20px;
+    height: 3em;
+    font-size: 1.125em;
+    text-transform: initial;
+}
+
+.label {
+    font-family: MontSerrat;
+    font-weight: 800;
+    font-Size: 1.125em;
+}
+
+input::placeholder {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding-left: 15px;
+}
+
+input {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding: 0;
+}
+
+input#add_post_title, input#update_post_title {
+
+    padding-left: 10px;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.select-wrapper input.select-dropdown {
+    margin-top: 9%;
+    padding-left: 10px;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.flash-notice {
+    background: #59A177;
+    color: white;
+    border-radius: 20px;
+    height: 3.000em;
+    vertical-align: center;
+    font-size: 1.200em;
+    text-transform: lowercase;
+    padding: 15px 5px 5px 5px;
+    text-align: center;
+}
+
+.form_errors {
+    text-align: right;
+    font-size: .9em;
+    font-weight: 300;
+    font-family: MontSerrat;
+    margin-top: 0;
+    color: red;
+
+}
+
+span.form_errors ul {
+    margin-top: 0;
+}
