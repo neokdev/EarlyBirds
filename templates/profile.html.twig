@@ -48,7 +48,7 @@
 
         <div id="profileContent"  class="row">
 
-            <div class="vertical-tab col s2">
+            <div class="vertical-tab col s12 l2">
                 <a class="tablinks btn waves-effect waves-light" onclick="verticalTab(event, 'dashboard')" id="defaultOpen">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
@@ -69,8 +69,23 @@
                 {% endif %}
             </div>
 
-                <div class="col s10">
+                <div class="col s12 l10">
                     <div id="dashboard" class="vertical-tabcontent">
+
+                        {% if form.vars.errors.form.getErrors(true) is not empty %}
+                            <div class="row">
+                                <div class="col s8 offset-s2 center">
+                                    <div class="card-panel red darken-2 white-text">
+                                        <i class="material-icons" style="position: relative; top: 5px;">priority_high</i>
+                                        <ul>
+                                            {% for error in form.vars.errors.form.getErrors(true) %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
 
                         <div class="row">
 
@@ -142,7 +157,7 @@
                                         <div class="card-image">
                                             <img src="{{ favoured.img }}">
                                             <span class="card-title truncate">{{ favoured.title }}</span>
-                                            {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>#}
+                                            <a href="{{ path('app_read_article', {id: favoured.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                                         </div>
                                         <div class="card-content">
                                             <div class="row">
@@ -153,7 +168,7 @@
                                             <div class="divider"></div>
                                             <div class="row" style="margin: 10px 0 0 0;">
                                                 <div class="col s7">
-                                                    {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" >en lire plus</a>#}
+                                                    <a href="{{ path('app_read_article', {id: favoured.id}) }}" >en lire plus</a>
                                                 </div>
                                                 <div class="col s5 right-align">
                                                     <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ favoured.favouredBy.count }}</span>
@@ -238,7 +253,7 @@
                                         <div class="card-image">
                                             <img src="{{ post.img }}">
                                             <span class="card-title truncate">{{ post.title }}</span>
-                                            {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>#}
+                                            <a href="{{ path('app_read_article', {id: post.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                                         </div>
                                         <div class="card-content">
                                             <div class="row">
@@ -249,7 +264,7 @@
                                             <div class="divider"></div>
                                             <div class="row" style="margin: 10px 0 0 0;">
                                                 <div class="col s12">
-                                                    {#<a href="{{ path('app_read_article', {id: lastPost.id}) }}" >en lire plus</a>#}
+                                                    <a href="{{ path('app_read_article', {id: post.id}) }}" >en lire plus</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -310,6 +325,12 @@
                                     </div>
 
                                     <div class="row">
+                                        <div class="file-field input-field col s10 offset-s1" style="margin-top: 0; margin-bottom: 0">
+                                            <a href="{{ path('security_forgottenpassword') }}" id="submitBtn" class="js-changepsw-button waves-effect waves-light btn">Changer le mot de passe</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="file-field input-field col s10 offset-s1">
                                             <div id="submitBtn" class="js-avatar-btn btn">
                                                 <span>Envoyer un avatar</span>
@@ -362,8 +383,8 @@
                             <div id="obsTab" class="col s12">
 
                                 <ul class="tabs">
-                                    <li class="tab col s6"><a class="active" href="#myobserves" style="font-family: Montserrat, serif; font-size: 24px; text-transform: none; color: black">Mes Observations</a></li>
-                                    <li class="tab col s6"><a class="js-obs-count" href="#observes" style="font-family: Montserrat, serif; font-size: 24px; text-transform: none; color: black"><span class="badge">{{ observes|length }}</span>Observations à valider</a></li>
+                                    <li class="tab col s12 m6"><a class="active" href="#myobserves" style="font-family: Montserrat, serif; font-size: 24px; text-transform: none; color: black">Mes Observations</a></li>
+                                    <li class="tab col s12 m6"><a class="js-obs-count" href="#observes" style="font-family: Montserrat, serif; font-size: 24px; text-transform: none; color: black"><span class="badge">{{ observes|length }}</span>Observations à valider</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -373,12 +394,12 @@
                         <div id="myobserves" class="col s12">
 
                             <div id="myObsTop" class="row">
-                                <div class="col s6">
+                                <div class="col s12 m6">
                                     <div class="card-panel">
                                         <h5 class="center">Mes observations</h5>
                                     </div>
                                 </div>
-                                <div id="myObsTopBtn" class="col s6 valign-wrapper">
+                                <div id="myObsTopBtn" class="col s12 m6 valign-wrapper">
                                     <a id="submitBtn" href="{{ path('app_observe') }}" class="waves-effect waves-light btn orange darken-1">Saisir une observation</a>
                                 </div>
                             </div>
@@ -394,13 +415,13 @@
                                     <li class="observePanel obsverveContainer-{{ observe.id }} myObserve" data-obscount="{{ curentMyObserve }}" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
                                         <div class="collapsible-header js-taxref" data-taxref="{% if observe.ref %}{{ path('taxref', {id: observe.ref.id}) }}{% endif %}">
                                             <div id="moreBtn">
-                                                <a class="btn-floating waves-effect waves-light orange darken-1"><i class="material-icons" style="width: 40px">add</i></a>
+                                                <a class="hide-on-med-and-down btn-floating waves-effect waves-light orange darken-1"><i class="material-icons" style="width: 40px">add</i></a>
                                             </div>
 
-                                            <div class="imgContainer">
+                                            <div class="imgContainer col s12 m6">
                                                 <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block; position: relative;right: 41px;">
                                             </div>
-                                            <div class="ObsTitle col s8 xl10  center">
+                                            <div class="ObsTitle col s12 m6">
                                                 <h6>{% if observe.ref %}{{ observe.ref.nomVern }}{% else %}Non identifié{% endif %}</h6>
                                                 <span>Observé le {{ observe.obsDate|localizeddate('long', 'none') }}</span>
                                                 <div class="divider"></div>
@@ -568,7 +589,7 @@
                                     <li class="observePanel obsverveContainer-{{ observe.id }} observeToValidate" data-obscount="{{ curentObserve }}" data-index="{{ observe.id }}2" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
                                         <div class="collapsible-header js-taxref" data-taxref="{% if observe.ref %}{{ path('taxref', {id: observe.ref.id}) }}{% endif %}">
                                             <div id="moreBtn">
-                                                <a class="btn-floating waves-effect waves-light orange darken-1"><i class="material-icons" style="width: 40px">add</i></a>
+                                                <a class="hide-on-med-and-down btn-floating waves-effect waves-light orange darken-1"><i class="material-icons" style="width: 40px">add</i></a>
                                             </div>
                                             <div class="imgContainer">
                                                 <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block; position: relative;right: 41px;">

@@ -9,6 +9,7 @@
 namespace App\Services;
 
 use App\Domain\Models\Contact;
+use App\Domain\Models\Newsletter;
 use App\Domain\Models\User;
 use App\Services\Interfaces\MailerInterface;
 use Swift_Mailer;
@@ -150,6 +151,32 @@ class Mailer implements MailerInterface
                     "Emails/contactMail.html.twig",
                     [
                         'data' => $contact
+                    ]
+                ),
+                'text/html'
+            );
+        $this->mailer->send($message);
+    }
+
+    /**
+     * @param Newsletter $newsletter
+     *
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendConfirmNewsletter(Newsletter $newsletter)
+    {
+        $message = new Swift_Message("[NAO] Confirmation abonnement newsletter");
+
+        $message
+            ->setFrom(self::ADMIN_EMAIL)
+            ->setTo($newsletter->getEmail())
+            ->setBody(
+                $this->environment->render(
+                    "Emails/Newsletter.html.twig",
+                    [
+                        'data' => $newsletter,
                     ]
                 ),
                 'text/html'

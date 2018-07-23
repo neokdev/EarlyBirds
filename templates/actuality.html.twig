@@ -58,21 +58,27 @@
                         <p>crée le : <em>{{ lastPost.createdAt|date('d-M-Y à H-m-s') }}
                             </em>
                         </p>
-
                         <p class="truncate" id="head-content">{{ lastPost.content }}</p>
                         <a href="{{ path('app_read_article', {'id' : lastPost.id} ) }}"
                            class="btn-floating halfway-fab waves-effect waves-light orange
-                        darken-1 btn-card"
-                           ><i class="material-icons">add</i></a>
+                        darken-1 btn-card"><i class="material-icons">add</i></a>
                         <a id="head-article-link" href="{{ path('app_read_article', {'id' : lastPost
                             .id} ) }}">en lire plus</a>
                     </div>
                     <div class="card-action">
-                        <div class="head-link">
-                            <a href=""><i class="material-icons head-heart"
-                                          >favorite_border</i></a>
-                            <a href=""><i class="material-icons head-share"
-                                          >share</i></a>
+                        <div id="heart-infos" class="head-link" data-url="{{ path('get_favoured') }}">
+                            <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ lastPost.favouredBy.count }}</span>
+                            {% if is_granted('ROLE_USER')%}
+                            <a class="toggle-heart" href="{{ path('toogle_post_heart', {id: lastPost.id}) }}">
+                                <i id="postheart" data-id="{{ lastPost.id }}" class="material-icons head-heart">favorite_border</i>
+                                <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
+                            </a>
+                            {% else %}
+                                <a href="{{ path('security_login') }}">
+                                    <i class="material-icons" style="color: #EB5757">favorite_border</i>
+                                </a>
+                            {% endif %}
+                            <a href=""><i class="material-icons head-share">share</i></a>
                         </div>
                     </div>
                 </div>
@@ -96,11 +102,9 @@
                                 <li>
                                     <p class="category-head-link">Événement</p>
                                     <ul>
-                                        <li><a href="#" data-cat="agenda"
-                                               class="category-link">Agenda asso</a></li>
+                                        <li><a href="#" data-cat="agenda" class="category-link">Agenda asso</a></li>
                                         <li>
-                                            <a href="#" data-cat="autres"
-                                               class="category-link">
+                                            <a href="#" data-cat="autres" class="category-link">
                                                 Autres  : exemple "Fête de la nature", we Oiseaux des jardins
                                             </a>
                                         </li>
@@ -110,10 +114,8 @@
                                 <li>
                                     <p class="category-head-link">L’art d'observer les oiseaux</p>
                                     <ul>
-                                        <li><a href="#" data-cat="places"
-                                               class="category-link">Lieux, balades</a></li>
-                                        <li><a href="#" data-cat="birdwatcher"
-                                               class="category-link">Attitude du birdwatcher</a></li>
+                                        <li><a href="#" data-cat="places" class="category-link">Lieux, balades</a></li>
+                                        <li><a href="#" data-cat="birdwatcher" class="category-link">Attitude du birdwatcher</a></li>
                                         <li><a href="#" data-cat="gear" class="category-link">équipement</a></li>
                                     </ul>
                                 </li>
@@ -122,29 +124,23 @@
                                 <li>
                                     <p class="category-link">Ornithologie sans frontières</p>
                                     <ul>
-                                        <li><a href="#" data-cat="exoticbirds"
-                                               class="category-link">Oiseaux exotiques</a></li>
-                                        <li><a href="#" data-cat="travel"
-                                               class="category-link">Voyages, expériences ornithologiques</a></li>
+                                        <li><a href="#" data-cat="exoticbirds" class="category-link">Oiseaux exotiques</a></li>
+                                        <li><a href="#" data-cat="travel" class="category-link">Voyages, expériences ornithologiques</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <p class="category-head-link">Biodiversité / environnement</p>
                                     <ul>
-                                        <li><a href="#" data-cat="preserv"
-                                               class="category-link">Zones à préserver</a></li>
-                                        <li><a href="#" data-cat="farming"
-                                               class="category-link">Agriculture, jardinage, conseils pratiques</a></li>
+                                        <li><a href="#" data-cat="preserv" class="category-link">Zones à préserver</a></li>
+                                        <li><a href="#" data-cat="farming" class="category-link">Agriculture, jardinage, conseils pratiques</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <p class="category-head-link">Programmes de recherche et
                                         publications</p>
                                     <ul>
-                                        <li><a href="#" data-cat="program"
-                                               class="category-link">Programmes de recherche en cours</a></li>
-                                        <li><a href="#" data-cat="document"
-                                               class="category-link">documents scientifiques</a></li>
+                                        <li><a href="#" data-cat="program" class="category-link">Programmes de recherche en cours</a></li>
+                                        <li><a href="#" data-cat="document" class="category-link">documents scientifiques</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -153,27 +149,45 @@
                 </ul>
                 <ul class="collapsible grey lighten-5" id="newsletter">
                     <li>
-                        <div class="collapsible-header grey lighten-5"
-                             id="newsletter-title-container">
+                        <div class="collapsible-header grey lighten-5" id="newsletter-title-container">
 
                             <h2 id="newsletter-title">Abonnez-vous à la newsletter</h2>
                         </div>
                         <div class="collapsible-body" id="newsletter-body">
-                            <p id="newsletter-form">
-                            <input type="email"
-                                   placeholder="votre email"
-                                   id="email"/><br>
-                            <button class="btn waves-effect" type="submit">envoyer</button><br>
-                            <label id="">
-                                <input type="checkbox" id=""/>
-                                <span id="newsletter-span">J'accepte que mon email soit utilisé
-                                    pour m'adresser
-                            la newsletter et j'ai bien pris connaissance de la politique de confidentialité de
-                                    <a id="newsletter-span-link" href="{{ path
-                                        ('app_confidentiality')
-                                    }}">nao.</a></span>
-                            </label>
-                            </p>
+
+                            {#<form id="newsletter-form">#}
+                                {#<div class="input-field inline">#}
+                                    {#<input id="email_inline" type="email" class="footernewsletter validate" required="required"/>#}
+                                    {#<span class="helper-text" style="display: none; margin-bottom: 10px; width: 200%; right: 30%;"></span>#}
+                                {#</div>#}
+                                {#<div>#}
+                                    {#<button class="btn waves-effect waves-light" type="submit" name="action">Envoyer</button>#}
+                                {#</div>#}
+                                {#<div>#}
+                                    {#<label id="info4">#}
+                                        {#<input type="checkbox" required="required" id="info5"/>#}
+                                        {#<span id="info6">J'accepte que mon email soit utilisé pour m'adresser la newsletter et j'ai bien pris connaissance de#}
+                                    {#<a href="{{ path('app_confidentiality') }}">la politique de confidentialité de nao.</a>#}
+                                {#</span>#}
+                                    {#</label>#}
+                                {#</div>#}
+                            {#</form>#}
+
+                            <form id="newsletter-form">
+                                <input class="actalitynewsletter validate" type="email" placeholder="votre email" id="email_inline" required="required"/><br>
+                                <span class="helper-text" style="display: none; margin-bottom: 10px; width: 200%; right: 30%;"></span>
+                                <div>
+                                    <button class="btn waves-effect" type="submit">envoyer</button>
+                                </div>
+                                <label>
+                                    <input type="checkbox" required="required"/>
+                                <span id="newsletter-span">J'accepte que mon email soit utilisé pour m'adresser la newsletter et j'ai bien pris connaissance de la politique de confidentialité de
+                                    <a id="newsletter-span-link" href="{{ path('app_confidentiality') }}">nao.</a>
+                                </span>
+                                </label>
+
+
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -198,25 +212,29 @@
                                 <p class="truncate">I am a very simple card. I am good at containing
                                     small bits
                                     of information. I am convenient because I require little markup to use effectively.</p>
-                                <a
-                                    id="head-article-link"
+                                <a id="head-article-link"
                                     href="{{ path('app_read_article', {'id' : post.id} ) }}">en lire plus
                                 </a>
                             </div>
                             <div class="card-action">
-                                <a
-                                    href="{{ path('app_read_article', {'id' : post.id} ) }}"
+                                <a href="{{ path('app_read_article', {'id' : post.id} ) }}"
                                     class="btn-floating halfway-fab waves-effect waves-light
-                                    orange darken-1 btn-card"
-                                  >
+                                    orange darken-1 btn-card">
                                     <i class="material-icons">add</i>
                                 </a>
-
                                 <div class="head-link">
-                                    <a href=""><i class="material-icons head-heart"
-                                                 >favorite_border</i></a>
-                                    <a href=""><i class="material-icons head-share"
-                                                 >share</i></a>
+                                    <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ post.favouredBy.count }}</span>
+                                    {% if is_granted('ROLE_USER')%}
+                                    <a class="toggle-heart" href="{{ path('toogle_post_heart', {id: post.id}) }}">
+                                        <i id="postheart" data-id="{{ post.id }}" class="material-icons head-heart">favorite_border</i>
+                                        <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
+                                    </a>
+                                    {% else %}
+                                        <a href="{{ path('security_login') }}">
+                                            <i class="material-icons" style="color: #EB5757">favorite_border</i>
+                                        </a>
+                                    {% endif %}
+                                    <a href=""><i class="material-icons head-share">share</i></a>
                                 </div>
                             </div>
                         </div>

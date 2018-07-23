@@ -3,10 +3,31 @@ App\Domain\DTO\RegisterDTO:
         email:
             - App\Validator\ExistingEmail:
                 groups: [Register]
-
+        password:
+            - Regex:
+                groups: [Register]
+                pattern: '/^.{8,}$/'
+                message: Votre mot de passe doit contenir 8 charactères minimum
+            - Regex:
+                groups: [Register]
+                pattern: '/^.*[a-zA-Z]$/'
+                message: Votre mot de passe doit contenir une lettre minimum
+            - Regex:
+                groups: [Register]
+                pattern: '/^.*[0-9]$/'
+                message: Votre mot de passe doit contenir un chiffre minimum
 App\Domain\DTO\ForgottenPasswordDTO:
     properties:
         email:
             - App\Validator\NonExistingEmail:
                 groups: [ForgottenPassword]
-
+App\Domain\DTO\ProfileDTO:
+    properties:
+        img:
+            - Image:
+                maxWidth: 256
+                maxHeight: 256
+                groups: [ImgProfile]
+            - File:
+                maxSize: 1024k
+                groups: [ImgProfile]

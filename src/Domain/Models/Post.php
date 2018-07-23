@@ -217,7 +217,7 @@ class Post
     /**
      * @return string
      */
-    public function getImg(): string
+    public function getImg(): ?string
     {
         return $this->img;
     }
@@ -289,7 +289,7 @@ class Post
     /**
      * @return string
      */
-    public function getMiniature(): string
+    public function getMiniature(): ?string
     {
         return $this->miniature;
     }

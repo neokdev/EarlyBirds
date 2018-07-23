@@ -20,7 +20,6 @@ use Symfony\Component\Serializer\SerializerInterface;
  *     methods={"GET"}
  * )
  * Class GETPostsBySearch
- * @package App\UI\Action\Api
  */
 class GETPostsBySearch
 {
@@ -40,22 +39,24 @@ class GETPostsBySearch
      * @param SerializerInterface $serializer
      */
     public function __construct(
-        PostRepository      $postRepository,
-        SerializerInterface $serializer)
-    {
+        PostRepository $postRepository,
+        SerializerInterface $serializer
+    ) {
         $this->postRepository = $postRepository;
         $this->serializer     = $serializer;
     }
 
     /**
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function __invoke(Request $request)
     {
-        $search = $request->attributes->get('search');
+        $search   = $request->attributes->get('search');
         $listPost = $this->postRepository->findBySearch($search);
-        return new JsonResponse($listPost,200);
+
+        return new JsonResponse($listPost, 200);
     }
 
 }
