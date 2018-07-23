@@ -170,7 +170,7 @@ class Mailer implements MailerInterface
         $message = new Swift_Message("[NAO] Confirmation abonnement newsletter");
 
         $message
-            ->setFrom(self::ADMIN_EMAIL)
+            ->setFrom(self::ADMIN_EMAIL, $newsletter->getEmail())
             ->setTo($newsletter->getEmail())
             ->setBody(
                 $this->environment->render(
@@ -181,6 +181,7 @@ class Mailer implements MailerInterface
                 ),
                 'text/html'
             );
+
         $this->mailer->send($message);
     }
 }
