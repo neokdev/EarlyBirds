@@ -41,8 +41,8 @@
     <body>
 
     <ul class="col s1 right" id="little_nav">
-        <li><a href="{{ path('app_observe') }}"><img src="{{ asset('/img/vector/loupe.png') }}"></a></li>
-        <li><a href="{{ path('app_lastobserve') }}"><img src=" {{ asset('/img/vector/Very-Basic-Binoculars-icon.png') }}"></a></li>
+        <li><a href="{{ path('app_lastobserve') }}"><img src="{{ asset('/img/vector/loupe.png') }}"></a></li>
+        <li><a href="{{ path('app_observe') }}"><img src=" {{ asset('/img/vector/Very-Basic-Binoculars-icon.png') }}"></a></li>
         <li><a href="{{ path('app_contact') }}"><img src="{{ asset('/img/vector/mail.png')
                 }}"></a></li>
     </ul>
@@ -183,13 +183,6 @@
             {% endif %}
         </ul>
 
-
-
-       <!-- <div class="container" id="c_body">
-            <div class="row">
-            </div>
-        </div>-->
-
         <div id="c_body">
             {% block body %}
             {% endblock %}
@@ -239,7 +232,6 @@
             <div class="row info hide-on-med-and-down">
                 <ul class="col m4 l4 hide-on-med-and-down">
                     <li><a class="footer-link" href="{{ path('app_faq') }}">FAQ</a></li>
-                    <li><a class="footer-link" href="{{ path('app_site_mapping') }}">Plan du Site</a></li>
                     <li><a class="footer-link" href="{{ path('app_legal') }}">Mentions Légales</a></li>
                     <li><a class="footer-link" href="{{ path('app_confidentiality') }}">Politique de
                             confidentialité</a></li>

@@ -2,6 +2,7 @@ $(function () {
 
     let searchBar = $('input#search');
     let contentDiv = $('#article');
+    let role = $('#author').attr('data-author');
 
    function construct(datas) {
        let nickname;
@@ -22,11 +23,53 @@ $(function () {
            });
        } else { favored = ""}
 
+       let content;
+
+       if (role === "ROLE_ADMIN" || role === "ROLE_NATURALIST") {
+           content =
+               "<a class='data-delete-post' data-delete='"+document.location.origin+"/delete-post-"+datas.id+"'>" +
+               "<i class='material-icons head-delete'>delete</i>"+
+               "</a>"+ "<a href='"+document.location.origin+"/modifier-article-"+datas.id+"'>" +
+               "<i class='material-icons head-edit'>edit</i>"+
+               "</a>";
+       } else {
+           content = "";
+       }
+
        let dateArticle = new Date(datas.createdAt.date);
 
        let YY = dateArticle.getFullYear();
        let DD = dateArticle.getDate();
-       let MM = dateArticle.getMonth();
+       let MM;
+
+       switch(dateArticle.getMonth()){
+           case 1: MM = "Janvier";
+               break;
+           case 2: MM = "Février";
+               break;
+           case 3: MM = "Mars";
+               break;
+           case 4: MM = "Avril";
+               break;
+           case 5: MM = "Mai";
+               break;
+           case 6: MM = "Juin";
+               break;
+           case 7: MM = "Juillet";
+               break;
+           case 8: MM = "Août";
+               break;
+           case 9: MM = "Septembre";
+               break;
+           case 10: MM = "Octobre";
+               break;
+           case 11: MM = "Novembre";
+               break;
+           case 12: MM = "Décembre";
+               break;
+       }
+
+       console.log(datas.id);
 
        contentDiv.append(
            "<div class='col l6 m6 s12'>" +
@@ -38,25 +81,18 @@ $(function () {
                     "<div class='card-content'>" +
                         "<p>auteur : "+ nickname +"</p>"+
                         "<p class='chip'>"+ datas.category +" </p>"+
-                        "<p>crée le : <em>"+DD+"-"+MM+"-"+YY+"</em></p>"+
-                        "<p class='truncate'>" +
-                            datas.content +
-                        "</p>"+
-                        "<a id='head-article-link' href='"+document.location.domain+"/article-"+ datas.id +"'>en lire" +
-                        " plus</a>"+
+                        "<p>crée le : <em>"+DD+" "+MM+" "+YY+"</em></p>"+
+                        "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>lire</a>"+
                     "</div>"+
                     "<div class='card-action'>" +
-                        "<a href='"+ document.location.domain +"/article-'"+ datas.id +" " +
-                            "class='btn-floating halfway-fab waves-effect waves-light\n" +
-                            "orange darken-1 btn-card'><i" +
-                            " class='material-icons'>add</i></a>"+
+
                             "<div class='head-link'>"+
                                 "<a href=''>" + favored +
                                     "<i class='material-icons head-heart'>favorite_border</i>"+
                                 "</a>"+
                                "<a href=''>" +
                                "<i class='material-icons head-share'>share</i>"+
-                               "</a>"+
+                               "</a>"+ content +
                             "</div>"+
                     "</div>"
                + "</div>"
@@ -70,6 +106,7 @@ $(function () {
         if (e.target.value.length === 0) {
             $.getJSON(document.location.href + '/search-post',
                 function (data) {
+                console.log(data);
                     contentDiv.html("");
                     if (data.length === 0) {
                         contentDiv.html("<p>pas de resultat pour votre recherche</p>");
@@ -99,7 +136,7 @@ $(function () {
     });
 
    $('.category-link').on('click', function () {
-       category = $('.category-link').attr('data-cat');
+       category = $(this).attr('data-cat');
        $.getJSON(document.location.href + '/search-post-category-'+category,
            function (data) {
                contentDiv.html("");
@@ -168,7 +205,7 @@ $(function () {
 
         $.ajax({
             method: 'POST',
-            url: "/newsletter/"+mail,
+            url: "document.location.origin+"/newsletter/"+mail,
         }).done(function (data) {
             if (data === true) {
                 $helperText.attr('data-error', "Vous êtes déjà enregistré à la newsletter");

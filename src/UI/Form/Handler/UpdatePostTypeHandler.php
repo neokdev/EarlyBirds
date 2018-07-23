@@ -140,7 +140,7 @@ class UpdatePostTypeHandler implements UpdatePostTypeHandlerInterface
 
             $this->postRepository->update();
 
-            $this->flash->add("notice","votre article à bien été modifié il va mintenant être soumis à validation");
+            $this->flash->add("notice","votre article à bien été modifié");
 
             return true;
         }

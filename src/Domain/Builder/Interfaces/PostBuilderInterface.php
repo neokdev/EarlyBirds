@@ -19,12 +19,12 @@ use App\Domain\Models\User;
 interface PostBuilderInterface
 {
     /**
-     * @param string $title
-     * @param string $content
-     * @param User   $author
-     * @param string $category
-     * @param string $img
-     * @param string $miniature
+     * @param string      $title
+     * @param string      $content
+     * @param User        $author
+     * @param string      $category
+     * @param string      $img
+     * @param null|string $miniature
      * @return mixed
      */
     public function create(
@@ -33,7 +33,7 @@ interface PostBuilderInterface
         User   $author,
         string $category,
         string $img,
-        string $miniature
+               $miniature
     );
 
     /**

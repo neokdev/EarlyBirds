@@ -10,7 +10,10 @@ namespace App\UI\Responder;
 
 use App\Domain\Models\Post;
 use App\UI\Responder\Interfaces\ArticleResponderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 /**
@@ -25,12 +28,21 @@ class ArticleResponder implements ArticleResponderInterface
     private $twig;
 
     /**
-     * ArticleResponder constructor.
-     * @param Environment $twig
+     * @var UrlGeneratorInterface
      */
-    public function __construct(Environment $twig)
-    {
+    private $url;
+
+    /**
+     * ArticleResponder constructor.
+     * @param Environment           $twig
+     * @param UrlGeneratorInterface $url
+     */
+    public function __construct(
+        Environment           $twig,
+        UrlGeneratorInterface $url
+    ) {
         $this->twig = $twig;
+        $this->url  = $url;
     }
 
     /**
@@ -40,13 +52,21 @@ class ArticleResponder implements ArticleResponderInterface
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke(Post $post)
+    public function __invoke(bool $redirect = false, Post $post, FormInterface $form = null)
     {
-        $response = new Response(
+        $redirect
+            ? $response = new RedirectResponse(
+                $this->url->generate('app_read_article', [
+                     'id' => $post->getId()
+                     ], UrlGeneratorInterface::ABSOLUTE_URL)
+                )
+            : $response = new Response(
             $this->twig->render(
                 'article.html.twig',
-                ['post' => $post]
+                ['post' => $post,
+                    'form' => $form->createView()]
             ));
+        ;
 
         return $response;
     }

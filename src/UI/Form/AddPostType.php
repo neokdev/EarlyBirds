@@ -19,7 +19,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
 class AddPostType extends AbstractType
 {
     /**
@@ -43,37 +42,37 @@ class AddPostType extends AbstractType
                 'label'    => false,
                 'required' => true,
                 'attr'     => [
-                    'placeholder' => 'votre article'
+                    'class' => 'tinymce'
                 ]
             ])
             ->add('category', ChoiceType::class, [
                 'choices' => [
                     'vie de l\'association' => [
-                        'CR, AG'                 => 'CRAG',
-                        'Bénévolat, partenariat' => 'benevola',
-                        'faits marquants'        => 'facts'
+                        'CR, AG'                 => 'CR, AG' ,
+                        'Bénévolat, partenariat' => 'Bénévolat, partenariat',
+                        'faits marquants'        => 'faits marquants'
                     ],
                     'Évènements' => [
-                            'Agenda asso'                                                    => 'agenda',
-                        'Autres  : exemple "Fête de la nature", we Oiseaux des jardins, etc' => 'autres'
+                        'Agenda asso'                          => 'Agenda asso' ,
+                        'Autres  : exemple, Fête de la nature' => 'Autres  : exemple, Fête de la nature'
                     ],
                     'L’art d\'observer les oiseaux' => [
-                        'Lieux, balades'             => 'places',
-                        'Attitude du birdwatcher'    => 'birdwatcher',
-                        'équipement'                 => 'gear'
+                        'Lieux, balades'             => 'Lieux, balades',
+                        'Attitude du birdwatcher'    => 'Attitude du birdwatcher',
+                        'équipement'                 => 'équipement'
                     ],
-                    'Identifier un oiseau (comment reconnaître un .... ?)' => 'bird',
+                    'Identifier un oiseau' => 'Identifier un oiseau',
                     'Ornithologie sans frontières' => [
-                        'Oiseaux exotiques'                    => 'exoticbirds',
-                        'Voyages, expériences ornithologiques' => 'travel'
+                        'Oiseaux exotiques'    => 'Oiseaux exotiques',
+                        'Voyages, expériences' => 'Voyages, expériences'
                     ],
                     'Biodiversité / environnement' => [
-                        'Zones à préserver'                          => 'preserv',
-                        'Agriculture, jardinage, conseils pratiques' => 'farming'
+                        'Zones à préserver'                => 'Zones à préserver',
+                        'Agriculture, jardinage, conseils' => 'Agriculture, jardinage, conseils'
                     ],
                     'Programmes de recherche et publications' => [
-                        'Programmes de recherche en cours' => 'program',
-                        'documents scientifiques'          => 'document'
+                        'Programmes de recherche en cours' => 'Programmes de recherche en cours',
+                        'documents scientifiques'          => 'documents scientifiques'
                     ]
 
                 ],

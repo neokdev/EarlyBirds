@@ -28,45 +28,70 @@
             </div>
         </div>
 
-        <div class="input-field col l10 offset-l1 m10 offset-m1 s12" id="search-container">
-            <input class="col l8 offset-l2 m8 offset-m2 s12 autocomplete"
+        <div class="col l10 offset-l1 m10 offset-m1 s12" id="search-container">
+            <input class="col l8 offset-l2 m8 offset-m2 s12"
                    type="text"
                    placeholder="Champ de Recherche"
                    id="search"
                    autocomplete="off"
             />
+            <div class="col l10 offset-l1 m10 offset-m1 s12" >
+                <div>
+                    {% if app.user %}
+                        {% for role in app.user.roles %}
+                            <p id="author" data-author="{{ role }}"></p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN') == true %}
+                    <a  href="{{ path('app_add_post') }}"
+                       id="add-article-btn"
+                       class="col l4
+                    offset-l4 m4 offset-m4
+                    s12 btn
+                waves-effect">
+                        ajouter un article
+                    </a>
+                {% endif %}
+            </div>
         </div>
 
         <div class="col l10 offset-l1 m10 offset-m1 s12">
+
             <div class="col l4 m4 s12">
                 <div class="card grey lighten-5"  id="head-card">
                     <div class="card-content">
                         <h2 id="first-article-title">Sur le perchoir</h2>
-                        <p id="head-img-container">
-                            <img class="circle" id="head-img" src="{{
-                            lastPost.miniature }}">
-                        </p>
-                        <h2 class="card-title" id="head-article-title">{{ lastPost.title
-                            }}</h2>
+                        {% if lastPost is not null %}
+                            {% if lastPost.miniature is not null %}
+                                <p id="head-img-container">
+                                    <img class="circle" id="head-img" alt="image du dernier
+                                    article paru sur nao" src="
+                                    {{lastPost.miniature }}">
+                                </p>
+                            {% else %}
+
+                            {% endif %}
+                        <h2 class="card-title" id="head-article-title">
+                            {{ lastPost.title}}
+                        </h2>
                         <p>
-                            <em>{% if lastPost.author.nickName is not null %}
+                            <em>{% if lastPost.author is not null %}
                                     {{ lastPost.author.nickName }}
                                 {% else %} nc {% endif %}
                             </em>
                         </p>
                         <p class="chip">{{ lastPost.category }}</p>
-                        <p>crée le : <em>{{ lastPost.createdAt|date('d-M-Y à H-m-s') }}
+                        <p>crée le : <em>{{ lastPost.createdAt|localizeddate('long', 'none') }}
                             </em>
                         </p>
-                        <p class="truncate" id="head-content">{{ lastPost.content }}</p>
-                        <a href="{{ path('app_read_article', {'id' : lastPost.id} ) }}"
-                           class="btn-floating halfway-fab waves-effect waves-light orange
-                        darken-1 btn-card"><i class="material-icons">add</i></a>
+                        
                         <a id="head-article-link" href="{{ path('app_read_article', {'id' : lastPost
-                            .id} ) }}">en lire plus</a>
+                            .id} ) }}">lire</a>
                     </div>
                     <div class="card-action">
-                        <div id="heart-infos" class="head-link" data-url="{{ path('get_favoured') }}">
+
+                       <div id="heart-infos" class="head-link" data-url="{{ path('get_favoured') }}">
                             <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ lastPost.favouredBy.count }}</span>
                             {% if is_granted('ROLE_USER')%}
                             <a class="toggle-heart" href="{{ path('toogle_post_heart', {id: lastPost.id}) }}">
@@ -79,8 +104,23 @@
                                 </a>
                             {% endif %}
                             <a href=""><i class="material-icons head-share">share</i></a>
+                             
+                            {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN')
+                                == true %}
+                            <a class="data-delete-post" data-delete="{{ path
+                                ('app_delete_article',
+                                {'id' : lastPost.id}) }}"><i
+                                        class="material-icons
+                            head-delete"
+                                >delete</i></a>
+                            <a href="{{ path('app_update_post', {'id' : lastPost.id}) }}"><i
+                                        class="material-icons
+                            head-edit"
+                                >edit</i></a>
+                            {% endif %}
                         </div>
                     </div>
+                    {% endif %}
                 </div>
                 <ul class="collapsible grey lighten-5" id="category">
                     <li>
@@ -90,57 +130,72 @@
                         <div class="collapsible-body">
                             <ul id="category-list">
                                <li>
-                                   <p class="category-head-link">vie de l'association</p>
                                    <ul>
-                                       <li><a href="#" data-cat="CRAG" class="category-link">CR,
-                                               AG</a></li>
-                                       <li><a href="#" data-cat="benevola" class="category-link">Bénévolat,
-                                               partenariat</a></li>
-                                       <li><a href="#" data-cat="facts" class="category-link">faits marquants</a></li>
+                                       <li><p class="category-head-link">vie de l'association</p></li>
+                                       <li data-cat="CR, AG" class="category-link">CR,
+                                               AG</li>
+                                       <li data-cat="Bénévolat, partenariat"
+                                           class="category-link">Bénévolat,
+                                               partenariat</li>
+                                       <li data-cat="faits marquants" class="category-link">faits
+                                           marquants</li>
                                    </ul>
                                </li>
                                 <li>
-                                    <p class="category-head-link">Événement</p>
                                     <ul>
-                                        <li><a href="#" data-cat="agenda" class="category-link">Agenda asso</a></li>
-                                        <li>
-                                            <a href="#" data-cat="autres" class="category-link">
-                                                Autres  : exemple "Fête de la nature", we Oiseaux des jardins
-                                            </a>
-                                        </li>
 
+                                        <li><p class="category-head-link">Événement</p></li>
+                                        <li data-cat="Agenda asso"
+                                               class="category-link">Agenda asso</li>
+                                        <li
+                                            data-cat="Autres  : exemple Fête de la nature"
+                                               class="category-link">
+                                                Autres  : exemple Fête de la nature
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <p class="category-head-link">L’art d'observer les oiseaux</p>
                                     <ul>
-                                        <li><a href="#" data-cat="places" class="category-link">Lieux, balades</a></li>
-                                        <li><a href="#" data-cat="birdwatcher" class="category-link">Attitude du birdwatcher</a></li>
-                                        <li><a href="#" data-cat="gear" class="category-link">équipement</a></li>
+                                        <li><p class="category-head-link">L’art d'observer les oiseaux</p></li>
+                                        <li data-cat="Lieux, balades"
+                                               class="category-link">Lieux, balades</li>
+                                        <li data-cat="Attitude du birdwatcher"
+                                               class="category-link">Attitude du birdwatcher</li>
+                                        <li data-cat="équipement"
+                                            class="category-link">équipement</li>
                                     </ul>
                                 </li>
-                                <li><a href="#" data-cat="bird"
-                                       class="category-head-link">Identifier un oiseau (comment reconnaître un .... ?)</a></li>
+                                <li data-cat="Identifier un oiseau"
+                                       class="category-head-link">
+                               </li>
+                               
                                 <li>
-                                    <p class="category-link">Ornithologie sans frontières</p>
                                     <ul>
-                                        <li><a href="#" data-cat="exoticbirds" class="category-link">Oiseaux exotiques</a></li>
-                                        <li><a href="#" data-cat="travel" class="category-link">Voyages, expériences ornithologiques</a></li>
+
+                                        <li><p class="category-head-link">Ornithologie sans frontières</p></li>
+                                        <li data-cat="Oiseaux exotiques"
+                                               class="category-link">Oiseaux exotiques</li>
+                                        <li data-cat="Voyages, expériences"
+                                               class="category-link">Voyages, expériences</li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <p class="category-head-link">Biodiversité / environnement</p>
                                     <ul>
-                                        <li><a href="#" data-cat="preserv" class="category-link">Zones à préserver</a></li>
-                                        <li><a href="#" data-cat="farming" class="category-link">Agriculture, jardinage, conseils pratiques</a></li>
+                                        <li><p class="category-head-link">Biodiversité / environnement</p></li>
+                                        <li data-cat="Zones à préserver"
+                                               class="category-link">Zones à préserver</li>
+                                        <li data-cat="Agriculture, jardinage, conseils"
+                                               class="category-link">Agriculture, jardinage, conseils</li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <p class="category-head-link">Programmes de recherche et
-                                        publications</p>
                                     <ul>
-                                        <li><a href="#" data-cat="program" class="category-link">Programmes de recherche en cours</a></li>
-                                        <li><a href="#" data-cat="document" class="category-link">documents scientifiques</a></li>
+                                        <li><p class="category-head-link">Programmes de recherche et
+                                                publications</p></li>
+                                        <li data-cat="Programmes de recherche en cours"
+                                               class="category-link">Programmes de recherche en cours</li>
+                                        <li data-cat="documents scientifiques"
+                                               class="category-link">documents scientifiques</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -154,25 +209,7 @@
                             <h2 id="newsletter-title">Abonnez-vous à la newsletter</h2>
                         </div>
                         <div class="collapsible-body" id="newsletter-body">
-
-                            {#<form id="newsletter-form">#}
-                                {#<div class="input-field inline">#}
-                                    {#<input id="email_inline" type="email" class="footernewsletter validate" required="required"/>#}
-                                    {#<span class="helper-text" style="display: none; margin-bottom: 10px; width: 200%; right: 30%;"></span>#}
-                                {#</div>#}
-                                {#<div>#}
-                                    {#<button class="btn waves-effect waves-light" type="submit" name="action">Envoyer</button>#}
-                                {#</div>#}
-                                {#<div>#}
-                                    {#<label id="info4">#}
-                                        {#<input type="checkbox" required="required" id="info5"/>#}
-                                        {#<span id="info6">J'accepte que mon email soit utilisé pour m'adresser la newsletter et j'ai bien pris connaissance de#}
-                                    {#<a href="{{ path('app_confidentiality') }}">la politique de confidentialité de nao.</a>#}
-                                {#</span>#}
-                                    {#</label>#}
-                                {#</div>#}
-                            {#</form>#}
-
+                        
                             <form id="newsletter-form">
                                 <input class="actalitynewsletter validate" type="email" placeholder="votre email" id="email_inline" required="required"/><br>
                                 <span class="helper-text" style="display: none; margin-bottom: 10px; width: 200%; right: 30%;"></span>
@@ -184,9 +221,7 @@
                                 <span id="newsletter-span">J'accepte que mon email soit utilisé pour m'adresser la newsletter et j'ai bien pris connaissance de la politique de confidentialité de
                                     <a id="newsletter-span-link" href="{{ path('app_confidentiality') }}">nao.</a>
                                 </span>
-                                </label>
-
-
+                                </label>                        
                             </form>
                         </div>
                     </li>
@@ -194,36 +229,39 @@
             </div>
 
             <div class="col l8 m8 s12" id="article">
-                {% for post in posts %}
-                    <div class="col l6 m6 s12">
-                        <div class="card" id="article-card">
-                            <div class="card-image">
-                                <img src="{{ post.img }}">
-                                <h2 class="card-title" id="article-card-title">{{ post.title }}</h2>
-                            </div>
-                            <div class="card-content">
-                                <p>auteur : <em>{% if lastPost.author.nickName is not null %}
-                                            {{ lastPost.author.nickName }}
-                                        {% else %} nc {% endif %}</em></p>
-                                <p class="chip">{{ post.category }}</p>
-                                <p>crée le : <em>{{ post.createdAt|date('d-M-Y à H-m-s') }}
-                                    </em>
-                                </p>
-                                <p class="truncate">I am a very simple card. I am good at containing
-                                    small bits
-                                    of information. I am convenient because I require little markup to use effectively.</p>
-                                <a id="head-article-link"
-                                    href="{{ path('app_read_article', {'id' : post.id} ) }}">en lire plus
-                                </a>
-                            </div>
-                            <div class="card-action">
-                                <a href="{{ path('app_read_article', {'id' : post.id} ) }}"
-                                    class="btn-floating halfway-fab waves-effect waves-light
-                                    orange darken-1 btn-card">
-                                    <i class="material-icons">add</i>
-                                </a>
-                                <div class="head-link">
-                                    <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ post.favouredBy.count }}</span>
+
+                {% if posts is not null %}
+                    {% for post in posts %}
+                        <div class="col l6 m6 s12">
+                            <div class="card" id="article-card">
+                                <div class="card-image">
+                                    <img src="{{ post.img }}" alt="image de l'article de nao">
+                                    <h2 class="card-title" id="article-card-title">{{ post.title }}</h2>
+                                </div>
+                                <div class="card-content">
+                                    <p>auteur : <em>{% if post.author.nickName is not null %}
+                                                {{ post.author.nickName }}
+                                            {% else %} nc {% endif %}</em></p>
+                                    <p class="chip">{{ post.category }}</p>
+                                    <p>crée le : <em>{{ post.createdAt|localizeddate('long', 'none') }}
+                                        </em>
+                                    </p>
+                                    <a
+                                        id="head-article-link"
+                                        href="{{ path('app_read_article', {'id' : post.id} ) }}">lire
+                                    </a>
+                                </div>
+                                <div class="card-action">
+                                   <!-- <a
+                                        href="{{ path('app_read_article', {'id' : post.id} ) }}"
+                                        class="btn-floating halfway-fab waves-effect waves-light
+                                        orange darken-1 btn-card"
+                                      >
+                                        <i class="material-icons">add</i>
+                                    </a> -->
+
+                                    <div class="head-link">
+                                        <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ post.favouredBy.count }}</span>
                                     {% if is_granted('ROLE_USER')%}
                                     <a class="toggle-heart" href="{{ path('toogle_post_heart', {id: post.id}) }}">
                                         <i id="postheart" data-id="{{ post.id }}" class="material-icons head-heart">favorite_border</i>
@@ -234,12 +272,25 @@
                                             <i class="material-icons" style="color: #EB5757">favorite_border</i>
                                         </a>
                                     {% endif %}
-                                    <a href=""><i class="material-icons head-share">share</i></a>
+                                        <a href=""><i class="material-icons head-share"
+                                                     >share</i></a>
+                                        {% if is_granted('ROLE_NATURALIST') == true or is_granted
+                                            ('ROLE_ADMIN') == true %}
+                                        <a class="data-delete-post" data-delete="{{ path
+                                            ('app_delete_article', {'id' : post
+                                            .id}) }}"><i
+                                                    class="material-icons head-delete"
+                                            >delete</i></a>
+                                        <a href="{{ path('app_update_post', {'id' : post.id}) }}">
+                                            <i class="material-icons head-edit">edit</i></a>
+                                        {% endif %}
+                                    </div>
+               
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -247,8 +298,8 @@
 
 {% block javascripts %}
     {{ parent() }}
-
     <script type="text/javascript" src="{{ asset('js/actuality.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/delete_post.js') }}"></script>
 {% endblock %}
 
 
