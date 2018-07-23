@@ -8,7 +8,6 @@
 
 namespace App\UI\Action\Api;
 
-
 use App\Domain\Models\User;
 use App\Domain\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;

@@ -85,16 +85,26 @@
                         <p>crée le : <em>{{ lastPost.createdAt|localizeddate('long', 'none') }}
                             </em>
                         </p>
-
+                        
                         <a id="head-article-link" href="{{ path('app_read_article', {'id' : lastPost
                             .id} ) }}">lire</a>
                     </div>
                     <div class="card-action">
-                        <div class="head-link">
-                            <a href=""><i class="material-icons head-heart"
-                                          >favorite_border</i></a>
-                            <a href=""><i class="material-icons head-share"
-                                          >share</i></a>
+
+                       <div id="heart-infos" class="head-link" data-url="{{ path('get_favoured') }}">
+                            <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ lastPost.favouredBy.count }}</span>
+                            {% if is_granted('ROLE_USER')%}
+                            <a class="toggle-heart" href="{{ path('toogle_post_heart', {id: lastPost.id}) }}">
+                                <i id="postheart" data-id="{{ lastPost.id }}" class="material-icons head-heart">favorite_border</i>
+                                <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
+                            </a>
+                            {% else %}
+                                <a href="{{ path('security_login') }}">
+                                    <i class="material-icons" style="color: #EB5757">favorite_border</i>
+                                </a>
+                            {% endif %}
+                            <a href=""><i class="material-icons head-share">share</i></a>
+                             
                             {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN')
                                 == true %}
                             <a class="data-delete-post" data-delete="{{ path
@@ -133,6 +143,7 @@
                                </li>
                                 <li>
                                     <ul>
+
                                         <li><p class="category-head-link">Événement</p></li>
                                         <li data-cat="Agenda asso"
                                                class="category-link">Agenda asso</li>
@@ -140,7 +151,6 @@
                                             data-cat="Autres  : exemple Fête de la nature"
                                                class="category-link">
                                                 Autres  : exemple Fête de la nature
-
                                         </li>
                                     </ul>
                                 </li>
@@ -157,14 +167,11 @@
                                 </li>
                                 <li data-cat="Identifier un oiseau"
                                        class="category-head-link">
-                                    <ul>
-                                        <li class="category-link" data-cat="Identifier un oiseau">Identifier un
-                                            oiseau</li>
-                                    </ul>
-                                </li>
+                               </li>
+                               
                                 <li>
-
                                     <ul>
+
                                         <li><p class="category-head-link">Ornithologie sans frontières</p></li>
                                         <li data-cat="Oiseaux exotiques"
                                                class="category-link">Oiseaux exotiques</li>
@@ -173,7 +180,6 @@
                                     </ul>
                                 </li>
                                 <li>
-
                                     <ul>
                                         <li><p class="category-head-link">Biodiversité / environnement</p></li>
                                         <li data-cat="Zones à préserver"
@@ -198,33 +204,32 @@
                 </ul>
                 <ul class="collapsible grey lighten-5" id="newsletter">
                     <li>
-                        <div class="collapsible-header grey lighten-5"
-                             id="newsletter-title-container">
+                        <div class="collapsible-header grey lighten-5" id="newsletter-title-container">
 
                             <h2 id="newsletter-title">Abonnez-vous à la newsletter</h2>
                         </div>
                         <div class="collapsible-body" id="newsletter-body">
-                            <p id="newsletter-form">
-                            <input type="email"
-                                   placeholder="votre email"
-                                   id="email"/><br>
-                            <button class="btn waves-effect" type="submit">envoyer</button><br>
-                            <label id="">
-                                <input type="checkbox" id=""/>
-                                <span id="newsletter-span">J'accepte que mon email soit utilisé
-                                    pour m'adresser
-                            la newsletter et j'ai bien pris connaissance de la politique de confidentialité de
-                                    <a id="newsletter-span-link" href="{{ path
-                                        ('app_confidentiality')
-                                    }}">nao.</a></span>
-                            </label>
-                            </p>
+                        
+                            <form id="newsletter-form">
+                                <input class="actalitynewsletter validate" type="email" placeholder="votre email" id="email_inline" required="required"/><br>
+                                <span class="helper-text" style="display: none; margin-bottom: 10px; width: 200%; right: 30%;"></span>
+                                <div>
+                                    <button class="btn waves-effect" type="submit">envoyer</button>
+                                </div>
+                                <label>
+                                    <input type="checkbox" required="required"/>
+                                <span id="newsletter-span">J'accepte que mon email soit utilisé pour m'adresser la newsletter et j'ai bien pris connaissance de la politique de confidentialité de
+                                    <a id="newsletter-span-link" href="{{ path('app_confidentiality') }}">nao.</a>
+                                </span>
+                                </label>                        
+                            </form>
                         </div>
                     </li>
                 </ul>
             </div>
 
             <div class="col l8 m8 s12" id="article">
+
                 {% if posts is not null %}
                     {% for post in posts %}
                         <div class="col l6 m6 s12">
@@ -256,8 +261,17 @@
                                     </a> -->
 
                                     <div class="head-link">
-                                        <a href=""><i class="material-icons head-heart"
-                                                     >favorite_border</i></a>
+                                        <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ post.favouredBy.count }}</span>
+                                    {% if is_granted('ROLE_USER')%}
+                                    <a class="toggle-heart" href="{{ path('toogle_post_heart', {id: post.id}) }}">
+                                        <i id="postheart" data-id="{{ post.id }}" class="material-icons head-heart">favorite_border</i>
+                                        <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
+                                    </a>
+                                    {% else %}
+                                        <a href="{{ path('security_login') }}">
+                                            <i class="material-icons" style="color: #EB5757">favorite_border</i>
+                                        </a>
+                                    {% endif %}
                                         <a href=""><i class="material-icons head-share"
                                                      >share</i></a>
                                         {% if is_granted('ROLE_NATURALIST') == true or is_granted
@@ -271,6 +285,7 @@
                                             <i class="material-icons head-edit">edit</i></a>
                                         {% endif %}
                                     </div>
+               
                                 </div>
                             </div>
                         </div>

@@ -151,4 +151,70 @@ $(function () {
        );
    });
 
+    $('.toggle-heart').on('click', function (e) {
+        e.preventDefault();
+
+        let $link = $(e.currentTarget);
+
+        $link.find('.material-icons').hide();
+        $link.find('#ajaxLoading').show();
+
+        let id = $(this).find('#postheart').data('id');
+
+        $.ajax({
+            method: 'POST',
+            url: $link.attr('href')
+        }).done(function (data) {
+
+            $link.find('.material-icons').show();
+            $link.find('#ajaxLoading').hide();
+            $('.head-link').each(function () {
+
+                if ($(this).find('#postheart').data('id') === id) {
+                    switch ($(this).find('.head-heart').html()) {
+                        case "favorite_border":
+                            $(this).find('.head-heart').html('favorite');
+                            break;
+                        case "favorite":
+                            $(this).find('.head-heart').html('favorite_border');
+                            break;
+                    }
+                    $(this).find('.js-like-post-count').html(data.hearts);
+                }
+            });
+        });
+    });
+
+    let url = $('#heart-infos').data('url');
+    $.getJSON(url, function (data) {
+        $.each(data, function (key, val) {
+            let id = val;
+            $('.head-link').each(function () {
+                let heart = $(this).find('#postheart');
+                if (heart.data('id') === id) {
+                    heart.html("favorite")
+                }
+            })
+        })
+    });
+
+    $('#newsletter-form button').click(function (e) {
+        e.preventDefault();
+        let mail = $('.actalitynewsletter').val();
+        let $helperText = $('#newsletter-form > span');
+
+        $.ajax({
+            method: 'POST',
+            url: "document.location.origin+"/newsletter/"+mail,
+        }).done(function (data) {
+            if (data === true) {
+                $helperText.attr('data-error', "Vous êtes déjà enregistré à la newsletter");
+                $('#email_inline.actalitynewsletter').removeClass('valid').addClass('invalid');
+                $helperText.show().delay(5000).fadeOut('normal');
+            } else {
+                $helperText.attr('data-success', "Merci pour votre inscription à la newsletter");
+                $helperText.show().delay(5000).fadeOut('normal');
+            }
+        });
+    });
 });

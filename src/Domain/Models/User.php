@@ -134,6 +134,8 @@ class User implements UserInterface
      * @param string      $img
      * @param int         $score
      * @param null|string $resetPasswordToken
+     *
+     * @throws \Exception
      */
     public function __construct(
         string $email,

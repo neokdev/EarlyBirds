@@ -8,6 +8,7 @@
 
 namespace App\UI\Action\Api;
 
+use App\Domain\Models\Observe;
 use App\Domain\Repository\ObserveRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,12 +37,15 @@ class GetValidateObservesTaxrefNames
         $this->observeRepository = $observeRepository;
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function __invoke()
     {
         $observes = $this->observeRepository->findValidate();
 
         $autocomplete = [];
-        /** @var Observe $observes */
+        /** @var Observe $observe */
         foreach ($observes as $observe) {
             if ($observe->getRef()) {
                 $nomVern = $observe->getRef()->getNomVern();
@@ -53,7 +57,6 @@ class GetValidateObservesTaxrefNames
             } else {
                 $lbNom = "Non identifié";
             }
-            /** @var Observe $observe */
             $autocomplete[$nomVern] = null;
             $autocomplete[$lbNom]   = null;
         }
