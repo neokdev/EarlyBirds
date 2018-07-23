@@ -38,24 +38,26 @@
                 <div class="input-field col l10 offset-l1 s12 m12">
                     <span class="label"></span>
                     {{ form_widget(form.content) }}
+                    <br>
                     <span class="form_errors">{{ form_errors(form.content) }}</span>
                 </div>
 
                 <div class="col l10 offset-l1 s12 m12">
                     <div class="file-field input-field col l3 m3 s12" id="divUpBtn">
-                        <div><span class="form_errors" id="error-img">{{ form_errors(form.miniature)
-                                }}</span></div>
+
                         <div class="btn" id="uplBtn">
                             <span>Ajouter une miniature</span>
-                            {{ form_widget(form.miniature) }}
+                            {{ form_widget(form.miniature) }}<br>
+                            <span class="form_errors" id="error-img">{{ form_errors(form.miniature)
+                                }}</span>
                         </div>
                     </div>
                     <div class="file-field input-field col l4 m4 s12" id="divUpBtn">
-                        <div><span class="form_errors" id="error-img">{{ form_errors(form.img)
-                                }}</span></div>
                         <div class="btn" id="uplBtn">
                             <span>Ajouter une photo</span>
-                            {{ form_widget(form.img) }}
+                            {{ form_widget(form.img) }}<br>
+                            <span class="form_errors" id="error-img">{{ form_errors(form.img)
+                                }}</span>
                         </div>
                     </div>
 
@@ -70,9 +72,9 @@
                 </div>
 
                 <div class="input-field col m10 offset-m1 message">
-                    {% for message in app.flashes('notice') %}
+                    {% for message in app.flashes('post') %}
                         <img id="notice_decoration" src="{{ asset('/img/vector/polygon.png') }}"/>
-                        <div class="flash-notice">
+                        <div class="flash-post">
                             {{ message }}
                         </div>
                     {% endfor %}

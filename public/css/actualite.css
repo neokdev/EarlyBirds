@@ -162,6 +162,7 @@
     font-size: 0.875em;
     color: #8148B6;
     cursor: pointer;
+    margin-left: 1em;
 }
 
 ul#category-list {
@@ -236,4 +237,5 @@ ul#category-list {
     font-family: MontSerrat;
     font-weight: 500;
     font-size: 1em;
+    margin: 0;
 }

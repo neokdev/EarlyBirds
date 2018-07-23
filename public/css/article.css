@@ -52,7 +52,10 @@
 }
 
 .head-link {
+    margin-top: 1.5em;
     text-align: center;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 #content-article h1 {
@@ -111,4 +114,80 @@
 
 #action-link {
     text-align: center;
+}
+
+#submitBtn {
+    background: #F2994A;
+    border-radius: 20px;
+    height: 3em;
+    font-size: 1.125em;
+    text-transform: initial;
+    margin: .5em 0;
+}
+
+input#comment_content {
+
+    padding-left: 10px;
+    height: 4.375em;
+    border: none;
+    background: #FFFCFC;
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input::placeholder {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding-left: 15px;
+}
+
+input {
+    text-decoration-line: underline;
+    text-decoration-color: #2D9CDB;
+    padding: 0;
+}
+
+#comments {
+    background: #f5f5f5;
+    margin-top: 2em;
+    border-radius: 2em;
+    padding: .4em 0 .5em 2em;
+}
+
+#comments-head {
+    color: #488194;
+    font-family: MontSerrat;
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+li.comment-content {
+    font-family: MontSerrat;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: .2em;
+}
+
+#comment-author {
+    font-family: MontSerrat;
+    font-weight: 500;
+}
+
+#comment-date {
+    font-family: MontSerrat;
+    font-weight: 300;
+    color: darkgrey;
+}
+
+.form_errors {
+    text-align: right;
+    font-size: .9em;
+    font-weight: 300;
+    font-family: MontSerrat;
+    margin-top: 0;
+    color: #F2994A;
+}
+
+span.form_errors ul {
+    margin-top: 0;
 }

@@ -10,7 +10,12 @@ namespace App\UI\Action;
 
 use App\Domain\Repository\PostRepository;
 use App\UI\Action\Interfaces\ArticleActionInterface;
+use App\UI\Form\AddCommentType;
+use App\UI\Form\AddPostType;
+use App\UI\Form\CommentType;
+use App\UI\Form\Handler\Interfaces\CommentTypeHandlerInterface;
 use App\UI\Responder\Interfaces\ArticleResponderInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,7 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route(
  *     path="/article-{id}",
  *     name="app_read_article",
- *     methods={"GET"}
+ *     methods={"GET", "POST"}
  *
  * )
  * Class ArticleAction
@@ -37,16 +42,32 @@ class ArticleAction implements ArticleActionInterface
     private $postRepository;
 
     /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
+     * @var CommentTypeHandlerInterface
+     */
+    private $commentTypeHandler;
+
+    /**
      * ArticleAction constructor.
-     * @param ArticleResponderInterface $articleResponder
-     * @param PostRepository            $postRepository
+     * @param ArticleResponderInterface   $articleResponder
+     * @param PostRepository              $postRepository
+     * @param FormFactoryInterface        $formFactory
+     * @param CommentTypeHandlerInterface $commentTypeHandler
      */
     public function __construct(
-        ArticleResponderInterface $articleResponder,
-        PostRepository            $postRepository
+        ArticleResponderInterface   $articleResponder,
+        PostRepository              $postRepository,
+        FormFactoryInterface        $formFactory,
+        CommentTypeHandlerInterface $commentTypeHandler
     ) {
-        $this->articleResponder = $articleResponder;
-        $this->postRepository   = $postRepository;
+        $this->articleResponder   = $articleResponder;
+        $this->postRepository     = $postRepository;
+        $this->formFactory        = $formFactory;
+        $this->commentTypeHandler = $commentTypeHandler;
     }
 
 
@@ -55,6 +76,15 @@ class ArticleAction implements ArticleActionInterface
         $id = $request->attributes->get('id');
         $post = $this->postRepository->find(['id' => $id]);
         $responder = $this->articleResponder;
-        return $responder($post);
+
+
+        $commentForm = $this->formFactory->create(CommentType::class)->handleRequest($request);
+
+        if ($this->commentTypeHandler->handle($commentForm, $post) ) {
+
+            return $responder(true, $post, null);
+        }
+
+        return $responder(false, $post, $commentForm);
     }
 }

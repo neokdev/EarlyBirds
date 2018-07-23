@@ -41,7 +41,7 @@ tinymce.init({
 
 $(function () {
     //flash message after valide or update obs
-    let msgUn = $('.flash-notice');
+    let msgUn = $('.flash-post');
 
     if (msgUn.text().length > 0) {
 

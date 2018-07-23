@@ -21,16 +21,18 @@
                 </div>
                 <div class="col l4 offset-l4 m4 offset-m4 s12">
                     <p id="info-article">
-                        {{ post.author.nickname }}
+                        {% if post.author.nickname is not null %}
+                            {{ post.author.nickname }} -
+                        {% endif %}
                         {% for role in post.author.roles %}
                             {% if role  == "ROLE_USER" %}
-                                Naturaliste
+                                 Naturaliste
                             {% elseif role  == "ROLE_ADMIN"  %}
-                                Administrateur
+                                - Administrateur
                             {% endif %}
                         {% endfor %}
-                        {{ post.createdAt|localizeddate('long',
-                            'none') }} {{ post.category }}
+                         - {{ post.createdAt|localizeddate('long',
+                            'none') }} - {{ post.category }}
                     </p>
                     <div class="head-link">
                         <a href=""><i class="material-icons head-heart"
@@ -58,10 +60,44 @@
         <div class="col l10 offset-l1 m10 offset-m1 s12">
             <div class="col l10 offset-l1 m10 offset-m1 s12" id="content-article">
                 {{ post.content|raw }}
+            </div>
 
+
+            <div class="col l10 offset-l1 m10 offset-m1 s12" id="form">
+                <div id="comments">
+                    <ul>
+                        <li><h2 id="comments-head">Les derniers Commentaires</h2></li>
+                        {% for comment in post.postComments %}
+                        <li class="comment-content">
+                            {% if comment.author.nickname is not null %}
+                                <span id="comment-author">{{ comment.author.nickname }} : </span>
+                            {% else %}
+                                <span id="comment-author">utilisateur sans nom : </span>
+                            {% endif %}
+
+                                {{ comment.content }}<br>
+                                <em id="comment-date">posté le : {{ comment.createdAt|localizeddate
+                                        ('long',
+                                    'none') }} </em>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {{ form_start(form) }}
+                    <div class="input-field col l8 m8 s12">
+                        {{ form_widget(form.content) }}
+                        <span class="form_errors">{{ form_errors(form.content) }}</span>
+                    </div>
+
+                    <div class="input-field col l4 m4 s12" id="divSubBtn">
+                        <button id="submitBtn" class="btn waves-effect waves-light col s12"
+                                type="submit">
+                            envoyer
+                        </button>
+                    </div>
+                {{ form_end(form) }}
             </div>
         </div>
-
     </div>
 
 {% endblock %}

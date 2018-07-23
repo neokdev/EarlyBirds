@@ -82,17 +82,10 @@ $(function () {
                         "<p>auteur : "+ nickname +"</p>"+
                         "<p class='chip'>"+ datas.category +" </p>"+
                         "<p>crée le : <em>"+DD+" "+MM+" "+YY+"</em></p>"+
-                        "<div class='post-content truncate'>" +
-                            datas.content +
-                        "</div>"+
-                        "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>en lire" +
-                        " plus</a>"+
+                        "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>lire</a>"+
                     "</div>"+
                     "<div class='card-action'>" +
-                        "<a href='"+ document.location.href +"/article-"+ datas.id + "'" +
-                            " class='btn-floating halfway-fab waves-effect waves-light\n" +
-                            "orange darken-1 btn-card'><i" +
-                            " class='material-icons'>add</i></a>"+
+
                             "<div class='head-link'>"+
                                 "<a href=''>" + favored +
                                     "<i class='material-icons head-heart'>favorite_border</i>"+

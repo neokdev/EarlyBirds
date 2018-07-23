@@ -80,7 +80,7 @@ input#add_post_title, input#update_post_title {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.flash-notice {
+.flash-post {
     background: #59A177;
     color: white;
     border-radius: 20px;

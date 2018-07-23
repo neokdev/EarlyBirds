@@ -10,30 +10,55 @@ namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\AddPostDTOInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator as AcmeAssert;
 
 class AddPostDTO implements AddPostDTOInterface
 {
     /**
+     * @Assert\NotBlank(message="le titre doit être complété")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "votre titre doit contenir au moins {{ limit }} carctères",
+     *      maxMessage = "votre titre doit contenir moins de {{ limit }} carctères"
+     * )
      * @var string
      */
     public $title;
 
     /**
+     * @Assert\NotBlank(message="l'article doit être complété")
+     * @AcmeAssert\ExistPostContent
      * @var string
      */
     public $content;
 
     /**
+     * @Assert\NotBlank(message="une catégorie doit être sélectionnée")
      * @var string
      */
     public $category;
 
     /**
+     * @Assert\NotBlank(message="une image doit être choisie")
+     *  @Assert\File(
+     *     maxSize = "1M",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     maxSizeMessage = "votre image doit être inférieur à 1mo",
+     *     mimeTypesMessage = "votre image doit être de type jpeg ou png"
+     * )
      * @var UploadedFile
      */
     public $img;
 
     /**
+     *  @Assert\File(
+     *     maxSize = "1M",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     maxSizeMessage = "votre image doit être inférieur à 1mo",
+     *     mimeTypesMessage = "votre image doit être de type jpeg ou png"
+     * )
      * @var UploadedFile
      */
     public $miniature;

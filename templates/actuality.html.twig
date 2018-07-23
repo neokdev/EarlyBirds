@@ -63,10 +63,15 @@
                     <div class="card-content">
                         <h2 id="first-article-title">Sur le perchoir</h2>
                         {% if lastPost is not null %}
-                        <p id="head-img-container">
-                            <img class="circle" id="head-img" src="
-                            {{lastPost.miniature }}">
-                        </p>
+                            {% if lastPost.miniature is not null %}
+                                <p id="head-img-container">
+                                    <img class="circle" id="head-img" alt="image du dernier
+                                    article paru sur nao" src="
+                                    {{lastPost.miniature }}">
+                                </p>
+                            {% else %}
+
+                            {% endif %}
                         <h2 class="card-title" id="head-article-title">
                             {{ lastPost.title}}
                         </h2>
@@ -80,10 +85,7 @@
                         <p>crée le : <em>{{ lastPost.createdAt|localizeddate('long', 'none') }}
                             </em>
                         </p>
-                        <a href="{{ path('app_read_article', {'id' : lastPost.id} ) }}"
-                           class="btn-floating halfway-fab waves-effect waves-light orange
-                        darken-1 btn-card"
-                           ><i class="material-icons">add</i></a>
+
                         <a id="head-article-link" href="{{ path('app_read_article', {'id' : lastPost
                             .id} ) }}">lire</a>
                     </div>
@@ -93,7 +95,6 @@
                                           >favorite_border</i></a>
                             <a href=""><i class="material-icons head-share"
                                           >share</i></a>
-
                             {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN')
                                 == true %}
                             <a class="data-delete-post" data-delete="{{ path
@@ -119,8 +120,8 @@
                         <div class="collapsible-body">
                             <ul id="category-list">
                                <li>
-                                   <p class="category-head-link">vie de l'association</p>
                                    <ul>
+                                       <li><p class="category-head-link">vie de l'association</p></li>
                                        <li data-cat="CR, AG" class="category-link">CR,
                                                AG</li>
                                        <li data-cat="Bénévolat, partenariat"
@@ -131,8 +132,8 @@
                                    </ul>
                                </li>
                                 <li>
-                                    <p class="category-head-link">Événement</p>
                                     <ul>
+                                        <li><p class="category-head-link">Événement</p></li>
                                         <li data-cat="Agenda asso"
                                                class="category-link">Agenda asso</li>
                                         <li
@@ -141,12 +142,11 @@
                                                 Autres  : exemple Fête de la nature
 
                                         </li>
-
                                     </ul>
                                 </li>
                                 <li>
-                                    <p class="category-head-link">L’art d'observer les oiseaux</p>
                                     <ul>
+                                        <li><p class="category-head-link">L’art d'observer les oiseaux</p></li>
                                         <li data-cat="Lieux, balades"
                                                class="category-link">Lieux, balades</li>
                                         <li data-cat="Attitude du birdwatcher"
@@ -156,10 +156,16 @@
                                     </ul>
                                 </li>
                                 <li data-cat="Identifier un oiseau"
-                                       class="category-head-link">Identifier un oiseau</li>
-                                <li>
-                                    <p class="category-link">Ornithologie sans frontières</p>
+                                       class="category-head-link">
                                     <ul>
+                                        <li class="category-link" data-cat="Identifier un oiseau">Identifier un
+                                            oiseau</li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <ul>
+                                        <li><p class="category-head-link">Ornithologie sans frontières</p></li>
                                         <li data-cat="Oiseaux exotiques"
                                                class="category-link">Oiseaux exotiques</li>
                                         <li data-cat="Voyages, expériences"
@@ -167,8 +173,9 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <p class="category-head-link">Biodiversité / environnement</p>
+
                                     <ul>
+                                        <li><p class="category-head-link">Biodiversité / environnement</p></li>
                                         <li data-cat="Zones à préserver"
                                                class="category-link">Zones à préserver</li>
                                         <li data-cat="Agriculture, jardinage, conseils"
@@ -176,9 +183,9 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <p class="category-head-link">Programmes de recherche et
-                                        publications</p>
                                     <ul>
+                                        <li><p class="category-head-link">Programmes de recherche et
+                                                publications</p></li>
                                         <li data-cat="Programmes de recherche en cours"
                                                class="category-link">Programmes de recherche en cours</li>
                                         <li data-cat="documents scientifiques"
@@ -219,55 +226,55 @@
 
             <div class="col l8 m8 s12" id="article">
                 {% if posts is not null %}
-                {% for post in posts %}
-                    <div class="col l6 m6 s12">
-                        <div class="card" id="article-card">
-                            <div class="card-image">
-                                <img src="{{ post.img }}">
-                                <h2 class="card-title" id="article-card-title">{{ post.title }}</h2>
-                            </div>
-                            <div class="card-content">
-                                <p>auteur : <em>{% if post.author.nickName is not null %}
-                                            {{ post.author.nickName }}
-                                        {% else %} nc {% endif %}</em></p>
-                                <p class="chip">{{ post.category }}</p>
-                                <p>crée le : <em>{{ post.createdAt|localizeddate('long', 'none') }}
-                                    </em>
-                                </p>
-                                <a
-                                    id="head-article-link"
-                                    href="{{ path('app_read_article', {'id' : post.id} ) }}">lire
-                                </a>
-                            </div>
-                            <div class="card-action">
-                                <a
-                                    href="{{ path('app_read_article', {'id' : post.id} ) }}"
-                                    class="btn-floating halfway-fab waves-effect waves-light
-                                    orange darken-1 btn-card"
-                                  >
-                                    <i class="material-icons">add</i>
-                                </a>
+                    {% for post in posts %}
+                        <div class="col l6 m6 s12">
+                            <div class="card" id="article-card">
+                                <div class="card-image">
+                                    <img src="{{ post.img }}" alt="image de l'article de nao">
+                                    <h2 class="card-title" id="article-card-title">{{ post.title }}</h2>
+                                </div>
+                                <div class="card-content">
+                                    <p>auteur : <em>{% if post.author.nickName is not null %}
+                                                {{ post.author.nickName }}
+                                            {% else %} nc {% endif %}</em></p>
+                                    <p class="chip">{{ post.category }}</p>
+                                    <p>crée le : <em>{{ post.createdAt|localizeddate('long', 'none') }}
+                                        </em>
+                                    </p>
+                                    <a
+                                        id="head-article-link"
+                                        href="{{ path('app_read_article', {'id' : post.id} ) }}">lire
+                                    </a>
+                                </div>
+                                <div class="card-action">
+                                   <!-- <a
+                                        href="{{ path('app_read_article', {'id' : post.id} ) }}"
+                                        class="btn-floating halfway-fab waves-effect waves-light
+                                        orange darken-1 btn-card"
+                                      >
+                                        <i class="material-icons">add</i>
+                                    </a> -->
 
-                                <div class="head-link">
-                                    <a href=""><i class="material-icons head-heart"
-                                                 >favorite_border</i></a>
-                                    <a href=""><i class="material-icons head-share"
-                                                 >share</i></a>
-                                    {% if is_granted('ROLE_NATURALIST') == true or is_granted
-                                        ('ROLE_ADMIN') == true %}
-                                    <a class="data-delete-post" data-delete="{{ path
-                                        ('app_delete_article', {'id' : post
-                                        .id}) }}"><i
-                                                class="material-icons head-delete"
-                                        >delete</i></a>
-                                    <a href="{{ path('app_update_post', {'id' : post.id}) }}">
-                                        <i class="material-icons head-edit">edit</i></a>
-                                    {% endif %}
+                                    <div class="head-link">
+                                        <a href=""><i class="material-icons head-heart"
+                                                     >favorite_border</i></a>
+                                        <a href=""><i class="material-icons head-share"
+                                                     >share</i></a>
+                                        {% if is_granted('ROLE_NATURALIST') == true or is_granted
+                                            ('ROLE_ADMIN') == true %}
+                                        <a class="data-delete-post" data-delete="{{ path
+                                            ('app_delete_article', {'id' : post
+                                            .id}) }}"><i
+                                                    class="material-icons head-delete"
+                                            >delete</i></a>
+                                        <a href="{{ path('app_update_post', {'id' : post.id}) }}">
+                                            <i class="material-icons head-edit">edit</i></a>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
                 {% endif %}
             </div>
         </div>

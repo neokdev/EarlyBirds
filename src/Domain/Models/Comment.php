@@ -36,6 +36,7 @@ class Comment
     /**
      * Comment constructor.
      * @param string $content
+     * @param User $author
      */
     public function __construct(string $content, User $author)
     {
@@ -62,7 +63,6 @@ class Comment
 
     /**
      * @param User|null $author
-     *
      * @return Comment
      */
     public function setAuthor(?User $author): self
@@ -90,6 +90,26 @@ class Comment
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     * @return $this
+     */
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+        return $this;
+    }
+
+
 
 
 }

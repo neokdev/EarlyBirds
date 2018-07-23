@@ -49,6 +49,11 @@ class AddPostTypeHandler implements AddPostTypeHandlerInterface
     private $fileOutput;
 
     /**
+     * @var null UploadedFile
+     */
+    private $fileOutputTwo;
+
+    /**
      * @var FlashBagInterface
      */
     private $flash;
@@ -76,6 +81,7 @@ class AddPostTypeHandler implements AddPostTypeHandlerInterface
         $this->imageFolder    = $imageFolder;
         $this->media          = $media;
         $this->fileOutput     = null;
+        $this->fileOutputTwo  = null;
         $this->flash          = $flash;
     }
 
@@ -101,13 +107,17 @@ class AddPostTypeHandler implements AddPostTypeHandlerInterface
              * @var UploadedFile $fileMiniature
              */
             $fileMiniature = $form->getData()->miniature;
+            $miniature = null;
 
             if ($fileMiniature) {
-                $this->fileOutput = $fileMiniature->move(
+                $this->fileOutputTwo = $fileMiniature->move(
                     $this->imageFolder,
                     $this->generateUniqueFileName()."."
                     .$fileMiniature->guessExtension()
                 );
+                $miniature = $this->media.$this->fileOutputTwo->getFilename();
+            } else {
+                $miniature = null;
             }
 
             $user = $this->token->getToken()->getUser();
@@ -118,13 +128,12 @@ class AddPostTypeHandler implements AddPostTypeHandlerInterface
                 $user,
                 $form->getData()->category,
                 $this->media.$this->fileOutput->getFilename(),
-                $this->media.$this->fileOutput->getFilename()
-
+                $miniature
             );
 
             $this->postRepository->save($this->postBuilder->getPost());
 
-            $this->flash->add("notice","votre article à bien été enregistré");
+            $this->flash->add("post","votre article à bien été enregistré");
 
             return true;
         }

@@ -9,8 +9,9 @@
 namespace App\UI\Responder\Interfaces;
 
 use App\Domain\Models\Post;
+use Symfony\Component\Form\FormInterface;
 
 interface ArticleResponderInterface
 {
-    public function __invoke(Post $post);
+    public function __invoke(bool $redirect = false, Post $post, FormInterface $form = null);
 }

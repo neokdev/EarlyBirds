@@ -8,7 +8,6 @@
 
 namespace App\Domain\Builder;
 
-
 use App\Domain\Builder\Interfaces\CommentBuilderInterface;
 use App\Domain\Models\Comment;
 use App\Domain\Models\User;

@@ -8,8 +8,10 @@
 
 namespace App\UI\Form\Handler\Interfaces;
 
+use App\Domain\Models\Post;
+use Symfony\Component\Form\FormInterface;
 
 interface CommentTypeHandlerInterface
 {
-
+    public function handle(FormInterface $form, Post $post): bool;
 }
