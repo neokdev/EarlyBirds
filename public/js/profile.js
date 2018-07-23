@@ -242,6 +242,7 @@ function disableFields() {
     $('.js-nickname-input').find('input').attr('disabled', true);
     $('.js-firstname-input').find('input').attr('disabled', true);
     $('.js-lastname-input').find('input').attr('disabled', true);
+    $('.js-changepsw-button').attr('disabled', true);
     $('.js-avatar-input').attr('disabled', true);
     $('.js-avatar-btn').addClass('disabled');
     $('.js-submitBtn').addClass('disabled');
@@ -253,6 +254,7 @@ function enableFields() {
     $('.js-nickname-input').find('input').attr('disabled', false);
     $('.js-firstname-input').find('input').attr('disabled', false);
     $('.js-lastname-input').find('input').attr('disabled', false);
+    $('.js-changepsw-button').attr('disabled', false);
     $('.js-avatar-input').attr('disabled', false);
     $('.js-avatar-btn').removeClass('disabled');
     $('.js-submitBtn').removeClass('disabled');

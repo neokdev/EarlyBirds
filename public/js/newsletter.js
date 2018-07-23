@@ -8,15 +8,14 @@ $(function () {
             method: 'POST',
             url: "/newsletter/"+mail,
         }).done(function (data) {
-            console.log(data);
             if (data === true) {
                 $helperText.attr('data-error', "Vous êtes déjà enregistré à la newsletter");
-                $('#email_inline').removeClass('valid').addClass('invalid');
+                $('#email_inline.footernewsletter').removeClass('valid').addClass('invalid');
                 $helperText.show().delay(5000).fadeOut('normal');
             } else {
                 $helperText.attr('data-success', "Merci pour votre inscription à la newsletter");
                 $helperText.show().delay(5000).fadeOut('normal');
             }
         });
-    })
+    });
 });

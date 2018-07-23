@@ -15,7 +15,7 @@
 }
 
 .header_text {
-    font-family: Didot;
+    font-family: Didot, serif;
     font-size: 3em;
     text-align: center;
     color: black;
@@ -79,7 +79,7 @@
 }
 
 #first-article-title {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-size: 1.875em;
     font-weight: 500;
     text-align: center;
@@ -87,7 +87,7 @@
 }
 
 #head-article-title {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 1.500em;
     text-align: left;
@@ -95,7 +95,7 @@
 }
 
 #head-content {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 0.875em;
     text-align: left;
@@ -123,7 +123,7 @@
 }
 
 #category-title, #newsletter-title {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-size: 1.500em;
     font-weight: 500;
     color: #8148B6;
@@ -131,7 +131,7 @@
 }
 
 .category-link {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 0.875em;
     color: #8148B6;
@@ -150,7 +150,7 @@ ul#category-list {
 }
 
 #newsletter-span {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     text-align: left;
     color: #488194;
@@ -167,26 +167,20 @@ ul#category-list {
     margin-top: 1em;
     margin-bottom: 2em;
     box-shadow: none;
-
     text-transform: lowercase;
 }
 
-#newsletter input {
+#email_inline.actalitynewsletter {
     border-radius: 10px;
     background: #EEEEEE;
     margin: 1em 0;
     width: 90%;
     height: 3em;
-
+    box-shadow: none;
     text-transform: lowercase;
 }
 
-#newsletter input#email {
-    margin-top: 0;
-    box-shadow: none;
-}
-
-#newsletter input::placeholder {
+#email_inline.actalitynewsletter::placeholder {
     text-decoration-line: none;
 }
 
@@ -197,7 +191,7 @@ ul#category-list {
 
 #article-card-title {
     color: #fb8c00;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 1.500em;
     padding-bottom: 0;
@@ -205,7 +199,7 @@ ul#category-list {
 
 .category-head-link {
     color: #fb8c00;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 1em;
 }

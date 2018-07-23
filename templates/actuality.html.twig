@@ -154,17 +154,40 @@
                             <h2 id="newsletter-title">Abonnez-vous à la newsletter</h2>
                         </div>
                         <div class="collapsible-body" id="newsletter-body">
-                            <p id="newsletter-form">
-                            <input type="email" placeholder="votre email" id="email"/><br>
-                            <button class="btn waves-effect" type="submit">envoyer</button><br>
-                            <label id="">
-                                <input type="checkbox" id=""/>
-                                <span id="newsletter-span">J'accepte que mon email soit utilisé
-                                    pour m'adresser
-                            la newsletter et j'ai bien pris connaissance de la politique de confidentialité de
-                                    <a id="newsletter-span-link" href="{{ path('app_confidentiality') }}">nao.</a></span>
-                            </label>
-                            </p>
+
+                            {#<form id="newsletter-form">#}
+                                {#<div class="input-field inline">#}
+                                    {#<input id="email_inline" type="email" class="footernewsletter validate" required="required"/>#}
+                                    {#<span class="helper-text" style="display: none; margin-bottom: 10px; width: 200%; right: 30%;"></span>#}
+                                {#</div>#}
+                                {#<div>#}
+                                    {#<button class="btn waves-effect waves-light" type="submit" name="action">Envoyer</button>#}
+                                {#</div>#}
+                                {#<div>#}
+                                    {#<label id="info4">#}
+                                        {#<input type="checkbox" required="required" id="info5"/>#}
+                                        {#<span id="info6">J'accepte que mon email soit utilisé pour m'adresser la newsletter et j'ai bien pris connaissance de#}
+                                    {#<a href="{{ path('app_confidentiality') }}">la politique de confidentialité de nao.</a>#}
+                                {#</span>#}
+                                    {#</label>#}
+                                {#</div>#}
+                            {#</form>#}
+
+                            <form id="newsletter-form">
+                                <input class="actalitynewsletter validate" type="email" placeholder="votre email" id="email_inline" required="required"/><br>
+                                <span class="helper-text" style="display: none; margin-bottom: 10px; width: 200%; right: 30%;"></span>
+                                <div>
+                                    <button class="btn waves-effect" type="submit">envoyer</button>
+                                </div>
+                                <label>
+                                    <input type="checkbox" required="required"/>
+                                <span id="newsletter-span">J'accepte que mon email soit utilisé pour m'adresser la newsletter et j'ai bien pris connaissance de la politique de confidentialité de
+                                    <a id="newsletter-span-link" href="{{ path('app_confidentiality') }}">nao.</a>
+                                </span>
+                                </label>
+
+
+                            </form>
                         </div>
                     </li>
                 </ul>
