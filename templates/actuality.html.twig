@@ -39,7 +39,11 @@
                 <div>
                     {% if app.user %}
                         {% for role in app.user.roles %}
-                            <p id="author" data-author="{{ role }}"></p>
+                            {% if role is same as("ROLE_ADMIN") %}
+                                <p id="author" data-author="{{ role }}"></p>
+                            {% elseif role is same as ("ROLE_NATURALIST") %}
+                                <p id="author" data-author="{{ role }}"></p>
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -76,7 +80,8 @@
                             {{ lastPost.title}}
                         </h2>
                         <p>
-                            <em>{% if lastPost.author is not null %}
+                            <em>
+                                {% if lastPost.author is not null %}
                                     {{ lastPost.author.nickName }}
                                 {% else %} nc {% endif %}
                             </em>
@@ -87,7 +92,7 @@
                         </p>
                         
                         <a id="head-article-link" href="{{ path('app_read_article', {'id' : lastPost
-                            .id} ) }}">lire</a>
+                            .id} ) }}">lire l'article</a>
                     </div>
                     <div class="card-action">
 
@@ -248,7 +253,8 @@
                                     </p>
                                     <a
                                         id="head-article-link"
-                                        href="{{ path('app_read_article', {'id' : post.id} ) }}">lire
+                                        href="{{ path('app_read_article', {'id' : post.id} )
+                                        }}">lire l'article
                                     </a>
                                 </div>
                                 <div class="card-action">

@@ -162,13 +162,15 @@
                                         <div class="card-content">
                                             <div class="row">
                                                 <div class="col s12">
-                                                    <p class="truncate">{{ favoured.content }}</p>
+                                                   <!-- <p class="truncate">{{ favoured.content
+                                                        }}</p> -->
                                                 </div>
                                             </div>
                                             <div class="divider"></div>
                                             <div class="row" style="margin: 10px 0 0 0;">
                                                 <div class="col s7">
-                                                    <a href="{{ path('app_read_article', {id: favoured.id}) }}" >en lire plus</a>
+                                                    <a href="{{ path('app_read_article', {id:
+                                                        favoured.id}) }}" >lire l'article</a>
                                                 </div>
                                                 <div class="col s5 right-align">
                                                     <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ favoured.favouredBy.count }}</span>
@@ -258,13 +260,15 @@
                                         <div class="card-content">
                                             <div class="row">
                                                 <div class="col s12">
-                                                    <p class="truncate">{{ post.content }}</p>
+                                                    <!-- <p class="truncate">{{ post.content
+                                                    }}</p> -->
                                                 </div>
                                             </div>
                                             <div class="divider"></div>
                                             <div class="row" style="margin: 10px 0 0 0;">
                                                 <div class="col s12">
-                                                    <a href="{{ path('app_read_article', {id: post.id}) }}" >en lire plus</a>
+                                                    <a href="{{ path('app_read_article', {id:
+                                                        post.id}) }}" >lire l'article</a>
                                                 </div>
                                             </div>
                                         </div>

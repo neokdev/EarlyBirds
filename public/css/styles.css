@@ -136,7 +136,7 @@ a.black-text:active {
     position: relative;
     top: 0;
     left: 0;
-    background: url('../img/vector/vector_footer.png');
+    background: no-repeat url('../img/vector/vector_footer.png');
     padding-top: 12%;
 }
 
@@ -617,5 +617,23 @@ svg {
 
     #footer {
         padding-top: 5%;
+    }
+}
+
+@media (min-width: 1921px) {
+    #citation-mobile{
+        display: none;
+    }
+
+    #footer-mobile{
+        display: none;
+    }
+
+    #footer {
+        padding-top: 10em;
+    }
+    
+    .nav-icon {
+        display: none;
     }
 }
