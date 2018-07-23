@@ -28,14 +28,14 @@
             </div>
         </div>
 
-        <div class="col l10 offset-l1 m10 offset-m1 s12" id="search-container">
+        <div class="col l10 offset-l1 m10 offset-m1 s10 offset-s1" id="search-container">
             <input class="col l8 offset-l2 m8 offset-m2 s12"
                    type="text"
                    placeholder="Champ de Recherche"
                    id="search"
                    autocomplete="off"
             />
-            <div class="col l10 offset-l1 m10 offset-m1 s12" >
+            <div class="col l10 offset-l1 m10 offset-m1 s10 offset-s1" >
                 <div>
                     {% if app.user %}
                         {% for role in app.user.roles %}
@@ -63,7 +63,7 @@
         <div class="col l10 offset-l1 m10 offset-m1 s12">
 
             <div class="col l4 m4 s12">
-                <div class="card grey lighten-5"  id="head-card">
+                <div class="card grey lighten-5" id="head-card">
                     <div class="card-content">
                         <h2 id="first-article-title">Sur le perchoir</h2>
                         {% if lastPost is not null %}

@@ -93,6 +93,13 @@
 
 }
 
+#content-article p  {
+    font-family: MontSerrat;
+    font-size: 1em;
+    font-weight: 200;
+
+}
+
 #content-article p em {
     font-family: MontSerrat;
     font-size: 1em;
@@ -190,4 +197,83 @@ li.comment-content {
 
 span.form_errors ul {
     margin-top: 0;
+}
+
+
+
+@media (max-width: 400px)  {
+    #subHeader {
+        margin-top: 6em;
+        padding: 0;
+    }
+
+    #header {
+        height: 300px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 5em;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    .head-link a {
+        padding: .9em;
+    }
+
+    #info-article {
+        height: 4em;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 992px) {
+
+    #subHeader {
+        margin-top: 8em;
+    }
+
+    #header {
+        height: 300px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 2em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #citation {
+        display: none !important;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: unset;
+    }
+
+    i.material-icons {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+
+    #header {
+        height: 450px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 4em;
+    }
 }

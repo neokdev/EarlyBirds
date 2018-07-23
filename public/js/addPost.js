@@ -5,6 +5,8 @@ tinymce.init({
                  branding: false,
                  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter' +
                           ' alignright alignjustify | bullist numlist | link',
+
+
                  style_formats: [
                      {title: 'Headers', items: [
                              {title: 'Header 1', format: 'h1', styles: {'class': 'article_h1'}},
@@ -18,8 +20,8 @@ tinymce.init({
 
                          ]},
                      {title: 'Blocks', items: [
-                             {title: 'Paragraph', format: 'p', styles: {'class': 'article_p'}},
-                             {title: 'Blockquote', format: 'blockquote', styles: {'class': 'article_quote'}},
+                             {title: 'Paragraph', format: 'p', remove: 'all', attributes: { style: "padding: 0 0 1em 0; font-size: 13px; line-height: 1.5em" }},
+                             {title: 'Blockquote', format: 'blockquote'},
                              {title: 'address', format: 'address', styles: {'class': 'address'}}
                          ]},
                      {title: 'Alignment', items: [

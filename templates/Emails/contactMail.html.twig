@@ -595,13 +595,16 @@
 
                                                                 <h3 class="null"
                                                                     style="color: #222222;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;">
-                                                                    subject : {{ newsletter
+                                                                    subject : {{ data
                                                                     .subject }} </h3>
-                                                                <h4 class="null" style="text-align: left;"> auteur : {{ newsletter.author }} - mail : {{ newsletter.mail }}</h4>
+                                                                <h4 class="null"
+                                                                    style="text-align: left;">
+                                                                    auteur : {{ data.author }} -
+                                                                    mail : {{ data.mail }}</h4>
                                                                 <span style="font-family:lato,
                                                                 helvetica neue,helvetica,arial,
                                                                 sans-serif"><span
-                                                                            style="font-size:16px">{{ newsletter.message }}</span><br><br>
+                                                                            style="font-size:16px">{{ data.message }}</span><br><br>
 							<span style="font-size:16px">L'équipe de NAO</span></span>
                                                             </td>
                                                         </tr>

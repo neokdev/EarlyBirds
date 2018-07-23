@@ -173,14 +173,13 @@ span.form_errors ul {
     background: #59A177;
     color: white;
     border-radius: 20px;
-    height: 3.000em;
     vertical-align: center;
     font-family: MontSerrat;
-    font-weight: 700;
-    font-size: 1.200em;
+    font-weight: 500;
+    font-size: 1em;
     text-transform: lowercase;
-    padding-bottom: .8em;
     text-align: center;
+    padding: 1.8em;
 }
 
 @media (min-width: 1441px ) and (max-width: 1920px) {

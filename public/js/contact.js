@@ -1,6 +1,6 @@
 $(function () {
     //flash message after valide or update obs
-    let msgUn = $('.flash-contact');
+    let msgUn = $('.contact');
 
     if (msgUn.text().length > 0) {
 

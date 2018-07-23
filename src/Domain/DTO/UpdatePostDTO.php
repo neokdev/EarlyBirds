@@ -11,6 +11,7 @@ namespace App\Domain\DTO;
 use App\Domain\DTO\Interfaces\UpdatePostDTOInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator as AcmeAssert;
 
 class UpdatePostDTO implements UpdatePostDTOInterface
 {
@@ -40,7 +41,7 @@ class UpdatePostDTO implements UpdatePostDTOInterface
     public $category;
 
     /**
-     *  @Assert\NotBlank(message="une image doit être choisie")
+     *
      *  @Assert\File(
      *     maxSize = "1M",
      *     mimeTypes = {"image/jpeg", "image/png"},

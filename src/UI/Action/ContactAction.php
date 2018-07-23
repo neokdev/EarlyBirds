@@ -52,7 +52,11 @@ class ContactAction implements ContactActionInterface
         $this->contactTypeHandler = $contactTypeHandler;
     }
 
-
+    /**
+     * @param ContactResponderInterface $contactResponder
+     * @param Request $request
+     * @return mixed
+     */
     public function __invoke(ContactResponderInterface $contactResponder, Request $request)
     {
         $addContactType = $this->formFactory

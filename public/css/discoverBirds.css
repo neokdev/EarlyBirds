@@ -46,6 +46,13 @@ input::placeholder {
     padding-left: 1em;
 }
 
+#divautocomplete {
+    background: #FFFFFF;
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    margin-top: 4em;
+}
+
 .sub_title {
     font-weight: 500;
     font-size: 2em;
@@ -131,7 +138,7 @@ div#popupMap {
 @media (min-width: 401px) and (max-width: 992px) {
 
     #subHeader {
-        margin-top: 15em;
+        margin-top: 8em;
     }
 
     #header {
@@ -153,6 +160,11 @@ div#popupMap {
 
     #citation {
         display: none !important;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: unset;
     }
 }
 
