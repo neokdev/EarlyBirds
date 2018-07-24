@@ -258,10 +258,12 @@
                                     <h2 class="card-title" id="article-card-title">{{ post.title }}</h2>
                                 </div>
                                 <div class="card-content">
-                                    <p>auteur : <em>{% if post.author.nickName is not null %}
-                                                {{ post.author.nickName }} {% if "ROLE_ADMIN" in  lastPost.author.roles %}
+                                    <p>auteur : <em>
+                                            {% if post.author.nickName is not null %}
+                                            {{ post.author.nickName }}
+                                                {% if "ROLE_ADMIN" in  post.author.roles %}
                                                     - Administrateur
-                                                {% elseif"ROLE_USER" in  postost.author.roles %}
+                                                {% elseif"ROLE_USER" in  post.author.roles %}
                                                     - NAturaliste
                                                 {% endif %}
                                             {% else %} nc

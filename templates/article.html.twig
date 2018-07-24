@@ -69,7 +69,6 @@
                 {{ post.content|raw }}
             </div>
 
-
             <div class="col l10 offset-l1 m10 offset-m1 s12" id="form">
                 <div id="comments">
                     <ul>
@@ -90,9 +89,7 @@
 
                             {% endif %}
 
-                                <em id="comment-date">posté le : {{ comment.createdAt|localizeddate
-                                        ('long',
-                                    'none') }} </em>
+                                <em id="comment-date">posté le : {{ comment.createdAt|localizeddate('long', 'none') }} </em>
                         </li>
                         {% endfor %}
                     </ul>
