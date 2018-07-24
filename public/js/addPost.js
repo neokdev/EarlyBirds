@@ -6,8 +6,6 @@ tinymce.init({
                  branding: false,
                  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter' +
                           ' alignright alignjustify | bullist numlist | link',
-
-
                  style_formats: [
                      {title: 'Headers', items: [
                              {title: 'Header 1', format: 'h1', styles: {'class': 'article_h1'}},
@@ -44,10 +42,32 @@ tinymce.init({
 
 $(function () {
     //flash message after valide or update obs
-    let msgUn = $('.flash-post');
+   let msgUn = $('.flash-post');
+    if (msgUn !== undefined) {
 
-    if (msgUn.text().length > 0) {
+        if (msgUn.text().length > 0) {
 
-        msgUn.fadeOut(9000)
+            msgUn.fadeOut(9000)
+        }
     }
+
+    let counter = $('.counter');
+
+        counter.on('keyup', function () {
+
+            let count = $('.counter').val();
+
+            if ( count.length < 130 || count.length > 160) {
+
+              counter.css('border', '3px solid red');
+            } else if(count.length >= 130 || count.length <= 160) {
+
+                counter.css('border' , '3px solid green');
+            }
+            $('.form_carac_number').text('Nombre de caractère de la description : ' + count.length + ' caractères');
+        });
+
+        counter.on('blur', function () {
+           counter.css('border', 'none');
+        });
 });

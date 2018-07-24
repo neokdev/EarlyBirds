@@ -114,6 +114,7 @@ class UpdatePostAction implements UpdatePostActionInterface
         $updPostDto = new UpdatePostDTO(
             $updPost->getTitle(),
             $updPost->getContent(),
+            $updPost->getShortDesc(),
             $updPost->getCategory(),
             null,
             null

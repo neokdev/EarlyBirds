@@ -23,6 +23,7 @@ class PostBuilder implements PostBuilderInterface
     /**
      * @param string      $title
      * @param string      $content
+     * @param string      $shortDesc
      * @param User        $author
      * @param string      $category
      * @param string      $img
@@ -33,6 +34,7 @@ class PostBuilder implements PostBuilderInterface
     public function create(
         string $title,
         string $content,
+        string $shortDesc,
         User   $author,
         string $category,
         string $img,
@@ -41,6 +43,7 @@ class PostBuilder implements PostBuilderInterface
         $this->post = new Post(
             $title,
             $content,
+            $shortDesc,
             $author,
             $category,
             $img,

@@ -80,14 +80,28 @@
                             {{ lastPost.title}}
                         </h2>
                         <p>
-                            <em>
-                                {% if lastPost.author is not null %}
+                            <em>  auteur :
+                                {% if lastPost.author.nickname is not null %}
                                     {{ lastPost.author.nickName }}
-                                {% else %} nc {% endif %}
+                                    {% if "ROLE_ADMIN" in  lastPost.author.roles %}
+                                        - Administrateur
+                                    {% elseif"ROLE_USER" in  lastPost.author.roles %}
+                                        - NAturaliste
+                                    {% endif %}
+                                {% else %} nc
+                                    {% if "ROLE_ADMIN" in  lastPost.author.roles %}
+                                        - Administrateur
+                                    {% elseif"ROLE_USER" in  lastPost.author.roles %}
+                                        - Naturaliste
+                                    {% endif %}
+                                {% endif %}
                             </em>
                         </p>
+                        <p class="short"><strong class="short-head">Description :
+                            </strong><br>{{ lastPost.shortDesc }}</p>
                         <p class="chip">{{ lastPost.category }}</p>
-                        <p>crée le : <em>{{ lastPost.createdAt|localizeddate('long', 'none') }}
+                        <p>crée le : <em>{{ lastPost.createdAt|localizeddate('long',
+                                    'none') }}
                             </em>
                         </p>
                         
@@ -245,8 +259,22 @@
                                 </div>
                                 <div class="card-content">
                                     <p>auteur : <em>{% if post.author.nickName is not null %}
-                                                {{ post.author.nickName }}
-                                            {% else %} nc {% endif %}</em></p>
+                                                {{ post.author.nickName }} {% if "ROLE_ADMIN" in  lastPost.author.roles %}
+                                                    - Administrateur
+                                                {% elseif"ROLE_USER" in  postost.author.roles %}
+                                                    - NAturaliste
+                                                {% endif %}
+                                            {% else %} nc
+                                                {% if "ROLE_ADMIN" in  post.author.roles %}
+                                                    - Administrateur
+                                                {% elseif"ROLE_USER" in  post.author.roles %}
+                                                    - Naturaliste
+                                                {% endif %}
+                                            {% endif %}</em></p>
+                                    <p class="short"><strong class="short-head">Description :
+                                        </strong><br>{{ post
+                                        .shortDesc
+                                        }}</p>
                                     <p class="chip">{{ post.category }}</p>
                                     <p>crée le : <em>{{ post.createdAt|localizeddate('long', 'none') }}
                                         </em>

@@ -314,26 +314,49 @@ svg {
     ul#mobile-demo {
         margin-top: 0;
         z-index: 10000;
+        padding-top: .6em;
+    }
+
+    div#mob-nav-icon {
+        position: sticky;
+        z-index: 1000;
+        padding-top: .6em;
+    }
+
+    a img#logo-nav-icon, a img#bin-nav-icon, a img#loupe-nav-icon, a img#profil-nav-icon {
+        padding-right: .6em;
+    }
+
+    a img#bin-nav-icon {
+        width: 15%;
+    }
+
+    a img#loupe-nav-icon {
+        width: 13%;
+        padding-bottom: .2em;
+    }
+
+    a img#logo-nav-icon {
+        width: 25%;
+    }
+
+    a img#profil-nav-icon {
+        width: 13%;
+        padding-bottom: .2em;
     }
 
     #logo {
-        width: 40%;
-        padding-top: .2em;
+        display: none;
     }
 
     #slogan {
         display: none;
     }
 
-    a.brand-logo.left {
-        left: 2.5em;
-    }
-
     a.sidenav-trigger.nav-icon {
         margin: 0 0 0 10%;
 
     }
-
 
     .icon-img {
         width: 2.5em;
@@ -421,15 +444,11 @@ svg {
     ul#mobile-demo {
         margin-top: 0;
         z-index: 10000;
+        padding-top: .9em;
     }
 
     #logo {
-        width: 50%;
-        padding-top: .2em;
-    }
-
-    a.brand-logo.left {
-        left: 19em;
+        display: none;
     }
 
     a.sidenav-trigger.nav-icon {
@@ -500,6 +519,34 @@ svg {
     #little_nav {
         display: none;
     }
+
+    div#mob-nav-icon {
+        position: sticky;
+        z-index: 1000;
+        padding-top: .9em;
+    }
+
+    a img#logo-nav-icon, a img#bin-nav-icon, a img#loupe-nav-icon, a img#profil-nav-icon {
+        padding-right: .6em;
+    }
+
+    a img#bin-nav-icon {
+        width: 15%;
+    }
+
+    a img#loupe-nav-icon {
+        width: 13%;
+        padding-bottom: .2em;
+    }
+
+    a img#logo-nav-icon {
+        width: 25%;
+    }
+
+    a img#profil-nav-icon {
+        width: 13%;
+        padding-bottom: .2em;
+    }
 }
 
 @media (min-width: 993px) and (max-width: 1439px){
@@ -531,7 +578,7 @@ svg {
     }
 
     #little_nav {
-        min-width: 5%;
+        width: 4%;
         background-color: white;
         position: -webkit-sticky;
         position: sticky;
@@ -545,6 +592,10 @@ svg {
     #mobile-demo {
         margin-top: 0;
         z-index: 10000;
+    }
+
+    div#mob-nav-icon {
+        display: none;
     }
 }
 
@@ -570,7 +621,7 @@ svg {
     }
 
     #little_nav {
-        min-width: 4%;
+        width: 4%;
         background-color: white;
         position: -webkit-sticky;
         position: sticky;
@@ -579,6 +630,10 @@ svg {
         text-align: center;
         padding: 0;
         margin: 0;
+    }
+
+    div#mob-nav-icon {
+        display: none;
     }
 }
 
@@ -623,6 +678,10 @@ svg {
     #footer {
         padding-top: 5%;
     }
+
+    div#mob-nav-icon {
+        display: none;
+    }
 }
 
 @media (min-width: 1921px) {
@@ -640,5 +699,21 @@ svg {
     
     .nav-icon {
         display: none;
+    }
+
+    div#mob-nav-icon {
+        display: none;
+    }
+
+    #little_nav {
+        width: 4%;
+        background-color: white;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 330px;
+        z-index: 15000;
+        text-align: center;
+        padding: 0;
+        margin: 0;
     }
 }

@@ -46,6 +46,28 @@
         <li><a href="{{ path('app_contact') }}"><img src="{{ asset('/img/vector/mail.png')
                 }}"></a></li>
     </ul>
+
+    <div class="col s5 right" id="mob-nav-icon">
+        <a href="{{ path('app_home') }}">
+            <img id="logo-nav-icon" src="{{ asset('/img/logo/logo_Nao.png') }}">
+        </a>
+        <a href="{{ path('app_observe') }}" class=""><img id="bin-nav-icon" src="{{
+            asset
+                ('/img/vector/Very-Basic-Binoculars-icon.png') }}"/></a>
+        <a href="{{ path('app_lastobserve') }}" ><img id="loupe-nav-icon"
+                    src="{{ asset
+                        ('/img/vector/loupe.png') }}"/></a>
+        {% if is_granted('ROLE_USER') == false %}
+            <a href="{{ path('security_login') }}" ><img id="profil-nav-icon"
+                        src="{{ asset
+                            ('/img/vector/perso.png') }}"/></a>
+        {% endif %}
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('app_profile') }}"><img id="profil-nav-icon"
+                        src="{{ asset
+                            ('/img/vector/perso.png') }}"/></a>
+        {% endif %}
+    </div>
    
         <div id="navnav"></div>
         <ul id="dropdown_profile" class="dropdown-content dp_nav">
@@ -67,8 +89,9 @@
 
             <nav>
                 <div class="nav-wrapper" id="c_nav">
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
+                                class="material-icons">menu</i></a>
+                    <!--
                         <a href="{{ path('app_observe') }}" class="nav-icon"><img class="icon-img"
                                                                     id="icon-img-un" src="{{
                             asset
@@ -89,7 +112,8 @@
                                 class="icon-img"
                                 src="{{ asset
                                     ('/img/vector/perso.png') }}"/></a>
-                    {% endif %}
+                    {% endif %}-->
+
 
 
                     <ul class="right hide-on-med-and-down">

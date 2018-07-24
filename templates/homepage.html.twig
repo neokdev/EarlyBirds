@@ -131,16 +131,14 @@
             <div class="card row">
                 <div class="card-image">
                     <img src="{{ lastPost.img }}">
-                    <span class="card-title truncate">{{ lastPost.title }}</span>
+                    <span class="card-title">{{ lastPost.title }}</span>
                     <!--
                     <a href="{{ path('app_read_article', {id: lastPost.id}) }}" class="btn-floating halfway-fab waves-effect waves-light orange darken-1"><i class="material-icons">add</i></a>
                     -->
                 </div>
                 <div class="card-content">
-                    <!-- <div class="row">
-                        <div class="col s12">
-                            <p class="truncate">{{ lastPost.content }}</p>
-                        </div> -->
+                    <p class="short"><strong class="short-head">Description :
+                        </strong><br>{{ lastPost.shortDesc }}</p>
                     </div>
                     <div class="divider"></div>
                     <div class="row" style="margin: 10px 0 0 0;">

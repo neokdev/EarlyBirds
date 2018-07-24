@@ -29,10 +29,9 @@
     margin-top: 0;
     padding: .4em 0 0 0;
     color: #8148B6;
-    height: 2em;
+    height: 4em;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
 
 .head-heart {
     color: red;
@@ -81,7 +80,6 @@
 
 }
 
-
 #content-article ul {
     background: rgba(191, 213, 220, 0.5);
     padding: 3%;
@@ -106,7 +104,6 @@
     font-weight: 200;
 
 }
-
 
 #content-article blockquote {
     text-align: center;

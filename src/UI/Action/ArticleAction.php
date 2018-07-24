@@ -10,14 +10,14 @@ namespace App\UI\Action;
 
 use App\Domain\Repository\PostRepository;
 use App\UI\Action\Interfaces\ArticleActionInterface;
-use App\UI\Form\AddCommentType;
-use App\UI\Form\AddPostType;
 use App\UI\Form\CommentType;
 use App\UI\Form\Handler\Interfaces\CommentTypeHandlerInterface;
 use App\UI\Responder\Interfaces\ArticleResponderInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * @Route(
@@ -52,22 +52,30 @@ class ArticleAction implements ArticleActionInterface
     private $commentTypeHandler;
 
     /**
+     * @var AuthorizationCheckerInterface
+     */
+    private $authChecker;
+
+    /**
      * ArticleAction constructor.
-     * @param ArticleResponderInterface   $articleResponder
-     * @param PostRepository              $postRepository
-     * @param FormFactoryInterface        $formFactory
-     * @param CommentTypeHandlerInterface $commentTypeHandler
+     * @param ArticleResponderInterface     $articleResponder
+     * @param PostRepository                $postRepository
+     * @param FormFactoryInterface          $formFactory
+     * @param CommentTypeHandlerInterface   $commentTypeHandler
+     * @param AuthorizationCheckerInterface $authChecker
      */
     public function __construct(
-        ArticleResponderInterface   $articleResponder,
-        PostRepository              $postRepository,
-        FormFactoryInterface        $formFactory,
-        CommentTypeHandlerInterface $commentTypeHandler
+        ArticleResponderInterface     $articleResponder,
+        PostRepository                $postRepository,
+        FormFactoryInterface          $formFactory,
+        CommentTypeHandlerInterface   $commentTypeHandler,
+        AuthorizationCheckerInterface $authChecker
     ) {
         $this->articleResponder   = $articleResponder;
         $this->postRepository     = $postRepository;
         $this->formFactory        = $formFactory;
         $this->commentTypeHandler = $commentTypeHandler;
+        $this->authChecker        = $authChecker;
     }
 
 
@@ -81,9 +89,14 @@ class ArticleAction implements ArticleActionInterface
         $commentForm = $this->formFactory->create(CommentType::class)->handleRequest($request);
 
         if ($this->commentTypeHandler->handle($commentForm, $post) ) {
-
-            return $responder(true, $post, null);
+            if ($this->authChecker->isGranted("ROLE_USER")) {
+                return $responder(true, $post, null);
+            } else {
+                throw new AccessDeniedException('seul les membres connectés peuvent saisir un commentaire ');
+            }
         }
+
+
 
         return $responder(false, $post, $commentForm);
     }

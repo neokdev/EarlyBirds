@@ -9,6 +9,7 @@
         <id name="id" type="uuid"/>
         <field name="title"/>
         <field name="content" type="text"/>
+        <field name="shortDesc" type="text"/>
         <many-to-one field="author" target-entity="App\Domain\Models\User" inversed-by="posts">
             <join-column nullable="false"/>
         </many-to-one>

@@ -234,6 +234,20 @@ ul#category-list {
     margin: 0;
 }
 
+.short {
+    font-family: MontSerrat, serif;
+    font-weight: 300;
+    font-size: .8em;
+    line-height: 1.2em;
+    color: #44484f;
+    padding: 2em 0;
+}
+
+.short-head {
+    color: #35383d;
+    font-size: 1.2em;
+}
+
 @media (max-width: 400px)  {
     #subHeader {
         margin-top: 6em;
@@ -266,7 +280,7 @@ ul#category-list {
     }
 
     .header_text {
-        margin-top: 2em;
+        margin-top: 5em;
     }
 
     #slogan {

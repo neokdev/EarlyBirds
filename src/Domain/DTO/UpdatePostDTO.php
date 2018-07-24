@@ -41,6 +41,18 @@ class UpdatePostDTO implements UpdatePostDTOInterface
     public $category;
 
     /**
+     * @Assert\NotBlank(message="la description doit être complété")
+     * @Assert\Length(
+     *      min = 130,
+     *      max = 160,
+     *      minMessage = "votre description doit contenir au moins {{ limit }} carctères",
+     *      maxMessage = "votre description doit contenir moins de {{ limit }} carctères"
+     * )
+     * @var string
+     */
+    public$shortDesc;
+
+    /**
      *
      *  @Assert\File(
      *     maxSize = "1M",
@@ -67,6 +79,7 @@ class UpdatePostDTO implements UpdatePostDTOInterface
      * AddPostDTO constructor.
      * @param null|string       $title
      * @param null|string       $content
+     * @param null|string       $shortDesc
      * @param null|string       $category
      * @param null|UploadedFile $img
      * @param null|UploadedFile $miniature
@@ -74,6 +87,7 @@ class UpdatePostDTO implements UpdatePostDTOInterface
     public function __construct(
         string       $title     = null,
         string       $content   = null,
+        string       $shortDesc = null,
         string       $category  = null,
         UploadedFile $img       = null,
         UploadedFile $miniature = null
@@ -81,6 +95,7 @@ class UpdatePostDTO implements UpdatePostDTOInterface
     ) {
         $this->title     = $title;
         $this->content   = $content;
+        $this->shortDesc = $shortDesc;
         $this->category  = $category;
         $this->img       = $img;
         $this->miniature = $miniature;
