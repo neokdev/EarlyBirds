@@ -23,7 +23,7 @@
             </div>
             <div class="row center valign-wrapper" style="height: 135px">
                 <div class="col s3">
-                    <h6>{{ myObserves|length }} obervation{% if myObserves|length > 1%}s{% endif %}</h6>
+                    <h6>{{ myObserves|length }} observation{% if myObserves|length > 1%}s{% endif %}</h6>
                 </div>
                 <div class="col s9" style="margin-right: 3%;">
                     <div class="row" style="margin-bottom: 0">
@@ -417,6 +417,7 @@
 
                                     {% set curentMyObserve = 0 %}
                                     {% for observe in myObserves %}
+
                                         {% set curentMyObserve = curentMyObserve+1 %}
 
                                     <li class="observePanel obsverveContainer-{{ observe.id }} myObserve" data-obscount="{{ curentMyObserve }}" data-index="{{ observe.id }}" data-lat="{{ observe.latitude }}" data-long="{{ observe.longitude }}">
@@ -425,11 +426,20 @@
                                                 <a class="hide-on-med-and-down btn-floating waves-effect waves-light orange darken-1"><i class="material-icons" style="width: 40px">add</i></a>
                                             </div>
 
-                                            <div class="imgContainer col s12 m6">
+                                            <div class="imgContainer col s6 xl4">
                                                 <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block; position: relative;right: 41px;">
                                             </div>
-                                            <div class="ObsTitle col s12 m6">
-                                                <h6>{% if observe.ref %}{{ observe.ref.nomVern }}{% else %}Non identifié{% endif %}</h6>
+                                            <div class="ObsTitle col s6 xl8 center">
+                                                <h6>
+                                                    {% if observe.ref %}
+                                                        {% if observe.ref.nomVern %}
+                                                        {{ observe.ref.nomVern }}
+                                                            {% else %}
+                                                                {{ observe.ref.lbNom }}
+                                                                {% endif %}
+                                                    {% else %}Non identifié
+                                                    {% endif %}
+                                                </h6>
                                                 <span>Observé le {{ observe.obsDate|localizeddate('long', 'none') }}</span>
                                                 <div class="divider"></div>
                                                 <div class="obsButtons row">
@@ -598,11 +608,20 @@
                                             <div id="moreBtn">
                                                 <a class="hide-on-med-and-down btn-floating waves-effect waves-light orange darken-1"><i class="material-icons" style="width: 40px">add</i></a>
                                             </div>
-                                            <div class="imgContainer">
+                                            <div class="imgContainer col s6 xl4">
                                                 <img id="thumbnails" src="{{ observe.img }}" class="materialboxed" style="display: block; position: relative;right: 41px;">
                                             </div>
-                                            <div class="ObsTitle col s8 xl10  center">
-                                                <h6>{% if observe.ref %}{{ observe.ref.nomVern }}{% else %}Non identifié{% endif %}</h6>
+                                            <div class="ObsTitle col s6 xl8 center">
+                                                <h6>
+                                                    {% if observe.ref %}
+                                                        {% if observe.ref.nomVern %}
+                                                            {{ observe.ref.nomVern }}
+                                                        {% else %}
+                                                            {{ observe.ref.lbNom }}
+                                                        {% endif %}
+                                                    {% else %}Non identifié
+                                                    {% endif %}
+                                                </h6>
                                                 <span>Observé le {{ observe.obsDate|localizeddate('long', 'none') }} par {% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</span>
                                                 <div class="divider"></div>
                                             </div>

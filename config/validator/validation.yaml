@@ -7,7 +7,7 @@ App\Domain\DTO\RegisterDTO:
             - Regex:
                 groups: [Register]
                 pattern: '/.{8,}/'
-                message: Votre mot de passe doit contenir 8 charactères minimum
+                message: Votre mot de passe doit contenir 8 caractères minimum
             - Regex:
                 groups: [Register]
                 pattern: '/.*[a-zA-Z]/'

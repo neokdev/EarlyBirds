@@ -174,7 +174,7 @@ class Mailer implements MailerInterface
             ->setTo($newsletter->getEmail())
             ->setBody(
                 $this->environment->render(
-                    "Emails/Newsletter.html.twig",
+                    "Emails/newsletter.html.twig",
                     [
                         'data' => $newsletter,
                     ]
