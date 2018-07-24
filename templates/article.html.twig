@@ -35,13 +35,21 @@
                             'none') }} - {{ post.category }}
                     </p>
                     <div class="head-link">
-                        <a href=""><i class="material-icons head-heart"
-                            >favorite_border</i></a>
+                        <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ post.favouredBy.count }}</span>
+                        {% if is_granted('ROLE_USER')%}
+                            <a class="toggle-heart" href="{{ path('toogle_post_heart', {id: post.id}) }}">
+                                <i id="postheart" data-url="{{ path('get_favoured') }}" data-id="{{ post.id }}" class="material-icons head-heart">favorite_border</i>
+                                <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
+                            </a>
+                        {% else %}
+                            <a href="{{ path('security_login') }}">
+                                <i class="material-icons" style="color: #EB5757">favorite_border</i>
+                            </a>
+                        {% endif %}
                         <a href=""><i class="material-icons head-share"
                             >share</i></a>
 
-                        {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN')
-                            == true %}
+                        {% if is_granted('ROLE_NATURALIST') %}
                             <a class="data-delete-post" data-delete="{{ path
                                 ('app_delete_article',
                                 {'id' : post.id}) }}"><i

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NAO - Dernières observations{% endblock %}
+{% block title %}Découvrez les oiseaux observés en France{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -15,8 +15,8 @@
         <div  id="lastObserveHeader" class="row" style="margin-bottom: 61px">
             <div class="col s12" style="background-image: url('{{ asset('/img/other/mike-wilson-300693-unsplash.jpg') }}'); background-size: 100% 100%; height: 369px">
                 <h1>Parcourez les observations</h1>
-                <p>Découvrez les toutes espèces répertoriées en France par nos contributeurs et apprenez-en davantage sur chaque oiseau d'un simple clic sur sa fiche ou en utilisant notre moteur de recherche.</p>
-                <p><b>L' accès à l'inventaire est libre et participatif</b><br/>Partager dès maintenant vos propres observations !</p>
+                <p>Découvrez les toutes dernières espèces répertoriées en France par nos contributeurs et apprenez-en davantage sur chacune d'entre elles d'un simple clic sur sa fiche ou en utilisant notre moteur de recherche.</p>
+                <p><b>L' accès à l'inventaire est libre et participatif:</b><br/>Inscrivez vous et partagez vos propres observations !</p>
                 <a href="{{ path('app_observe') }}" class="waves-effect waves-light btn orange darken-1">Ajouter une observation</a>
             </div>
         </div>

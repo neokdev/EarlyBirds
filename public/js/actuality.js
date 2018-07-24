@@ -205,7 +205,7 @@ $(function () {
 
         $.ajax({
             method: 'POST',
-            url: "document.location.origin+"/newsletter/"+mail,
+            url: document.location.origin+"/newsletter/"+mail,
         }).done(function (data) {
             if (data === true) {
                 $helperText.attr('data-error', "Vous êtes déjà enregistré à la newsletter");
