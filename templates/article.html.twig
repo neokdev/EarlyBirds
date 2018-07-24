@@ -38,7 +38,7 @@
                         <span class="js-like-post-count" style="position: relative; bottom: 8px; font-size: 12px">{{ post.favouredBy.count }}</span>
                         {% if is_granted('ROLE_USER')%}
                             <a class="toggle-heart" href="{{ path('toogle_post_heart', {id: post.id}) }}">
-                                <i id="postheart" data-id="{{ post.id }}" class="material-icons head-heart">favorite_border</i>
+                                <i id="postheart" data-url="{{ path('get_favoured') }}" data-id="{{ post.id }}" class="material-icons head-heart">favorite_border</i>
                                 <img id="ajaxLoading" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}" style="display: none; margin-bottom: 4px;">
                             </a>
                         {% else %}

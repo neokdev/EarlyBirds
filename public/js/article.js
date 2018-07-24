@@ -37,16 +37,12 @@ $(function(){
         });
     });
 
-    let url = $('#heart-infos').data('url');
-    $.getJSON(url, function (data) {
+    let postUrl = $('#postheart').data('url');
+    $.getJSON(postUrl, function (data) {
         $.each(data, function (key, val) {
-            let id = val;
-            $('.head-link').each(function () {
-                let heart = $(this).find('#postheart');
-                if (heart.data('id') === id) {
-                    heart.html("favorite")
-                }
-            })
+            if ($('#postheart').data('id') === val) {
+                $('#postheart').html("favorite");
+            }
         })
     });
 });
