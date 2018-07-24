@@ -2,6 +2,7 @@ tinymce.init({
                  selector:'.tinymce',
                  plugins: ["lists advlist link"],
                  menubar: 'edit view insert',
+                 language: 'fr_FR',
                  branding: false,
                  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter' +
                           ' alignright alignjustify | bullist numlist | link',

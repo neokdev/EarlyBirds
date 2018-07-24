@@ -218,6 +218,19 @@ span.form_errors ul {
     #slogan {
         display: none;
     }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #citation {
+        display: none !important;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: unset;
+    }
 }
 
 @media (max-width: 400px) {
@@ -236,5 +249,18 @@ span.form_errors ul {
 
     #slogan {
         display: none;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #citation {
+        display: none !important;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: unset;
     }
 }
