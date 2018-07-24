@@ -84,11 +84,11 @@ a.black-text:active {
 }
 
 #little_nav {
-    width: 76px;
+    min-width: 4%;
     background-color: white;
     position: -webkit-sticky;
     position: sticky;
-    top: 370px;
+    top: 390px;
     z-index: 15000;
     text-align: center;
     padding: 0;
@@ -102,6 +102,10 @@ a.black-text:active {
 
 #little_nav li:hover {
     background: #BDBDBD;
+}
+
+#little_nav li a img {
+    width: 50%;
 }
 
 #slogan {
@@ -521,16 +525,17 @@ svg {
         width: 165px;
         z-index: 100;
         position: relative;
+
         top: 470px;
         left: 280px;
     }
 
     #little_nav {
-        width: 5%;
+        min-width: 5%;
         background-color: white;
         position: -webkit-sticky;
         position: sticky;
-        top: 240px;
+        top: 280px;
         z-index: 15000;
         text-align: center;
         padding: 0;
@@ -565,11 +570,11 @@ svg {
     }
 
     #little_nav {
-        width: 5%;
+        min-width: 4%;
         background-color: white;
         position: -webkit-sticky;
         position: sticky;
-        top: 240px;
+        top: 280px;
         z-index: 15000;
         text-align: center;
         padding: 0;
