@@ -84,11 +84,11 @@ a.black-text:active {
 }
 
 #little_nav {
-    width: 76px;
+    min-width: 4%;
     background-color: white;
     position: -webkit-sticky;
     position: sticky;
-    top: 370px;
+    top: 390px;
     z-index: 15000;
     text-align: center;
     padding: 0;
@@ -102,6 +102,10 @@ a.black-text:active {
 
 #little_nav li:hover {
     background: #BDBDBD;
+}
+
+#little_nav li a img {
+    width: 50%;
 }
 
 #slogan {
@@ -136,7 +140,7 @@ a.black-text:active {
     position: relative;
     top: 0;
     left: 0;
-    background: url('../img/vector/vector_footer.png');
+    background: no-repeat url('../img/vector/vector_footer.png');
     padding-top: 12%;
 }
 
@@ -310,26 +314,49 @@ svg {
     ul#mobile-demo {
         margin-top: 0;
         z-index: 10000;
+        padding-top: .6em;
+    }
+
+    div#mob-nav-icon {
+        position: sticky;
+        z-index: 1000;
+        padding-top: .6em;
+    }
+
+    a img#logo-nav-icon, a img#bin-nav-icon, a img#loupe-nav-icon, a img#profil-nav-icon {
+        padding-right: .6em;
+    }
+
+    a img#bin-nav-icon {
+        width: 15%;
+    }
+
+    a img#loupe-nav-icon {
+        width: 13%;
+        padding-bottom: .2em;
+    }
+
+    a img#logo-nav-icon {
+        width: 25%;
+    }
+
+    a img#profil-nav-icon {
+        width: 13%;
+        padding-bottom: .2em;
     }
 
     #logo {
-        width: 40%;
-        padding-top: .2em;
+        display: none;
     }
 
     #slogan {
         display: none;
     }
 
-    a.brand-logo.left {
-        left: 2.5em;
-    }
-
     a.sidenav-trigger.nav-icon {
         margin: 0 0 0 10%;
 
     }
-
 
     .icon-img {
         width: 2.5em;
@@ -417,15 +444,11 @@ svg {
     ul#mobile-demo {
         margin-top: 0;
         z-index: 10000;
+        padding-top: .9em;
     }
 
     #logo {
-        width: 50%;
-        padding-top: .2em;
-    }
-
-    a.brand-logo.left {
-        left: 19em;
+        display: none;
     }
 
     a.sidenav-trigger.nav-icon {
@@ -496,6 +519,34 @@ svg {
     #little_nav {
         display: none;
     }
+
+    div#mob-nav-icon {
+        position: sticky;
+        z-index: 1000;
+        padding-top: .9em;
+    }
+
+    a img#logo-nav-icon, a img#bin-nav-icon, a img#loupe-nav-icon, a img#profil-nav-icon {
+        padding-right: .6em;
+    }
+
+    a img#bin-nav-icon {
+        width: 15%;
+    }
+
+    a img#loupe-nav-icon {
+        width: 13%;
+        padding-bottom: .2em;
+    }
+
+    a img#logo-nav-icon {
+        width: 25%;
+    }
+
+    a img#profil-nav-icon {
+        width: 13%;
+        padding-bottom: .2em;
+    }
 }
 
 @media (min-width: 993px) and (max-width: 1439px){
@@ -521,16 +572,17 @@ svg {
         width: 165px;
         z-index: 100;
         position: relative;
+
         top: 470px;
         left: 280px;
     }
 
     #little_nav {
-        width: 5%;
+        width: 4%;
         background-color: white;
         position: -webkit-sticky;
         position: sticky;
-        top: 240px;
+        top: 280px;
         z-index: 15000;
         text-align: center;
         padding: 0;
@@ -540,6 +592,10 @@ svg {
     #mobile-demo {
         margin-top: 0;
         z-index: 10000;
+    }
+
+    div#mob-nav-icon {
+        display: none;
     }
 }
 
@@ -565,15 +621,19 @@ svg {
     }
 
     #little_nav {
-        width: 5%;
+        width: 4%;
         background-color: white;
         position: -webkit-sticky;
         position: sticky;
-        top: 240px;
+        top: 280px;
         z-index: 15000;
         text-align: center;
         padding: 0;
         margin: 0;
+    }
+
+    div#mob-nav-icon {
+        display: none;
     }
 }
 
@@ -617,5 +677,43 @@ svg {
 
     #footer {
         padding-top: 5%;
+    }
+
+    div#mob-nav-icon {
+        display: none;
+    }
+}
+
+@media (min-width: 1921px) {
+    #citation-mobile{
+        display: none;
+    }
+
+    #footer-mobile{
+        display: none;
+    }
+
+    #footer {
+        padding-top: 10em;
+    }
+    
+    .nav-icon {
+        display: none;
+    }
+
+    div#mob-nav-icon {
+        display: none;
+    }
+
+    #little_nav {
+        width: 4%;
+        background-color: white;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 330px;
+        z-index: 15000;
+        text-align: center;
+        padding: 0;
+        margin: 0;
     }
 }

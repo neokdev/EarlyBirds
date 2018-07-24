@@ -21,6 +21,7 @@ interface PostBuilderInterface
     /**
      * @param string      $title
      * @param string      $content
+     * @param string      $shortDesc
      * @param User        $author
      * @param string      $category
      * @param string      $img
@@ -30,6 +31,7 @@ interface PostBuilderInterface
     public function create(
         string $title,
         string $content,
+        string $shortDesc,
         User   $author,
         string $category,
         string $img,

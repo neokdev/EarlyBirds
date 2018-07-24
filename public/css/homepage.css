@@ -1,3 +1,12 @@
+div#subHeaer {
+    margin-top: -23em;
+}
+
+#slogan {
+    top: 130px;
+}
+
+
 #linkBtn {
     background: #F2994A;
     border-radius: 20px;
@@ -191,3 +200,18 @@ margin-top: 6em;
     background-color: lightgrey;
     padding: 1em;
 }
+
+.short {
+    font-family: MontSerrat, serif;
+    font-weight: 300;
+    font-size: .8em;
+    line-height: 1.2em;
+    color: #44484f;
+    padding: 2em 0;
+}
+
+.short-head {
+    color: #35383d;
+    font-size: 1.2em;
+}
+

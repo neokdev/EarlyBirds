@@ -22,23 +22,20 @@
                             ou vous êtes naturaliste et souhaitez rejoindre l’équipe ?
                             N'hésitez pas à nous contacter, nous nous ferons un plaisir
                             de vous répondre dès que nous aurons posé nos jumelles !
+
+
+
                         </div>
 
-                        <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1 message" >
-                            {% for message in app.flashes('notice') %}
-                                <div class="notice">
+
+                        <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1
+                        message" >
+                            {% for message in app.flashes('contact') %}
+                                <div class="contact">
                                     {{ message }}
                                 </div>
                             {% endfor %}
                         </div>
-
-                        <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1" id="err">
-
-
-
-
-                        </div>
-
                         <div class="input-field col l6 s10 m10 offset-l4 offset-m1 offset-s1">
                             <span class="label"></span>
                             {{ form_widget(form.subject) }}
@@ -122,4 +119,5 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('js/contact.js') }}"></script>
 {% endblock %}

@@ -93,23 +93,28 @@ class UpdatePostAction implements UpdatePostActionInterface
         $updPost = $this->postRepository->findOneBy(['id' => $id]);
 
 
-        if (true === $this->authChecker->isGranted('ROLE_USER')) {
+        if (true === $this->authChecker->isGranted('ROLE_NATURALIST')) {
             $userPostId = $updPost->getAuthor()->getId();
             $uId = $this->token->getToken()->getUser();
             $userId = $uId->getId();
 
             if ( $userId !== $userPostId) {
                 throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
-            article, vous ne pouvez pas le modifié');
+                article, vous ne pouvez pas le modifié');
+            } else {
+                true;
             }
+        } elseif (true === $this->authChecker->isGranted('ROLE_ADMIN')) {
+            true;
         } else {
             throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
-            article, vous ne pouvez pas le modifié');
+                article, vous ne pouvez pas le modifié');
         }
 
         $updPostDto = new UpdatePostDTO(
             $updPost->getTitle(),
             $updPost->getContent(),
+            $updPost->getShortDesc(),
             $updPost->getCategory(),
             null,
             null

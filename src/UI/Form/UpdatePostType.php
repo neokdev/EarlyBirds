@@ -49,6 +49,14 @@ class UpdatePostType extends AbstractType
                     'class' => 'tinymce'
                 ]
             ])
+            ->add('shortDesc', TextareaType::class, [
+                'label'    => false,
+                'required' => true,
+                'attr'     => [
+                    'placeholder' => 'votre description',
+                    'class'       => 'counter'
+                ]
+            ])
             ->add('category', ChoiceType::class, [
                 'choices' => [
                     'vie de l\'association' => [
@@ -105,6 +113,7 @@ class UpdatePostType extends AbstractType
                         return new UpdatePostDTO(
                             $form->get('title')->getData(),
                             $form->get('content')->getData(),
+                            $form->get('shortDesc')->getData(),
                             $form->get('category')->getData(),
                             $form->get('img')->getData(),
                             $form->get('miniature')->getData()

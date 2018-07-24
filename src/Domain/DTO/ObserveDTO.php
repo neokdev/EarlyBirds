@@ -58,6 +58,8 @@ class ObserveDTO implements ObserveDTOInterface
 
     /**
      * @Assert\Date()
+     * @Assert\LessThanOrEqual("today", message="la date doit être égale ou inférieur à
+    aujourd'hui")
      * @var \DateTime
      */
     public $obsDate;

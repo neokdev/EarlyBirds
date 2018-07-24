@@ -94,7 +94,6 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
         string                              $id
     ) {
 
-
         $observe = $this->observeRepository->findOneBy(['id' => $id]);
         $ref = $observe->getRef();
 

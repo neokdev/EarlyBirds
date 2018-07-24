@@ -25,6 +25,8 @@ $(function () {
 
        let content;
 
+       console.log($('#author').attr('data-author'));
+
        if (role === "ROLE_ADMIN" || role === "ROLE_NATURALIST") {
            content =
                "<a class='data-delete-post' data-delete='"+document.location.origin+"/delete-post-"+datas.id+"'>" +
@@ -106,7 +108,6 @@ $(function () {
         if (e.target.value.length === 0) {
             $.getJSON(document.location.href + '/search-post',
                 function (data) {
-                console.log(data);
                     contentDiv.html("");
                     if (data.length === 0) {
                         contentDiv.html("<p>pas de resultat pour votre recherche</p>");

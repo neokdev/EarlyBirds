@@ -169,18 +169,17 @@ span.form_errors ul {
     display: none;
 }
 
-.notice {
+.contact {
     background: #59A177;
     color: white;
     border-radius: 20px;
-    height: 3.000em;
     vertical-align: center;
     font-family: MontSerrat;
-    font-weight: 700;
-    font-size: 1.200em;
+    font-weight: 500;
+    font-size: 1em;
     text-transform: lowercase;
-    padding-bottom: .8em;
     text-align: center;
+    padding: 1.8em;
 }
 
 @media (min-width: 1441px ) and (max-width: 1920px) {
@@ -197,7 +196,7 @@ span.form_errors ul {
 @media (min-width: 993px ) and (max-width: 1440px) {
     #blackBird {
         top: unset;
-        bottom: 20.2em;
+        bottom: 22.3em;
     }
 }
 
@@ -219,6 +218,19 @@ span.form_errors ul {
     #slogan {
         display: none;
     }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #citation {
+        display: none !important;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: unset;
+    }
 }
 
 @media (max-width: 400px) {
@@ -237,5 +249,18 @@ span.form_errors ul {
 
     #slogan {
         display: none;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #citation {
+        display: none !important;
+    }
+
+    #footer-mobile {
+        margin: 0;
+        padding-top: unset;
     }
 }

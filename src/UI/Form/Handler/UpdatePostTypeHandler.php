@@ -90,6 +90,7 @@ class UpdatePostTypeHandler implements UpdatePostTypeHandlerInterface
                 ->setTitle($form->getData()->title)
                 ->setCategory($form->getData()->category)
                 ->setContent($form->getData()->content)
+                ->setShortDesc($form->getData()->shortDesc)
             ;
 
             if($updPost->getImg() !== $form->getData()->img) {
@@ -140,7 +141,7 @@ class UpdatePostTypeHandler implements UpdatePostTypeHandlerInterface
 
             $this->postRepository->update();
 
-            $this->flash->add("notice","votre article à bien été modifié");
+            $this->flash->add("post","votre article à bien été modifié");
 
             return true;
         }

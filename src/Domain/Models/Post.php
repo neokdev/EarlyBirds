@@ -31,6 +31,11 @@ class Post
     private $content;
 
     /**
+     * @var string
+     */
+    private $shortDesc;
+
+    /**
      * @var User
      */
     private $author;
@@ -64,6 +69,7 @@ class Post
      * Post constructor.
      * @param string      $title
      * @param string      $content
+     * @param string      $shortDesc
      * @param User        $author
      * @param string      $category
      * @param string      $img
@@ -74,6 +80,7 @@ class Post
     public function __construct(
         string $title,
         string $content,
+        string $shortDesc,
         User   $author,
         string $category,
         string $img,
@@ -85,6 +92,7 @@ class Post
         $this->title        = $title;
         $this->category     = $category;
         $this->content      = $content;
+        $this->shortDesc    = $shortDesc;
         $this->img          = $img;
         $this->miniature    = $miniature;
         $this->postComments = new ArrayCollection();
@@ -305,4 +313,24 @@ class Post
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getShortDesc(): string
+    {
+        return $this->shortDesc;
+    }
+
+    /**
+     * @param string $shortDesc
+     * @return $this
+     */
+    public function setShortDesc(string $shortDesc): self
+    {
+        $this->shortDesc = $shortDesc;
+        return $this;
+    }
+
+
 }

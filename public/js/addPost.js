@@ -2,6 +2,7 @@ tinymce.init({
                  selector:'.tinymce',
                  plugins: ["lists advlist link"],
                  menubar: 'edit view insert',
+                 language: 'fr_FR',
                  branding: false,
                  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter' +
                           ' alignright alignjustify | bullist numlist | link',
@@ -18,8 +19,8 @@ tinymce.init({
 
                          ]},
                      {title: 'Blocks', items: [
-                             {title: 'Paragraph', format: 'p', styles: {'class': 'article_p'}},
-                             {title: 'Blockquote', format: 'blockquote', styles: {'class': 'article_quote'}},
+                             {title: 'Paragraph', format: 'p', remove: 'all', attributes: { style: "padding: 0 0 1em 0; font-size: 13px; line-height: 1.5em" }},
+                             {title: 'Blockquote', format: 'blockquote'},
                              {title: 'address', format: 'address', styles: {'class': 'address'}}
                          ]},
                      {title: 'Alignment', items: [
@@ -41,10 +42,32 @@ tinymce.init({
 
 $(function () {
     //flash message after valide or update obs
-    let msgUn = $('.flash-post');
+   let msgUn = $('.flash-post');
+    if (msgUn !== undefined) {
 
-    if (msgUn.text().length > 0) {
+        if (msgUn.text().length > 0) {
 
-        msgUn.fadeOut(9000)
+            msgUn.fadeOut(9000)
+        }
     }
+
+    let counter = $('.counter');
+
+        counter.on('keyup', function () {
+
+            let count = $('.counter').val();
+
+            if ( count.length < 130 || count.length > 160) {
+
+              counter.css('border', '3px solid red');
+            } else if(count.length >= 130 || count.length <= 160) {
+
+                counter.css('border' , '3px solid green');
+            }
+            $('.form_carac_number').text('Nombre de caractère de la description : ' + count.length + ' caractères');
+        });
+
+        counter.on('blur', function () {
+           counter.css('border', 'none');
+        });
 });

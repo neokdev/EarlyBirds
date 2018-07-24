@@ -70,22 +70,22 @@ class DeletePost
         $post = $this->postRepository->findOneBy(['id' => $id]);
         $removePost = null;
 
-        if (true === $this->authChecker->isGranted('ROLE_USER')) {
+        if (true === $this->authChecker->isGranted('ROLE_NATURALIST')) {
             $userPostId = $post->getAuthor()->getId();
             $uId = $this->token->getToken()->getUser();
             $userId = $uId->getId();
 
-            if ( $userId === $userPostId) {
-                $removePost = $this->postRepository->delete($post);
-            } else {
+            if ( $userId !== $userPostId) {
                 throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
-            article, vous ne pouvez pas le modifié');
+                article, vous ne pouvez pas le supprimé');
+            } else {
+                true;
             }
-        } elseif (true === $this->authChecker->isGranted('ROLE_ADMIN')){
-            $removePost = $this->postRepository->delete($post);
+        } elseif (true === $this->authChecker->isGranted('ROLE_ADMIN')) {
+            true;
         } else {
             throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
-            article, vous ne pouvez pas le modifié');
+                article, vous ne pouvez pas le supprimé');
         }
 
         return new JsonResponse($removePost);
