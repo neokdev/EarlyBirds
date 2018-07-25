@@ -55,34 +55,13 @@ class AddPostType extends AbstractType
             ])
             ->add('category', ChoiceType::class, [
                 'choices' => [
-                    'vie de l\'association' => [
-                        'CR, AG'                 => 'CR, AG' ,
-                        'Bénévolat, partenariat' => 'Bénévolat, partenariat',
-                        'faits marquants'        => 'faits marquants'
-                    ],
-                    'Évènements' => [
-                        'Agenda asso'                          => 'Agenda asso' ,
-                        'Autres  : exemple, Fête de la nature' => 'Autres  : exemple, Fête de la nature'
-                    ],
-                    'L’art d\'observer les oiseaux' => [
-                        'Lieux, balades'             => 'Lieux, balades',
-                        'Attitude du birdwatcher'    => 'Attitude du birdwatcher',
-                        'équipement'                 => 'équipement'
-                    ],
-                    'Identifier un oiseau' => 'Identifier un oiseau',
-                    'Ornithologie sans frontières' => [
-                        'Oiseaux exotiques'    => 'Oiseaux exotiques',
-                        'Voyages, expériences' => 'Voyages, expériences'
-                    ],
-                    'Biodiversité / environnement' => [
-                        'Zones à préserver'                => 'Zones à préserver',
-                        'Agriculture, jardinage, conseils' => 'Agriculture, jardinage, conseils'
-                    ],
-                    'Programmes de recherche et publications' => [
-                        'Programmes de recherche en cours' => 'Programmes de recherche en cours',
-                        'documents scientifiques'          => 'documents scientifiques'
-                    ]
-
+                    'vie de l\'association'                   => 'vie de l\'association',
+                    'Évènements'                              => 'Évènements',
+                    'L’art d\'observer les oiseaux'           => 'L’art d\'observer les oiseaux',
+                    'Identifier un oiseau'                    => 'Identifier un oiseau',
+                    'Ornithologie sans frontières'            => 'Ornithologie sans frontières',
+                    'Biodiversité / environnement'            => 'Biodiversité / environnement',
+                    'Programmes de recherche et publications' => 'Programmes de recherche et publications'
                 ],
                 'placeholder' => 'choisissez une catégorie'
             ])
