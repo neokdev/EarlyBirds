@@ -4,31 +4,19 @@ tinymce.init({
                  menubar: 'edit view insert',
                  language: 'fr_FR',
                  branding: false,
-                 toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter' +
+                 toolbar: 'undo redo | styleselect | alignleft aligncenter' +
                           ' alignright alignjustify | bullist numlist | link',
-                 style_formats: [
-                     {title: 'Headers', items: [
-                             {title: 'Header 1', format: 'h1', styles: {'class': 'article_h1'}},
-                             {title: 'Header 2', format: 'h2', styles: {'class': 'article_h2'}},
-                             {title: 'Header 3', format: 'h3', styles: {'class': 'article_h3'}},
-                         ]},
-                     {title: 'Inline', items: [
-                             {title: 'Bold', icon: 'bold', format: 'bold'},
-                             {title: 'Italic', icon: 'italic', format: 'italic'},
-                             {title: 'Underline', icon: 'underline', format: 'underline'},
 
-                         ]},
-                     {title: 'Blocks', items: [
-                             {title: 'Paragraph', format: 'p', remove: 'all', attributes: { style: "padding: 0 0 1em 0; font-size: 13px; line-height: 1.5em" }},
-                             {title: 'Blockquote', format: 'blockquote'},
-                             {title: 'address', format: 'address', styles: {'class': 'address'}}
-                         ]},
-                     {title: 'Alignment', items: [
-                             {title: 'Left', icon: 'alignleft', format: 'alignleft'},
-                             {title: 'Center', icon: 'aligncenter', format: 'aligncenter'},
-                             {title: 'Right', icon: 'alignright', format: 'alignright'},
-                             {title: 'Justify', icon: 'alignjustify', format: 'alignjustify'}
-                         ]}
+                 style_formats: [
+                     {title: 'Header 2', block: 'h2', classes: 'content_h2'},
+                     {title: 'Header 3', block: 'h3', classes: 'content_h3'},
+                     {title: 'Header 4', block: 'h4', classes: 'content_h4'},
+                     {title: 'Paragraph', block: 'p', classes: 'paraph'},
+                     {title: 'Blockquote', block: 'blockquote', classes: 'quote'},
+                     {title: 'address', format: 'address'},
+                     {title: 'Bold', icon: 'bold', inline: 'strong', classes: 'b_text'},
+                     {title: 'Italic', icon: 'italic', inline: 'em', classes: 'em_text'}
+
                  ],
                  protect: [
                      /\<\/?(if|endif)\>/g,  // Protect <if> & </endif>

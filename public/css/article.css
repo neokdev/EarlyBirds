@@ -57,14 +57,14 @@
     margin-bottom: 1em;
 }
 
-#content-article h1 {
+.content_h2 {
     font-family: MontSerrat;
     font-weight: 700;
     font-size: 2.3em;
 
 }
 
-#content-article h2 {
+.content_h3 {
     color: #488194;
     font-family: MontSerrat;
     font-weight: 700;
@@ -72,7 +72,7 @@
 
 }
 
-#content-article h3 {
+.content_h4 {
     color: #828282;
     font-family: MontSerrat;
     font-weight: 700;
@@ -85,36 +85,43 @@
     padding: 3%;
 }
 
-#content-article ul li h2 {
+#content-article ul li .content_h3 {
     font-family: Didot;
     font-size: 2em;
 
 }
 
-#content-article p  {
+.paraph  {
     font-family: MontSerrat;
     font-size: 1em;
     font-weight: 200;
 
 }
 
-#content-article p em {
-    font-family: MontSerrat;
+.em_text{
+    color: #6A3F91;
+    font-family: Didot;
     font-size: 1em;
-    font-weight: 200;
-
 }
 
-#content-article blockquote {
+.b_text {
+    font-family: MontSerrat;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.quote {
     text-align: center;
     color: #6A3F91;
     font-family: Didot;
     font-size: 2em;
-    border: none;
+    border-left: none;
     border-top: solid 1px #579BC1;
     border-bottom: solid 1px #579BC1;
-    margin: 8% 0;
+    padding: 3% 0;
+    margin: 2em 0;
 }
+
 
 #action-link {
     text-align: center;
