@@ -80,7 +80,7 @@ class ContactTypeHandler implements ContactTypeHandlerInterface
 
             $this->mailer->sendContactMail($this->contactBuilder->getContact());
 
-            $this->flash->add('contact','votre message à bien été envoyé, un administrateur vous répondra dans les plus bref délais.');
+            $this->flash->add('contact','votre message à bien été envoyé, un administrateur vous répondra dans les plus brefs délais.');
 
             return true;
         }

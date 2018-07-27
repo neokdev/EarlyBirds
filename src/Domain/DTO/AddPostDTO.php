@@ -44,7 +44,7 @@ class AddPostDTO implements AddPostDTOInterface
      * @Assert\NotBlank(message="la description doit être complété")
      * @Assert\Length(
      *      min = 130,
-     *      max = 160,
+     *      max = 320,
      *      minMessage = "votre description doit contenir au moins {{ limit }} carctères",
      *      maxMessage = "votre description doit contenir moins de {{ limit }} carctères"
      * )

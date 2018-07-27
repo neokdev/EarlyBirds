@@ -45,10 +45,10 @@ $(function () {
 
             let count = $('.counter').val();
 
-            if ( count.length < 130 || count.length > 160) {
+            if ( count.length < 130 || count.length > 320) {
 
               counter.css('border', '3px solid red');
-            } else if(count.length >= 130 || count.length <= 160) {
+            } else if(count.length >= 130 || count.length <= 320) {
 
                 counter.css('border' , '3px solid green');
             }
