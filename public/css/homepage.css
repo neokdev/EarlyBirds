@@ -154,7 +154,8 @@ div#subHeaer {
 }
 
 #separator-deux {
-    background: lightgrey;
+    background: no-repeat center url("../img/other/observation.jpg");
+    background-size: cover;
     height: 45em;
     margin-top: 15em;
 }
@@ -175,7 +176,6 @@ div#subHeaer {
     font-size: 1.5em;
 }
 
-
 #infog_linkBtn {
     background: #F2994A;
     height: 3em;
@@ -186,63 +186,53 @@ div#subHeaer {
     text-transform: initial;
 }
 
-#observatory {
-    margin-top: 100px;
-    font-family: Montserrat, serif;
+#the-observatory {
+    padding-left: 8em;
 }
 
-#observatory_title h2 {
-    color: #488194;
-    font-family: Didot;
-    font-size: 4.5em;
+#observatory_title {
+    font-family: didot;
+    font-size: 4em;
     text-align: center;
+    color: #488194;
+    margin-top: 2em;
     margin-bottom: 4em;
 }
 
-#observatory_title h1 {
-    margin-top: 10px;
-}
 
-#observatory_observation div.card-image span {
-    color: #F2994A;
-    font-weight: bold;
-}
-
-#observatory_subtitle {
-    font-family: MontSerrat, serif;
-    font-weight: 300;
+#article-card .card-image .card-title, .observatory-card .card-image .card-title{
+    font-family: MontSerrat, Serift;
+    font-weight: 500;
     font-size: 1.5em;
-    width: 18em;
-
-    -webkit-transform-origin: 0 0;
-    -ms-transform-origin: 0 0;
-    -moz-transform-origin: 0 0;
-    -o-transform-origin: 0 0;
-    transform-origin: 0 0;
-    transform: rotateZ(-90deg);
-
-    position: relative;
-    top: 22em;
-    left: 3em;
 }
 
-#observatory_background {
-    width: 24em;
-    height: 5em;
+.col.s1.article-separator-container {
+    padding: 0;
+    margin: 0;
+}
 
-    -webkit-transform-origin: 0 0;
-    -ms-transform-origin: 0 0;
-    -moz-transform-origin: 0 0;
-    -o-transform-origin: 0 0;
-    transform-origin: 0 0;
-    transform: rotateZ(-90deg);
+.col.s1.article-separator-container-deux {
+    padding: 0;
+    margin: 0;
+}
 
-    position: relative;
-    top: 37em;
-    left: 3em;
+.article-separator {
 
-    background-color: lightgrey;
-    padding: 1em;
+    margin-top: -10em;
+    margin-left: 3em;
+    margin-right: 0;
+    background: #488194;
+    height: 35em;
+    width: 3em;
+}
+
+.article-separator-deux {
+    margin-top: -3em;
+    margin-right: 0;
+    background: #488194;
+    height: 35em;
+    width: 3em ;
+
 }
 
 .short {
@@ -255,7 +245,144 @@ div#subHeaer {
 }
 
 .short-head {
-    color: #35383d;
-    font-size: 1.2em;
+    font-family: MontSerrat, Serif;
+    font-weight: 400;
+    font-size: 1.4em;
+    display: block;
+    padding-bottom: 0;
+    margin-bottom: .2em;
 }
 
+#observe-infos {
+    font-family: MontSerrat, Serif;
+    font-weight: 400;
+    font-size: .9em;
+}
+
+.head-link {
+    text-align: center;
+}
+
+#postheart, #observeheart {
+    color: #EB5757
+}
+
+#ajaxLoading {
+    display: none;
+}
+
+.share-link {
+    color:#2D9CDB;
+}
+
+.js-like-observe-count {
+    font-family: MontSerrat, Serif;
+    font-weight: 400;
+    font-size: .9em;
+}
+
+@media (max-width: 400px) {
+
+    div#subHeaer {
+        margin-top: 3em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    #first {
+        margin-top: 2em;
+        padding-left: unset;
+    }
+
+    #participate-div {
+         padding-left: unset;
+    }
+
+    #separator-deux {
+        background: no-repeat center url("../img/other/observation.jpg");
+        background-size: cover;
+        height: 22em;
+        margin-top: 5em;
+    }
+
+    .infog {
+        margin-top: unset;
+    }
+
+    .infog h3 {
+        color: white;
+        font-family: MontSerrat, Serif;
+        font-weight: 300;
+        font-size: 2em;
+    }
+
+    .infog p {
+        color: white;
+        font-family: MontSerrat, Serif;
+        font-weight: 300;
+        font-size: 1em;
+    }
+
+    #the-observatory {
+        padding-left: unset;
+    }
+
+    #observatory_title {
+        font-family: didot;
+        font-size: 4em;
+        text-align: center;
+        color: #488194;
+        margin-top: 1em;
+        margin-bottom: unset;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 401px) and (max-width:992px) {
+
+    div#subHeaer {
+        margin-top: 3em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    #first {
+        margin-top: 2em;
+        padding-left: 1em;
+    }
+
+    #text-separator {
+        margin-top: 3em;
+    }
+
+    #participate-div {
+        padding-left: unset;
+    }
+
+    #separator-deux {
+        margin-top: 6em;
+    }
+
+    #the-observatory {
+        padding-left: unset;
+    }
+    #observatory_title {
+
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+}
+
+@media (min-width:1440px) {
+    #slogan {
+        top: 130px;
+        left: 9em;
+    }
+}
