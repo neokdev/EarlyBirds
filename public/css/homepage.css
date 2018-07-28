@@ -349,6 +349,10 @@ div#subHeaer {
         margin-top: 3em;
     }
 
+    #header {
+        margin-top: 0;
+    }
+
     #slogan {
         display: none;
     }
@@ -380,9 +384,9 @@ div#subHeaer {
     }
 }
 
-@media (min-width:1440px) {
-    #slogan {
-        top: 130px;
-        left: 9em;
+
+@media (max-width: 1920px) and (min-width: 1601px){
+    #header {
+        margin-top: 0;
     }
 }

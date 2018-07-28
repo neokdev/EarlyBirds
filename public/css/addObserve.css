@@ -320,7 +320,7 @@ div#popupMap {
 @media (min-width: 993px) and (max-width: 1440px) {
 
     #header {
-        height: 300px;
+        height: 360px;
         padding-top: 90px;
         margin-bottom: 100px;
         background: no-repeat center url(../img/other/observation.jpeg);

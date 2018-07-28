@@ -65,6 +65,10 @@
     border-radius: 1em;
 }
 
+.card .card-image img {
+    border-radius: 1em 1em 0 0;
+}
+
 #head-img {
     width: 14.250em;
     height: 14.250em;

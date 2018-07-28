@@ -88,7 +88,7 @@ a.black-text:active {
     background-color: white;
     position: -webkit-sticky;
     position: sticky;
-    top: 390px;
+    top: 320px;
     z-index: 15000;
     text-align: center;
     padding: 0;
@@ -254,12 +254,13 @@ svg {
 }
 
 #blackBird {
-    height: 165px;
-    width: 165px;
+    display: block;
+    height: 108px;
+    width: 108px;
     z-index: 100;
-        position: relative;
-        top: 455px;
-        left: 350px;
+    position: absolute;
+    left: 25em;
+    bottom: 34.3em;
 }
 
 #infoAssoCopyright {
@@ -318,9 +319,10 @@ svg {
     }
 
     div#mob-nav-icon {
-        position: sticky;
+        position: fixed;
         z-index: 1000;
-        padding-top: .6em;
+        right: 0;
+        padding-top: .9em;
     }
 
     a img#logo-nav-icon, a img#bin-nav-icon, a img#loupe-nav-icon, a img#profil-nav-icon {
@@ -521,8 +523,9 @@ svg {
     }
 
     div#mob-nav-icon {
-        position: sticky;
+        position: fixed;
         z-index: 1000;
+        right: 0;
         padding-top: .9em;
     }
 
@@ -568,13 +571,7 @@ svg {
     }
 
     #blackBird {
-        height: 165px;
-        width: 165px;
-        z-index: 100;
-        position: relative;
-
-        top: 470px;
-        left: 280px;
+        display: none;
     }
 
     #little_nav {
@@ -667,12 +664,12 @@ svg {
     }
 
     #blackBird {
-        height: 165px;
-        width: 165px;
+        height: 108px;
+        width: 108px;
         z-index: 100;
-        position: relative;
-        top: 410px;
-        left: 510px;
+        position: absolute;
+        left: 36em;
+        bottom: 37.1em;
     }
 
     #footer {
@@ -710,10 +707,19 @@ svg {
         background-color: white;
         position: -webkit-sticky;
         position: sticky;
-        top: 330px;
+        top: 320px;
         z-index: 15000;
         text-align: center;
         padding: 0;
         margin: 0;
+    }
+
+    #blackBird {
+        height: 108px;
+        width: 108px;
+        z-index: 100;
+        position: absolute;
+        left: 36em;
+        bottom: 37.1em;
     }
 }

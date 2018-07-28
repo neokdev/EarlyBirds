@@ -26,8 +26,8 @@
 }
 
 #header {
-    height: 300px;
-    background: no-repeat center url("../img/other/observation.jpg");
+    height: 360px;
+    background: no-repeat center url("../img/other/discoverbirds.jpg");
     background-size: cover;
 }
 
@@ -61,7 +61,6 @@ input::placeholder {
 }
 
 #discover_bird {
-    margin-top: 5em;
     margin-bottom: -.2em;
 }
 
@@ -113,12 +112,14 @@ div#popupMap {
 @media (max-width: 400px) {
 
     #subHeader {
-        margin-top: 6em;
+        margin-top: 0;
+        padding: 0;
     }
 
     #header {
         height: 215px;
         margin-top: 0;
+
     }
 
     .header_text {
@@ -138,7 +139,7 @@ div#popupMap {
 @media (min-width: 401px) and (max-width: 992px) {
 
     #subHeader {
-        margin-top: 8em;
+        margin-top: 5em;
     }
 
     #header {
