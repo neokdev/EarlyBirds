@@ -62,7 +62,7 @@
 
         <div class="col l10 offset-l1 m10 offset-m1 s12">
 
-            <div class="col l4 m4 s12">
+            <div class="col l4 m12 s12">
                 <div class="card grey lighten-5" id="head-card">
                     <div class="card-content">
                         <h2 id="first-article-title">Sur le perchoir</h2>
@@ -201,10 +201,10 @@
                 </ul>
             </div>
 
-            <div class="col l8 m8 s12" id="article">
+            <div class="col l8 m6 s12" id="article">
                 {% if posts is not null %}
                     {% for post in posts %}
-                        <div class="col l6 m6 s12">
+                        <div class="col l6 m12 s12">
                             <div class="card" id="article-card">
                                 <div class="card-image">
                                     <img src="{{ post.img }}" alt="image de l'article de nao">

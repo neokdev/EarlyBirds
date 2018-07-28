@@ -254,7 +254,7 @@ ul#category-list {
 
 @media (max-width: 400px)  {
     #subHeader {
-        margin-top: 6em;
+        margin-top: 0;
         padding: 0;
     }
 
