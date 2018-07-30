@@ -138,7 +138,7 @@
                         </p>
                     </div>
                     <div class="card-action head-link" >
-                        <span class="js-like-post-count">{{ lastPost.favouredBy.count }}</span>
+                        <span class="js-like-post-count" style="position: relative; bottom: 8px">{{ lastPost.favouredBy.count }}</span>
                         {% if is_granted('ROLE_USER')%}
                             <a class="js-like-post" href="{{ path('toogle_post_heart', {id: lastPost.id}) }}">
                                 <i id="postheart" data-url="{{ path('get_favoured') }}" data-id="{{ lastPost.id }}" class="material-icons">favorite_border</i>
@@ -197,7 +197,7 @@
                         </p>
                     </div>
                     <div class="card-action head-link">
-                        <span class="js-like-observe-count">{{ observe.upvoter.count }}</span>
+                        <span class="js-like-observe-count" style="position: relative; bottom: 8px">{{ observe.upvoter.count }}</span>
                         {% if is_granted('ROLE_USER')%}
                             <a class="js-like-observe" href="{{ path('toggle_observe_heart', {id: observe.id}) }}">
                                 <i id="observeheart" data-url="{{ path('get_observe_like_status') }}" data-id="{{ observe.id }}" class="material-icons">favorite_border</i>

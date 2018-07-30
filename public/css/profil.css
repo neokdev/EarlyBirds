@@ -301,3 +301,9 @@
     color: #F2994A!important;
     font-weight: bold;
 }
+
+@media (min-width: 993px) and (max-width: 1268px) {
+    .admin-panel {
+        overflow: scroll;
+    }
+}
