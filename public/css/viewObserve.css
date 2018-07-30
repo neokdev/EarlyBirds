@@ -1,3 +1,43 @@
+div#subHeader {
+    margin-top: -24em;
+}
+
+#slogan {
+    top: 130px;
+}
+
+#header {
+    height: 360px;
+    margin-bottom: 3em;
+    padding-top: 2em;
+    background: no-repeat center url("../img/other/lastobserve.jpg");
+    background-size: cover;
+}
+.header_text {
+    text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
+    font-family: MontSerrat;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: white;
+}
+
+.header-little-text {
+    margin-top: 0;
+    text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
+    font-family: MontSerrat;
+    font-size: 1em;
+    color: white;
+    font-weight: 300;
+}
+
+#header a {
+    border-radius: 20px;
+    margin-top: .6em;
+    background-color: #2D9CDB!important;
+    text-transform: none;
+}
+
+
 #viewObserveHeader div {
     padding-left: 4%;
     margin-bottom: 0;
@@ -51,29 +91,6 @@
     top: 5px;
 }
 
-@media (max-width: 992px) {
-    #viewObserveHeader {
-        position: relative;
-        margin-top: 100px;
-    }
-
-    #observation {
-        position: relative;
-        margin-top: 100px;
-    }
-}
-
-@media (min-width: 993px) {
-    #viewObserveHeader {
-        position: relative;
-        bottom: 343px;
-    }
-
-    #observation {
-        position: relative;
-        bottom: 343px;
-    }
-}
 
 #observation b {
     text-transform: uppercase;
@@ -95,4 +112,80 @@
     font-family: Montserrat, serif;
     text-transform: none;
     font-weight: bold;
+}
+
+@media (max-width: 400px)  {
+
+    #slogan {
+        display: none;
+    }
+
+    div#subHeader {
+        margin-top: 3em;
+        padding: 0;
+    }
+
+    #header {
+        padding-top: unset;
+    }
+
+    #header .header_text {
+        padding-top: 0;
+        margin-top: .8em;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 992px) {
+
+    #slogan {
+        display: none;
+    }
+
+    div#subHeader {
+        margin-top: 5em;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #footer-mobile {
+        padding-top: unset;
+    }
+
+    #header {
+        padding-top:0;
+    }
+
+   .header_text {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 1920px) and (min-width: 1601px) {
+    #header {
+        height: 450px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
+        font-family: MontSerrat;
+        font-weight: 500;
+        font-size: 2.5em;
+        color: white;
+    }
+
+    .header-little-text {
+        margin-top: 0;
+        text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
+        font-family: MontSerrat;
+        font-size: 1em;
+        color: white;
+        font-weight: 300;
+    }
 }

@@ -60,7 +60,7 @@ class ContactDTO implements ContactDTOInterface
     public $mail;
 
     /**
-     * @Assert\NotBlank(message= "la case doit être cochée")
+     *
      * @var boolean
      */
     public $marketing;
@@ -81,12 +81,12 @@ class ContactDTO implements ContactDTOInterface
      * @param bool|null   $response
      */
     public function __construct(
-        string $author    = null,
-        string $message   = null,
-        string $subject   = null,
-        string $mail      = null,
+        string $author = null,
+        string $message = null,
+        string $subject = null,
+        string $mail = null,
         bool   $marketing = null,
-        bool   $response  = null
+        bool   $response = null
     ) {
         $this->author    = $author;
         $this->message   = $message;

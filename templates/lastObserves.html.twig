@@ -11,29 +11,53 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div  id="lastObserveHeader" class="row" style="margin-bottom: 61px">
-            <div class="col s12" style="background-image: url('{{ asset('/img/other/mike-wilson-300693-unsplash.jpg') }}'); background-size: 100% 100%; height: 369px">
-                <h1>Parcourez les observations</h1>
-                <p>Découvrez les toutes dernières espèces répertoriées en France par nos contributeurs et apprenez-en davantage sur chacune d'entre elles d'un simple clic sur sa fiche ou en utilisant notre moteur de recherche.</p>
-                <p><b>L' accès à l'inventaire est libre et participatif:</b><br/>Inscrivez vous et partagez vos propres observations !</p>
-                <a href="{{ path('app_observe') }}" class="waves-effect waves-light btn orange darken-1">Ajouter une observation</a>
+
+    <div class="row">
+        <div class="col l12 m12 s12" id="subHeader">
+            <div class=" col l2 m2 s2">
+                <p id="slogan">
+                    Nos amis les oiseaux
+                </p>
+            </div>
+
+            <div class="col m8 s12" id="header">
+                <h1 class="col m10 offset-m1 s12 header_text">
+                    <span id="header_text_bold">Parcourez les observations</span>
+                </h1>
+                <p class="col m8 offset-m1 s12 header-little-text">
+                    Découvrez toutes les espèces répertoriées en France par nos contributeurs et
+                    apprenez-en davantage sur chacune d'entre elles d'un simple
+                    clic sur sa fiche ou en utilisant notre moteur de recherche.
+                </p>
+                <p class="col m8 offset-m1 s12 header-little-text">
+                    <b>L' accès à l'inventaire est libre et participatif :</b>
+                    <br/>Inscrivez vous et partagez vos propres observations !<br>
+                    <a href="{{ path('app_observe') }}" class="waves-effect waves-light btn blue
+                darken-1">Ajouter une observation</a>
+                </p>
             </div>
         </div>
+    </div>
 
+    <div class="container">
         <div id="lastObserveSearch" class="row">
             <div class="col s12">
 
                 <div class="row">
-                    <div id="divautocomplete" class="col s8 offset-s2" style="background: #FFFFFF; box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px;">
+                    <div id="divautocomplete" class="col m8 offset-m2 s10 offset-s1"
+                         style="background:
+                    #FFFFFF; box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px;">
                         <div class="row" style="margin-bottom: 0; padding-left: 5%; padding-right: 5%;">
                             <div class="input-field col s12">
                                 <input data-url="{{ path('json_getvalidateobservestaxrefnames') }}" type="text" id="autocomplete-input" class="autocomplete">
                                 <img class="ObserveAjaxLoader" src="{{ asset('img/ajaxLoader/ajaxloader.gif') }}">
-                                <label for=lastObserveTulles"autocomplete-input">Saisissez le nom latin ou vernaculaire de l’oiseau recherché</label>
+                                <label for=lastObserveTulles"autocomplete-input"></label>
                             </div>
                         </div>
                     </div>
+                    <p class="col m8 offset-m2 s10 offset-s1 help left">
+                        Saisissez le nom latin ou vernaculaire de l’oiseau recherché
+                    </p>
                 </div>
             </div>
         </div>

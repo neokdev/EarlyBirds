@@ -73,7 +73,7 @@ class Mailer implements MailerInterface
                     "Emails/registerConfirm.html.twig",
                     [
                         'data' => $user,
-//                        'logo' => $message->embed(\Swift_Image::fromPath($this->logoPath)),
+                        //'logo' => $message->embed(\Swift_Image::fromPath($this->logoPath)),
                     ]
                 ),
                 'text/html'

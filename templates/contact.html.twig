@@ -22,9 +22,6 @@
                             ou vous êtes naturaliste et souhaitez rejoindre l’équipe ?
                             N'hésitez pas à nous contacter, nous nous ferons un plaisir
                             de vous répondre dès que nous aurons posé nos jumelles !
-
-
-
                         </div>
 
 
@@ -79,8 +76,10 @@
                             <label>
                                 {{ form_widget(form.marketing, {'attr': {'class': 'filled-in'}}) }}
                                 <span>J'accepte de recevoir de NAO des offres
-                                        marketing personnalisées. Nous vous invitons à consulter
-                                        notre politique de confidentialité.
+                                        marketing personnalisées.<br><br>
+                                    Nous vous invitons à consulter
+                                    notre <a href="{{ path('app_confidentiality') }}">politique de
+                                        confidentialité.</a>
                                     </span>
                             </label>
                         </div>
@@ -105,8 +104,8 @@
                         <div class="col l3 s5 m4 contact-div">
                             <ul class="right">
                                 <li class="contact-li contact_bold_text">email</li>
-                                <li class="contact-li contact_light_text"><a href="mailto:contact@nao
-                                .org">contact@nao.org</a></li>
+                                <li class="contact-li contact_light_text"><a href="mailto:contact@nao.org">
+                                        contact@nao.org</a></li>
                             </ul>
                         </div>
                     </div>

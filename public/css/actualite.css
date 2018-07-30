@@ -65,6 +65,10 @@
     border-radius: 1em;
 }
 
+.card .card-image img {
+    border-radius: 1em 1em 0 0;
+}
+
 #head-img {
     width: 14.250em;
     height: 14.250em;
@@ -250,7 +254,7 @@ ul#category-list {
 
 @media (max-width: 400px)  {
     #subHeader {
-        margin-top: 6em;
+        margin-top: 0;
         padding: 0;
     }
 

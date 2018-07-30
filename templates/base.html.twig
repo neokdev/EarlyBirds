@@ -204,9 +204,14 @@
             {% endblock %}
         </div>
 
-        <img class="hide-on-med-and-down" id="blackBird" src="{{ asset('/img/logo/oiseau-silhouette-noir.png') }}">
+        <!--<img class="hide-on-med-and-down" id="blackBird" src="{{ asset
+        ('/img/logo/oiseau-silhouette-noir.png') }}">-->
         <div id="footer">
+
             <div class="row info hide-on-med-and-down" id="containerInfos">
+                <div>
+                    <img class="hide-on-med-and-down" id="blackBird" src="{{ asset('/img/logo/oiseau-silhouette-noir.png') }}">
+                </div>
                 <ul class="col m3 offset-m8 l3 offset-l8">
                     <li id="company">nao</li>
                     <li class="info1">Impasse du Gypaète</li>
@@ -272,13 +277,14 @@
                     </div>
                     <p id="nosPartenaires">Nos partenaires</p>
                     <div class="col m12 l12 hide-on-med-and-down" id="rowPartenaires">
-                        <img src="{{ asset
-                            ('/img/logo/federation-francaise-de-la-randonnee-pedestre-randonnee-fspartenaires-nao.png') }}"/>
-                        <img class="imgPartenires" src="{{ asset('/img/logo/hydraelec2.png') }}"/>
-                        <img class="imgPartenires" src="{{ asset('/img/logo/natgeo2.png') }}"/>
-                        <img class="imgPartenires" src="{{ asset
-                            ('/img/logo/logo-5partenaires-nao.png') }}"/>
-                        <img class="imgPartenires" src="{{ asset('/img/logo/vne_vne_LogoMNHN-partenaires-nao.png') }}">
+                        <a href="https://www.ffrandonnee.fr/"><img src="{{ asset
+                            ('/img/logo/federation-francaise-de-la-randonnee-pedestre-randonnee-fspartenaires-nao.png') }}"/></a>
+                        <a href=""><img class="imgPartenires" src="{{ asset('/img/logo/hydraelec2.png') }}"/></a>
+                        <a href="https://www.geo.fr/"><img class="imgPartenires" src="{{ asset('/img/logo/natgeo2.png') }}"/></a>
+                        <a href="https://laruchequiditoui.fr/fr"><img class="imgPartenires" src="{{ asset
+                            ('/img/logo/logo-5partenaires-nao.png') }}"/></a>
+                        <a href="https://www.mnhn.fr/"><img class="imgPartenires" src="{{ asset
+                            ('/img/logo/vne_vne_LogoMNHN-partenaires-nao.png') }}"></a>
                     </div>
                 </div>
             </div>

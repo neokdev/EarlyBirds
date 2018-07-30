@@ -13,6 +13,7 @@ use App\Domain\Models\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class GetPostFoufouredStatus
@@ -30,12 +31,22 @@ class GetPostFavouredStatus
     private $tokenStorage;
 
     /**
-     * GetPostFoufouredStatus constructor.
-     * @param TokenStorageInterface $tokenStorage
+     * @var AuthorizationCheckerInterface
      */
-    public function __construct(TokenStorageInterface $tokenStorage)
-    {
+    private $authChecker;
+
+    /**
+     * GetPostFavouredStatus constructor.
+     *
+     * @param TokenStorageInterface         $tokenStorage
+     * @param AuthorizationCheckerInterface $authChecker
+     */
+    public function __construct(
+        TokenStorageInterface $tokenStorage,
+        AuthorizationCheckerInterface $authChecker
+    ) {
         $this->tokenStorage = $tokenStorage;
+        $this->authChecker  = $authChecker;
     }
 
     /**
@@ -45,15 +56,21 @@ class GetPostFavouredStatus
     {
         $currentUser = $this->tokenStorage->getToken()->getUser();
 
-        /** @var User $currentUser */
-        $favoured = $currentUser->getFavoured()->getValues();
-
         $status = [];
-        /** @var Post $fav */
-        foreach ($favoured as $fav) {
-            array_push($status, $fav->getId());
-        }
 
-        return new JsonResponse($status);
+        if (!$this->authChecker->isGranted("ROLE_USER")) {
+            return new JsonResponse($status);
+        } else {
+            /** @var User $currentUser */
+            $favoured = $currentUser->getFavoured()->getValues();
+
+
+            /** @var Post $fav */
+            foreach ($favoured as $fav) {
+                array_push($status, $fav->getId());
+            }
+
+            return new JsonResponse($status);
+        }
     }
 }

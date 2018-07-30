@@ -8,7 +8,7 @@
 
 #header {
     margin-bottom: 5em;
-    background: no-repeat center url("../img/other/actualite.jpeg");
+    background: no-repeat center url("../img/other/addpost.jpg");
     background-size: cover;
     height: 378px;
     margin-top: unset;
@@ -20,7 +20,7 @@
     text-align: center;
     color: black;
     text-transform: uppercase;
-    margin-top: 6.3em;
+    margin-top: 4em;
 }
 
 div#uplBtn, div#uplBtnMin {
@@ -124,7 +124,7 @@ span.form_errors ul {
 
 @media (max-width: 400px)  {
     #subHeader {
-        margin-top: 3em;
+        margin-top: 0;
         padding: 0;
     }
 
@@ -155,7 +155,7 @@ span.form_errors ul {
 @media (min-width: 401px) and (max-width: 992px) {
 
     #subHeader {
-        margin-top: 8em;
+        margin-top: 5em;
     }
 
     #header {

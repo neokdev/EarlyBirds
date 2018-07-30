@@ -43,7 +43,34 @@
     font-size: 1.2em;
 }
 
+@media (max-width: 400px) {
+
+    div#mob-nav-icon {
+        position: fixed;
+        z-index: 1000;
+        right: 0;
+        margin-top: -7.5em;
+    }
+
+    #citation-mobile {
+        display: none !important;
+
+    }
+
+    #footer-mobile {
+        padding-top: unset;
+    }
+}
+
 @media (max-width: 992px) {
+
+    div#mob-nav-icon {
+        position: fixed;
+        z-index: 1000;
+        right: 0;
+        margin-top: -7em;
+    }
+
     #profileContent {
         position: relative;
         margin-top: 100px;
@@ -57,6 +84,15 @@
 
     #admin > div:nth-child(2) > div > div > table > thead > tr {
         padding-top: 40px;
+    }
+
+    #citation-mobile {
+        display: none !important;
+
+    }
+
+    #footer-mobile {
+        padding-top: unset;
     }
 }
 
@@ -139,6 +175,14 @@
 .observePanel {
     margin-bottom: 3%;
     font-family: Roboto, serif;
+}
+
+.border-panel-obs {
+    border-left: 1.2em solid #8148B6;
+}
+
+.border-panel-article {
+    border-left: 1.2em solid #488194;
 }
 
 .tablinks p {
