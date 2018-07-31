@@ -123,9 +123,8 @@
                                 </a>
                             {% endif %}
                             <a href=""><i class="material-icons head-share">share</i></a>
-                             
-                            {% if is_granted('ROLE_NATURALIST') == true or is_granted('ROLE_ADMIN')
-                                == true %}
+
+                           {% if is_granted('ROLE_NATURALIST') %}
                             <a class="data-delete-post" data-delete="{{ path
                                 ('app_delete_article',
                                 {'id' : lastPost.id}) }}"><i
