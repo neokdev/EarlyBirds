@@ -10,14 +10,15 @@ div#subHeader {
     height: 360px;
     margin-bottom: 3em;
     padding-top: 2em;
-    background: no-repeat center url("../img/other/lastobserve.jpg");
+    padding-left: .4em;
+    background: no-repeat center url("../img/other/lastobserve.png");
     background-size: cover;
 }
 .header_text {
     text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
     font-family: MontSerrat, serif;
     font-weight: 500;
-    font-size: 2.5em;
+    font-size: 2.3em;
     color: white;
 }
 

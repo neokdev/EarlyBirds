@@ -2,10 +2,10 @@ $(function () {
     $('.data-delete-post').on('click', function () {
         $.ajax({
                method: "DELETE",
-               url: document.location.origin + $(this).attr('data-delete'),
+               url: $(this).attr('data-delete'),
                timeout: 3000,
                success: function () {
-                   document.location.assign(document.referrer);
+                   //document.location.assign(document.referrer);
                }
            }
         );

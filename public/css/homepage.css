@@ -85,8 +85,8 @@ div#subHeaer {
 }
 
 #separator {
-    height: 20.063em;
-    background: lightgrey;
+    background: no-repeat center url("../img/other/separator.png");
+    height: 22.250em;
     margin-top: 6em;
 }
 
