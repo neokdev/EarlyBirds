@@ -4,7 +4,8 @@ $(function () {
                method: "DELETE",
                url: $(this).attr('data-delete'),
                timeout: 3000,
-               success: function () {
+               success: function (data) {
+                   console.log(data);
                    document.location.assign(document.referrer);
                }
            }
