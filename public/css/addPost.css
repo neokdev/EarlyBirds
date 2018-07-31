@@ -80,6 +80,7 @@ textarea#add_post_shortDesc, textarea#update_post_shortDesc {
     box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+
 .select-wrapper input.select-dropdown {
     margin-top: 9%;
     padding-left: 10px;
@@ -88,6 +89,13 @@ textarea#add_post_shortDesc, textarea#update_post_shortDesc {
     background: #FFFCFC;
     border-radius: 20px;
     box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.select-wrapper .dropdown-content {
+    margin-top: 0;
+    -webkit-border-radius: 0 0 20px 20px;
+    -moz-border-radius: 0 0 20px 20px;
+    border-radius: 0 0 20px 20px;
 }
 
 .flash-post {
