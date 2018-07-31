@@ -54,12 +54,13 @@ class DeletePost
         TokenStorageInterface         $token
     ) {
         $this->postRepository = $postRepository;
-        $this->authChecker    = $authChecker;
-        $this->token          = $token;
+        $this->authChecker = $authChecker;
+        $this->token = $token;
     }
 
     /**
      * @param Request $request
+     *
      * @return mixed
      */
     public function __invoke(Request $request)

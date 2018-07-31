@@ -107,8 +107,11 @@
         bottom: 343px;
         padding: 0;
     }
-}
 
+    .col.s12.offset-l1.l5 {
+        height: 520px;
+    }
+}
 
 #thumbnails {
     height: auto;
@@ -295,6 +298,12 @@
 
 .card {
     font-family: Montserrat, serif;
+}
+
+#observeTule > div > div.card-image > img {
+    height: 230px;
+    width: 100%;
+    object-fit: contain;
 }
 
 .card .card-image span {

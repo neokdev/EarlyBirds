@@ -100,12 +100,12 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="card-panel border-panel-obs">
-                                            <h5 class="center">Mes observations</h5>
+                                            <h5 class="flow-text center">Mes observations</h5>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="observeTule" class="observe col s12" style="margin-bottom: 45px">
+                                <div id="observeTule" class="observe col s12">
 
                                     <div class="card">
                                         <div class="card-image">
@@ -116,10 +116,12 @@
                                         <div class="card-content row" style="padding-bottom: 9px; padding-top: 9px">
                                             <div class="col s7">
                                                 <div class="row" style="margin-bottom: 0">
-                                                    <span style="font-size: 12px">Observé le {{ observe.obsDate|localizeddate('long', 'none') }}</span>
+                                                    <span class="flow-text truncate"
+                                                          style="font-size: 12px">Observé le {{ observe.obsDate|localizeddate('long', 'none') }}</span>
                                                 </div>
                                                 <div class="row" style="margin-bottom: 0">
-                                                    <span style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</span>
+                                                    <span class="flow-text truncate"
+                                                          style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</span>
                                                 </div>
                                             </div>
                                             <div class="col s5 right-align" style="padding-right: 0; padding-top: 15px;">
@@ -148,13 +150,13 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="card-panel border-panel-article">
-                                            <h5 class="center">Mes articles favoris</h5>
+                                            <h5 class="flow-text center">Mes articles favoris</h5>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col s12">
-                                    <div class="card row">
+                                    <div class="card">
                                         <div class="card-image">
                                             <img src="{{ favoured.img }}">
                                             <span class="card-title truncate">{{ favoured.title }}</span>
@@ -168,7 +170,7 @@
                                                 </div>
                                             </div>
                                             <div class="divider"></div>
-                                            <div class="row" style="margin: 10px 0 0 0;">
+                                            <div class="row" style="margin-top: 10px;">
                                                 <div class="col s7">
                                                     <a href="{{ path('app_read_article', {id:
                                                         favoured.id}) }}" >lire l'article</a>
@@ -201,12 +203,14 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="card-panel border-panel-obs">
-                                            <h5 class="center"><span class="badge">{{ observes|length }}</span>Observations à valider</h5>
+                                            <h5 class="flow-text center"><span
+                                                        class="badge">{{ observes|length }}</span>Observations à valider
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="observeTule" class="observe col s12" style="margin-bottom: 45px">
+                                <div id="observeTule" class="observe col s12">
 
                                     <div class="card">
                                         <div class="card-image">
@@ -217,10 +221,12 @@
                                         <div class="card-content row" style="padding-bottom: 9px; padding-top: 9px">
                                             <div class="col s7">
                                                 <div class="row" style="margin-bottom: 0">
-                                                    <span style="font-size: 12px">Observé le {{ observe.obsDate|localizeddate('long', 'none') }}</span>
+                                                    <span class="flow-text truncate"
+                                                          style="font-size: 12px">Observé le {{ observe.obsDate|localizeddate('long', 'none') }}</span>
                                                 </div>
                                                 <div class="row" style="margin-bottom: 0">
-                                                    <span style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</span>
+                                                    <span class="flow-text truncate"
+                                                          style="font-size: 12px">{% if observe.author.nickname is defined %}{{ observe.author.nickname }}{% else %}{{ observe.author.email }}{% endif %}{% if observe.author.nickname is empty %}{{ observe.author.email }}{% endif %}</span>
                                                 </div>
                                             </div>
                                             <div class="col s5 right-align" style="padding-right: 0; padding-top: 15px;">
@@ -246,20 +252,22 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="card-panel border-panel-article">
-                                            <h5 class="center"><span class="badge">{{ app.user.posts|length }}</span>Mes articles</h5>
+                                            <h5 class="flow-text center"><span
+                                                        class="badge">{{ app.user.posts|length }}</span>Mes articles
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col s12">
-                                    <div class="card row">
+                                    <div class="card">
                                         <div class="card-image">
                                             <img src="{{ post.img }}">
                                             <span class="card-title truncate">{{ post.title }}</span>
-                                            <!-- <a href="{{ path('app_read_article', {id: post
+                                            <a href="{{ path('app_read_article', {id: post
                                                 .id}) }}" class="btn-floating halfway-fab
                                                 waves-effect waves-light orange darken-1"><i
-                                                class="material-icons">add</i></a> -->
+                                                        class="material-icons">add</i></a>
                                         </div>
                                         <div class="card-content">
                                             <div class="row">
@@ -269,7 +277,7 @@
                                                 </div>
                                             </div>
                                             <div class="divider"></div>
-                                            <div class="row" style="margin: 10px 0 0 0;">
+                                            <div class="row" style="margin-top: 10px;">
                                                 <div class="col s12">
                                                     <a href="{{ path('app_read_article', {id:
                                                         post.id}) }}" >lire l'article</a>
