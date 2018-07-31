@@ -10,7 +10,6 @@ namespace App\Domain\Builder;
 
 use App\Domain\Builder\Interfaces\ObserveBuilderInterface;
 use App\Domain\Models\Observe;
-use App\Domain\Models\TaxRef;
 use App\Domain\Models\User;
 
 /**

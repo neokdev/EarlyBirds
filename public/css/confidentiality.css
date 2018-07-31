@@ -12,7 +12,7 @@
 }
 
 .header_text {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 3em;
     text-align: center;
@@ -23,7 +23,7 @@
 
 #help_text {
     text-align: center;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1em;
     margin-bottom: 2em;
@@ -32,14 +32,14 @@
 
 #help_text_info {
     text-align: center;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1.5em;
     color: #99bfcc;
 }
 
 .sub_title {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 1.250em;
@@ -53,7 +53,7 @@
 }
 
 #paraph {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1em;
     padding: 0 2em;
@@ -66,7 +66,7 @@
 }
 
 .paraph_subtitle, .head-li {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1em;
     padding: 0;
@@ -75,7 +75,7 @@
 }
 
 .bold-text {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 1em;
     padding: 0;

@@ -37,6 +37,8 @@ class Comment
      * Comment constructor.
      * @param string $content
      * @param User $author
+     *
+     * @throws \Exception
      */
     public function __construct(string $content, User $author)
     {

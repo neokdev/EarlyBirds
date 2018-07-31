@@ -15,7 +15,7 @@ div#subHeader {
 }
 .header_text {
     text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 2.5em;
     color: white;
@@ -24,7 +24,7 @@ div#subHeader {
 .header-little-text {
     margin-top: 0;
     text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-size: 1em;
     color: white;
     font-weight: 300;
@@ -92,7 +92,7 @@ div#subHeader {
     }
 
     div#subHeader {
-        margin-top: 0em;
+        margin-top: 0;
         padding: 0;
     }
 
@@ -137,7 +137,7 @@ div#subHeader {
 
     .header_text {
         text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
-        font-family: MontSerrat;
+        font-family: MontSerrat, serif;
         font-weight: 500;
         font-size: 2.5em;
         color: white;
@@ -146,7 +146,7 @@ div#subHeader {
     .header-little-text {
         margin-top: 0;
         text-shadow: 4px 4px 14px rgba(150, 150, 150, 0.5);
-        font-family: MontSerrat;
+        font-family: MontSerrat, serif;
         font-size: 1em;
         color: white;
         font-weight: 300;

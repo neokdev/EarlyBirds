@@ -196,7 +196,7 @@
                              </span>
                         </p>
                     </div>
-                    <div class="card-action head-link">
+                    <div class="card-action head-link observecard">
                         <span class="js-like-observe-count" style="position: relative; bottom: 8px">{{ observe.upvoter.count }}</span>
                         {% if is_granted('ROLE_USER')%}
                             <a class="js-like-observe" href="{{ path('toggle_observe_heart', {id: observe.id}) }}">

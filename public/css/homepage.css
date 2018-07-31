@@ -21,7 +21,7 @@ div#subHeaer {
     padding-top: .5em;
     background: #F2994A;
     border-radius: 20px;
-    font-family: MontSerrat, Serif;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 1.125em;
     text-transform: initial;
@@ -50,11 +50,11 @@ div#subHeaer {
     position: absolute;
     width: 99px;
     height: 52px;
-    left: 0em;
+    left: 0;
     margin-top: 15em;
 
     background: #488194;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
@@ -100,12 +100,12 @@ div#subHeaer {
     -moz-border-radius: 50%;
     border-radius: 50%;
     background: #488194;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #round-text {
     text-align: center;
-    font-family: Didot;
+    font-family: Didot, serif;
     line-height: normal;
     font-size: 1.750em;
     color: white;
@@ -136,11 +136,11 @@ div#subHeaer {
     position: absolute;
     width: 99px;
     height: 52px;
-    right: 0em;
+    right: 0;
     margin-top: 2em;
 
     background: #6A3F91;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #participate {
@@ -165,13 +165,13 @@ div#subHeaer {
 }
 
 .infog h3 {
-    font-family: MontSerrat, Serif;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 4em;
 }
 
 .infog p {
-    font-family: MontSerrat, Serif;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1.5em;
 }
@@ -191,7 +191,7 @@ div#subHeaer {
 }
 
 #observatory_title {
-    font-family: didot;
+    font-family: didot, serif;
     font-size: 4em;
     text-align: center;
     color: #488194;
@@ -201,7 +201,7 @@ div#subHeaer {
 
 
 #article-card .card-image .card-title, .observatory-card .card-image .card-title{
-    font-family: MontSerrat, Serift;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     font-size: 1.5em;
 }
@@ -245,7 +245,7 @@ div#subHeaer {
 }
 
 .short-head {
-    font-family: MontSerrat, Serif;
+    font-family: MontSerrat, serif;
     font-weight: 400;
     font-size: 1.4em;
     display: block;
@@ -254,7 +254,7 @@ div#subHeaer {
 }
 
 #observe-infos {
-    font-family: MontSerrat, Serif;
+    font-family: MontSerrat, serif;
     font-weight: 400;
     font-size: .9em;
 }
@@ -276,7 +276,7 @@ div#subHeaer {
 }
 
 .js-like-observe-count {
-    font-family: MontSerrat, Serif;
+    font-family: MontSerrat, serif;
     font-weight: 400;
     font-size: .9em;
 }
@@ -313,14 +313,14 @@ div#subHeaer {
 
     .infog h3 {
         color: white;
-        font-family: MontSerrat, Serif;
+        font-family: MontSerrat, serif;
         font-weight: 300;
         font-size: 2em;
     }
 
     .infog p {
         color: white;
-        font-family: MontSerrat, Serif;
+        font-family: MontSerrat, serif;
         font-weight: 300;
         font-size: 1em;
     }
@@ -330,7 +330,7 @@ div#subHeaer {
     }
 
     #observatory_title {
-        font-family: didot;
+        font-family: didot, serif;
         font-size: 4em;
         text-align: center;
         color: #488194;
