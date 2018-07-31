@@ -14,7 +14,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class MapAction
- * @package App\UI\Action
  * @Route(
  *     "/carte",
  *     name="app_map",
@@ -23,6 +22,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MapAction implements MapActionInterface
 {
+    /**
+     * @param MapResponderInterface $mapResponder
+     *
+     * @return mixed
+     */
     public function __invoke(MapResponderInterface $mapResponder)
     {
         return $mapResponder();
