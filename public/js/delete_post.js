@@ -6,9 +6,8 @@ $(function () {
          method: "DELETE",
          url: $(this).attr('data-delete'),
          timeout: 3000,
-         success: function (data) {
-             //document.location.reload();
-             console.log(data);
+         success: function () {
+             document.location.reload();
              }
          }
          );

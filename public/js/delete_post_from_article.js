@@ -5,7 +5,7 @@ $(function () {
                url: $(this).attr('data-delete'),
                timeout: 3000,
                success: function () {
-                   //document.location.assign(document.referrer);
+                   document.location.assign(document.referrer);
                }
            }
         );
