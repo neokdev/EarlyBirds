@@ -11,14 +11,14 @@
 }
 
 p#popupMap {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     text-align: center;
     color: #F2994A;
     font-weight: 100;
 }
 
 div#popupMap {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     text-align: center;
     font-weight: 100;
 }
@@ -29,14 +29,14 @@ div#popupMap {
 }
 
 #birdName {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 700;
     color: #F2994A;
 }
 
 #author {
     color: #2D9CDB;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 700;
 }
 
@@ -49,7 +49,7 @@ div#popupMap {
 }
 
 .header_text {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 500;
     text-align: center;
     color: white;
@@ -57,7 +57,7 @@ div#popupMap {
 
 #help_text {
     text-align: center;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1em;
     margin-bottom: 2em;
@@ -66,7 +66,7 @@ div#popupMap {
 
 #help_text_info {
     text-align: center;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1.5em;
     color: #99bfcc;
@@ -80,7 +80,7 @@ div#popupMap {
     height: 3em;
     font-size: 1.5em;
     text-transform: initial;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 700;
 }
 
@@ -128,7 +128,7 @@ div#popupMap {
         padding-top: .3em;
         height: 3em;
         font-size: 1em;
-        font-family: MontSerrat;
+        font-family: MontSerrat, serif;
         font-weight: 700;
         text-transform: initial;
     }

@@ -58,7 +58,8 @@
                     <p>Profil</p>
                 </a>
                 <a class="tablinks btn waves-effect waves-light" onclick="verticalTab(event, 'observations')">
-                    <i class="material-icons">add_a_photo</i>
+                    <i class="material-icons">visibility</i>
+                    {#<img src="{{ asset('/img/vector/Very-Basic-Binoculars-icon.png') }}" alt="observations">#}
                     <p>Observations</p>
                 </a>
                 {% if is_granted('ROLE_ADMIN')%}
@@ -146,7 +147,7 @@
 
                                 <div class="row">
                                     <div class="col s12">
-                                        <div class="card-panel">
+                                        <div class="card-panel border-panel-article">
                                             <h5 class="center">Mes articles favoris</h5>
                                         </div>
                                     </div>
@@ -585,7 +586,7 @@
 
                             <div id="myObsTop" class="row">
                                 <div class="col s6">
-                                    <div class="card-panel">
+                                    <div class="card-panel border-panel-obs">
                                         <h5 class="center">Observations à valider</h5>
                                     </div>
                                 </div>
@@ -791,7 +792,7 @@
 
                         <div class="row">
                             <div class="col s12">
-                                <div class="card-panel white">
+                                <div class="card-panel white admin-panel">
 
                                     <table class="responsive-table highlight">
                                         <thead>

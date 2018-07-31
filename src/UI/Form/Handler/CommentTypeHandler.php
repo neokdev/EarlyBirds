@@ -8,14 +8,13 @@
 
 namespace App\UI\Form\Handler;
 
-
 use App\Domain\Builder\Interfaces\CommentBuilderInterface;
 use App\Domain\Models\Post;
+use App\Domain\Models\User;
 use App\Domain\Repository\CommentRepository;
 use App\UI\Form\Handler\Interfaces\CommentTypeHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class CommentTypeHandler implements CommentTypeHandlerInterface
@@ -42,26 +41,33 @@ class CommentTypeHandler implements CommentTypeHandlerInterface
 
     /**
      * CommentTypeHandler constructor.
-     * @param CommentRepository $commentRepository
+     * @param CommentRepository       $commentRepository
      * @param CommentBuilderInterface $commentBuilder
-     * @param FlashBagInterface $flash
-     * @param TokenStorageInterface $token
+     * @param FlashBagInterface       $flash
+     * @param TokenStorageInterface   $token
      */
-    public function __construct(CommentRepository $commentRepository,
-                                CommentBuilderInterface $commentBuilder,
-                                FlashBagInterface $flash,
-                                TokenStorageInterface $token)
-    {
+    public function __construct(
+        CommentRepository $commentRepository,
+        CommentBuilderInterface $commentBuilder,
+        FlashBagInterface $flash,
+        TokenStorageInterface $token
+    ) {
         $this->commentRepository = $commentRepository;
-        $this->commentBuilder = $commentBuilder;
-        $this->flash = $flash;
-        $this->token = $token;
+        $this->commentBuilder    = $commentBuilder;
+        $this->flash             = $flash;
+        $this->token             = $token;
     }
 
-
+    /**
+     * @param FormInterface $form
+     * @param Post          $post
+     *
+     * @return bool
+     */
     public function handle(FormInterface $form, Post $post): bool
     {
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var User $user */
             $user = $this->token->getToken()->getUser();
             $this->commentBuilder->create(
                 $user,
@@ -73,7 +79,8 @@ class CommentTypeHandler implements CommentTypeHandlerInterface
 
             $this->commentRepository->save($comment);
 
-            $this->flash->add("notice","commentaire ajouté");
+            $this->flash->add("notice", "commentaire ajouté");
+
             return true;
         }
 

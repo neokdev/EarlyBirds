@@ -65,14 +65,14 @@ input::placeholder {
 }
 
 p#popupMap {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     text-align: center;
     color: #F2994A;
     font-weight: 100;
 }
 
 div#popupMap {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     text-align: center;
     font-weight: 100;
 }
@@ -83,14 +83,14 @@ div#popupMap {
 }
 
 #birdName {
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 700;
     color: #F2994A;
 }
 
 #author {
     color: #2D9CDB;
-    font-family: MontSerrat;
+    font-family: MontSerrat, serif;
     font-weight: 700;
 }
 

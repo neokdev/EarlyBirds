@@ -64,13 +64,15 @@ class Observe
 
     /**
      * Observe constructor.
-     * @param           $author
+     * @param User      $author
      * @param           $ref
      * @param string    $description
      * @param string    $latitude
      * @param string    $longitude
      * @param \DateTime $obsDate
      * @param string    $img
+     *
+     * @throws \Exception
      */
     public function __construct(
         User      $author,

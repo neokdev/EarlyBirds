@@ -42,24 +42,25 @@ class Contact
     private $mail;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $marketing;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $response;
 
     /**
      * Contact constructor.
-     *
      * @param string $author
      * @param string $message
      * @param string $subject
      * @param string $mail
      * @param bool   $marketing
      * @param bool   $response
+     *
+     * @throws \Exception
      */
     public function __construct(
         string $author,
@@ -104,6 +105,7 @@ class Contact
 
     /**
      * @param string $author
+     *
      * @return Contact
      */
     public function setAuthor(string $author): self
@@ -123,6 +125,7 @@ class Contact
 
     /**
      * @param string $message
+     *
      * @return Contact
      */
     public function setMessage(string $message): self
@@ -142,6 +145,7 @@ class Contact
 
     /**
      * @param string $subject
+     *
      * @return Contact
      */
     public function setSubject(string $subject): self
@@ -161,6 +165,7 @@ class Contact
 
     /**
      * @param string $mail
+     *
      * @return Contact
      */
     public function setMail(string $mail): self
