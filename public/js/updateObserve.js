@@ -289,13 +289,15 @@ $(function() {
         birdMarker2.addTo(map);
     });
 
-    //flash message after valide or update obs
+    //flash message after valide or update obs and auto scrolling
     let msgUn = $('.flash-notice');
     let divUpBtn = $('#divUpBtn');
     let divSubBtn = $('#divSubBtn');
     let message = $('.message');
+    let url = document.location.origin +'/saisir-observation#mes1';
 
     if (msgUn.text().length > 0) {
+        document.location.assign(url);
         divSubBtn.hide();
         divUpBtn.hide();
         message.fadeOut(9000, function () {

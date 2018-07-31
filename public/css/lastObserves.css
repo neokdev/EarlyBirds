@@ -98,11 +98,12 @@ div#subHeader {
 
     #header {
         padding-top: unset;
+        height: 400px !important;
     }
 
     #header .header_text {
         padding-top: 0;
-        margin-top: .8em;
+        margin-top: 2em;
     }
 
     #citation-mobile {

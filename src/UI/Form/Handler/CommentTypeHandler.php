@@ -64,7 +64,7 @@ class CommentTypeHandler implements CommentTypeHandlerInterface
      *
      * @return bool
      */
-    public function handle(FormInterface $form, Post $post): bool
+    public function handle(FormInterface $form, Post $post = null): bool
     {
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var User $user */

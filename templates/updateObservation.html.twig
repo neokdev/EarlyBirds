@@ -87,6 +87,9 @@
                             <span>Télécharger une photo</span>
                             {{ form_widget(form.img) }}
                         </div>
+                        <div class="file-path-wrapper">
+                            <input class="valid_observe_img file-path validate" type="text">
+                        </div>
                     </div>
 
                     <div class="input-field col l8 offset-l2 m12 s12" id="divSubBtn">
@@ -96,7 +99,7 @@
                         </button>
                     </div>
 
-                    <div class="input-field col m8 offset-m2 message" >
+                    <div id="mes1" class="input-field col m8 offset-m2 message" >
                         {% for message in app.flashes('observe') %}
                             <div class="flash-observe">
                                 {{ message }}
@@ -138,4 +141,5 @@
 
     </script>
     <script type="text/javascript" src="{{ asset('js/updateObserve.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/observe_validation_input.js') }}"></script>
 {% endblock %}
