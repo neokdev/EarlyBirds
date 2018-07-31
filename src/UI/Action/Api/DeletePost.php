@@ -55,23 +55,25 @@ class DeletePost
         AuthorizationCheckerInterface $authChecker,
         TokenStorageInterface         $token
     ) {
-        $this->postRepository      = $postRepository;
-        $this->authChecker         = $authChecker;
-        $this->token               = $token;
+        $this->postRepository = $postRepository;
+        $this->authChecker = $authChecker;
+        $this->token = $token;
     }
 
     /**
      * @param Request $request
+     *
      * @return mixed
      */
     public function __invoke(Request $request)
     {
         $id = $request->attributes->get('id');
         $post = $this->postRepository->findOneBy(['id' => $id]);
-        $removePost = null;
+        $removePost = false;
 
         if (true === $this->authChecker->isGranted('ROLE_ADMIN')) {
             $this->postRepository->delete($post);
+            $removePost = true;
         } elseif (true === $this->authChecker->isGranted('ROLE_NATURALIST')) {
             $userPostId = $post->getAuthor()->getId();
             $uId = $this->token->getToken()->getUser();
@@ -82,6 +84,7 @@ class DeletePost
                 article, vous ne pouvez pas le supprimer');
             } else {
                 $this->postRepository->delete($post);
+                $removePost = true;
             }
         } else {
             throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
