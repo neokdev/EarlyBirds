@@ -217,6 +217,9 @@ div#popupMap {
     font-weight: 700;
 }
 
+input.valid_observe_img.file-path.validate {
+    display: none;
+}
 
 @media (max-width: 400px) {
 

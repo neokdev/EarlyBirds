@@ -65,11 +65,11 @@ class ObserveDTO implements ObserveDTOInterface
     public $obsDate;
 
     /**
-     *  @Assert\NotBlank(message="veuillez sélectionner une image")
-     *  @Assert\File(
-     *     maxSize = "1M",
+     * @Assert\NotBlank(message="veuillez sélectionner une image")
+     * @Assert\File(
+     *     maxSize = "5M",
      *     mimeTypes = {"image/jpeg", "image/png"},
-     *     mimeTypesMessage = "votre image doit être de type jpeg ou png et inférieur à 1mo"
+     *     mimeTypesMessage = "votre image doit être de type jpeg ou png et inférieur à 5mo"
      * )
      * @var UploadedFile
      */
@@ -78,20 +78,20 @@ class ObserveDTO implements ObserveDTOInterface
     /**
      * ObserveDTO constructor.
      *
-     * @param null|string            $ref
-     * @param null|string            $description
-     * @param null|string            $latitude
-     * @param null|string            $longitude
-     * @param \DateTime|null         $date
-     * @param UploadedFile|null      $img
+     * @param null|string       $ref
+     * @param null|string       $description
+     * @param null|string       $latitude
+     * @param null|string       $longitude
+     * @param \DateTime|null    $date
+     * @param UploadedFile|null $img
      */
     public function __construct(
-                     $ref,
+        $ref,
         string       $description = null,
-        string       $latitude    = null,
-        string       $longitude   = null,
-        \DateTime    $date        = null,
-        UploadedFile $img         = null
+        string       $latitude = null,
+        string       $longitude = null,
+        \DateTime    $date = null,
+        UploadedFile $img = null
     ) {
         $this->ref          = $ref;
         $this->description  = $description;

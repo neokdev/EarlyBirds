@@ -85,11 +85,11 @@ class AddPostDTO implements AddPostDTOInterface
      * @param null|UploadedFile $miniature
      */
     public function __construct(
-        string       $title     = null,
-        string       $content   = null,
+        string       $title = null,
+        string       $content = null,
         string       $shortDesc = null,
-        string       $category  = null,
-        UploadedFile $img       = null,
+        string       $category = null,
+        UploadedFile $img = null,
         UploadedFile $miniature = null
 
     ) {

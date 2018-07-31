@@ -12,6 +12,11 @@ use App\UI\Responder\Interfaces\DeletePostResponderInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+/**
+ * Class DeletePostResponder
+ *
+ * @package App\UI\Responder
+ */
 class DeletePostResponder implements DeletePostResponderInterface
 {
     /**

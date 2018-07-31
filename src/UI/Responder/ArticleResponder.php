@@ -52,20 +52,21 @@ class ArticleResponder implements ArticleResponderInterface
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke(bool $redirect = false, Post $post, FormInterface $form = null)
+    public function __invoke(bool $redirect = false, Post $post = null, FormInterface $form = null)
     {
         $redirect
             ? $response = new RedirectResponse(
                 $this->url->generate('app_read_article', [
                      'id' => $post->getId()
                      ], UrlGeneratorInterface::ABSOLUTE_URL)
-                )
+            )
             : $response = new Response(
-            $this->twig->render(
-                'article.html.twig',
-                ['post' => $post,
+                $this->twig->render(
+                    'article.html.twig',
+                    ['post' => $post,
                     'form' => $form->createView()]
-            ));
+                )
+            );
         ;
 
         return $response;

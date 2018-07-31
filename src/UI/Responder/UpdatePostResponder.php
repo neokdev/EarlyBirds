@@ -42,8 +42,8 @@ class UpdatePostResponder implements UpdatePostResponderInterface
     }
 
     /**
-     * @param bool $redirect
-     * @param FormInterface|null $form
+     * @param bool                        $redirect
+     * @param FormInterface|null          $form
      * @param UpdatePostDTOInterface|null $post
      * @return RedirectResponse|Response
      * @throws \Twig_Error_Loader
@@ -51,9 +51,9 @@ class UpdatePostResponder implements UpdatePostResponderInterface
      * @throws \Twig_Error_Syntax
      */
     public function __invoke(
-         bool                   $redirect = false,
-         FormInterface          $form     = null,
-         UpdatePostDTOInterface $post     = null
+        bool                   $redirect = false,
+        FormInterface          $form = null,
+        UpdatePostDTOInterface $post = null
     ) {
         $redirect
             ? $response = new RedirectResponse($this->url->generate('app_add_post'))

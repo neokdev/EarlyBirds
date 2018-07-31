@@ -65,7 +65,6 @@ class UpdateObserveDTO implements UpdateObserveDTOInterface
     public $obsDate;
 
     /**
-     *  @Assert\NotBlank(message="une image doit être choisie")
      *  @Assert\File(
      *     maxSize = "1M",
      *     mimeTypes = {"image/jpeg", "image/png"},
@@ -87,12 +86,12 @@ class UpdateObserveDTO implements UpdateObserveDTOInterface
      * @param UploadedFile|null $img
      */
     public function __construct(
-                     $ref         = null,
+        $ref = null,
         string       $description = null,
-        string       $latitude    = null,
-        string       $longitude   = null,
-        \DateTime    $date        = null,
-        UploadedFile $img         = null
+        string       $latitude = null,
+        string       $longitude = null,
+        \DateTime    $date = null,
+        UploadedFile $img = null
     ) {
         $this->ref          = $ref;
         $this->description  = $description;
