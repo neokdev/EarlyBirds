@@ -31,10 +31,11 @@ tinymce.init({
 $(function () {
     //flash message after valide or update obs
    let msgUn = $('.flash-post');
+    let url = document.location.origin +'/saisir-article#1';
     if (msgUn !== undefined) {
 
         if (msgUn.text().length > 0) {
-
+            document.location.assign(url);
             msgUn.fadeOut(9000)
         }
     }

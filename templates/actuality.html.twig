@@ -124,6 +124,7 @@
                             {% endif %}
                             <a href=""><i class="material-icons head-share">share</i></a>
 
+
                            {% if is_granted('ROLE_NATURALIST') %}
                                <a href="#" class="data-delete-post" data-delete="{{ path
                                 ('app_delete_article',
@@ -225,7 +226,8 @@
                                                     - Naturaliste
                                                 {% endif %}
                                             {% endif %}</em></p>
-                                    <p class="short"><strong class="short-head">Description :
+                                    <p class="short"><strong
+                                                class="short-head">Description :
                                         </strong><br>{{ post
                                         .shortDesc
                                         }}</p>

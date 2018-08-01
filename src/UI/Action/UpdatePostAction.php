@@ -97,24 +97,6 @@ class UpdatePostAction implements UpdatePostActionInterface
         $id        = $request->attributes->get('id');
         $updPost   = $this->postRepository->findOneBy(['id' => $id]);
 
-        if (true === $this->authChecker->isGranted('ROLE_ADMIN')) {
-            true;
-        } elseif (true === $this->authChecker->isGranted('ROLE_NATURALIST')) {
-            $userPostId = $updPost->getAuthor()->getId();
-            $uId        = $this->token->getToken()->getUser();
-            $userId     = $uId->getId();
-
-            if ($userId !== $userPostId) {
-                throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
-                article, vous ne pouvez pas le modifier');
-            } else {
-                true;
-            }
-        } else {
-            throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
-                article, vous ne pouvez pas le modifier');
-        }
-
         $updPostDto = new UpdatePostDTO(
             $updPost->getTitle(),
             $updPost->getContent(),
@@ -124,10 +106,30 @@ class UpdatePostAction implements UpdatePostActionInterface
             null
         );
 
-        $form = $this->formFactory->create(UpdatePostType::class, $updPostDto)->handleRequest($request);
+        if (true === $this->authChecker->isGranted('ROLE_ADMIN')) {
+            $form = $this->formFactory->create(UpdatePostType::class, $updPostDto)->handleRequest($request);
 
-        if ($this->updatePostTypeHandler->handle($form, $updPost)) {
-            return $responder(true, null, null);
+            if ($this->updatePostTypeHandler->handle($form, $updPost)) {
+                return $responder(true, null, null);
+            }
+        } elseif (true === $this->authChecker->isGranted('ROLE_NATURALIST')) {
+            $userPostId = $updPost->getAuthor()->getId();
+            $uId        = $this->token->getToken()->getUser();
+            $userId     = $uId->getId();
+
+            if ($userId !== $userPostId) {
+                throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
+                article, vous ne pouvez pas le modifier');
+            } else {
+                $form = $this->formFactory->create(UpdatePostType::class, $updPostDto)->handleRequest($request);
+
+                if ($this->updatePostTypeHandler->handle($form, $updPost)) {
+                    return $responder(true, null, null);
+                }
+            }
+        } else {
+            throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
+                article, vous ne pouvez pas le modifier');
         }
 
         return $responder(false, $form, $updPostDto);

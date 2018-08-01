@@ -32,8 +32,6 @@ class DeletePost
      */
     private $postRepository;
 
-
-
     /**
      * @var AuthorizationCheckerInterface
      */
