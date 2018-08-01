@@ -11,6 +11,11 @@ namespace App\Domain\DTO;
 use App\Domain\DTO\Interfaces\CommentDTOInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class CommentDTO
+ *
+ * @package App\Domain\DTO
+ */
 class CommentDTO implements CommentDTOInterface
 {
     /**

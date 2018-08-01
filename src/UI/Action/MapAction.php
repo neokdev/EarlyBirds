@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class MapAction
  * @Route(
- *     "/carte",
+ *     "/carte-observation-oiseaux",
  *     name="app_map",
  *     methods={"GET"}
  * )

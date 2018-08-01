@@ -50,7 +50,7 @@ class UpdatePostDTO implements UpdatePostDTOInterface
      * )
      * @var string
      */
-    public$shortDesc;
+    public $shortDesc;
 
     /**
      *

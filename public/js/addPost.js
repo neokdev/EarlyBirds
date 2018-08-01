@@ -16,7 +16,6 @@ tinymce.init({
                      {title: 'address', format: 'address'},
                      {title: 'Bold', icon: 'bold', inline: 'strong', classes: 'b_text'},
                      {title: 'Italic', icon: 'italic', inline: 'em', classes: 'em_text'}
-
                  ],
                  protect: [
                      /\<\/?(if|endif)\>/g,  // Protect <if> & </endif>

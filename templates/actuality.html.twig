@@ -3,14 +3,16 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/actualite.css') }}">
-    <meta name="description" content="Toute l'information ornithologique rédigée par
-    des spécialistes : conseils d'identification des espèces, bonnes pratiques d'observation,
-    agenda et articles de fond.">
 {% endblock %}
 
 {% block title %}
     Actualités - NAO (Nos Amis les Oiseaux)
 {% endblock %}
+
+{% block metadesc %}Toute l'information ornithologique rédigée par
+    des spécialistes : conseils d'identification des espèces, bonnes pratiques d'observation,
+    agenda et articles de fond.{% endblock %}
+
 
 {% block body %}
     <div class="row">
@@ -190,7 +192,7 @@
                                     <button class="btn waves-effect" type="submit">envoyer</button>
                                 </div>
                                 <label>
-                                    <input type="checkbox" required="required"/>
+                                    <input type="checkbox" required>
                                 <span id="newsletter-span">J'accepte que mon email soit utilisé pour m'adresser la newsletter et j'ai bien pris connaissance de la politique de confidentialité de
                                     <a id="newsletter-span-link" href="{{ path('app_confidentiality') }}">nao.</a>
                                 </span>
