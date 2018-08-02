@@ -1,0 +1,142 @@
+
+#intro {
+    border: 1px solid black;
+    background: #FFFDFD;
+    padding: 2em;
+}
+
+#subHeader {
+    margin-top: -23em;
+}
+
+#slogan {
+    left: 6em;
+    top: 9em;
+}
+
+#header {
+    height: 300px;
+    background: no-repeat center url("../img/other/observation.jpg");
+    background-size: cover;
+}
+
+.header_text {
+    font-family: MontSerrat, serif;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    margin-top: 2em;
+    font-size: 3.500em;
+}
+
+.sub_title {
+    font-family: MontSerrat, serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.250em;
+    margin-top: 3em;
+}
+
+.second_sub_title {
+    font-family: MontSerrat, serif;
+    font-weight: 700;
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.third_sub_title {
+    font-family: MontSerrat, serif;
+    font-weight: 500;
+    font-size: 1em;
+    margin-bottom: 0;
+
+}
+
+.paraph_page {
+    font-family: MontSerrat, serif;
+    font-weight: 300;
+    font-size: 1em;
+    margin-top: 0;
+}
+
+ul.paraph_page {
+    margin-top: 0;
+}
+
+.paraph_link {
+    color:#2D9CDB;
+}
+
+.bold-text {
+    font-family: MontSerrat, serif;
+    font-weight: 500;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+    color: black;
+}
+
+@media (max-width: 400px) {
+
+    #subHeader {
+        margin-top: 6em;
+    }
+
+    #header {
+        height: 215px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 3em;
+        font-size: 2em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 992px) {
+
+    #subHeader {
+        margin-top: 5em;
+    }
+
+    #header {
+        height: 300px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 2em;
+    }
+
+    #slogan {
+        display: none;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #citation {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+
+    #header {
+        height: 450px;
+        margin-top: 0;
+    }
+
+    .header_text {
+        margin-top: 4em;
+    }
+}
