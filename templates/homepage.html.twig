@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
 {% endblock %}
 
+{% block metadesc %} Nos Amis les Oiseaux » c'est l'ornithologie pour tous, experts comme
+    débutants. Apprenez, transmettez, jouez un rôle dans la protection de l'environnement.{% endblock %}
+
 {% block title %}Observer les oiseaux, préserver la diversité{% endblock %}
 
 {% block body %}
@@ -18,7 +21,7 @@
         </div>
         <div class=" col l8 m8 s12" id="header">
             <div class="video-container">
-                <iframe title="video" width="853" height="480" src="//www.youtube.com/embed/YTR21os8gTA?rel=0"
+                <iframe title="video" width="853" height="480" src="//www.youtube.com/embed/KIYkpwyKEhY?rel=0"
                         frameborder="0" allowfullscreen>
                 </iframe>
             </div>
@@ -32,12 +35,13 @@
         <h1 class="title">L'Ornithologie, une science
             populaire</h1>
         <p class="paraph">
-            L’ornithologie, ou science de l’étude des oiseaux sauvages, s’est toujours appuyée
-            sur les observations de réseaux d’amateurs passionnés. Elle se nourrit de votre
-            plaisir à décrire et reconnaître ces multiples plumages, d’y associer un vol ou
-            un comportement, de localiser une espèce et bien sûr, d’échanger et de partager ses connaissances.
-            Ce lien historique et singulier entre professionnels -les naturalistes- et “ornithos”
-            amateurs ou débutants prend tout son sens avec l’expression “science populaire”.
+            L’ornithologie, ou science de l’étude des oiseaux sauvages, s’est toujours appuyée sur
+            les observations de réseaux d’amateurs passionnés.
+            Elle se nourrit de votre plaisir à décrire et reconnaître ces multiples plumages,
+            d’y associer un vol ou un comportement, de localiser une espèce et bien sûr, d’échanger
+            et de partager ses connaissances.<br><br>
+            Ce lien historique et singulier entre professionnels, les naturalistes et “ornithos”
+            amateurs ou débutants prend tout son sens avec l’expression “science populaire”
         </p>
         <p class="paraph">
             <a class="first-link" href="{{ path('app_home') }}">Nos Amis les Oiseaux</a>, c'est
@@ -48,7 +52,7 @@
                 à préserver la diversité biologique.<br><br>
         </p>
         <div>
-            <a class="col l4 offset-l4 m4 offset-m4 s12 waves-effect waves-light btn"
+            <a class="col l4 offset-l4 m6 offset-m3 s12 waves-effect waves-light btn"
                id="linkBtn" href="{{ path('app_discover_nao') }}">Découvrez nos actions
             </a>
         </div>
@@ -56,59 +60,62 @@
 </div>
 <div class="row">
     <div class="col l12 m12 s12" id="separator">
-         <div class="hide-on-med-and-down" id="round-div">
-           <p id="round-text">
-                “ Le peu qu'on peut faire, le très peu qu'on peut faire, il faut le faire  “
+         <div class="col l3 offset-l1 m6 offset-m1 s10 offset-s1">
+           <p id="text-separator">
+                “ Le peu qu'on peut faire, le très peu qu'on peut faire, il faut le faire “<br>
+               <span id="little_text_separator">Théodore Monod</span>
             </p>
         </div>
-        <p class="col s10 offset-s1" id="text-separator">“Participer ensemble à préserver la diversité biologique  “
-        </p>
     </div>
 </div>
 <div class="row">
     <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1" id="participate-div">
-        <h1 class="title" id="title-deux">Les sciences collaboratives et
-            <a class="first-link" href="{{ path('app_home') }}">NAO</a></h1>
+        <h2 class="title">PARTICIPER ENSEMBLE A préserver la biodiversité</h2>
+        <h3 class="title" id="title-deux">Les sciences collaboratives et
+            <a class="first-link" href="{{ path('app_home') }}">NAO</a></h3>
+        <div class="hide-on-med-and-down" id="participate_group">
+            <h1 id="participate">PARTICIPER</h1>
+        </div>
         <p class="paraph_deux">
-            Parce que du plaisir à la recherche, il n’y avait plus qu’un -tout petit- pas pour
-            les membres de l’association, NAO a décidé de le franchir. Elle s'est donc associée
-            au programme scientifique qui vise à étudier les effets du climat, de l’urbanisation
-            et de l’agriculture sur la biodiversité. Cette étude scientifique repose sur le
+            Parce que du plaisir à la recherche, il n’y avait plus qu’un tout petit pas pour
+            les membres de l’association, NAO a décidé de le franchir.
+            <br><br>Elle s'est donc associée au programme scientifique qui vise à étudier les
+            effets du climat, de l’urbanisation
+            et de l’agriculture sur la biodiversité. <br>
+            Cette étude scientifique repose sur le
             recueil d’un volume important de données fiables. C’est pourquoi la participation
             de tous est la bienvenue !
         </p>
+
         <p class="paraph_deux">
             Vous  aussi, durant vos balades avec vos enfants, entre amis ou en rando
             avec votre club ou encore si vous exercez une activité professionnelle en
             plein air, vous pouvez agir pour la planète en participant à cette grande
             étude nationale éco citoyenne.
         </p>
-        <p class="paraph_deux">
-            Nul besoin de connaissances très pointues, ni de matériel coûteux ou sophistiqué,
-            il vous suffit de suivre le guide :
-        </p>
-        <div class="hide-on-med-and-down" id="participate_group">
-            <h1 id="participate">PARTICIPER</h1>
-        </div>
     </div>
 </div>
 
 <div class="row">
-    <div id="separator-deux">
-        <div class="col l6 infog">
+    <div class="co S12" id="separator-deux">
+        <div class="col l6 m6 s10 offset-s1 infog">
             <h3 class="col l10 offset-l2 m10 offset-m2 s12">
                 Et si vous étiez notre prochain birder en titre ?
             </h3>
-            <p class="col l10 offset-l2 m10 offset-m2 s12">
-                Au fil de vos observations, vous cumulez des points et vous
-                gagnez en expérience. Vous faites évoluer votre
-                statut d’observateur.
+            <p class="col l8 offset-l2 m10 offset-m2 s12">
+                Nul besoin de connaissances très pointues, ni de matériel coûteux ou sophistiqué,
+                il vous suffit de suivre le guide  !<br><br>
+                Au fil de vos observations :  vous cumulez des points, vous gagnez en expérience,
+                vous faites évoluer votre statut d’observateur !
             </p>
-            <a class="col l6 offset-l3 m6 offset-m3 s12 waves-effect waves-light btn"
+            <a class="col l6 offset-l3 m8 offset-m3 s12 waves-effect waves-light btn"
                id="infog_linkBtn" href="{{ path('app_observe') }}">
                 Saisissez votre 1ère
                 observation !
             </a>
+        </div>
+        <div class="hide-on-small-only" id="infography">
+            <img id="infography-img" src="{{ asset('/img/other/infography.png') }}"/>
         </div>
     </div>
 </div>
@@ -116,12 +123,27 @@
 <div id="observatory" class="row">
     <div id="observatory_title" class="col s10 offset-s1">
         <h2>L'observatoire</h2>
+        <p class="obsertory-paraph">
+            Parcourez les  actualités de l’association et les dernières observations
+            des birders NAO dans leur régions.
+        </p>
+        <p class="obsertory-paraph">
+            Faites de votre première observation une réussite en découvrant
+            <a class="first-link" href="{{ path('app_actuality') }}">les 5 critères pour reconnaître un
+                oiseau à coup
+                sûr</a>
+            sur notre <a href="{{ path('app_actuality') }}">blog !</a><br>
+           <a class="waves-effect waves-light btn" id="obs_btn" href="{{ path
+                    ('app_actuality') }}">J'y
+                    vais !</a>
+
+        </p>
     </div>
 
     <div class="col s12" id="the-observatory">
 
         {% if lastPost %}
-            <div class="col l3 m10 offset-m1 s12 observatory-card">
+            <div class="col l3 m4 s12 observatory-card">
                 <div class="card" id="article-card">
                     <div class="card-image">
                         <img src="{{ lastPost.img }}">
@@ -165,7 +187,7 @@
         </div>
 
         {% for observe in observes %}
-            <div class="col l3  m10 offset-m1 s12 observatory-card">
+            <div class="col l3  m4 s12 observatory-card">
                 <div class="card">
                     <div class="card-image">
                         <img src="{{ observe.img }}">

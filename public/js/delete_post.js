@@ -6,7 +6,10 @@ $(function () {
          url: $(this).attr('data-delete'),
          timeout: 3000,
          success: function (data) {
-             document.location.reload();
+             M.toast({html: data});
+                 setTimeout(function () {
+                     document.location.reload();
+                 }, 2500);
              }
          });
     });

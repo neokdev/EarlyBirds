@@ -102,7 +102,7 @@ final class UpdateObservationAction implements UpdateObservationActionInterface
             $uId = $this->token->getToken()->getUser();
             $userId = $uId->getId();
 
-            if ( $userId !== $userObsId) {
+            if ($userId !== $userObsId) {
                 throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cette 
             observation, vous ne pouvez pas la modifié');
             }
