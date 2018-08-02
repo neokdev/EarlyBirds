@@ -132,6 +132,9 @@ ul.paraph_page {
 }
 
 #member {
+    border: 1px solid #6A3F91;
+    padding: 1.8em;
+    padding-bottom: 6em;
     display: none;
 }
 
@@ -294,7 +297,7 @@ a#frame_btn {
 
 #separator-trois {
     margin-top: 6em;
-    padding-top: 4Em;
+    padding-top: 4em;
     background: no-repeat center url('../img/other/discover_nao_separator_trois.png');
     height:21.375em;
 }
@@ -347,18 +350,91 @@ li.ressource-li {
 @media (max-width: 400px) {
 
     #subHeader {
-        margin-top: 6em;
+        margin-top: 3em;
+        padding: 0;
     }
 
     #header {
+        padding: 0;
         height: 215px;
         margin-top: 0;
     }
 
     .header_text {
-        margin-top: 3em;
+        margin-top: 2.5em;
         font-size: 2em;
     }
+
+    .sub_title {
+        margin-top: 1em;
+    }
+
+    #btn-role {
+        margin-left: unset;
+        margin-top: 1em;
+    }
+
+    #text-separator {
+        font-size: 2em;
+    }
+
+    #text-separator-deux {
+        margin-right: 5em;
+    }
+
+    #frame_un {
+        margin-bottom: 0;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #frame_deux {
+        width: unset;
+        margin-left: 0;
+    }
+
+    #frame_paraph_deux {
+        margin-left: unset;
+    }
+
+    #frame_trois {
+        width: unset;
+        margin-left: 0;
+    }
+
+    a#frame_btn {
+        margin-top: 2em;
+        background: #F2994A;
+        height: 4em;
+        line-height: 1.4em;
+        padding-top: .8em;
+        border-radius: 20px;
+        font-size: 1em;
+        width: 90%;
+        text-transform: initial;
+    }
+
+
+    .little_paraph_page {
+        width: unset;
+    }
+
+    #mission_title {
+        margin-bottom: unset;
+    }
+
+    #separator-trois {
+       padding-top: 6em;
+    }
+
+    #text-separator-trois {
+        font-size: 2em;
+    }
+
+    #ressources {
+        margin-bottom: 3em;
+    }
+
 
     #slogan {
         display: none;
@@ -382,10 +458,66 @@ li.ressource-li {
 
     .header_text {
         margin-top: 2em;
+        font-size: 3.5em;
     }
 
     #slogan {
         display: none;
+    }
+
+    #frame_un {
+        margin-left: 60%;
+        width: 50%;
+    }
+
+    #frame_paraph_un {
+        width: 20em;
+    }
+
+    #frame_img_un img {
+        width: 30em;
+    }
+
+    #frame_img_un {
+        padding: 3em 0 0 0;
+        margin-left: -1em;
+    }
+
+    #frame_paraph_deux {
+        margin-left: unset;
+        width: 55%;
+    }
+
+    #frame_img_deux img {
+        width: 20em;
+    }
+
+    #frame_img_trois img {
+       width: 30em;
+    }
+
+    p#frame_paraph_trois {
+        width: 50%;
+    }
+
+    #text-separator-trois {
+        font-size: 2em;
+    }
+
+    #separator-trois {
+        padding-top: 10em;
+    }
+
+    #ressources {
+        margin-bottom: 3em;
+    }
+
+    #frame_btn {
+        margin-left: 1em;
+    }
+
+    #footer-mobile {
+        padding-top: 0;
     }
 
     #citation-mobile {
