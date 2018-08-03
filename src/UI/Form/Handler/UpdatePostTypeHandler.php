@@ -141,7 +141,7 @@ class UpdatePostTypeHandler implements UpdatePostTypeHandlerInterface
 
             $this->postRepository->update();
 
-            $this->flash->add("post","votre article à bien été modifié");
+            $this->flash->add("post","votre article a bien été modifié");
 
             return true;
         }

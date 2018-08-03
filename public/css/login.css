@@ -3,6 +3,10 @@
         position: relative;
         margin-top: 100px;
     }
+    div#mob-nav-icon {
+
+        margin-top: -7em;
+    }
 }
 
 @media (min-width: 993px) {

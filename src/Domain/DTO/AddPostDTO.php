@@ -13,6 +13,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Validator as AcmeAssert;
 
+/**
+ * Class AddPostDTO
+ *
+ * @package App\Domain\DTO
+ */
 class AddPostDTO implements AddPostDTOInterface
 {
     /**
@@ -50,7 +55,7 @@ class AddPostDTO implements AddPostDTOInterface
      * )
      * @var string
      */
-    public$shortDesc;
+    public $shortDesc;
 
     /**
      * @Assert\NotBlank(message="une image doit être choisie")

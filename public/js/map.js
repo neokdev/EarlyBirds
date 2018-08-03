@@ -122,7 +122,7 @@ $(function() {
                               '<br>Observé le '+ DD +' '+ MM +' '+ YY +
                               '<br><span id="author">'+ nickname +'</span>'+
                               '<br><br>Latitude : '+ datas.latitude + '<br>Longitude :'+ datas.longitude +
-                              '<br><br><a href="'+ domainUrl +'/voir-l\'observation-'+ datas.id +'">voir' +
+                              '<br><br><a href="'+ domainUrl +'/voir-observation-'+ datas.id +'">voir' +
                               ' l\'observation en' +
                               ' détail</a></div>'
                           ).addTo(map);

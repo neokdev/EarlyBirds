@@ -79,8 +79,6 @@ class CommentTypeHandler implements CommentTypeHandlerInterface
 
             $this->commentRepository->save($comment);
 
-            $this->flash->add("notice", "commentaire ajouté");
-
             return true;
         }
 

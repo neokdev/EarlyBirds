@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#317EFB"/>
+        <meta name="description" content="{% block metadesc %}{% endblock %}"/>
         <title>{% block title %}NAO{% endblock %}</title>
         {% block stylesheets %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=2" />
@@ -233,7 +234,7 @@
                     <form>
                         <div class="input-field inline">
                             <input id="email_inline" type="email" class="footernewsletter
-                            validate" required="required" placeholder="
+                            validate" required placeholder="
                                                    "/>
                             <span class="helper-text" style="display: none; margin-bottom: 10px; width: 200%; right: 30%;"></span>
                         </div>

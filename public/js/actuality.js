@@ -83,7 +83,8 @@ $(function () {
                     "<div class='card-content'>" +
                         "<p>auteur : "+ nickname +"</p>"+
                         "<p class='chip'>"+ datas.category +" </p>"+
-                        "<p>crée le : <em>"+DD+" "+MM+" "+YY+"</em></p>"+
+                        "<p>créé le : <em>"+DD+" "+MM+" "+YY+"</em></p>"+
+                        "<p class='short'><strong class='short-head'>Description</strong><br>"+datas.shortDesc+"</p>"+
                         "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>lire</a>"+
                     "</div>"+
                     "<div class='card-action'>" +
