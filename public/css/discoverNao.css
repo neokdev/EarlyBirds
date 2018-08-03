@@ -299,6 +299,7 @@ a#frame_btn {
     margin-top: 6em;
     padding-top: 4em;
     background: no-repeat center url('../img/other/discover_nao_separator_trois.png');
+    background-size: cover;
     height:21.375em;
 }
 

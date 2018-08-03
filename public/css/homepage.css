@@ -88,6 +88,7 @@ div#subHeaer {
 
 #separator {
     background: no-repeat center url("../img/other/separator.png");
+    background-size: cover;
     height: 22.250em;
     margin-top: 6em;
     margin-bottom: 2em;
