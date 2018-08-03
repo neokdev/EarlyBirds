@@ -44,7 +44,7 @@ div#subHeaer {
 }
 
 #title-deux {
-    font-family: MontSerrat, Serif;
+    font-family: MontSerrat, serif;
     font-size: 1.5em;
     font-weight: 300;
     text-align: left;
@@ -145,7 +145,7 @@ div#subHeaer {
 }
 
 #separator-deux {
-    background: no-repeat center url("../img/other/separatorDeux.png");
+    background: no-repeat center url("../img/other/separatorDeux.jpg");
     background-size: cover;
     height: 45em;
     margin-top: 6em;
@@ -347,7 +347,7 @@ p.obsertory-paraph {
     }
 
     #separator-deux {
-        background: no-repeat center url("../img/other/separatorDeux.png");
+        background: no-repeat center url("../img/other/separatorDeux.jpg");
         background-size: cover;
         height: 34em;
         margin-top: 5em;
