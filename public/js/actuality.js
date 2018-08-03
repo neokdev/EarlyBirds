@@ -25,11 +25,23 @@ $(function () {
 
        let content;
 
-       console.log($('#author').attr('data-author'));
+       let authorRole;
+
+       let auth = datas.author.roles;
+
+       if (jQuery.inArray("ROLE_ADMIN",auth)) {
+           authorRole = "administrateur";
+       } else if (jQuery.inArray("ROLE_NATURALIST",auth) ) {
+           authorRole = "naturaliste";
+       } else {
+           authorRole = "";
+       }
+
+
 
        if (role === "ROLE_ADMIN" || role === "ROLE_NATURALIST") {
            content =
-               "<a class='data-delete-post' data-delete='"+document.location.origin+"/delete-post-"+datas.id+"'>" +
+               "<a class='data-delete-post' data-delete='"+document.location.origin+"/delete-article-"+datas.id+"'>" +
                "<i class='material-icons head-delete'>delete</i>"+
                "</a>"+ "<a href='"+document.location.origin+"/modifier-article-"+datas.id+"'>" +
                "<i class='material-icons head-edit'>edit</i>"+
@@ -71,7 +83,6 @@ $(function () {
                break;
        }
 
-       console.log(datas.id);
 
        contentDiv.append(
            "<div class='col l6 m6 s12'>" +
@@ -81,11 +92,11 @@ $(function () {
                         "<h2 class='card-title' id='article-card-title'>"+ datas.title +"</h2>"+
                     "</div>" +
                     "<div class='card-content'>" +
-                        "<p>auteur : "+ nickname +"</p>"+
+                        "<p>auteur : <em>"+ nickname +" - "+ authorRole +"</em></p>"+
+                        "<p class='short'><strong class='short-head'>Description</strong><br>"+datas.shortDesc+"</p>"+
                         "<p class='chip'>"+ datas.category +" </p>"+
                         "<p>créé le : <em>"+DD+" "+MM+" "+YY+"</em></p>"+
-                        "<p class='short'><strong class='short-head'>Description</strong><br>"+datas.shortDesc+"</p>"+
-                        "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>lire</a>"+
+                        "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>lire l'article</a>"+
                     "</div>"+
                     "<div class='card-action'>" +
 

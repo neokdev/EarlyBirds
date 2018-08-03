@@ -389,7 +389,7 @@ p.obsertory-paraph {
     }
 
     #observatory_title h2 {
-        font-size: 2.4em;
+        font-size: 2em;
     }
 
     p.obsertory-paraph {
@@ -506,5 +506,9 @@ p.obsertory-paraph {
 @media (max-width: 1920px) and (min-width: 1601px){
     #header {
         margin-top: 0;
+    }
+
+    div#infography {
+        padding-top: 3%;
     }
 }
