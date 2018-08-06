@@ -1,6 +1,6 @@
 $(function () {
-    $('.data-delete-post').on('click', function (e) {
-         e.preventDefault();
+    $('a.data-delete-post').on('click', function (e) {
+         e.preventDefault(this);
          $.ajax({
          method: "DELETE",
          url: $(this).attr('data-delete'),
