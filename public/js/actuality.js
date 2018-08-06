@@ -37,14 +37,12 @@ $(function () {
            authorRole = "";
        }
 
-
-
        if (role === "ROLE_ADMIN" || role === "ROLE_NATURALIST") {
            content =
-               "<a class='data-delete-post' data-delete='"+document.location.origin+"/delete-article-"+datas.id+"'>" +
-               "<i class='material-icons head-delete'>delete</i>"+
-               "</a>"+ "<a href='"+document.location.origin+"/modifier-article-"+datas.id+"'>" +
-               "<i class='material-icons head-edit'>edit</i>"+
+               "<a class ='data-delete-post' href='' data-delete ='/delete-article-"+datas.id+"'>" +
+               "<i class ='material-icons head-delete'>delete</i>"+
+               "</a>"+ "<a href ='"+document.location.origin+"/modifier-article-"+datas.id+"'>" +
+               "<i class ='material-icons head-edit'>edit</i>"+
                "</a>";
        } else {
            content = "";
@@ -99,7 +97,6 @@ $(function () {
                         "<a id='head-article-link' href='"+document.location.href+"/article-"+ datas.id +"'>lire l'article</a>"+
                     "</div>"+
                     "<div class='card-action'>" +
-
                             "<div class='head-link'>"+
                                 "<a href=''>" + favored +
                                     "<i class='material-icons head-heart'>favorite_border</i>"+
