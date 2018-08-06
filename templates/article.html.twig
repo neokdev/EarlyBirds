@@ -3,8 +3,9 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/article.css') }}">
-    <meta name="description" content="{{ post.shortDesc }}">
 {% endblock %}
+
+{% block metasdesc %}{{ post.shortDesc }}{% endblock %}
 
 {% block body %}
     <div class="row">
@@ -82,10 +83,10 @@
                             {% endif %}
                                 {{ comment.content }}<br>
                             statut: {% if "ROLE_ADMIN" in  comment.author.roles %}
-                                Administrateur
+                                Administrateur <br>
                             {% elseif"ROLE_NATURALIST" in  comment.author.roles %}
-                                Naturaliste
-                            {% elseif"ROLE_USER" in  comment.author.roles %}
+                                Naturaliste <br>
+                            {% elseif "ROLE_USER" in  comment.author.roles %}
                             {% endif %}
                                 <em id="comment-date">posté le : {{ comment.createdAt|localizeddate('long', 'none') }} </em>
                         </li>

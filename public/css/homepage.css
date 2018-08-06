@@ -39,11 +39,15 @@ div#subHeaer {
 
 .title {
     font-family: Didot, serif;
-    font-size: 2.250em;
+    text-transform: uppercase;
+    font-size: 3em;
 }
 
 #title-deux {
-    text-align: center;
+    font-family: MontSerrat, serif;
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: left;
 }
 
 #background-un {
@@ -51,8 +55,7 @@ div#subHeaer {
     width: 99px;
     height: 52px;
     left: 0;
-    margin-top: 15em;
-
+    margin-top: 20em;
     background: #488194;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -74,62 +77,52 @@ div#subHeaer {
     position: absolute;
     left: 5em;
     top: 4.5em;
-
-
 }
 
 .paraph {
+    color: #828282;
     font-family: MontSerrat, serif;
-    font-weight: 200;
+    font-weight: 300;
     font-size: 1.300em;
 }
 
 #separator {
     background: no-repeat center url("../img/other/separator.png");
+    background-size: cover;
     height: 22.250em;
     margin-top: 6em;
+    margin-bottom: 2em;
 }
 
-#round-div {
-    position: absolute;
-    right: 6em;
-    margin-top: 9em;
-    width: 16.875em;
-    height: 16.875em;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    background: #488194;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-#round-text {
-    text-align: center;
-    font-family: Didot, serif;
-    line-height: normal;
-    font-size: 1.750em;
-    color: white;
-    padding:1em;
-
+#separator > div p {
+    margin-top: 1.4em;
 }
 
 #text-separator {
     margin-top: 2em;
-    font-size: 2.250em;
+    color: white;
+    font-size: 2.4em;
     font-family: Didot, serif;
     text-align: center;
 }
 
+#little_text_separator {
+    font-size: .5em!important;
+    padding-top: 0;
+    margin-top: 0;
+    display: block;
+}
 
 #participate-div {
     padding-left: 8em;
 }
 
 .paraph_deux {
+    width: 80%;
+    color: #828282;
     font-family: MontSerrat, serif;
     font-weight: 300;
     font-size: 1.300em;
-    text-align: justify;
 }
 
 #participate_group {
@@ -137,8 +130,7 @@ div#subHeaer {
     width: 99px;
     height: 52px;
     right: 0;
-    margin-top: 2em;
-
+    margin-top: 16em;
     background: #6A3F91;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -153,15 +145,40 @@ div#subHeaer {
     top: -1em;
 }
 
+.participate_group_small {
+    background: #488194;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0!important;
+    margin-bottom: 0 !important;
+}
+
+.participate_small {
+    text-align: center;
+    color: white;
+    font-family: MontSerrat, serif;
+    font-weight: 300;
+    font-size: 1.6em;
+    padding: 0!important;
+    margin: .8em!important;
+}
+
 #separator-deux {
-    background: no-repeat center url("../img/other/observation.jpg");
+    background: no-repeat center url("../img/other/separatorDeux.jpg");
     background-size: cover;
     height: 45em;
-    margin-top: 15em;
+    margin-top: 6em;
+}
+
+div#infography {
+    padding-top: 8%;
+}
+
+img#infography-img {
+    width: 50%;
 }
 
 .infog {
-    margin-top: 5em;
+    margin-top: 2em;
 }
 
 .infog h3 {
@@ -172,8 +189,11 @@ div#subHeaer {
 
 .infog p {
     font-family: MontSerrat, serif;
-    font-weight: 300;
-    font-size: 1.5em;
+    font-weight: 400;
+    font-size: 1.250em;
+    padding: 1em !important;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: .5em;
 }
 
 #infog_linkBtn {
@@ -186,17 +206,44 @@ div#subHeaer {
     text-transform: initial;
 }
 
+#observatory {
+    padding-left: 12em;
+}
+
 #the-observatory {
-    padding-left: 8em;
+    padding: 0;
 }
 
 #observatory_title {
+    margin-top: 2em;
+    margin-bottom: 18em;
+}
+
+#observatory_title h2 {
     font-family: didot, serif;
-    font-size: 4em;
-    text-align: center;
+    text-transform: uppercase;
+    font-size:4.500em;
+    text-align: left;
     color: #488194;
     margin-top: 2em;
-    margin-bottom: 4em;
+}
+
+#obs_btn {
+    display: inline-block;
+    background: #F2994A;
+    border-radius: 20px;
+    margin-top: 1em;
+    text-transform: initial;
+    font-size: 1em;
+    width: 30%;
+}
+
+p.obsertory-paraph {
+    color: #828282;
+    font-family: MontSerrat, serif;
+    font-weight: 400;
+    font-size: 1.5em;
+    width: 60%;
 }
 
 
@@ -285,6 +332,16 @@ div#subHeaer {
 
     div#subHeaer {
         margin-top: 3em;
+        padding: 0;
+    }
+
+    #header {
+        padding: 0;
+    }
+
+    .title {
+        font-size: 2em;
+        text-align: center;
     }
 
     #slogan {
@@ -292,7 +349,7 @@ div#subHeaer {
     }
 
     #first {
-        margin-top: 2em;
+        margin-top: 0;
         padding-left: unset;
     }
 
@@ -300,11 +357,27 @@ div#subHeaer {
          padding-left: unset;
     }
 
+    #separator > div p {
+        margin-top: 2em;
+    }
+
+    #text-separator {
+        font-size: 2em;
+    }
+
     #separator-deux {
-        background: no-repeat center url("../img/other/observation.jpg");
+        background: no-repeat center url("../img/other/separatorDeux.jpg");
         background-size: cover;
-        height: 22em;
+        height: 34em;
         margin-top: 5em;
+    }
+
+    .paraph_deux {
+        width: 100%;
+    }
+
+    #linkBtn {
+        margin-bottom: 5em;
     }
 
     .infog {
@@ -312,17 +385,21 @@ div#subHeaer {
     }
 
     .infog h3 {
-        color: white;
+        color: black;
         font-family: MontSerrat, serif;
         font-weight: 300;
         font-size: 2em;
     }
 
     .infog p {
-        color: white;
+        color: black;
         font-family: MontSerrat, serif;
         font-weight: 300;
         font-size: 1em;
+    }
+
+    #observatory {
+        padding: unset;
     }
 
     #the-observatory {
@@ -331,11 +408,34 @@ div#subHeaer {
 
     #observatory_title {
         font-family: didot, serif;
-        font-size: 4em;
         text-align: center;
         color: #488194;
         margin-top: 1em;
         margin-bottom: unset;
+    }
+
+    #observatory_title h2 {
+        font-size: 2em;
+    }
+
+    p.obsertory-paraph {
+        color: #828282;
+        font-family: MontSerrat, serif;
+        font-weight: 400;
+        text-align: left;
+        width: 100%;
+        font-size: 1.5em;
+    }
+
+    #obs_btn {
+        display: inline-block;
+        background: #F2994A;
+        border-radius: 20px;
+        margin-left: .4em;
+        margin-top: 2em;
+        text-transform: initial;
+        font-size: 1em;
+        width: 100%;
     }
 
     #citation-mobile {
@@ -362,31 +462,79 @@ div#subHeaer {
         padding-left: 1em;
     }
 
-    #text-separator {
-        margin-top: 3em;
+    #separator > div p {
+        margin-top: 2.5em;
+    }
+
+    .infog h3 {
+        font-size: 3em;
+    }
+
+    #infography #infography-img {
+        margin-top: 4em;
     }
 
     #participate-div {
         padding-left: unset;
     }
 
-    #separator-deux {
+    #separator {
         margin-top: 6em;
+    }
+
+    #observatory {
+        padding: 0!important;
     }
 
     #the-observatory {
         padding-left: unset;
     }
+
     #observatory_title {
 
         margin-top: 2em;
         margin-bottom: 2em;
     }
-}
 
+    #obs_btn {
+        width: 40%;
+    }
+
+    #observatory_title h2 {
+        font-family: didot, serif;
+        text-transform: uppercase;
+        font-size: 4.500em;
+        text-align: left;
+        color: #488194;
+        margin-left: 2em;
+        margin-top: 2em;
+    }
+
+    p.obsertory-paraph {
+        color: #828282;
+        font-family: MontSerrat, serif;
+        font-weight: 400;
+        font-size: 1.5em;
+        margin-left: 6em;
+        width: 60%;
+    }
+
+    #citation-mobile {
+        display: none !important;
+    }
+
+    #footer-mobile {
+        padding-top: 0!important;
+    }
+
+}
 
 @media (max-width: 1920px) and (min-width: 1601px){
     #header {
         margin-top: 0;
+    }
+
+    div#infography {
+        padding-top: 3%;
     }
 }

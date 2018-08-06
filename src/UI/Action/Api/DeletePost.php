@@ -71,7 +71,7 @@ class DeletePost
 
         if (true === $this->authChecker->isGranted('ROLE_ADMIN')) {
             $this->postRepository->delete($post);
-            $removePost = true;
+            $removePost = 'article supprimé';
         } elseif (true === $this->authChecker->isGranted('ROLE_NATURALIST')) {
             $userPostId = $post->getAuthor()->getId();
             $uId = $this->token->getToken()->getUser();
@@ -82,7 +82,7 @@ class DeletePost
                 article, vous ne pouvez pas le supprimer');
             } else {
                 $this->postRepository->delete($post);
-                $removePost = true;
+                $removePost = 'article supprimé';
             }
         } else {
             throw new AccessDeniedException('Vous n\'ètes pas le propriétaire de cet
