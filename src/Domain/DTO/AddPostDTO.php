@@ -13,6 +13,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Validator as AcmeAssert;
 
+/**
+ * Class AddPostDTO
+ *
+ * @package App\Domain\DTO
+ */
 class AddPostDTO implements AddPostDTOInterface
 {
     /**
@@ -50,14 +55,14 @@ class AddPostDTO implements AddPostDTOInterface
      * )
      * @var string
      */
-    public$shortDesc;
+    public $shortDesc;
 
     /**
      * @Assert\NotBlank(message="une image doit être choisie")
      *  @Assert\File(
      *     maxSize = "1M",
      *     mimeTypes = {"image/jpeg", "image/png"},
-     *     maxSizeMessage = "votre image doit être inférieur à 1mo",
+     *     maxSizeMessage = "votre image doit être inférieur à {{ limit }} {{ suffix }}",
      *     mimeTypesMessage = "votre image doit être de type jpeg ou png"
      * )
      * @var UploadedFile
@@ -68,7 +73,7 @@ class AddPostDTO implements AddPostDTOInterface
      *  @Assert\File(
      *     maxSize = "1M",
      *     mimeTypes = {"image/jpeg", "image/png"},
-     *     maxSizeMessage = "votre image doit être inférieur à 1mo",
+     *     maxSizeMessage = "votre image doit être inférieur à {{ limit }} {{ suffix }}",
      *     mimeTypesMessage = "votre image doit être de type jpeg ou png"
      * )
      * @var UploadedFile

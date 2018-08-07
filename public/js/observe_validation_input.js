@@ -3,8 +3,10 @@ $(function() {
     photo.on('change', function (e) {
         if (e.target.files.length === 1) {
             let nameId = $('#' + e.target.parentElement.id);
-            console.log(nameId.attr('class'));
             nameId.toggleClass('green');
+            let spn = $('#' + e.target.parentElement.id +'> span');
+            spn.text("photo téléchargée").css('text-transform','Capitalize');
+            M.toast({html: 'téléchargement de fichier réussi'});
         }
     });
 });
