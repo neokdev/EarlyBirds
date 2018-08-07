@@ -31,7 +31,3 @@ framework:
 #        app: cache.adapter.apcu
 
     validation: { enabled: true, enable_annotations: true }
-
-sensio_framework_extra:
-    router:
-        annotations: false
