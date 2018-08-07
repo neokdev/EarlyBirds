@@ -9,12 +9,12 @@ $(document).ready(function() {
     initMyObsPageNbr(nbPerPages);
 
     // Pagination numbers click behavior
-    $('.myObservesPag').click(function (e) {
+    $('.myObservesPagNbr').click(function (e) {
         e.preventDefault();
         let nbClicked = $(this).find('a').html();
 
         // Update active state
-        $('.myObservesPag').each(function () {
+        $('.myObservesPagNbr').each(function () {
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
             }
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
     // Pagination previous behavior
     $('#myObservesPagStart').click(function () {
-        let currentPage = $('.myObservesPag.active a').html();
+        let currentPage = $('.myObservesPagNbr.active a').html();
         let newPage = parseInt(currentPage)-1;
         if (newPage < 1) {
             newPage = 1;
@@ -47,7 +47,7 @@ $(document).ready(function() {
             updateMyObsNext(newPage, myObservePages);
 
             // Move numbers
-            $('.myObservesPag').each(function () {
+            $('.myObservesPagNbr').each(function () {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
                 }
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
     // Pagination next behavior
     $('#myObservesPagEnd').click(function () {
-        let currentPage = $('.myObservesPag.active a').html();
+        let currentPage = $('.myObservesPagNbr.active a').html();
         let newPage = parseInt(currentPage)+1;
         if (newPage > parseInt(myObservePages)) {
             newPage = parseInt(myObservePages);
@@ -76,7 +76,7 @@ $(document).ready(function() {
             updateMyObsNext(newPage, myObservePages);
 
             // Move numbers
-            $('.myObservesPag').each(function () {
+            $('.myObservesPagNbr').each(function () {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
                 }
@@ -98,7 +98,7 @@ function constructMyObsPag(myObservesLength, nbPerPages) {
         myObservePages = myObservesLength / nbPerPages;
     }
     for (let i = 1; i < myObservePages; i++) {
-        $("#myObservesPagEnd").before('<li class="myObservesPag waves-effect"><a href="#!">' + parseInt(i + 1) + '</a></li>');
+        $("#myObservesPagEnd").before('<li class="myObservesPagNbr waves-effect"><a href="#!">' + parseInt(i + 1) + '</a></li>');
     }
     if (myObservePages === 1) {
         $('#myObservesPagEnd').addClass('disabled').removeClass('waves-effect');
