@@ -1,3 +1,8 @@
+Build CI
+--------
+
+[![CircleCI](https://circleci.com/gh/neokdev/EarlyBirds.svg?style=svg)](https://circleci.com/gh/neokdev/EarlyBirds)
+
 <p align="center"><a href="https://www.projet5.nekbot.com" target="_blank">
     <img src="https://www.projet5.nekbot.com/img/logo/logo_Nao.png">
 </a></p>
