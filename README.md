@@ -1,4 +1,11 @@
-# Brief client
+<p align="center"><a href="https://www.projet5.nekbot.com" target="_blank">
+    <img src="https://www.projet5.nekbot.com/img/logo/logo_Nao.png">
+</a></p>
+
+[EarlyBirds NAO][1] is a **web application** make with the [Symfony][2] **PHP framework**. 
+
+Brief client
+------------
 
 Michel Dujardin est le fondateur de l’association NAO (Nos Amis les Oiseaux), regroupant les passionnés d’ornithologie. Il souhaite créer une application participative dans laquelle les particuliers pourraient indiquer où ils ont observé des oiseaux au cours de leurs promenades.‌
 
@@ -18,7 +25,8 @@ L’application doit permettre :
 
 Les observations effectuées par les particuliers doivent être validées par les naturalistes pour être ensuite affichées à tous. Chaque compte utilisateur appartient soit au groupe « particulier » soit au groupe « naturaliste » afin de leur donner des droits d’accès différents sur l’application. Les naturalistes peuvent eux aussi effectuer des saisies, qui ne nécessitent pas de validation.
 
-# Instructions
+Instructions
+------------
 
 Vous êtes chargé avec votre équipe de répondre au brief du client et de livrer le projet correspondant.
 
@@ -27,7 +35,8 @@ Vous travaillerez en équipe de 3 à 5 personnes en vous répartissant les tâch
 >Vous pouvez constituer votre équipe à l'aide du groupe Workplace dédié à la recherche d'équipe.
 >N'hésitez pas à y poster une annonce assez tôt, car la constitution de la bonne équipe peut parfois prendre du temps. 😉
 
-# Livrables
+Livrables
+---------
 
 | Communs                                                       | Design                                                         | Marketing Digital                               | Développement                                                                      |
 | ------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------| ---------------------------------------------------------------------------------- |
@@ -39,7 +48,8 @@ Vous travaillerez en équipe de 3 à 5 personnes en vous répartissant les tâch
 
 >Gardez en tête que lors de la soutenance finale, vous serez bien évalué sur les compétences de votre spécialité mais aussi sur les compétences communes à toute l'équipe.
 
-# Soutenance
+Soutenance
+----------
 
 >La soutenance est individuelle ; vous ne soutenez pas en équipe.
 
@@ -50,7 +60,8 @@ A l'oral, en condition réelle, vous présenterez le projet en 2 temps en veilla
 
 >A la fin de votre présentation, votre mentor vous posera quelques questions, au moins une sur les livrables communs et au moins une sur les livrables de votre spécialité (développement) pendant 5 à 10 minutes ; puis pourra débriefer avec vous pendant 5 minutes.
 
-# Compétences à valider
+Compétences à valider
+---------------------
 
 - Construire un planning de réalisation
 - Créer un site Internet, de sa conception à sa livraison
@@ -61,3 +72,6 @@ A l'oral, en condition réelle, vous présenterez le projet en 2 temps en veilla
 - Rédiger le cahier des charges technique
 - Rédiger un cahier des charges fonctionnel
 - Rédiger un devis et présenter un contrat de prestation
+
+[1]: https://www.projet5.nekbot.com
+[2]: https://www.symfony.com
