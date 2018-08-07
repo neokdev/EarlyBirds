@@ -2,6 +2,7 @@ Build CI
 --------
 
 [![CircleCI](https://circleci.com/gh/neokdev/EarlyBirds.svg?style=svg)](https://circleci.com/gh/neokdev/EarlyBirds)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/ab23a752-da46-4a65-bf64-75915de2556f/mini.png)](https://insight.sensiolabs.com/projects/ab23a752-da46-4a65-bf64-75915de2556f)
 
 <p align="center"><a href="https://www.projet5.nekbot.com" target="_blank">
     <img src="https://www.projet5.nekbot.com/img/logo/logo_Nao.png">
