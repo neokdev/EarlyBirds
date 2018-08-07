@@ -316,3 +316,7 @@
         overflow: scroll;
     }
 }
+
+#obsContent > div > div > p {
+    overflow-wrap: break-word;
+}

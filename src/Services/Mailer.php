@@ -145,13 +145,13 @@ class Mailer implements MailerInterface
         $message = new Swift_Message($contact->getSubject());
 
         $message
-            ->setFrom([$contact->getMail()])
+            ->setFrom($contact->getMail())
             ->setTo([$contact->getMail(), self::ADMIN_EMAIL])
             ->setBody(
                 $this->environment->render(
                     "Emails/contactMail.html.twig",
                     [
-                        'data' => $contact
+                        'data' => $contact,
                     ]
                 ),
                 'text/html'
