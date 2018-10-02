@@ -725,3 +725,10 @@ svg {
         bottom: 37.1em;
     }
 }
+
+@media (min-width: 1920px){
+    #c_nav > ul {
+        position: absolute;
+        right: calc(100% - 105em);
+    }
+}

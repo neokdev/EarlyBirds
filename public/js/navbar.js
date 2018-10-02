@@ -1,9 +1,10 @@
 $(function() {
-    $(".dropdown-trigger").dropdown(
+    $(".dropdown-trigger")
+        .dropdown(
         { hover: true }
-    );
-    $(".dropdown-trigger").hover( function () {
-        $('.dropdown-content').css('position','absolute').css('top','60px');
+    )
+        .hover(() => {
+        $('.dropdown-content').css('position','absolute').css('top','34px');
     });
     $('.sidenav').sidenav();
     $('#mobile-demo').collapsible();
